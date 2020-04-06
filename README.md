@@ -58,17 +58,19 @@ Get-NordVPNCities [[-Country] <String>]  [<CommonParameters>]
 ### Get-NordVPNRecommendedServers
 
 ```powershell
-Get-NordVPNRecommendedServers [[-Limit] <ushort>] [[-Country] <String>] [[-Group] <String>] [[-Technology] <String>] [<CommonParameters>]
+Get-NordVPNRecommendedServers [[-Limit] <uint16>] [-Raw] [[-Country] <String>] [[-Group] <String>] [[-Technology] <String>] [<CommonParameters>]
 ```
 
 ### Get-NordVPNServers
 
 ```powershell
-Get-NordVPNServers [[-Country] <String>]  [[-Group] <String>]  [[-Technology] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-NordVPNServers [[-First] <uint16>] [[-Country] <String>] [[-Group] <String>] [[-Technology] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 
-Get-NordVPNServers [[-Country] <String>]  [[-Group] <String>]  [[-Technology] <String>] -Offline [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-NordVPNServers [[-First] <uint16>] [[-Country] <String>] [[-Group] <String>] [[-Technology] <String>] -Offline [-WhatIf] [-Confirm] [<CommonParameters>]
 
-Get-NordVPNServers [[-Country] <String>]  [[-Group] <String>]  [[-Technology] <String>] -UpdateFallback [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-NordVPNServers [[-First] <uint16>] [[-Country] <String>] [[-Group] <String>] [[-Technology] <String>] -UpdateFallback [-WhatIf] [-Confirm] [<CommonParameters>]
+
+Get-NordVPNServers [[-First] <uint16>] [-Raw] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Show-NordVPNCountries

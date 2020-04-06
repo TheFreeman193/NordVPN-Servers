@@ -1,4 +1,8 @@
 .vscode/NordVPNServers.code-workspace
-NordVPN_Servers.xml
 en-US/about_INDEX.help.txt
 en-GB/about_INDEX.help.txt
+.old/
+.docs/
+NordVPN_Servers.xml
+BuildDocs.ps1
+BritishEnglish-AmericanEnglish.csv
