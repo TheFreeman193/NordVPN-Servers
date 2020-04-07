@@ -24,8 +24,8 @@ New-Variable -Option Constant -Scope Script DefaultSettings @{
     CountryCacheLifetime         = @([UInt32], 600)
     GroupCacheLifetime           = @([UInt32], 600)
     TechnologyCacheLifetime      = @([UInt32], 600)
-    OfflineMode                  = @([boolean], $false)
-    DeleteServerFallbackAfterUse = @([boolean], $false)
+    OfflineMode                  = @([Boolean], $false)
+    DeleteServerFallbackAfterUse = @([Boolean], $false)
 }
 
 $SettingsIn = Get-Content $SettingsFile -ea:si | ConvertFrom-Json
@@ -44,9 +44,9 @@ else {
     Write-Verbose "Loaded persistent settings from '$SettingsFile'"
 }
 
-[datetime]$script:CountryCacheDate = [datetime]::MinValue
-[datetime]$script:TechnologyCacheDate = [datetime]::MinValue
-[datetime]$script:GroupCacheDate = [datetime]::MinValue
+[DateTime]$script:CountryCacheDate = [DateTime]::MinValue
+[DateTime]$script:TechnologyCacheDate = [DateTime]::MinValue
+[DateTime]$script:GroupCacheDate = [DateTime]::MinValue
 New-Variable -Scope Script CountryCache $null
 New-Variable -Scope Script TechnologyCache $null
 New-Variable -Scope Script GroupCache $null
@@ -58,7 +58,7 @@ function Set-ModuleSetting {
     [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = 'SetDefault')]
     [OutputType("System.Void")]
     param (
-        [switch]
+        [Switch]
         $Force
     )
     begin {
@@ -110,13 +110,13 @@ function Set-ModuleSetting {
                 }
             }
             else {
-                Write-Error ("The type of value '{0}' does not match required type: {1}" -f
+                throw ("The type of value '{0}' does not match required type: {1}" -f
                     $PSBoundParameters.Value, $targetType
-                ) -Category InvalidType
+                )
             }
         }
         else {
-            Write-Error "No setting $Name exists!" -Category InvalidArgument
+            throw "No setting $Name exists!"
         }
     }
     end {
@@ -168,11 +168,11 @@ function Get-ModuleSetting {
                 $SETTINGS[$PSBoundParameters.Name]
             }
             else {
-                Write-Error "Invalid parameter set" -Category:InvalidArgument
+                throw "Invalid parameter set"
             }
         }
         else {
-            Write-Error "No setting $Name exists!" -Category:InvalidArgument
+            throw "No setting $Name exists!"
         }
     }
 }
@@ -182,7 +182,7 @@ function Reset-ModuleSettings {
     [CmdletBinding(SupportsShouldProcess = $true)]
     [OutputType('System.Void')]
     param (
-        [switch]
+        [Switch]
         $Force
     )
     process {
@@ -215,7 +215,7 @@ function Get-ModuleSettingNameDynamicParam {
             Mandatory = $true,
             Position = 1
         )]
-        [string[]]
+        [String[]]
         $SetNames
     )
     process {
@@ -231,7 +231,7 @@ function Get-ModuleSettingNameDynamicParam {
             $paramAttrib.ParameterSetName = $n
             $paramAttribCol.Add($paramAttrib)
         }
-        $paramVals = [array]$SETTINGS.Keys
+        $paramVals = [Array]$SETTINGS.Keys
         $paramValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($paramVals)
         $paramAttribCol.Add($paramValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -244,12 +244,12 @@ function Get-CountryDynamicParam {
     [CmdletBinding()]
     [OutputType('System.Management.Automation.RuntimeDefinedParameter')]
     param(
-        [parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [UInt16]
         $pos,
 
         [Parameter(Mandatory = $true, Position = 1)]
-        [string[]]
+        [String[]]
         $SetNames
     )
     begin {
@@ -273,7 +273,6 @@ function Get-CountryDynamicParam {
             $ctryAttribCol.Add($paramAttrib)
         }
 
-        # $ctryAttribCol.Add($ctryAttrib)
         $ctryVals = (Get-Countries).Code
         $ctryValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($ctryVals)
         $ctryAttribCol.Add($ctryValidateSet)
@@ -291,12 +290,12 @@ function Get-GroupDynamicParam {
     [CmdletBinding()]
     [OutputType('System.Management.Automation.RuntimeDefinedParameter')]
     param(
-        [parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [UInt16]
         $pos,
 
         [Parameter(Mandatory = $true, Position = 1)]
-        [string[]]
+        [String[]]
         $SetNames
     )
     begin {
@@ -336,12 +335,12 @@ function Get-TechnologyDynamicParam {
     [CmdletBinding()]
     [OutputType('System.Management.Automation.RuntimeDefinedParameter')]
     param(
-        [parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [UInt16]
         $pos,
 
         [Parameter(Mandatory = $true, Position = 1)]
-        [string[]]
+        [String[]]
         $SetNames
     )
     begin {
@@ -390,7 +389,7 @@ function Clear-CountryCache {
     param()
     process {
         Write-Debug "Request to clear the country cache"
-        $script:CountryCacheDate = [datetime]::MinValue
+        $script:CountryCacheDate = [DateTime]::MinValue
         Clear-Variable CountryCache -Force -Scope Script
         Write-Verbose "Cleared the NordVPN country cache."
     }
@@ -403,7 +402,7 @@ function Clear-GroupCache {
     param()
     process {
         Write-Debug "Request to clear the group cache"
-        $script:GroupCacheDate = [datetime]::MinValue
+        $script:GroupCacheDate = [DateTime]::MinValue
         Clear-Variable -Force -Scope Script GroupCache
         Write-Verbose "Cleared the NordVPN group cache."
     }
@@ -416,7 +415,7 @@ function Clear-TechnologyCache {
     param()
     process {
         Write-Debug "Request to clear the technology cache"
-        $script:TechnologyCacheDate = [datetime]::MinValue
+        $script:TechnologyCacheDate = [DateTime]::MinValue
         Clear-Variable -Force -Scope Script TechnologyCache
         Write-Verbose "Cleared the NordVPN technology cache."
     }
@@ -457,20 +456,12 @@ function Get-List {
         $RawList = try {
             Write-Progress -Activity "Processing lists" -CurrentOperation "Downloading server data" -Id 1
             Write-Debug "Attempting HTTPS request to API"
-            # $data = (Invoke-WebRequest -Uri $URL).Content
-            # if ($data.Length -le 2) {
-            #     Write-Debug "Received empty data from the API"
-            #     return $true
-            # }
             $data = Invoke-RestMethod -Uri $URL
             if ($data.Count -lt 1) {
                 Write-Debug "Received no data from the API"
                 return $true
             }
             $data
-            # Write-Progress -Activity "Processing lists" -CurrentOperation "Parsing JSON data" -Id 1
-            # Write-Debug "Attempting to parse downloaded JSON data"
-            # ConvertFrom-Json -InputObject $data
             Write-Progress -Activity "Processing lists" -Id 1 -Completed
         }
         catch [System.Net.WebException] {
@@ -479,7 +470,7 @@ function Get-List {
         catch {
             Write-Error "A general exception occurred: $($_.Exception.Message)"
         }
-        if ($RawList -isnot [object]) {
+        if ($RawList -isnot [Object]) {
             Write-Warning "Failed to parse JSON correctly."
             return
         }
@@ -496,7 +487,7 @@ function ConvertFrom-ServerEntries {
             Position = 0,
             Mandatory = $true
         )]
-        [pscustomobject]
+        [PSCustomObject]
         $Entries
     )
     process {
@@ -516,74 +507,71 @@ function ConvertFrom-ServerEntries {
             if ($k % 100 -eq 0) {
                 Write-Debug "Server entry $k`: ID = $($svr.id)"
             }
-            $pcc = [math]::Floor(($k / $kMax) * 100)
-            Write-Progress -Activity "Processing server entries" -Id 2 `
-                -PercentComplete $pcc `
-                -CurrentOperation ("Server {0}/{1} ({2}%)" -f $k, $Entries.Count, $pcc)
+            $pcc = [Math]::Floor(($k / $kMax) * 100)
+            if ($k % 100 -eq 0) {
+                Write-Progress -Activity "Processing server entries" -Id 2 `
+                    -PercentComplete $pcc `
+                    -CurrentOperation ("Server {0}/{1} ({2}%)" -f $k, $Entries.Count, $pcc)
+            }
             [System.Collections.ArrayList]$services = @()
             Write-Information ".. services"
             foreach ($svc in $svr.services) {
-                Write-Progress -Activity 'Populating List' -CurrentOperation "Services" -Id 20 -ParentId 2
-                [void]$services.Add(
-                    [pscustomobject]@{
-                        Id           = $svc.id
-                        FriendlyName = $svc.name
-                        Code         = $svc.identifier
-                        Created      = [datetime]$svc.created_at
-                        Updated      = [datetime]$svc.updated_at
+                [Void]$services.Add(
+                    [PSCustomObject]@{
+                        Id           = [UInt64]$svc.id
+                        FriendlyName = [String]$svc.name
+                        Code         = [String]$svc.identifier
+                        Created      = [DateTime]$svc.created_at
+                        Updated      = [DateTime]$svc.updated_at
                     }
                 )
             }
             [System.Collections.ArrayList]$locations = @()
             Write-Information ".. locations"
             foreach ($loc in $svr.locations) {
-                Write-Progress -Activity 'Populating List' -CurrentOperation "Locations" -Id 20 -ParentId 2
-                [void]$locations.Add(
-                    [pscustomobject]@{
-                        Id          = $loc.id
-                        Latitude    = $loc.latitude
-                        Longitude   = $loc.longitude
-                        CountryCode = $loc.country.code
-                        CityCode    = $loc.country.city.dns_name
-                        Created     = [datetime]$loc.created_at
-                        Updated     = [datetime]$loc.updated_at
+                [Void]$locations.Add(
+                    [PSCustomObject]@{
+                        Id          = [UInt64]$loc.id
+                        Latitude    = [Double]$loc.latitude
+                        Longitude   = [Double]$loc.longitude
+                        CountryCode = [String]$loc.country.code
+                        CityCode    = [String]$loc.country.city.dns_name
+                        Created     = [DateTime]$loc.created_at
+                        Updated     = [DateTime]$loc.updated_at
                     }
                 )
             }
             [System.Collections.ArrayList]$technologies = @()
             Write-Information ".. technologies"
             :techloop foreach ($tech in $svr.technologies) {
-                Write-Progress -Activity 'Populating List' -CurrentOperation "Technologies" -Id 20 -ParentId 2
-                if ($tech.pivot.status -ne "online") { continue techloop }
-                [void]$technologies.Add(
-                [pscustomobject]@{
-                    Id           = $tech.id
-                    FriendlyName = $tech.name
-                    Code         = $tech.identifier
-                    Created      = [datetime]$tech.created_at
-                    Updated      = [datetime]$tech.updated_at
-                    Available    = [boolean]($tech.pivot.status -eq "online")
-                    Status       = $tech.pivot.status
-                }
+                [Void]$technologies.Add(
+                    [PSCustomObject]@{
+                        Id           = [UInt64]$tech.id
+                        FriendlyName = [String]$tech.name
+                        Code         = [String]$tech.identifier
+                        Created      = [DateTime]$tech.created_at
+                        Updated      = [DateTime]$tech.updated_at
+                        Available    = [Boolean]($tech.pivot.status -eq "online")
+                        Status       = [String]$tech.pivot.status
+                    }
                 )
             }
             [System.Collections.ArrayList]$groups = @()
             Write-Information ".. groups"
             foreach ($grp in $svr.groups) {
-                Write-Progress -Activity 'Populating List' -CurrentOperation "Groups" -Id 20 -ParentId 2
-                [void]$groups.Add(
-                    [pscustomobject]@{
-                        Id           = $grp.id
-                        Code         = ($GroupList | Where-Object Id -eq $grp.id).Code
-                        FriendlyName = $grp.title
-                        Created      = [datetime]$grp.created_at
-                        Updated      = [datetime]$grp.updated_at
-                        Type         = [pscustomobject]@{
-                            Id           = $grp.type.id
-                            Created      = [datetime]$grp.type.created_at
-                            Updated      = [datetime]$grp.type.updated_at
-                            FriendlyName = $grp.type.title
-                            Code         = $grp.type.identifier
+                [Void]$groups.Add(
+                    [PSCustomObject]@{
+                        Id           = [UInt64]$grp.id
+                        Code         = [String]($GroupList | Where-Object Id -eq $grp.id).Code
+                        FriendlyName = [String]$grp.title
+                        Created      = [DateTime]$grp.created_at
+                        Updated      = [DateTime]$grp.updated_at
+                        Type         = [PSCustomObject]@{
+                            Id           = [UInt64]$grp.type.id
+                            Created      = [DateTime]$grp.type.created_at
+                            Updated      = [DateTime]$grp.type.updated_at
+                            FriendlyName = [String]$grp.type.title
+                            Code         = [String]$grp.type.identifier
                         }
                     }
                 )
@@ -591,16 +579,15 @@ function ConvertFrom-ServerEntries {
             [System.Collections.ArrayList]$specs = @()
             Write-Information ".. specifications"
             foreach ($spec in $svr.specifications) {
-                Write-Progress -Activity 'Populating List' -CurrentOperation "Specifications" -Id 20 -ParentId 2
-                [void]$specs.Add(
-                    [pscustomobject]@{
-                        Id           = $spec.id
-                        FriendlyName = $spec.title
-                        Code         = $spec.identifier
+                [Void]$specs.Add(
+                    [PSCustomObject]@{
+                        Id           = [UInt64]$spec.id
+                        FriendlyName = [String]$spec.title
+                        Code         = [String]$spec.identifier
                         Values       = @(
                             $spec.values | ForEach-Object {
-                                [pscustomobject]@{
-                                    Id    = $_.id
+                                [PSCustomObject]@{
+                                    Id    = [UInt64]$_.id
                                     Value = $_.value
                                 }
                             }
@@ -611,49 +598,49 @@ function ConvertFrom-ServerEntries {
             [System.Collections.ArrayList]$ipaddresses = @()
             Write-Information ".. IPs"
             foreach ($ip in $svr.ips) {
-                Write-Progress -Activity 'Populating List' -CurrentOperation "IPs" -Id 20 -ParentId 2
-                [void]$ipaddresses.Add(
-                    [pscustomobject]@{
-                        Id      = $ip.ip.id
+                [Void]$ipaddresses.Add(
+                    [PSCustomObject]@{
+                        Id      = [UInt64]$ip.ip.id
                         Version = [UInt16]$ip.ip.version
-                        Address = $ip.ip.ip
-                        EntryId = $ip.id
-                        Created = $ip.created_at
-                        Updated = $ip.ipdated_at
+                        Address = [String]$ip.ip.ip
+                        EntryId = [UInt64]$ip.id
+                        Created = [DateTime]$ip.created_at
+                        Updated = [DateTime]$ip.updated_at
                     }
                 )
             }
-            Write-Progress -Activity 'Populating List' -CurrentOperation "Building server entry" -Id 20 -ParentId 2
             Write-Information ".. Building final structure"
-            [void]$NewList.Add(
-                [pscustomobject]@{
+            [Void]$NewList.Add(
+                [PSCustomObject]@{
                     Id             = [UInt64]$svr.id
-                    Created        = [datetime]$svr.created_at
-                    Updated        = [datetime]$svr.updated_at
+                    Created        = [DateTime]$svr.created_at
+                    Updated        = [DateTime]$svr.updated_at
                     Hostname       = [String]$svr.hostname
                     Load           = [UInt16]$svr.Load
                     Status         = [String]$svr.status
                     PrimaryIP      = [String]$svr.station
-                    Country        = $CountryList | Where-Object Id -eq $svr.locations[0].country.id
+                    Country        = [PSCustomObject]($CountryList | `
+                            Where-Object Id -eq $svr.locations[0].country.id
+                    )
                     CountryCode    = [String]$svr.locations[0].country.code
-                    City           = $CountryList.Cities | Where-Object Id -eq $svr.locations[0].country.city.id
+                    City           = [PSCustomObject]($CountryList.Cities | `
+                            Where-Object Id -eq $svr.locations[0].country.city.id
+                    )
                     CityCode       = [String]$svr.locations[0].country.city.dns_name
                     Longitude      = [Double]$svr.locations[0].longitude
                     Latitude       = [Double]$svr.locations[0].latitude
-                    Locations      = $locations
-                    Services       = $services
-                    Technologies   = $technologies
-                    Specifications = $specs
-                    IPs            = $ipaddresses
-                    Groups         = $groups
+                    Locations      = [PSCustomObject]$locations
+                    Services       = [PSCustomObject]$services
+                    Technologies   = [PSCustomObject]$technologies
+                    Specifications = [PSCustomObject]$specs
+                    IPs            = [PSCustomObject]$ipaddresses
+                    Groups         = [PSCustomObject]$groups
                 }
             )
             $k++
         }
         $NewList
         Write-Verbose "Finished processing entries"
-        Write-Progress -Activity 'Populating List' -Id 20 -Completed `
-            -CurrentOperation "Finished." -ParentId 2
         Write-Progress -Activity 'Processing server entries' -Id 2 -Completed `
             -CurrentOperation "Finished."
     }
@@ -670,12 +657,12 @@ function Get-Countries {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
-        [parameter(ParameterSetName = 'DefaultOperation')]
-        [switch]
+        [Parameter(ParameterSetName = 'DefaultOperation')]
+        [Switch]
         $UpdateFallback,
 
-        [parameter(ParameterSetName = 'Offline')]
-        [switch]
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
         $Offline
     )
     process {
@@ -701,14 +688,14 @@ function Get-Countries {
                 Write-Progress -Activity "Building list" -CurrentOperation "Filling hashtable" -Id 1 `
                     -PercentComplete (($i / $CountryList.Count) * 100)
                 Write-Debug "Processing entry $i`: Country code = $($ctry.code)"
-                [void]$NewList.Add(
-                    @{
+                [Void]$NewList.Add(
+                    [PSCustomObject]@{
                         Id           = [UInt64]$ctry.id
                         FriendlyName = [String]$ctry.name
                         Code         = [String]$ctry.code
                         Cities       = @(
                             $ctry.cities | ForEach-Object {
-                                @{
+                                [PSCustomObject]@{
                                     Id           = [UInt64]$_.id
                                     FriendlyName = [String]$_.name
                                     Code         = [String]$_.dns_name
@@ -728,7 +715,7 @@ function Get-Countries {
             Set-Variable -Scope Script -Force CountryCacheDate (Get-Date)
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $NewList.ToArray() | Export-Clixml -Path $CountryFallback -Force
+                $NewList.ToArray() | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported downloaded country list to fallback: $CountryFallback"
             }
             $NewList.ToArray()
@@ -738,7 +725,7 @@ function Get-Countries {
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
                 Write-Verbose "Exported technology cache to fallback: $CountryFallback"
-                $CountryCache.ToArray() | Export-Clixml -Path $CountryFallback -Force
+                $CountryCache.ToArray() | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
             }
             $CountryCache.ToArray()
         }
@@ -758,12 +745,12 @@ function Get-Groups {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
-        [parameter(ParameterSetName = 'DefaultOperation')]
-        [switch]
+        [Parameter(ParameterSetName = 'DefaultOperation')]
+        [Switch]
         $UpdateFallback,
 
-        [parameter(ParameterSetName = 'Offline')]
-        [switch]
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
         $Offline
     )
     process {
@@ -789,20 +776,20 @@ function Get-Groups {
                 Write-Progress -Activity "Building list" -CurrentOperation "Filling hashtable" -Id 1 `
                     -PercentComplete (($i / $GroupList.Count) * 100)
                 Write-Debug "Processing entry $i`: Group code = $($grp.identifier)"
-                [void]$NewList.Add(
-                    @{
+                [Void]$NewList.Add(
+                    [PSCustomObject]@{
                         Id           = [UInt64]$grp.id
                         FriendlyName = [String]$grp.title
                         Code         = [String]$grp.identifier
-                        Type         = @{
+                        Type         = [PSCustomObject]@{
                             Id           = [UInt64]$grp.type.id
                             FriendlyName = [String]$grp.type.title
                             Code         = [String]$grp.type.identifier
-                            Created      = [datetime]$grp.type.created_at
-                            Updated      = [datetime]$grp.type.updated_at
+                            Created      = [DateTime]$grp.type.created_at
+                            Updated      = [DateTime]$grp.type.updated_at
                         }
-                        Created      = [datetime]$grp.created_at
-                        Updated      = [datetime]$grp.updated_at
+                        Created      = [DateTime]$grp.created_at
+                        Updated      = [DateTime]$grp.updated_at
                     }
                 )
                 $i++
@@ -812,7 +799,7 @@ function Get-Groups {
             Set-Variable -Scope Script -Force GroupCacheDate (Get-Date)
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $NewList.ToArray() | Export-Clixml -Path $GroupFallback -Force
+                $NewList.ToArray() | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported downloaded group list to fallback: $GroupFallback"
             }
             $NewList.ToArray()
@@ -822,7 +809,7 @@ function Get-Groups {
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
                 Write-Verbose "Exported technology cache to fallback: $GroupFallback"
-                $GroupCache.ToArray() | Export-Clixml -Path $GroupFallback -Force
+                $GroupCache.ToArray() | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
             }
             $GroupCache.ToArray()
         }
@@ -842,12 +829,12 @@ function Get-Technologies {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
-        [parameter(ParameterSetName = 'DefaultOperation')]
-        [switch]
+        [Parameter(ParameterSetName = 'DefaultOperation')]
+        [Switch]
         $UpdateFallback,
 
-        [parameter(ParameterSetName = 'Offline')]
-        [switch]
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
         $Offline
     )
     process {
@@ -873,13 +860,13 @@ function Get-Technologies {
                 Write-Progress -Activity "Building list" -CurrentOperation "Filling hashtable" -Id 1 `
                     -PercentComplete (($i / $TechnologyList.Count) * 100)
                 Write-Debug "Processing entry $i`: Technology code = $($tech.identifier)"
-                [void]$NewList.Add(
-                    @{
+                [Void]$NewList.Add(
+                    [PSCustomObject]@{
                         Id           = [UInt64]$tech.id
                         FriendlyName = [String]$tech.name
                         Code         = [String]$tech.identifier
-                        Created      = [datetime]$tech.created_at
-                        Updated      = [datetime]$tech.updated_at
+                        Created      = [DateTime]$tech.created_at
+                        Updated      = [DateTime]$tech.updated_at
                     }
                 )
                 $i++
@@ -890,7 +877,7 @@ function Get-Technologies {
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
                 Write-Verbose "Exported downloaded technology list to fallback: $TechnologyFallback"
-                $NewList.ToArray() | Export-Clixml -Path $TechnologyFallback -Force
+                $NewList.ToArray() | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
             }
             $NewList.ToArray()
         }
@@ -898,7 +885,7 @@ function Get-Technologies {
             Write-Verbose "Used Technology cache"
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $TechnologyCache.ToArray() | Export-Clixml -Path $TechnologyFallback -Force
+                $TechnologyCache.ToArray() | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported technology cache to fallback: $TechnologyFallback"
             }
             $TechnologyCache.ToArray()
@@ -918,7 +905,11 @@ function Get-Technologies {
 function Get-Cities {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
-    param ()
+    param (
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
+        $Offline
+    )
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
         $ParamDict.Add('Country', (Get-CountryDynamicParam 0 'DefaultOperation'))
@@ -927,7 +918,12 @@ function Get-Cities {
     }
     process {
         Write-Debug "Cities list requested"
-        $Countries = Get-Countries
+        if ($PSCmdlet.ParameterSetName -eq 'Offline') {
+            $Countries = Get-Countries -Offline
+        }
+        else {
+            $Countries = Get-Countries
+        }
         if ($PSBoundParameters.Country) {
             $Countries = $Countries | Where-Object { $PSBoundParameters.Country -eq $_.Code }
         }
@@ -935,7 +931,7 @@ function Get-Cities {
         foreach ($ctry in $Countries) {
             foreach ($city in $ctry.Cities) {
                 Write-Debug "Processing entry: City code = $($city.Code)"
-                [void]$OutList.Add($city)
+                [Void]$OutList.Add($city)
             }
         }
 
@@ -1010,17 +1006,12 @@ function Show-Cities {
             $CityList = Get-Cities
         }
         $Countries = Get-NordVPNCountries
-        $CityList.GetEnumerator() | Sort-Object { $_.CountryCode }, { $_.FriendlyName } | Select-Object -Property `
-        @{Label = 'ID'; Expression = { $_.Id } },
+        $CityList.GetEnumerator() | Sort-Object -Property CountryCode, FriendlyName | `
+            Select-Object -Property Id,
         @{Label = 'Country'; Expression = {
                 $ctry = $_.CountryCode; ($Countries | Where-Object { $_.Code -eq $ctry }).FriendlyName }
         },
-        @{Label = 'City'; Expression = { $_.FriendlyName } },
-        @{Label = 'City Code'; Expression = { $_.Code } },
-        @{Label = 'Latitude'; Expression = { $_.Latitude } },
-        @{Label = 'Longitude'; Expression = { $_.Longitude } },
-        @{Label = 'HubScore'; Expression = { $_.HubScore } } | `
-            Format-Table -AutoSize
+        FriendlyName, Code, Latitude, Longitude, HubScore | Format-Table -AutoSize
     }
 }
 
@@ -1037,7 +1028,6 @@ function Get-RecommendedServers {
 
     [CmdletBinding(DefaultParameterSetName = "DefaultOperation")]
     [OutputType('System.Array')]
-    # Static params
     param (
         [Parameter(
             Position = 0,
@@ -1048,11 +1038,10 @@ function Get-RecommendedServers {
         [UInt16]
         $Limit = 5,
 
-        [parameter(ParameterSetName = 'DefaultOperation')]
-        [switch]
+        [Parameter(ParameterSetName = 'DefaultOperation')]
+        [Switch]
         $Raw
     )
-    # Dynamic countries, technologies and groups direct from server or cache
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
         $ParamDict.Add('Country', (Get-CountryDynamicParam 0 @('DefaultOperation')))
@@ -1072,7 +1061,7 @@ function Get-RecommendedServers {
                 CategoryReason    = 'Offline mode enabled'
             }
             Write-Error @FallbackErr
-            return
+            throw $FallbackErr.Message
         }
     }
     process {
@@ -1082,7 +1071,6 @@ function Get-RecommendedServers {
             )
             return
         }
-        # Get country no. from ISO code
         $CountryId = $null
         if ($null -ne $PSBoundParameters.Country) {
             $CountryId = (
@@ -1107,8 +1095,9 @@ function Get-RecommendedServers {
         }
         if ($null -eq $ServerList) {
             Write-Error @FailedList
+            throw $FailedList.Message
         }
-        if (($ServerList -is [boolean] -and $true -eq $ServerList) -or ($ServerList.Count -eq 0)) {
+        if (($ServerList -is [Boolean] -and $true -eq $ServerList) -or ($ServerList.Count -eq 0)) {
             Write-Warning ("No results found for search with filters:" +
                 $(if ($PSBoundParameters.Country) { "`n  Country: {0}" -f $PSBoundParameters.Country }) +
                 $(if ($PSBoundParameters.Group) { "`n  Group: {0}" -f $PSBoundParameters.Group }) +
@@ -1127,35 +1116,33 @@ function Get-Servers {
 
     [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = "DefaultOperation")]
     [OutputType('System.Array')]
-    # Static params
     param (
         [Parameter(
             Position = 0,
-            HelpMessage = {$GetServersLimitParamHelp},
+            HelpMessage = { $GetServersLimitParamHelp },
             ParameterSetName = "WithFirst"
         )]
         [Parameter(
             Position = 0,
-            HelpMessage = {$GetServersLimitParamHelp},
+            HelpMessage = { $GetServersLimitParamHelp },
             ParameterSetName = "RawData"
         )]
         [ValidateRange(1, 65535)]
         [UInt16]
         $First = 8192,
 
-        [parameter(ParameterSetName = 'DefaultOperation')]
-        [switch]
+        [Parameter(ParameterSetName = 'DefaultOperation')]
+        [Switch]
         $UpdateFallback,
 
-        [parameter(ParameterSetName = 'Offline')]
-        [switch]
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
         $Offline,
 
-        [parameter(ParameterSetName = 'RawData')]
-        [switch]
+        [Parameter(ParameterSetName = 'RawData')]
+        [Switch]
         $Raw
     )
-    # Dynamic countries, technologies and groups direct from server or cache
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
         $allowedParamSets = @('DefaultOperation', 'Offline', 'WithFirst')
@@ -1167,8 +1154,8 @@ function Get-Servers {
     }
     begin {
         if (($Settings.OfflineMode -or $Offline -or $UpdateFallback -and $Raw)) {
-            Write-Error ("You cannot use the -Raw switch in offline mode, or" +
-            " with -UpdateFallback.")
+            throw ("You cannot use the -Raw switch in offline mode, or" +
+                " with -UpdateFallback.")
         }
         $ServersCompressed = $ServerFallback, '.zip' -join ''
         if ($Settings.OfflineMode -or $Offline) {
@@ -1180,19 +1167,15 @@ function Get-Servers {
                     Expand-Archive $ServersCompressed $PSScriptRoot -Force
                 }
                 else {
-                    $nofileErr = @{
-                        Message           = 'No NordVPN_Servers.xml.zip or NordVPN_Servers.xml file found!' +
-                        ' Cannot create fallback file.'
-                        Category          = [System.Management.Automation.ErrorCategory]::ResourceUnavailable
-                        RecommendedAction = 'Run Get-NordVPNServers -UpdateFallback with offline mode disabled.'
-                        CategoryActivity  = 'Expand server list archive'
-                        CategoryReason    = 'Server list archive not available'
-                    }
-                    Write-Error @nofileErr
+                    throw ('No NordVPN_Servers.xml.zip or NordVPN_Servers.xml file found!' +
+                        ' Cannot create fallback file.')
                 }
             }
             Write-Progress -Activity "Importing server list" -Id 3 -CurrentOperation "Parsing $ServerFallback"
             $AllServersList = Import-Clixml -Path $ServerFallback
+            if ($AllServersList.Count -lt 1) {
+                throw "Unable to import server fallback list from $ServerFallback!"
+            }
             Write-Progress -Activity "Importing server list" -Id 3 -Completed
         }
         else {
@@ -1204,7 +1187,7 @@ function Get-Servers {
             if ($UpdateFallback) {
                 Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
                     'Writing XML => NordVPN_Servers.xml'
-                $AllServersList | Export-Clixml -Path $ServerFallback -Force
+                $AllServersList | Export-Clixml -Path $ServerFallback -Encoding UTF8 -Force
                 Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
                     'Compressing offline servers list: NordVPN_Servers.xml => NordVPN_Servers.xml.zip'
                 Compress-Archive -Path $ServerFallback -DestinationPath $ServersCompressed -Force `
@@ -1215,12 +1198,12 @@ function Get-Servers {
         }
     }
     process {
-        if ($PSCmdlet.ParameterSetName -eq 'RawData' -and $Raw) {return}
+        if ($PSCmdlet.ParameterSetName -eq 'RawData' -and $Raw) { return }
         if ($null -eq $AllServersList) {
             Write-Error @FailedList
-            return
+            throw $FailedList.Message
         }
-        if ($AllServersList -is [boolean] -and $true -eq $AllServersList) {
+        if ($AllServersList -is [Boolean] -and $true -eq $AllServersList) {
             Write-Warning "No values returned from {0}!" -f `
             $(if ($Settings.OfflineMode) { 'the fallback file' } else { 'the API' })
             return
@@ -1247,7 +1230,7 @@ function Get-Servers {
             $ServerList
         }
         else {
-            Write-Warning ("No servers in the first $([math]::min($First,$RawList.Count)) results matched the filters! Filters:" +
+            Write-Warning ("No servers in the first $([Math]::min($First,$RawList.Count)) results matched the filters! Filters:" +
                 $(if ($PSBoundParameters.Country) { "`n  Country: {0}" -f $PSBoundParameters.Country }) +
                 $(if ($PSBoundParameters.Group) { "`n  Group: {0}" -f $PSBoundParameters.Group }) +
                 $(if ($PSBoundParameters.Technology) { "`n  Technology: {0}" -f $PSBoundParameters.Technology }) +

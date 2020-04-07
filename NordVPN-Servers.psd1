@@ -1,6 +1,6 @@
 @{
 RootModule = 'NordVPN-Servers.psm1'
-ModuleVersion = '0.1.27'
+ModuleVersion = '0.2.1'
 CompatiblePSEditions = @('Desktop', 'Core')
 GUID = '49e3429a-230b-4bc4-81bf-eaa6f0bd2927'
 Author = 'Nicholas Bissell'
@@ -37,6 +37,7 @@ FileList = @(
     '.\NordVPN_Countries.xml'
     '.\NordVPN_Groups.xml'
     '.\NordVPN_Technologies.xml'
+    '.\NordVPN_Servers.xml.zip'
     '.\NordVPN-Servers.ico'
     '.\NordVPN-Servers.png'
     '.\NordVPN-Servers.settings.json'
@@ -60,6 +61,18 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = @'
+== 0.2.1 - 7th April 2020
+- Update version to alpha 0.2
+- Add -Offline parameter to Get-NordVPNCities
+- Update manifest to include zipped server fallback
+- Remove some obsolete code
+- Convert most hashtables to custom objects for easier downstream processing
+- Add explicit typecasts where missing
+- Remove surplus write-progress calls
+- Tidy up code / consistency
+- Force UTF-8 for XML export
+- Fix some non-terminating error conditions
+
 == 0.1.27 - 6th April 2020
 - First alpha
 '@

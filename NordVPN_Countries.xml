@@ -1,4157 +1,1748 @@
 <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
   <Obj RefId="0">
     <TN RefId="0">
-      <T>System.Collections.Hashtable</T>
+      <T>System.Management.Automation.PSCustomObject</T>
       <T>System.Object</T>
     </TN>
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">AL</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="1">
-          <TN RefId="1">
-            <T>System.Object[]</T>
-            <T>System.Array</T>
-            <T>System.Object</T>
-          </TN>
-          <LST>
-            <Obj RefId="2">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">308615</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">41.3275</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">tirana</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">19.8188889</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Tirana</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AL</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Albania</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">2</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">2</U64>
+      <S N="FriendlyName">Albania</S>
+      <S N="Code">AL</S>
+      <Obj N="Cities" RefId="1">
+        <TN RefId="1">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <Obj RefId="2">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">308615</U64>
+              <S N="FriendlyName">Tirana</S>
+              <S N="Code">tirana</S>
+              <Db N="Longitude">19.8188889</Db>
+              <Db N="Latitude">41.3275</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AL</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="3">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">AR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="4">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="5">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">384866</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-34.5875</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">buenos-aires</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-58.6725</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Buenos Aires</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Argentina</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">10</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">10</U64>
+      <S N="FriendlyName">Argentina</S>
+      <S N="Code">AR</S>
+      <Obj N="Cities" RefId="4">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="5">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">384866</U64>
+              <S N="FriendlyName">Buenos Aires</S>
+              <S N="Code">buenos-aires</S>
+              <Db N="Longitude">-58.6725</Db>
+              <Db N="Latitude">-34.5875</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="6">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">AU</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="7">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="8">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">452717</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-34.928661</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">adelaide</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">138.598633</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Adelaide</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AU</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="9">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">456494</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-27.47101</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">brisbane</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">153.024292</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Brisbane</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AU</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="10">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">470813</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-37.813938</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">melbourne</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">144.963425</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Melbourne</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AU</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="11">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">475799</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-31.95224</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">perth</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">115.861397</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Perth</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AU</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="12">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">479570</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-33.861481</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">sydney</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">151.205475</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Sydney</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AU</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Australia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">13</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">13</U64>
+      <S N="FriendlyName">Australia</S>
+      <S N="Code">AU</S>
+      <Obj N="Cities" RefId="7">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="8">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">452717</U64>
+              <S N="FriendlyName">Adelaide</S>
+              <S N="Code">adelaide</S>
+              <Db N="Longitude">138.598633</Db>
+              <Db N="Latitude">-34.928661</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AU</S>
+            </MS>
+          </Obj>
+          <Obj RefId="9">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">456494</U64>
+              <S N="FriendlyName">Brisbane</S>
+              <S N="Code">brisbane</S>
+              <Db N="Longitude">153.024292</Db>
+              <Db N="Latitude">-27.47101</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AU</S>
+            </MS>
+          </Obj>
+          <Obj RefId="10">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">470813</U64>
+              <S N="FriendlyName">Melbourne</S>
+              <S N="Code">melbourne</S>
+              <Db N="Longitude">144.963425</Db>
+              <Db N="Latitude">-37.813938</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AU</S>
+            </MS>
+          </Obj>
+          <Obj RefId="11">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">475799</U64>
+              <S N="FriendlyName">Perth</S>
+              <S N="Code">perth</S>
+              <Db N="Longitude">115.861397</Db>
+              <Db N="Latitude">-31.95224</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AU</S>
+            </MS>
+          </Obj>
+          <Obj RefId="12">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">479570</U64>
+              <S N="FriendlyName">Sydney</S>
+              <S N="Code">sydney</S>
+              <Db N="Longitude">151.205475</Db>
+              <Db N="Latitude">-33.861481</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AU</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="13">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">AT</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="14">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="15">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">448799</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">48.2</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">vienna</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">16.366667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Vienna</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AT</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Austria</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">14</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">14</U64>
+      <S N="FriendlyName">Austria</S>
+      <S N="Code">AT</S>
+      <Obj N="Cities" RefId="14">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="15">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">448799</U64>
+              <S N="FriendlyName">Vienna</S>
+              <S N="Code">vienna</S>
+              <Db N="Longitude">16.366667</Db>
+              <Db N="Latitude">48.2</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AT</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="16">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">BE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="17">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="18">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">654293</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">50.833333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">brussels</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">4.333333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Brussels</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">BE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Belgium</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">21</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">21</U64>
+      <S N="FriendlyName">Belgium</S>
+      <S N="Code">BE</S>
+      <Obj N="Cities" RefId="17">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="18">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">654293</U64>
+              <S N="FriendlyName">Brussels</S>
+              <S N="Code">brussels</S>
+              <Db N="Longitude">4.333333</Db>
+              <Db N="Latitude">50.833333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">BE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="19">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">BA</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="20">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="21">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">556823</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">43.85</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">sarajevo</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">18.3833333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Sarajevo</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">BA</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Bosnia and Herzegovina</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">27</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">27</U64>
+      <S N="FriendlyName">Bosnia and Herzegovina</S>
+      <S N="Code">BA</S>
+      <Obj N="Cities" RefId="20">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="21">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">556823</U64>
+              <S N="FriendlyName">Sarajevo</S>
+              <S N="Code">sarajevo</S>
+              <Db N="Longitude">18.3833333</Db>
+              <Db N="Latitude">43.85</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">BA</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="22">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">BR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="23">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="24">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">943973</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-23.533333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">san-paulo</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-46.616667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">San Paulo</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">BR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Brazil</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">30</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">30</U64>
+      <S N="FriendlyName">Brazil</S>
+      <S N="Code">BR</S>
+      <Obj N="Cities" RefId="23">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="24">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">943973</U64>
+              <S N="FriendlyName">San Paulo</S>
+              <S N="Code">san-paulo</S>
+              <Db N="Longitude">-46.616667</Db>
+              <Db N="Latitude">-23.533333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">BR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="25">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">BG</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="26">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="27">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">777368</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">42.6833333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">sofia</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">23.3166667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Sofia</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">BG</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Bulgaria</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">33</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">33</U64>
+      <S N="FriendlyName">Bulgaria</S>
+      <S N="Code">BG</S>
+      <Obj N="Cities" RefId="26">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="27">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">777368</U64>
+              <S N="FriendlyName">Sofia</S>
+              <S N="Code">sofia</S>
+              <Db N="Longitude">23.3166667</Db>
+              <Db N="Latitude">42.6833333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">BG</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="28">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">CA</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="29">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="30">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">1048463</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">45.5</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">montreal</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-73.583333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Montreal</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CA</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="31">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">1054250</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">43.666667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">toronto</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-79.416667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Toronto</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CA</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="32">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">1054610</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">49.25</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">vancouver</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-123.133333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Vancouver</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CA</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Canada</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">38</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">38</U64>
+      <S N="FriendlyName">Canada</S>
+      <S N="Code">CA</S>
+      <Obj N="Cities" RefId="29">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="30">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">1048463</U64>
+              <S N="FriendlyName">Montreal</S>
+              <S N="Code">montreal</S>
+              <Db N="Longitude">-73.583333</Db>
+              <Db N="Latitude">45.5</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CA</S>
+            </MS>
+          </Obj>
+          <Obj RefId="31">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">1054250</U64>
+              <S N="FriendlyName">Toronto</S>
+              <S N="Code">toronto</S>
+              <Db N="Longitude">-79.416667</Db>
+              <Db N="Latitude">43.666667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CA</S>
+            </MS>
+          </Obj>
+          <Obj RefId="32">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">1054610</U64>
+              <S N="FriendlyName">Vancouver</S>
+              <S N="Code">vancouver</S>
+              <Db N="Longitude">-123.133333</Db>
+              <Db N="Latitude">49.25</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CA</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="33">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">CL</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="34">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="35">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">1227092</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-33.45</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">santiago</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-70.666667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Santiago</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CL</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Chile</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">43</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">43</U64>
+      <S N="FriendlyName">Chile</S>
+      <S N="Code">CL</S>
+      <Obj N="Cities" RefId="34">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="35">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">1227092</U64>
+              <S N="FriendlyName">Santiago</S>
+              <S N="Code">santiago</S>
+              <Db N="Longitude">-70.666667</Db>
+              <Db N="Latitude">-33.45</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CL</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="36">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">CR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="37">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="38">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2062994</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">9.893385</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">san-jose</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-84.105407</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">San Jose</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Costa Rica</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">52</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">52</U64>
+      <S N="FriendlyName">Costa Rica</S>
+      <S N="Code">CR</S>
+      <Obj N="Cities" RefId="37">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="38">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2062994</U64>
+              <S N="FriendlyName">San Jose</S>
+              <S N="Code">san-jose</S>
+              <Db N="Longitude">-84.105407</Db>
+              <Db N="Latitude">9.893385</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="39">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">HR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="40">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="41">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3308120</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">45.8</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">zagreb</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <I64 N="Value">16</I64>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Zagreb</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">HR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Croatia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">54</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">54</U64>
+      <S N="FriendlyName">Croatia</S>
+      <S N="Code">HR</S>
+      <Obj N="Cities" RefId="40">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="41">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3308120</U64>
+              <S N="FriendlyName">Zagreb</S>
+              <S N="Code">zagreb</S>
+              <Db N="Longitude">16</Db>
+              <Db N="Latitude">45.8</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">HR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="42">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">CY</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="43">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="44">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2099627</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">35.1666667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">nicosia</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">33.3666667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Nicosia</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CY</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Cyprus</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">56</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">56</U64>
+      <S N="FriendlyName">Cyprus</S>
+      <S N="Code">CY</S>
+      <Obj N="Cities" RefId="43">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="44">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2099627</U64>
+              <S N="FriendlyName">Nicosia</S>
+              <S N="Code">nicosia</S>
+              <Db N="Longitude">33.3666667</Db>
+              <Db N="Latitude">35.1666667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CY</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="45">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">CZ</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="46">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="47">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2144945</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">50.083333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">prague</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">14.466667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Prague</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CZ</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Czech Republic</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">57</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">57</U64>
+      <S N="FriendlyName">Czech Republic</S>
+      <S N="Code">CZ</S>
+      <Obj N="Cities" RefId="46">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="47">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2144945</U64>
+              <S N="FriendlyName">Prague</S>
+              <S N="Code">prague</S>
+              <Db N="Longitude">14.466667</Db>
+              <Db N="Latitude">50.083333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CZ</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="48">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">DK</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="49">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="50">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2382515</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">55.666667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">copenhagen</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">12.583333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Copenhagen</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">DK</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Denmark</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">58</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">58</U64>
+      <S N="FriendlyName">Denmark</S>
+      <S N="Code">DK</S>
+      <Obj N="Cities" RefId="49">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="50">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2382515</U64>
+              <S N="FriendlyName">Copenhagen</S>
+              <S N="Code">copenhagen</S>
+              <Db N="Longitude">12.583333</Db>
+              <Db N="Latitude">55.666667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">DK</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="51">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">EE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="52">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="53">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2514182</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">59.4338889</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">tallinn</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">24.7280556</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Tallinn</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">EE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Estonia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">68</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">68</U64>
+      <S N="FriendlyName">Estonia</S>
+      <S N="Code">EE</S>
+      <Obj N="Cities" RefId="52">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="53">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2514182</U64>
+              <S N="FriendlyName">Tallinn</S>
+              <S N="Code">tallinn</S>
+              <Db N="Longitude">24.7280556</Db>
+              <Db N="Latitude">59.4338889</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">EE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="54">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">FI</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="55">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="56">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2704343</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">60.175556</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">helsinki</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">24.934167</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Helsinki</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">FI</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Finland</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">73</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">73</U64>
+      <S N="FriendlyName">Finland</S>
+      <S N="Code">FI</S>
+      <Obj N="Cities" RefId="55">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="56">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2704343</U64>
+              <S N="FriendlyName">Helsinki</S>
+              <S N="Code">helsinki</S>
+              <Db N="Longitude">24.934167</Db>
+              <Db N="Latitude">60.175556</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">FI</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="57">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">FR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="58">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="59">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2886284</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">48.866667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">paris</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">2.333333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Paris</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">FR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">France</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">74</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">74</U64>
+      <S N="FriendlyName">France</S>
+      <S N="Code">FR</S>
+      <Obj N="Cities" RefId="58">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="59">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2886284</U64>
+              <S N="FriendlyName">Paris</S>
+              <S N="Code">paris</S>
+              <Db N="Longitude">2.333333</Db>
+              <Db N="Latitude">48.866667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">FR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="60">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">GE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="61">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="62">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3032063</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">41.725</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">tbilisi</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <I64 N="Value">-5</I64>
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">44.7908333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Tbilisi</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">GE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Georgia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">80</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">80</U64>
+      <S N="FriendlyName">Georgia</S>
+      <S N="Code">GE</S>
+      <Obj N="Cities" RefId="61">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="62">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3032063</U64>
+              <S N="FriendlyName">Tbilisi</S>
+              <S N="Code">tbilisi</S>
+              <Db N="Longitude">44.7908333</Db>
+              <Db N="Latitude">41.725</Db>
+              <I16 N="HubScore">-5</I16>
+              <S N="CountryCode">GE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="63">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">DE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="64">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="65">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2181458</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">52.516667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">berlin</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">13.4</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Berlin</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">DE</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="66">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2215709</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">50.116667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">frankfurt</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">8.683333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Frankfurt</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">DE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Germany</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">81</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">81</U64>
+      <S N="FriendlyName">Germany</S>
+      <S N="Code">DE</S>
+      <Obj N="Cities" RefId="64">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="65">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2181458</U64>
+              <S N="FriendlyName">Berlin</S>
+              <S N="Code">berlin</S>
+              <Db N="Longitude">13.4</Db>
+              <Db N="Latitude">52.516667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">DE</S>
+            </MS>
+          </Obj>
+          <Obj RefId="66">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2215709</U64>
+              <S N="FriendlyName">Frankfurt</S>
+              <S N="Code">frankfurt</S>
+              <Db N="Longitude">8.683333</Db>
+              <Db N="Latitude">50.116667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">DE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="67">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">GR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="68">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="69">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3131903</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">37.9833333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">athens</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">23.7333333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Athens</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">GR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Greece</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">84</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">84</U64>
+      <S N="FriendlyName">Greece</S>
+      <S N="Code">GR</S>
+      <Obj N="Cities" RefId="68">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="69">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3131903</U64>
+              <S N="FriendlyName">Athens</S>
+              <S N="Code">athens</S>
+              <Db N="Longitude">23.7333333</Db>
+              <Db N="Latitude">37.9833333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">GR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="70">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">HK</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="71">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="72">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3232931</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">22.2833333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">hong-kong</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">114.15</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Hong Kong</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">HK</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Hong Kong</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">97</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">97</U64>
+      <S N="FriendlyName">Hong Kong</S>
+      <S N="Code">HK</S>
+      <Obj N="Cities" RefId="71">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="72">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3232931</U64>
+              <S N="FriendlyName">Hong Kong</S>
+              <S N="Code">hong-kong</S>
+              <Db N="Longitude">114.15</Db>
+              <Db N="Latitude">22.2833333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">HK</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="73">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">HU</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="74">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="75">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3348344</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">47.5</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">budapest</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">19.083333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Budapest</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">HU</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Hungary</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">98</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">98</U64>
+      <S N="FriendlyName">Hungary</S>
+      <S N="Code">HU</S>
+      <Obj N="Cities" RefId="74">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="75">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3348344</U64>
+              <S N="FriendlyName">Budapest</S>
+              <S N="Code">budapest</S>
+              <Db N="Longitude">19.083333</Db>
+              <Db N="Latitude">47.5</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">HU</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="76">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">IS</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="77">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="78">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">4509791</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">64.15</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">reykjavik</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-21.95</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Reykjavik</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">IS</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Iceland</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">99</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">99</U64>
+      <S N="FriendlyName">Iceland</S>
+      <S N="Code">IS</S>
+      <Obj N="Cities" RefId="77">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="78">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">4509791</U64>
+              <S N="FriendlyName">Reykjavik</S>
+              <S N="Code">reykjavik</S>
+              <Db N="Longitude">-21.95</Db>
+              <Db N="Latitude">64.15</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">IS</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="79">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">IN</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="80">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="81">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3988130</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">13.083333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">chennai</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">80.283333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Chennai</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">IN</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="82">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">4041548</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">18.975</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">mumbai</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">72.825833</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Mumbai</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">IN</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">India</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">100</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">100</U64>
+      <S N="FriendlyName">India</S>
+      <S N="Code">IN</S>
+      <Obj N="Cities" RefId="80">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="81">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3988130</U64>
+              <S N="FriendlyName">Chennai</S>
+              <S N="Code">chennai</S>
+              <Db N="Longitude">80.283333</Db>
+              <Db N="Latitude">13.083333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">IN</S>
+            </MS>
+          </Obj>
+          <Obj RefId="82">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">4041548</U64>
+              <S N="FriendlyName">Mumbai</S>
+              <S N="Code">mumbai</S>
+              <Db N="Longitude">72.825833</Db>
+              <Db N="Latitude">18.975</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">IN</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="83">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">ID</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="84">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="85">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3560288</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-6.174444</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">jakarta</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">106.829444</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Jakarta</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">ID</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Indonesia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">101</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">101</U64>
+      <S N="FriendlyName">Indonesia</S>
+      <S N="Code">ID</S>
+      <Obj N="Cities" RefId="84">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="85">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3560288</U64>
+              <S N="FriendlyName">Jakarta</S>
+              <S N="Code">jakarta</S>
+              <Db N="Longitude">106.829444</Db>
+              <Db N="Latitude">-6.174444</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">ID</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="86">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">IE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="87">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="88">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3939200</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">53.3330556</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">dublin</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-6.2488889</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Dublin</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">IE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Ireland</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">104</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">104</U64>
+      <S N="FriendlyName">Ireland</S>
+      <S N="Code">IE</S>
+      <Obj N="Cities" RefId="87">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="88">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3939200</U64>
+              <S N="FriendlyName">Dublin</S>
+              <S N="Code">dublin</S>
+              <Db N="Longitude">-6.2488889</Db>
+              <Db N="Latitude">53.3330556</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">IE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="89">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">IL</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="90">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="91">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">3964220</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">32.066667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">tel-aviv</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">34.766667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Tel Aviv</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">IL</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Israel</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">105</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">105</U64>
+      <S N="FriendlyName">Israel</S>
+      <S N="Code">IL</S>
+      <Obj N="Cities" RefId="90">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="91">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">3964220</U64>
+              <S N="FriendlyName">Tel Aviv</S>
+              <S N="Code">tel-aviv</S>
+              <Db N="Longitude">34.766667</Db>
+              <Db N="Latitude">32.066667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">IL</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="92">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">IT</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="93">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="94">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">4542737</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">45.466667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">milan</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">9.2</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Milan</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">IT</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Italy</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">106</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">106</U64>
+      <S N="FriendlyName">Italy</S>
+      <S N="Code">IT</S>
+      <Obj N="Cities" RefId="93">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="94">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">4542737</U64>
+              <S N="FriendlyName">Milan</S>
+              <S N="Code">milan</S>
+              <Db N="Longitude">9.2</Db>
+              <Db N="Latitude">45.466667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">IT</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="95">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">JP</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="96">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="97">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">4633349</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">35.685</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">tokyo</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">139.751389</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Tokyo</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">JP</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Japan</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">108</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">108</U64>
+      <S N="FriendlyName">Japan</S>
+      <S N="Code">JP</S>
+      <Obj N="Cities" RefId="96">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="97">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">4633349</U64>
+              <S N="FriendlyName">Tokyo</S>
+              <S N="Code">tokyo</S>
+              <Db N="Longitude">139.751389</Db>
+              <Db N="Latitude">35.685</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">JP</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="98">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">LV</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="99">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="100">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">5192828</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">56.95</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">riga</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">24.1</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Riga</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">LV</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Latvia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">119</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">119</U64>
+      <S N="FriendlyName">Latvia</S>
+      <S N="Code">LV</S>
+      <Obj N="Cities" RefId="99">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="100">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">5192828</U64>
+              <S N="FriendlyName">Riga</S>
+              <S N="Code">riga</S>
+              <Db N="Longitude">24.1</Db>
+              <Db N="Latitude">56.95</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">LV</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="101">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">LU</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="102">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="103">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">5173235</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">49.6769444</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">steinsel</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">6.1238889</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Steinsel</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">LU</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Luxembourg</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">126</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">126</U64>
+      <S N="FriendlyName">Luxembourg</S>
+      <S N="Code">LU</S>
+      <Obj N="Cities" RefId="102">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="103">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">5173235</U64>
+              <S N="FriendlyName">Steinsel</S>
+              <S N="Code">steinsel</S>
+              <Db N="Longitude">6.1238889</Db>
+              <Db N="Latitude">49.6769444</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">LU</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="104">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">MY</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="105">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="106">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">5820143</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">3.166667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">kuala-lumpur</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">101.7</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Kuala Lumpur</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">MY</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Malaysia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">131</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">131</U64>
+      <S N="FriendlyName">Malaysia</S>
+      <S N="Code">MY</S>
+      <Obj N="Cities" RefId="105">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="106">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">5820143</U64>
+              <S N="FriendlyName">Kuala Lumpur</S>
+              <S N="Code">kuala-lumpur</S>
+              <Db N="Longitude">101.7</Db>
+              <Db N="Latitude">3.166667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">MY</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="107">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">MX</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="108">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="109">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">5677037</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">19.434167</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">mexico</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-99.138611</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Mexico</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">MX</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Mexico</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">140</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">140</U64>
+      <S N="FriendlyName">Mexico</S>
+      <S N="Code">MX</S>
+      <Obj N="Cities" RefId="108">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="109">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">5677037</U64>
+              <S N="FriendlyName">Mexico</S>
+              <S N="Code">mexico</S>
+              <Db N="Longitude">-99.138611</Db>
+              <Db N="Latitude">19.434167</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">MX</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="110">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">MD</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="111">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="112">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">5295179</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">47.005556</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">chisinau</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">28.8575</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Chisinau</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">MD</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Moldova</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">142</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">142</U64>
+      <S N="FriendlyName">Moldova</S>
+      <S N="Code">MD</S>
+      <Obj N="Cities" RefId="111">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="112">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">5295179</U64>
+              <S N="FriendlyName">Chisinau</S>
+              <S N="Code">chisinau</S>
+              <Db N="Longitude">28.8575</Db>
+              <Db N="Latitude">47.005556</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">MD</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="113">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">NL</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="114">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="115">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">6076868</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">52.35</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">amsterdam</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">4.916667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Amsterdam</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">NL</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Netherlands</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">153</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">153</U64>
+      <S N="FriendlyName">Netherlands</S>
+      <S N="Code">NL</S>
+      <Obj N="Cities" RefId="114">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="115">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">6076868</U64>
+              <S N="FriendlyName">Amsterdam</S>
+              <S N="Code">amsterdam</S>
+              <Db N="Longitude">4.916667</Db>
+              <Db N="Latitude">52.35</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">NL</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="116">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">NZ</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="117">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="118">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">6144239</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-36.866667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">auckland</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">174.766667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Auckland</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">NZ</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">New Zealand</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">156</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">156</U64>
+      <S N="FriendlyName">New Zealand</S>
+      <S N="Code">NZ</S>
+      <Obj N="Cities" RefId="117">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="118">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">6144239</U64>
+              <S N="FriendlyName">Auckland</S>
+              <S N="Code">auckland</S>
+              <Db N="Longitude">174.766667</Db>
+              <Db N="Latitude">-36.866667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">NZ</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="119">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">MK</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="120">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="121">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">5386019</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <I64 N="Value">42</I64>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">skopje</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">21.4333333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Skopje</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">MK</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">North Macedonia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">128</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">128</U64>
+      <S N="FriendlyName">North Macedonia</S>
+      <S N="Code">MK</S>
+      <Obj N="Cities" RefId="120">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="121">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">5386019</U64>
+              <S N="FriendlyName">Skopje</S>
+              <S N="Code">skopje</S>
+              <Db N="Longitude">21.4333333</Db>
+              <Db N="Latitude">42</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">MK</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="122">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">NO</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="123">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="124">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">6127364</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">59.916667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">oslo</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">10.75</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Oslo</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">NO</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Norway</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">163</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">163</U64>
+      <S N="FriendlyName">Norway</S>
+      <S N="Code">NO</S>
+      <Obj N="Cities" RefId="123">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="124">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">6127364</U64>
+              <S N="FriendlyName">Oslo</S>
+              <S N="Code">oslo</S>
+              <Db N="Longitude">10.75</Db>
+              <Db N="Latitude">59.916667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">NO</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="125">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">PL</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="126">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="127">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">6863429</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">52.25</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">warsaw</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <I64 N="Value">21</I64>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Warsaw</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">PL</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Poland</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">174</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">174</U64>
+      <S N="FriendlyName">Poland</S>
+      <S N="Code">PL</S>
+      <Obj N="Cities" RefId="126">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="127">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">6863429</U64>
+              <S N="FriendlyName">Warsaw</S>
+              <S N="Code">warsaw</S>
+              <Db N="Longitude">21</Db>
+              <Db N="Latitude">52.25</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">PL</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="128">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">PT</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="129">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="130">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">6906665</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">38.716667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">lisbon</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-9.133333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Lisbon</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">PT</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Portugal</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">175</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">175</U64>
+      <S N="FriendlyName">Portugal</S>
+      <S N="Code">PT</S>
+      <Obj N="Cities" RefId="129">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="130">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">6906665</U64>
+              <S N="FriendlyName">Lisbon</S>
+              <S N="Code">lisbon</S>
+              <Db N="Longitude">-9.133333</Db>
+              <Db N="Latitude">38.716667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">PT</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="131">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">RO</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="132">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="133">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">6953096</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">44.433333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">bucharest</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">26.1</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Bucharest</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">RO</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Romania</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">179</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">179</U64>
+      <S N="FriendlyName">Romania</S>
+      <S N="Code">RO</S>
+      <Obj N="Cities" RefId="132">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="133">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">6953096</U64>
+              <S N="FriendlyName">Bucharest</S>
+              <S N="Code">bucharest</S>
+              <Db N="Longitude">26.1</Db>
+              <Db N="Latitude">44.433333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">RO</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="134">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">RS</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="135">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="136">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">7030907</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">44.818611</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">belgrad</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">20.468056</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Belgrad</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">RS</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Serbia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">192</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">192</U64>
+      <S N="FriendlyName">Serbia</S>
+      <S N="Code">RS</S>
+      <Obj N="Cities" RefId="135">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="136">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">7030907</U64>
+              <S N="FriendlyName">Belgrad</S>
+              <S N="Code">belgrad</S>
+              <Db N="Longitude">20.468056</Db>
+              <Db N="Latitude">44.818611</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">RS</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="137">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">SG</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="138">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="139">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">7867982</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">1.2930556</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">singapore</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">103.8558333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Singapore</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">SG</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Singapore</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">195</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">195</U64>
+      <S N="FriendlyName">Singapore</S>
+      <S N="Code">SG</S>
+      <Obj N="Cities" RefId="138">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="139">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">7867982</U64>
+              <S N="FriendlyName">Singapore</S>
+              <S N="Code">singapore</S>
+              <Db N="Longitude">103.8558333</Db>
+              <Db N="Latitude">1.2930556</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">SG</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="140">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">SK</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="141">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="142">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">7884305</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">48.15</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">bratislava</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">17.1166667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Bratislava</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">SK</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Slovakia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">196</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">196</U64>
+      <S N="FriendlyName">Slovakia</S>
+      <S N="Code">SK</S>
+      <Obj N="Cities" RefId="141">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="142">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">7884305</U64>
+              <S N="FriendlyName">Bratislava</S>
+              <S N="Code">bratislava</S>
+              <Db N="Longitude">17.1166667</Db>
+              <Db N="Latitude">48.15</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">SK</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="143">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">SI</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="144">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="145">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">7874306</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">46.0552778</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">ljubljana</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">14.5144444</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Ljubljana</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">SI</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Slovenia</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">197</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">197</U64>
+      <S N="FriendlyName">Slovenia</S>
+      <S N="Code">SI</S>
+      <Obj N="Cities" RefId="144">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="145">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">7874306</U64>
+              <S N="FriendlyName">Ljubljana</S>
+              <S N="Code">ljubljana</S>
+              <Db N="Longitude">14.5144444</Db>
+              <Db N="Latitude">46.0552778</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">SI</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="146">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">ZA</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="147">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="148">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">9383693</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">-26.205171</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">johannesburg</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">28.049815</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Johannesburg</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">ZA</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">South Africa</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">200</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">200</U64>
+      <S N="FriendlyName">South Africa</S>
+      <S N="Code">ZA</S>
+      <Obj N="Cities" RefId="147">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="148">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">9383693</U64>
+              <S N="FriendlyName">Johannesburg</S>
+              <S N="Code">johannesburg</S>
+              <Db N="Longitude">28.049815</Db>
+              <Db N="Latitude">-26.205171</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">ZA</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="149">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">KR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="150">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="151">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">4879586</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">37.5985</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">seoul</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">126.9783</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Seoul</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">KR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">South Korea</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">114</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">114</U64>
+      <S N="FriendlyName">South Korea</S>
+      <S N="Code">KR</S>
+      <Obj N="Cities" RefId="150">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="151">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">4879586</U64>
+              <S N="FriendlyName">Seoul</S>
+              <S N="Code">seoul</S>
+              <Db N="Longitude">126.9783</Db>
+              <Db N="Latitude">37.5985</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">KR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="152">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">ES</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="153">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="154">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2619989</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">40.408566</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">madrid</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-3.69222</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Madrid</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">ES</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Spain</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">202</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">202</U64>
+      <S N="FriendlyName">Spain</S>
+      <S N="Code">ES</S>
+      <Obj N="Cities" RefId="153">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="154">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2619989</U64>
+              <S N="FriendlyName">Madrid</S>
+              <S N="Code">madrid</S>
+              <Db N="Longitude">-3.69222</Db>
+              <Db N="Latitude">40.408566</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">ES</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="155">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">SE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="156">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="157">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">7852919</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">59.333333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">stockholm</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">18.05</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Stockholm</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">SE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Sweden</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">208</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">208</U64>
+      <S N="FriendlyName">Sweden</S>
+      <S N="Code">SE</S>
+      <Obj N="Cities" RefId="156">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="157">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">7852919</U64>
+              <S N="FriendlyName">Stockholm</S>
+              <S N="Code">stockholm</S>
+              <Db N="Longitude">18.05</Db>
+              <Db N="Latitude">59.333333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">SE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="158">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">CH</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="159">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="160">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">1171814</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">47.366667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">zurich</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">8.55</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Zurich</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">CH</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Switzerland</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">209</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">209</U64>
+      <S N="FriendlyName">Switzerland</S>
+      <S N="Code">CH</S>
+      <Obj N="Cities" RefId="159">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="160">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">1171814</U64>
+              <S N="FriendlyName">Zurich</S>
+              <S N="Code">zurich</S>
+              <Db N="Longitude">8.55</Db>
+              <Db N="Latitude">47.366667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">CH</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="161">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">TW</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="162">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="163">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8544365</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">25.0391667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">taipei</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">121.525</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Taipei</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">TW</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Taiwan</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">211</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">211</U64>
+      <S N="FriendlyName">Taiwan</S>
+      <S N="Code">TW</S>
+      <Obj N="Cities" RefId="162">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="163">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8544365</U64>
+              <S N="FriendlyName">Taipei</S>
+              <S N="Code">taipei</S>
+              <Db N="Longitude">121.525</Db>
+              <Db N="Latitude">25.0391667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">TW</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="164">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">TH</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="165">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="166">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8121638</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">13.753979</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">bangkok</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">100.501444</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Bangkok</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">TH</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Thailand</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">214</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">214</U64>
+      <S N="FriendlyName">Thailand</S>
+      <S N="Code">TH</S>
+      <Obj N="Cities" RefId="165">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="166">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8121638</U64>
+              <S N="FriendlyName">Bangkok</S>
+              <S N="Code">bangkok</S>
+              <Db N="Longitude">100.501444</Db>
+              <Db N="Latitude">13.753979</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">TH</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="167">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">TR</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="168">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="169">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8401790</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">41.018611</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">istanbul</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">28.964722</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Istanbul</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">TR</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Turkey</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">220</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">220</U64>
+      <S N="FriendlyName">Turkey</S>
+      <S N="Code">TR</S>
+      <Obj N="Cities" RefId="168">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="169">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8401790</U64>
+              <S N="FriendlyName">Istanbul</S>
+              <S N="Code">istanbul</S>
+              <Db N="Longitude">28.964722</Db>
+              <Db N="Latitude">41.018611</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">TR</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="170">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">UA</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="171">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="172">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8615126</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">50.433333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">kiev</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">30.516667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Kiev</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">UA</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Ukraine</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">225</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">225</U64>
+      <S N="FriendlyName">Ukraine</S>
+      <S N="Code">UA</S>
+      <Obj N="Cities" RefId="171">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="172">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8615126</U64>
+              <S N="FriendlyName">Kiev</S>
+              <S N="Code">kiev</S>
+              <Db N="Longitude">30.516667</Db>
+              <Db N="Latitude">50.433333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">UA</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="173">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">AE</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="174">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="175">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">728</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">25.258172</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">dubai</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">55.304717</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Dubai</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">AE</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">United Arab Emirates</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">226</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">226</U64>
+      <S N="FriendlyName">United Arab Emirates</S>
+      <S N="Code">AE</S>
+      <Obj N="Cities" RefId="174">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="175">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">728</U64>
+              <S N="FriendlyName">Dubai</S>
+              <S N="Code">dubai</S>
+              <Db N="Longitude">55.304717</Db>
+              <Db N="Latitude">25.258172</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">AE</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="176">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">GB</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="177">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="178">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">2989907</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">51.514125</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">london</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-0.093689</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">London</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">GB</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">United Kingdom</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">227</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">227</U64>
+      <S N="FriendlyName">United Kingdom</S>
+      <S N="Code">GB</S>
+      <Obj N="Cities" RefId="177">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="178">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">2989907</U64>
+              <S N="FriendlyName">London</S>
+              <S N="Code">london</S>
+              <Db N="Longitude">-0.093689</Db>
+              <Db N="Latitude">51.514125</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">GB</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="179">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">US</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="180">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="181">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8792429</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">33.7488889</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">atlanta</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-84.3880556</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Atlanta</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="182">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8963153</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">42.8863889</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">buffalo</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-78.8786111</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Buffalo</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="183">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8980922</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">35.2269444</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">charlotte</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-80.8433333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Charlotte</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="184">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8815352</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">41.85</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">chicago</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-87.65</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Chicago</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="185">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">9080300</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">32.7833333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">dallas</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-96.8</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Dallas</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="186">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8770934</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">39.7391667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">denver</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-104.9841667</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Denver</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="187">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8761958</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">34.0522222</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">los-angeles</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-118.2427778</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Los Angeles</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="188">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">9113744</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">38.7508333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">manassas</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-77.4755556</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Manassas</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="189">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8787782</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">25.7738889</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">miami</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-80.1938889</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Miami</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="190">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8971718</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">40.7141667</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">new-york</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-74.0063889</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">New York</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="191">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8741960</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">33.4483333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">phoenix</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-112.0733333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Phoenix</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="192">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8934551</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">38.6272222</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">saint-louis</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-90.1977778</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Saint Louis</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="193">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">9097865</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">40.7608333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">salt-lake-city</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-111.8902778</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Salt Lake City</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="194">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">8766359</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">37.7698135</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">san-francisco</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-122.4660005</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">San Francisco</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-            <Obj RefId="195">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">9128402</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">47.6063889</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">seattle</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">-122.3308333</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Seattle</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">US</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">United States</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">228</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">228</U64>
+      <S N="FriendlyName">United States</S>
+      <S N="Code">US</S>
+      <Obj N="Cities" RefId="180">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="181">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8792429</U64>
+              <S N="FriendlyName">Atlanta</S>
+              <S N="Code">atlanta</S>
+              <Db N="Longitude">-84.3880556</Db>
+              <Db N="Latitude">33.7488889</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="182">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8963153</U64>
+              <S N="FriendlyName">Buffalo</S>
+              <S N="Code">buffalo</S>
+              <Db N="Longitude">-78.8786111</Db>
+              <Db N="Latitude">42.8863889</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="183">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8980922</U64>
+              <S N="FriendlyName">Charlotte</S>
+              <S N="Code">charlotte</S>
+              <Db N="Longitude">-80.8433333</Db>
+              <Db N="Latitude">35.2269444</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="184">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8815352</U64>
+              <S N="FriendlyName">Chicago</S>
+              <S N="Code">chicago</S>
+              <Db N="Longitude">-87.65</Db>
+              <Db N="Latitude">41.85</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="185">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">9080300</U64>
+              <S N="FriendlyName">Dallas</S>
+              <S N="Code">dallas</S>
+              <Db N="Longitude">-96.8</Db>
+              <Db N="Latitude">32.7833333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="186">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8770934</U64>
+              <S N="FriendlyName">Denver</S>
+              <S N="Code">denver</S>
+              <Db N="Longitude">-104.9841667</Db>
+              <Db N="Latitude">39.7391667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="187">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8761958</U64>
+              <S N="FriendlyName">Los Angeles</S>
+              <S N="Code">los-angeles</S>
+              <Db N="Longitude">-118.2427778</Db>
+              <Db N="Latitude">34.0522222</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="188">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">9113744</U64>
+              <S N="FriendlyName">Manassas</S>
+              <S N="Code">manassas</S>
+              <Db N="Longitude">-77.4755556</Db>
+              <Db N="Latitude">38.7508333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="189">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8787782</U64>
+              <S N="FriendlyName">Miami</S>
+              <S N="Code">miami</S>
+              <Db N="Longitude">-80.1938889</Db>
+              <Db N="Latitude">25.7738889</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="190">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8971718</U64>
+              <S N="FriendlyName">New York</S>
+              <S N="Code">new-york</S>
+              <Db N="Longitude">-74.0063889</Db>
+              <Db N="Latitude">40.7141667</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="191">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8741960</U64>
+              <S N="FriendlyName">Phoenix</S>
+              <S N="Code">phoenix</S>
+              <Db N="Longitude">-112.0733333</Db>
+              <Db N="Latitude">33.4483333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="192">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8934551</U64>
+              <S N="FriendlyName">Saint Louis</S>
+              <S N="Code">saint-louis</S>
+              <Db N="Longitude">-90.1977778</Db>
+              <Db N="Latitude">38.6272222</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="193">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">9097865</U64>
+              <S N="FriendlyName">Salt Lake City</S>
+              <S N="Code">salt-lake-city</S>
+              <Db N="Longitude">-111.8902778</Db>
+              <Db N="Latitude">40.7608333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="194">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">8766359</U64>
+              <S N="FriendlyName">San Francisco</S>
+              <S N="Code">san-francisco</S>
+              <Db N="Longitude">-122.4660005</Db>
+              <Db N="Latitude">37.7698135</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+          <Obj RefId="195">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">9128402</U64>
+              <S N="FriendlyName">Seattle</S>
+              <S N="Code">seattle</S>
+              <Db N="Longitude">-122.3308333</Db>
+              <Db N="Latitude">47.6063889</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">US</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
   <Obj RefId="196">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">VN</S>
-      </En>
-      <En>
-        <S N="Key">Cities</S>
-        <Obj N="Value" RefId="197">
-          <TNRef RefId="1" />
-          <LST>
-            <Obj RefId="198">
-              <TNRef RefId="0" />
-              <DCT>
-                <En>
-                  <S N="Key">Id</S>
-                  <I64 N="Value">9270302</I64>
-                </En>
-                <En>
-                  <S N="Key">Latitude</S>
-                  <Db N="Value">21.033333</Db>
-                </En>
-                <En>
-                  <S N="Key">Code</S>
-                  <S N="Value">hanoi</S>
-                </En>
-                <En>
-                  <S N="Key">HubScore</S>
-                  <Nil N="Value" />
-                </En>
-                <En>
-                  <S N="Key">Longitude</S>
-                  <Db N="Value">105.85</Db>
-                </En>
-                <En>
-                  <S N="Key">FriendlyName</S>
-                  <S N="Value">Hanoi</S>
-                </En>
-                <En>
-                  <S N="Key">CountryCode</S>
-                  <S N="Value">VN</S>
-                </En>
-              </DCT>
-            </Obj>
-          </LST>
-        </Obj>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Vietnam</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">234</I64>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">234</U64>
+      <S N="FriendlyName">Vietnam</S>
+      <S N="Code">VN</S>
+      <Obj N="Cities" RefId="197">
+        <TNRef RefId="1" />
+        <LST>
+          <Obj RefId="198">
+            <TNRef RefId="0" />
+            <MS>
+              <U64 N="Id">9270302</U64>
+              <S N="FriendlyName">Hanoi</S>
+              <S N="Code">hanoi</S>
+              <Db N="Longitude">105.85</Db>
+              <Db N="Latitude">21.033333</Db>
+              <I16 N="HubScore">0</I16>
+              <S N="CountryCode">VN</S>
+            </MS>
+          </Obj>
+        </LST>
+      </Obj>
+    </MS>
   </Obj>
 </Objs>

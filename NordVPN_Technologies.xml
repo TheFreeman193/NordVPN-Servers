@@ -1,530 +1,215 @@
 <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
   <Obj RefId="0">
     <TN RefId="0">
-      <T>System.Collections.Hashtable</T>
+      <T>System.Management.Automation.PSCustomObject</T>
       <T>System.Object</T>
     </TN>
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">ikev2</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-03-21T12:00:24</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">IKEv2/IPSec</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">1</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-09-05T14:20:16</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">1</U64>
+      <S N="FriendlyName">IKEv2/IPSec</S>
+      <S N="Code">ikev2</S>
+      <DT N="Created">2017-03-21T12:00:24</DT>
+      <DT N="Updated">2017-09-05T14:20:16</DT>
+    </MS>
   </Obj>
   <Obj RefId="1">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_udp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-04T08:03:24</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN UDP</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">3</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-05-09T19:27:37</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">3</U64>
+      <S N="FriendlyName">OpenVPN UDP</S>
+      <S N="Code">openvpn_udp</S>
+      <DT N="Created">2017-05-04T08:03:24</DT>
+      <DT N="Updated">2017-05-09T19:27:37</DT>
+    </MS>
   </Obj>
   <Obj RefId="2">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_tcp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-09T19:28:14</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN TCP</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">5</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-05-09T19:28:14</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">5</U64>
+      <S N="FriendlyName">OpenVPN TCP</S>
+      <S N="Code">openvpn_tcp</S>
+      <DT N="Created">2017-05-09T19:28:14</DT>
+      <DT N="Updated">2017-05-09T19:28:14</DT>
+    </MS>
   </Obj>
   <Obj RefId="3">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">socks</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-09T19:28:57</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Socks 5</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">7</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-06-13T14:27:05</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">7</U64>
+      <S N="FriendlyName">Socks 5</S>
+      <S N="Code">socks</S>
+      <DT N="Created">2017-05-09T19:28:57</DT>
+      <DT N="Updated">2017-06-13T14:27:05</DT>
+    </MS>
   </Obj>
   <Obj RefId="4">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">proxy</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-09T19:29:09</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">HTTP Proxy</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">9</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-06-13T14:25:29</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">9</U64>
+      <S N="FriendlyName">HTTP Proxy</S>
+      <S N="Code">proxy</S>
+      <DT N="Created">2017-05-09T19:29:09</DT>
+      <DT N="Updated">2017-06-13T14:25:29</DT>
+    </MS>
   </Obj>
   <Obj RefId="5">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">pptp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-09T19:29:16</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">PPTP</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">11</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-05-09T19:29:16</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">11</U64>
+      <S N="FriendlyName">PPTP</S>
+      <S N="Code">pptp</S>
+      <DT N="Created">2017-05-09T19:29:16</DT>
+      <DT N="Updated">2017-05-09T19:29:16</DT>
+    </MS>
   </Obj>
   <Obj RefId="6">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">l2tp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-09T19:29:26</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">L2TP/IPSec</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">13</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-09-05T14:19:42</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">13</U64>
+      <S N="FriendlyName">L2TP/IPSec</S>
+      <S N="Code">l2tp</S>
+      <DT N="Created">2017-05-09T19:29:26</DT>
+      <DT N="Updated">2017-09-05T14:19:42</DT>
+    </MS>
   </Obj>
   <Obj RefId="7">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_x005F_xor_udp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-26T14:04:04</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN UDP Obfuscated</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">15</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-11-07T08:37:53</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">15</U64>
+      <S N="FriendlyName">OpenVPN UDP Obfuscated</S>
+      <S N="Code">openvpn_x005F_xor_udp</S>
+      <DT N="Created">2017-05-26T14:04:04</DT>
+      <DT N="Updated">2017-11-07T08:37:53</DT>
+    </MS>
   </Obj>
   <Obj RefId="8">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_x005F_xor_tcp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-05-26T14:04:27</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN TCP Obfuscated</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">17</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-11-07T08:38:16</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">17</U64>
+      <S N="FriendlyName">OpenVPN TCP Obfuscated</S>
+      <S N="Code">openvpn_x005F_xor_tcp</S>
+      <DT N="Created">2017-05-26T14:04:27</DT>
+      <DT N="Updated">2017-11-07T08:38:16</DT>
+    </MS>
   </Obj>
   <Obj RefId="9">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">proxy_cybersec</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-08-22T12:44:49</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">HTTP CyberSec Proxy</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">19</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-08-22T12:44:49</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">19</U64>
+      <S N="FriendlyName">HTTP CyberSec Proxy</S>
+      <S N="Code">proxy_cybersec</S>
+      <DT N="Created">2017-08-22T12:44:49</DT>
+      <DT N="Updated">2017-08-22T12:44:49</DT>
+    </MS>
   </Obj>
   <Obj RefId="10">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">proxy_ssl</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-10-02T12:45:14</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">HTTP Proxy (SSL)</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">21</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-10-02T12:45:14</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">21</U64>
+      <S N="FriendlyName">HTTP Proxy (SSL)</S>
+      <S N="Code">proxy_ssl</S>
+      <DT N="Created">2017-10-02T12:45:14</DT>
+      <DT N="Updated">2017-10-02T12:45:14</DT>
+    </MS>
   </Obj>
   <Obj RefId="11">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">proxy_ssl_cybersec</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2017-10-02T12:50:49</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">HTTP CyberSec Proxy (SSL)</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">23</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2017-10-02T12:50:49</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">23</U64>
+      <S N="FriendlyName">HTTP CyberSec Proxy (SSL)</S>
+      <S N="Code">proxy_ssl_cybersec</S>
+      <DT N="Created">2017-10-02T12:50:49</DT>
+      <DT N="Updated">2017-10-02T12:50:49</DT>
+    </MS>
   </Obj>
   <Obj RefId="12">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">ikev2_v6</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2018-09-18T13:35:16</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">IKEv2/IPSec IPv6</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">26</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2018-09-18T13:35:16</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">26</U64>
+      <S N="FriendlyName">IKEv2/IPSec IPv6</S>
+      <S N="Code">ikev2_v6</S>
+      <DT N="Created">2018-09-18T13:35:16</DT>
+      <DT N="Updated">2018-09-18T13:35:16</DT>
+    </MS>
   </Obj>
   <Obj RefId="13">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_udp_v6</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2018-09-18T13:35:38</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN UDP IPv6</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">29</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2018-09-18T13:35:38</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">29</U64>
+      <S N="FriendlyName">OpenVPN UDP IPv6</S>
+      <S N="Code">openvpn_udp_v6</S>
+      <DT N="Created">2018-09-18T13:35:38</DT>
+      <DT N="Updated">2018-09-18T13:35:38</DT>
+    </MS>
   </Obj>
   <Obj RefId="14">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_tcp_v6</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2018-09-18T13:36:02</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN TCP IPv6</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">32</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2018-09-18T13:36:02</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">32</U64>
+      <S N="FriendlyName">OpenVPN TCP IPv6</S>
+      <S N="Code">openvpn_tcp_v6</S>
+      <DT N="Created">2018-09-18T13:36:02</DT>
+      <DT N="Updated">2018-09-18T13:36:02</DT>
+    </MS>
   </Obj>
   <Obj RefId="15">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">wireguard_udp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2019-02-14T14:08:43</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">Wireguard</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">35</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2019-02-14T14:08:43</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">35</U64>
+      <S N="FriendlyName">Wireguard</S>
+      <S N="Code">wireguard_udp</S>
+      <DT N="Created">2019-02-14T14:08:43</DT>
+      <DT N="Updated">2019-02-14T14:08:43</DT>
+    </MS>
   </Obj>
   <Obj RefId="16">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_udp_tls_crypt</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2019-03-21T14:52:42</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN UDP TLS Crypt</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">38</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2019-03-21T14:52:42</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">38</U64>
+      <S N="FriendlyName">OpenVPN UDP TLS Crypt</S>
+      <S N="Code">openvpn_udp_tls_crypt</S>
+      <DT N="Created">2019-03-21T14:52:42</DT>
+      <DT N="Updated">2019-03-21T14:52:42</DT>
+    </MS>
   </Obj>
   <Obj RefId="17">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_tcp_tls_crypt</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2019-03-21T14:53:05</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN TCP TLS Crypt</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">41</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2019-03-21T14:53:05</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">41</U64>
+      <S N="FriendlyName">OpenVPN TCP TLS Crypt</S>
+      <S N="Code">openvpn_tcp_tls_crypt</S>
+      <DT N="Created">2019-03-21T14:53:05</DT>
+      <DT N="Updated">2019-03-21T14:53:05</DT>
+    </MS>
   </Obj>
   <Obj RefId="18">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_dedicated_udp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2019-09-19T14:49:18</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN UDP Dedicated</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">42</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2019-09-19T14:49:18</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">42</U64>
+      <S N="FriendlyName">OpenVPN UDP Dedicated</S>
+      <S N="Code">openvpn_dedicated_udp</S>
+      <DT N="Created">2019-09-19T14:49:18</DT>
+      <DT N="Updated">2019-09-19T14:49:18</DT>
+    </MS>
   </Obj>
   <Obj RefId="19">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">openvpn_dedicated_tcp</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2019-09-19T14:49:54</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">OpenVPN TCP Dedicated</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">45</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2019-09-19T14:49:54</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">45</U64>
+      <S N="FriendlyName">OpenVPN TCP Dedicated</S>
+      <S N="Code">openvpn_dedicated_tcp</S>
+      <DT N="Created">2019-09-19T14:49:54</DT>
+      <DT N="Updated">2019-09-19T14:49:54</DT>
+    </MS>
   </Obj>
   <Obj RefId="20">
     <TNRef RefId="0" />
-    <DCT>
-      <En>
-        <S N="Key">Code</S>
-        <S N="Value">v2ray</S>
-      </En>
-      <En>
-        <S N="Key">Created</S>
-        <DT N="Value">2019-10-28T13:29:37</DT>
-      </En>
-      <En>
-        <S N="Key">FriendlyName</S>
-        <S N="Value">v2ray</S>
-      </En>
-      <En>
-        <S N="Key">Id</S>
-        <I64 N="Value">48</I64>
-      </En>
-      <En>
-        <S N="Key">Updated</S>
-        <DT N="Value">2019-10-28T13:29:37</DT>
-      </En>
-    </DCT>
+    <MS>
+      <U64 N="Id">48</U64>
+      <S N="FriendlyName">v2ray</S>
+      <S N="Code">v2ray</S>
+      <DT N="Created">2019-10-28T13:29:37</DT>
+      <DT N="Updated">2019-10-28T13:29:37</DT>
+    </MS>
   </Obj>
 </Objs>
