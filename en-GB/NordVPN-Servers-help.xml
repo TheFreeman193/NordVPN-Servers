@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems schema="maml" xmlns="http://msh">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -464,7 +464,16 @@ PS C:\&gt; Get-NordVPNTechnologies &gt;$null</dev:code>
     <maml:description>
       <maml:para>Returns a list of all cities with NordVPN servers, either globally or within a specific country with the `-Country` parameter. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of city entries, each of which is a hashtable.</maml:para>
       <maml:para>The structure of a city entry is as follows (PowerShell notation):</maml:para>
-      <maml:para>`powershell @{     Id           = [Int64] # Unique ID for city     Code         = [String] # Unique short code for city     FriendlyName = [String] # Full name of city     Latitude     = [Double] # Latitude of city (+ve: N/-ve: S)     Longitude    = [Double] # Longitude of city (+ve: E/-ve: W)     CountryCode  = [String] # Two letter unique code of country     HubScore     = [Int16] # Hub score /100, currently not used } `endpowershell</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id           = [Int64] # Unique ID for city
+     Code         = [String] # Unique short code for city
+     FriendlyName = [String] # Full name of city
+     Latitude     = [Double] # Latitude of city (+ve: N/-ve: S)
+     Longitude    = [Double] # Longitude of city (+ve: E/-ve: W)
+     CountryCode  = [String] # Two letter unique code of country
+     HubScore     = [Int16] # Hub score /100, currently not used
+ } </dev:code></maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -543,6 +552,20 @@ PS C:\&gt; Get-NordVPNTechnologies &gt;$null</dev:code>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-NordVPNCities</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `Get-NordVPNCountries -UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
@@ -556,6 +579,18 @@ PS C:\&gt; Get-NordVPNTechnologies &gt;$null</dev:code>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Offline</maml:name>
+        <maml:Description>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `Get-NordVPNCountries -UpdateFallback`.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -662,8 +697,14 @@ de717.nordvpn.com</dev:code>
     <maml:description>
       <maml:para>Returns a list of all countries with NordVPN servers. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of country entries, each of which is a hashtable.</maml:para>
       <maml:para>The structure of a country entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id           = [Int64] # Unique ID for country     Code         = [String] # Two-letter unique short code for country     FriendlyName = [String] # Full name of country     Cities       = [Array] # Array of City entries&amp;sup1; } `endpowershell</maml:para>
-      <maml:para>&amp;sup1;To see the structure of a City entry, run `Get-Help Get-NordVPNCities` and refer to the function description.</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id           = [Int64] # Unique ID for country
+     Code         = [String] # Two-letter unique short code for country
+     FriendlyName = [String] # Full name of country
+     Cities       = [Array] # Array of City entries<superscript>{1}</superscript>
+ } </dev:code></maml:para>
+      <maml:para><superscript>{1}</superscript>To see the structure of a City entry, run `Get-Help Get-NordVPNCities` and refer to the function description.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -915,7 +956,21 @@ Vietnam                         13</dev:code>
     <maml:description>
       <maml:para>Returns a list of all groups that NordVPN servers are tagged with. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of group entries, each of which is a hashtable.</maml:para>
       <maml:para>The structure of a group entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id           = [Int64] # Unique ID for group     Code         = [String] # Unique short code for group     FriendlyName = [String] # Full name of group     Created      = [DateTime] # When group entry was first registered     Updated      = [DateTime] # When group entry was last revised     Type         = [Hashtable]@{         Id           = [Int32] # Unique ID for group type         Created      = [DateTime] # When group type entry was first registered         Updated      = [DateTime] # When group type entry was last revised         FriendlyName = [String] # Full name of group type         Code         = [String] # Unique short code for group type     } } `endpowershell</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id           = [Int64] # Unique ID for group
+     Code         = [String] # Unique short code for group
+     FriendlyName = [String] # Full name of group
+     Created      = [DateTime] # When group entry was first registered
+     Updated      = [DateTime] # When group entry was last revised
+     Type         = [Hashtable]@{
+         Id           = [Int32] # Unique ID for group type
+         Created      = [DateTime] # When group type entry was first registered
+         Updated      = [DateTime] # When group type entry was last revised
+         FriendlyName = [String] # Full name of group type
+         Code         = [String] # Unique short code for group type
+     }
+ } </dev:code></maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1315,18 +1370,64 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
       <maml:para>Returns a list of servers recommended by NordVPN, sorted by lowest Load. By default, this function returns the best five servers with the passed parameters, but this limit can be set with the `-Limit` parameter, to return from 1 server to the entire sorted list.</maml:para>
       <maml:para>The recommended server functionality of the NordVPN web API permits direct filtering in the API request, meaning only details of servers matching the country, technology, and group specified will need to be downloaded. This is in contrast to `Get-NordVPNServers`, which uses the raw list functionality of the web API and does not support direct filtering. This function is therefore much more efficient as less data must be downloaded and no filtering needs to be done locally. It is suggested to use this function unless absolutely necessary (such as where all servers must be indexed, including those that are full/unavailable.)</maml:para>
       <maml:para>The structure of a server entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id             = [Int64] # Unique ID for server     Created        = [DateTime] # When server entry was first registered     Updated        = [DateTime] # When server entry was last revised     Hostname       = [String] # The DNS hostname of the server     Load           = [UInt16] # The percentage load on the server     Status         = [String] # The current status of the server     PrimaryIP      = [String] # The main IPv4 address used by the server     Country        = [Hashtable] # Country entry&amp;sup1;     CountryCode    = [String] # 2-letter code of country where server is located     City           = [Hashtable] # City entry&amp;sup2;     CityCode       = [String] # Uniqude code of city where server is located     Groups         = [Array] # Entries for groups this server is part of&amp;sup3;     Technologies   = [Array] # Entries for technologies supported by the server&amp;#8308;     Services       = [Array] # Entries for services the server supports&amp;#8309;     Specifications = [Array] # Entries for additional server metadata&amp;#8310;     IPs            = [Array] # Entries for IP addresses assoicated with the server&amp;#8311;     Locations      = [Array] # Entries for locations associated with server&amp;#8312; } `endpowershell</maml:para>
-      <maml:para>&amp;sup1; To see the structure of a Country entry, run `Get-Help Get-NordVPNCountries` (./Get-NordVPNCountries.md)and refer to the function description.</maml:para>
-      <maml:para>&amp;sup2; To see the structure of a City entry, run `Get-Help Get-NordVPNCities` (./Get-NordVPNCities.md)and refer to the function description.</maml:para>
-      <maml:para>&amp;sup3; To see the structure of a Group entry, run `Get-Help Get-NordVPNGroups` (./Get-NordVPNGroups.md)and refer to the function description.</maml:para>
-      <maml:para>&amp;#8308; To see the structure of a Technology entry, run `Get-Help Get-NordVPNTechnologies` (./Get-NordVPNTechnologies.md)and refer to the function description.</maml:para>
-      <maml:para>&amp;#8309; To see the structure of a Service entry, run `Get-Help Get-NordVPNTechnologies` (./Get-NordVPNTechnologies.md)and refer the structure of a technology entry in the function description. Service entries utilise the same structure.</maml:para>
-      <maml:para>&amp;#8310; The structure of a Specification entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id           = [Int64] # Unique ID for the specification     FriendlyName = [String] # Full name of the specification     Code         = [String] # Short code for the specification     Values       = [Array]@( # Metadata entries         [Hashtable]@{             Id    = [Int64] # Unique ID for the value             Value = [object] # Actual value data         }         ...     ) } `endpowershell</maml:para>
-      <maml:para>&amp;#8311; The structure of an IP Address entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id      = # [String] Unique ID for the entry     Version = # [UInt16] The internet protocol version of the IP     Address = # [String] The IP address in dot-decimal notation     EntryId = # [String] Unique ID for the IP itself } `endpowershell</maml:para>
-      <maml:para>&amp;#8312; The structure of a location entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id          = [Int64] # Unique ID for location     Latitude    = [Double] # Latitude of location (+ve: N/-ve: S)     Longitude   = [Double] # Longitude of location (+ve: E/-ve: W)     CountryCode = [String] # Two-letter unique short code for associated country     CityCode    = [String] # Unique short code for associated city     Created     = [DateTime] # When location was first registered     Updated     = [DateTime] # When location entry was last revised } `endpowershell</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id             = [Int64] # Unique ID for server
+     Created        = [DateTime] # When server entry was first registered
+     Updated        = [DateTime] # When server entry was last revised
+     Hostname       = [String] # The DNS hostname of the server
+     Load           = [UInt16] # The percentage load on the server
+     Status         = [String] # The current status of the server
+     PrimaryIP      = [String] # The main IPv4 address used by the server
+     Country        = [Hashtable] # Country entry <superscript>{1}</superscript>
+     CountryCode    = [String] # 2-letter code of country where server is located
+     City           = [Hashtable] # City entry <superscript>{2}</superscript>
+     CityCode       = [String] # Uniqude code of city where server is located
+     Groups         = [Array] # Entries for groups this server is part of <superscript>{3}</superscript>
+     Technologies   = [Array] # Entries for technologies supported by the server <superscript>{4}</superscript>
+     Services       = [Array] # Entries for services the server supports <superscript>{5}</superscript>
+     Specifications = [Array] # Entries for additional server metadata <superscript>{6}</superscript>
+     IPs            = [Array] # Entries for IP addresses assoicated with the server <superscript>{7}</superscript>
+     Locations      = [Array] # Entries for locations associated with server <superscript>{8}</superscript>
+ } </dev:code></maml:para>
+      <maml:para><superscript>{1}</superscript> To see the structure of a Country entry, run `Get-Help Get-NordVPNCountries` (./Get-NordVPNCountries.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{2}</superscript> To see the structure of a City entry, run `Get-Help Get-NordVPNCities` (./Get-NordVPNCities.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{3}</superscript> To see the structure of a Group entry, run `Get-Help Get-NordVPNGroups` (./Get-NordVPNGroups.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{4}</superscript> To see the structure of a Technology entry, run `Get-Help Get-NordVPNTechnologies` (./Get-NordVPNTechnologies.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{5}</superscript> To see the structure of a Service entry, run `Get-Help Get-NordVPNTechnologies` (./Get-NordVPNTechnologies.md)and refer the structure of a technology entry in the function description. Service entries utilise the same structure.</maml:para>
+      <maml:para><superscript>{6}</superscript> The structure of a Specification entry is as follows (powershell notation):</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id           = [Int64] # Unique ID for the specification
+     FriendlyName = [String] # Full name of the specification
+     Code         = [String] # Short code for the specification
+     Values       = [Array]@( # Metadata entries
+         [Hashtable]@{
+             Id    = [Int64] # Unique ID for the value
+             Value = [object] # Actual value data
+         }
+         ...
+     )
+ } </dev:code></maml:para>
+      <maml:para><superscript>{7}</superscript> The structure of an IP Address entry is as follows (powershell notation):</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id      = # [String] Unique ID for the entry
+     Version = # [UInt16] The internet protocol version of the IP
+     Address = # [String] The IP address in dot-decimal notation
+     EntryId = # [String] Unique ID for the IP itself
+ } </dev:code></maml:para>
+      <maml:para><superscript>{8}</superscript> The structure of a location entry is as follows (powershell notation):</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id          = [Int64] # Unique ID for location
+     Latitude    = [Double] # Latitude of location (+ve: N/-ve: S)
+     Longitude   = [Double] # Longitude of location (+ve: E/-ve: W)
+     CountryCode = [String] # Two-letter unique short code for associated country
+     CityCode    = [String] # Unique short code for associated city
+     Created     = [DateTime] # When location was first registered
+     Updated     = [DateTime] # When location entry was last revised
+ } </dev:code></maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1702,7 +1803,64 @@ us2938.nordvpn.c… US            12</dev:code>
       <maml:para>Returns a list of NordVPN servers. By default, this function returns all servers that match the passed parameters, but the search can be limited to the first x servers with  `-First x`. NOTE : Using the `-First` parameter will result in some servers matching the filters being missed. You should only do so if this instance is acceptable.</maml:para>
       <maml:para>This function utilises the raw NordVPN servers web API. This means that a large quantity of data (~20 MB) must be downloaded and parsed, as the raw API does not support direct filtering, and therefore this must be done locally. For this reason, it is recommended to use `Get-NordVPNRecommendedServers` which utilises the recommended servers API, which supports direct filtering. This function should be used in scenarios where all servers need to be indexed, including those that are full/unavailable.</maml:para>
       <maml:para>The structure of a server entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id             = [Int64] # Unique ID for server     Created        = [DateTime] # When server entry was first registered     Updated        = [DateTime] # When server entry was last revised     Hostname       = [String] # The DNS hostname of the server     Load           = [UInt16] # The percentage load on the server     Status         = [String] # The current status of the server     PrimaryIP      = [String] # The main IPv4 address used by the server     Country        = [Hashtable] # Country entry&amp;sup1;     CountryCode    = [String] # 2-letter code of country where server is located     City           = [Hashtable] # City entry&amp;sup2;     CityCode       = [String] # Uniqude code of city where server is located     Groups         = [Array] # Entries for groups this server is part of&amp;sup3;     Technologies   = [Array] # Entries for technologies supported by the server&amp;#8308;     Services       = [Array] # Entries for services the server supports&amp;#8309;     Specifications = [Array] # Entries for additional server metadata&amp;#8310;     IPs            = [Array] # Entries for IP addresses assoicated with the server&amp;#8311;     Locations      = [Array] # Entries for locations associated with server&amp;#8312; } `endpowershell</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id             = [Int64] # Unique ID for server
+     Created        = [DateTime] # When server entry was first registered
+     Updated        = [DateTime] # When server entry was last revised
+     Hostname       = [String] # The DNS hostname of the server
+     Load           = [UInt16] # The percentage load on the server
+     Status         = [String] # The current status of the server
+     PrimaryIP      = [String] # The main IPv4 address used by the server
+     Country        = [Hashtable] # Country entry <superscript>{1}</superscript>
+     CountryCode    = [String] # 2-letter code of country where server is located
+     City           = [Hashtable] # City entry <superscript>{2}</superscript>
+     CityCode       = [String] # Uniqude code of city where server is located
+     Groups         = [Array] # Entries for groups this server is part of <superscript>{3}</superscript>
+     Technologies   = [Array] # Entries for technologies supported by the server <superscript>{4}</superscript>
+     Services       = [Array] # Entries for services the server supports <superscript>{5}</superscript>
+     Specifications = [Array] # Entries for additional server metadata <superscript>{6}</superscript>
+     IPs            = [Array] # Entries for IP addresses assoicated with the server <superscript>{7}</superscript>
+     Locations      = [Array] # Entries for locations associated with server <superscript>{8}</superscript>
+ } </dev:code></maml:para>
+      <maml:para><superscript>{1}</superscript> To see the structure of a Country entry, run `Get-Help Get-NordVPNCountries` (./Get-NordVPNCountries.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{2}</superscript> To see the structure of a City entry, run `Get-Help Get-NordVPNCities` (./Get-NordVPNCities.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{3}</superscript> To see the structure of a Group entry, run `Get-Help Get-NordVPNGroups` (./Get-NordVPNGroups.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{4}</superscript> To see the structure of a Technology entry, run `Get-Help Get-NordVPNTechnologies` (./Get-NordVPNTechnologies.md)and refer to the function description.</maml:para>
+      <maml:para><superscript>{5}</superscript> To see the structure of a Service entry, run `Get-Help Get-NordVPNTechnologies` (./Get-NordVPNTechnologies.md)and refer the structure of a technology entry in the function description. Service entries utilise the same structure.</maml:para>
+      <maml:para><superscript>{6}</superscript> The structure of a Specification entry is as follows (powershell notation):</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id           = [Int64] # Unique ID for the specification
+     FriendlyName = [String] # Full name of the specification
+     Code         = [String] # Short code for the specification
+     Values       = [Array]@( # Metadata entries
+         [Hashtable]@{
+             Id    = [Int64] # Unique ID for the value
+             Value = [object] # Actual value data
+         }
+         ...
+     )
+ } </dev:code></maml:para>
+      <maml:para><superscript>{7}</superscript> The structure of an IP Address entry is as follows (powershell notation):</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id      = # [String] Unique ID for the entry
+     Version = # [UInt16] The internet protocol version of the IP
+     Address = # [String] The IP address in dot-decimal notation
+     EntryId = # [String] Unique ID for the IP itself
+ } </dev:code></maml:para>
+      <maml:para><superscript>{8}</superscript> The structure of a location entry is as follows (powershell notation):</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id          = [Int64] # Unique ID for location
+     Latitude    = [Double] # Latitude of location (+ve: N/-ve: S)
+     Longitude   = [Double] # Longitude of location (+ve: E/-ve: W)
+     CountryCode = [String] # Two-letter unique short code for associated country
+     CityCode    = [String] # Unique short code for associated city
+     Created     = [DateTime] # When location was first registered
+     Updated     = [DateTime] # When location entry was last revised
+ } </dev:code></maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2575,7 +2733,7 @@ PS C:\&gt; (Get-ItemProperty .\NordVPN_Servers.xml.zip).Length / 1MB
         <dev:remarks>
           <maml:para>Demonstrates the time taken to download and process all server entries, as well as the additional time when these processed entries are written to file and compressed. The operation is ~40% longer when the fallback file is updated. However, using the fallback file which contains pre-processed server entries, is 5-6x faster than downloading and processing this data. This is true even when the setting DeleteServerFallbackAfterUse is enabled, meaning the archive is extracted each time the function is run.</maml:para>
           <maml:para>It is therefore important to consider how often the list of registered servers needed to be updated, and the fallback used where necessary to improve performance and reduce load on the web API.</maml:para>
-          <maml:para>Also notable is the size of the uncompressed server fallback file (~120 MB). When the file is updated, it is automatically compressed to a much more reasonable ~3 MB. By default, the uncompressed file is kept to improve performance when using the local data. However, on systems where storage space is an important consideration, such as thin clients, the setting DeleteServerFallbackAfterUse can be enabled, which causes the uncompressed file to be deleted after each use. In this way, it behaves as a temporary file and only the much smaller compressed version needs to persist on the disk. Use `Set-NordVPNModuleSetting DeleteServerFallbackAfterUse 1` to enable this feature.</maml:para>
+          <maml:para>Also notable is the size of the uncompressed server fallback file (~50 MB). When the file is updated, it is automatically compressed to a much more reasonable ~3 MB. By default, the uncompressed file is kept to improve performance when using the local data. However, on systems where storage space is an important consideration, such as thin clients, the setting DeleteServerFallbackAfterUse can be enabled, which causes the uncompressed file to be deleted after each use. In this way, it behaves as a temporary file and only the much smaller compressed version needs to persist on the disk. Use `Set-NordVPNModuleSetting DeleteServerFallbackAfterUse 1` to enable this feature.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -2611,7 +2769,14 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServers}).TotalSeconds
     <maml:description>
       <maml:para>Returns a list of all technologies that NordVPN servers support. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of technology entries, each of which is a hashtable.</maml:para>
       <maml:para>The structure of a technology entry is as follows (powershell notation):</maml:para>
-      <maml:para>`powershell @{     Id           = [Int64] # Unique ID for technology     Code         = [String] # Unique short code for technology     FriendlyName = [String] # Full name of technology     Created      = [DateTime] # When technology entry was first registered     Updated      = [DateTime] # When technology entry was last revised } `endpowershell</maml:para>
+      <maml:para><dev:code>
+ @{
+     Id           = [Int64] # Unique ID for technology
+     Code         = [String] # Unique short code for technology
+     FriendlyName = [String] # Full name of technology
+     Created      = [DateTime] # When technology entry was first registered
+     Updated      = [DateTime] # When technology entry was last revised
+ } </dev:code></maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>

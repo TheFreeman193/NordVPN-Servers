@@ -12,8 +12,14 @@ Gets a list of cities with NordVPN servers.
 
 ## SYNTAX
 
+### DefaultOperation (Default)
 ```
 Get-NordVPNCities [[-Country] <String>] [<CommonParameters>]
+```
+
+### Offline
+```
+Get-NordVPNCities [-Offline] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +113,7 @@ and see the *Code* column for reference)
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultOperation
 Aliases:
 Accepted values: AL, AR, AU, AT, BE, BA, BR, BG, CA, CL, CR, HR, CY, CZ, DK, EE, FI, FR, GE, DE, GR, HK, HU, IS, IN, ID, IE, IL, IT, JP, LV, LU, MY, MX, MD, NL, NZ, MK, NO, PL, PT, RO, RS, SG, SK, SI, ZA, KR, ES, SE, CH, TW, TH, TR, UA, AE, GB, US, VN
 
@@ -115,6 +121,25 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Offline
+Temporarily overrides the *OfflineMode* setting and uses the fallback
+file stored in *NordVPN_Countries.xml*, which is needed to retrieve the list of
+cities. This does not change the value of the setting but is useful when access
+to the web API is not available. The fallback file can be updated when online
+with `Get-NordVPNCountries -UpdateFallback`.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Offline
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -61,16 +61,74 @@ The structure of a server entry is as follows (powershell notation):
     Load           = [UInt16] # The percentage load on the server
     Status         = [String] # The current status of the server
     PrimaryIP      = [String] # The main IPv4 address used by the server
-    Country        = [Hashtable] # Country entry&sup1;
+    Country        = [Hashtable] # Country entry &sup1;
     CountryCode    = [String] # 2-letter code of country where server is located
-    City           = [Hashtable] # City entry&sup2;
+    City           = [Hashtable] # City entry &sup2;
     CityCode       = [String] # Uniqude code of city where server is located
-    Groups         = [Array] # Entries for groups this server is part of&sup3;
-    Technologies   = [Array] # Entries for technologies supported by the server&#8308;
-    Services       = [Array] # Entries for services the server supports&#8309;
-    Specifications = [Array] # Entries for additional server metadata&#8310;
-    IPs            = [Array] # Entries for IP addresses assoicated with the server&#8311;
-    Locations      = [Array] # Entries for locations associated with server&#8312;
+    Groups         = [Array] # Entries for groups this server is part of &sup3;
+    Technologies   = [Array] # Entries for technologies supported by the server &#8308;
+    Services       = [Array] # Entries for services the server supports &#8309;
+    Specifications = [Array] # Entries for additional server metadata &#8310;
+    IPs            = [Array] # Entries for IP addresses assoicated with the server &#8311;
+    Locations      = [Array] # Entries for locations associated with server &#8312;
+}
+```
+
+&sup1; To see the structure of a Country entry, run [`Get-Help Get-NordVPNCountries`](./Get-NordVPNCountries.md)
+ and refer to the function description.
+
+&sup2; To see the structure of a City entry, run [`Get-Help Get-NordVPNCities`](./Get-NordVPNCities.md)
+ and refer to the function description.
+
+&sup3; To see the structure of a Group entry, run [`Get-Help Get-NordVPNGroups`](./Get-NordVPNGroups.md)
+ and refer to the function description.
+
+&#8308; To see the structure of a Technology entry, run [`Get-Help Get-NordVPNTechnologies`](./Get-NordVPNTechnologies.md)
+ and refer to the function description.
+
+&#8309; To see the structure of a Service entry, run [`Get-Help Get-NordVPNTechnologies`](./Get-NordVPNTechnologies.md)
+ and refer the structure of a technology entry in the function description.
+Service entries utilise the same structure.
+
+&#8310; The structure of a Specification entry is as follows (powershell notation):
+
+```powershell
+@{
+    Id           = [Int64] # Unique ID for the specification
+    FriendlyName = [String] # Full name of the specification
+    Code         = [String] # Short code for the specification
+    Values       = [Array]@( # Metadata entries
+        [Hashtable]@{
+            Id    = [Int64] # Unique ID for the value
+            Value = [object] # Actual value data
+        }
+        ...
+    )
+}
+```
+
+&#8311; The structure of an IP Address entry is as follows (powershell notation):
+
+```powershell
+@{
+    Id      = # [String] Unique ID for the entry
+    Version = # [UInt16] The internet protocol version of the IP
+    Address = # [String] The IP address in dot-decimal notation
+    EntryId = # [String] Unique ID for the IP itself
+}
+```
+
+&#8312; The structure of a location entry is as follows (powershell notation):
+
+```powershell
+@{
+    Id          = [Int64] # Unique ID for location
+    Latitude    = [Double] # Latitude of location (+ve: N/-ve: S)
+    Longitude   = [Double] # Longitude of location (+ve: E/-ve: W)
+    CountryCode = [String] # Two-letter unique short code for associated country
+    CityCode    = [String] # Unique short code for associated city
+    Created     = [DateTime] # When location was first registered
+    Updated     = [DateTime] # When location entry was last revised
 }
 ```
 
@@ -263,7 +321,7 @@ It is therefore important to consider how often the list of registered servers
 needed to be updated, and the fallback used where necessary to improve
 performance and reduce load on the web API.
 
-Also notable is the size of the uncompressed server fallback file (~120 MB).
+Also notable is the size of the uncompressed server fallback file (~50 MB).
 When the file is updated, it is automatically compressed to a much more
 reasonable ~3 MB. By default, the uncompressed file is kept to improve
 performance when using the local data. However, on systems where storage space

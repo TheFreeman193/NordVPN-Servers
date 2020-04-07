@@ -1,8 +1,6 @@
 # NordVPN-Servers
-![GitHub](https://img.shields.io/github/license/TheFreeman193/NordVPN-Servers)
+![License](https://img.shields.io/github/license/TheFreeman193/NordVPN-Servers)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/TheFreeman193/NordVPN-Servers)
-![Platforms](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-orange)
-![PowerShell](https://img.shields.io/badge/PowerShell-Desktop%205.1%20%7C%20Core%206.0-blue)
 
 A cross-platform PowerShell module for interacting with the NordVPN API.
 
