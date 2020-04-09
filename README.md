@@ -1,7 +1,7 @@
 # NordVPN-Servers
-![License](https://img.shields.io/github/license/TheFreeman193/NordVPN-Servers)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/TheFreeman193/NordVPN-Servers)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+[![License][img license]][license]
+[![Contributor Covenant][img cc2]][conduct]
+[![GitHub release (latest by date)][img release]][release]
 
 A cross-platform PowerShell module for interacting with the NordVPN API.
 
@@ -13,20 +13,20 @@ This module provides various functions for retrieving country, grouping,
  stored locally as an offline fallback, and these can be updated.
 
 ## Documentation
-A full set of Markdown help files can be found **[here](./docs/INDEX.md)**.
+A full set of Markdown help files can be found **[here][help index]**.
 
 ## Configuration
 Information on configuring the module can be found
- **[here](./docs/about_NordVPN-Servers_Settings.md)**.
+ **[here][about settings]**.
 
 ## License
 This module and its associated assets are released under the
- **[MIT license](./LICENSE.md)**.
+ **[MIT license][license]**.
 
 ## Contributing
 Suggestions and pull requests are welcomed, provided they are beneficial and
  well-documented. A full contributing guide can be found
- **[here](./CONTRIBUTING.md)**.
+ **[here][contrib]**.
 
 ### Translations
 If you'd like to translate a help file, please create a pull request. Approved
@@ -38,11 +38,23 @@ This module works in PowerShell Desktop 5.1 and later, and PowerShell Core 6.1
  and later. For PSCore, Windows, Linux, and macOS are supported.
 
 ## Code of Conduct
-Please adhere to the **[code of conduct](./CODE_OF_CONDUCT.md)** which is
+Please adhere to the **[code of conduct][conduct]** which is
  adapted from the
- [contributor covenant 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
+ [contributor covenant 2.0][cc2].
  Remember, we are a *community*.
 
 ## Changelog
 
-The module changelog can be found **[here](./CHANGELOG.md)**.
+The module changelog can be found **[here][changelog]**.
+
+[license]: ./LICENSE.md
+[conduct]: ./CODE_OF_CONDUCT.md
+[release]: https://github.com/TheFreeman193/NordVPN-Servers/releases/latest
+[changelog]: ./CHANGELOG.md
+[contrib]: ./CONTRIBUTING.md
+[help index]: ./docs/INDEX.md
+[about settings]: ./docs/about_NordVPN-Servers_Settings.md
+[cc2]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
+[img license]: https://img.shields.io/github/license/TheFreeman193/NordVPN-Servers
+[img cc2]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
+[img release]: https://img.shields.io/github/v/release/TheFreeman193/NordVPN-Servers

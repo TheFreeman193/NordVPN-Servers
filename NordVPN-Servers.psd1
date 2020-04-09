@@ -48,7 +48,9 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('NordVPN','Servers','Find','List','VPN', 'API-Client', 'NordVPN-Site', 'Countries', 'Cities', 'Countries-Cities', 'Groups', 'Technologies', 'VPN-Manager', 'Search')
+        Tags = @('NordVPN','Servers','Find','List','VPN', 'API-Client', 'NordVPN-Site', 'Countries', 'Cities', 'Countries-Cities', 'Groups', 'Technologies', 'VPN-Manager', 'Search',
+            'PSEdition_Desktop', 'PSEdition_Core', 'Windows', 'Linux', 'MacOS'
+        )
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/TheFreeman193/NordVPN-Servers/blob/master/LICENSE.md'
