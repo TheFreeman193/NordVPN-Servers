@@ -74,7 +74,7 @@ PrivateData = @{
 - Fix some non-terminating error conditions
 
 == 0.1.27 - 6th April 2020
-- First alpha
+- First alpha on GitHub
 '@
 
         # Prerelease string of this module

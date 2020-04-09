@@ -42,3 +42,7 @@ Please adhere to the **[code of conduct](./CODE_OF_CONDUCT.md)** which is
  adapted from the
  [contributor covenant 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
  Remember, we are a *community*.
+
+## Changelog
+
+The module changelog can be found **[here](./CHANGELOG.md)**.
