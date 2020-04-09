@@ -181,6 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Set-NordVPNModuleSettings.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Set-NordVPNModuleSettings.html)
 
 [Help Index](./HELPINDEX.md)

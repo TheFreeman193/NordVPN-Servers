@@ -167,6 +167,6 @@ will be retrieved from the XML fallback file in the module directory.
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNCities.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNCities.html)
 
 [Help Index](./HELPINDEX.md)

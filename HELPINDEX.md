@@ -30,4 +30,4 @@
 
 ### RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/HELPINDEX.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/HELPINDEX.html)

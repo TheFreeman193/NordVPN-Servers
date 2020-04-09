@@ -91,6 +91,6 @@ which skips any API requests and uses the fallback file instead.
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCountryCache.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCountryCache.html)
 
 [Help Index](./HELPINDEX.md)

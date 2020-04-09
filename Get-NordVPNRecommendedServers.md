@@ -350,6 +350,6 @@ supplied. These required pairings are as follows:
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNRecommendedServers.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNRecommendedServers.html)
 
 [Help Index](./HELPINDEX.md)

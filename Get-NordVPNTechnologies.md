@@ -216,6 +216,6 @@ environments. Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API us
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNTechnologies.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNTechnologies.html)
 
 [Help Index](./HELPINDEX.md)

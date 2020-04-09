@@ -138,7 +138,7 @@ settings being reverted to their defaults.
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/about_NordVPN-Servers_Settings.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/about_NordVPN-Servers_Settings.html)
 
 # KEYWORDS
 

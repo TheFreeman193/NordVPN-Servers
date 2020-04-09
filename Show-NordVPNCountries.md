@@ -58,6 +58,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Show-NordVPNCountries.md)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Show-NordVPNCountries.html)
 
 [Help Index](./HELPINDEX.md)
