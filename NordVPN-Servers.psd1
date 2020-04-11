@@ -1,6 +1,6 @@
 @{
 RootModule = 'NordVPN-Servers.psm1'
-ModuleVersion = '0.2.1'
+ModuleVersion = '0.3.1'
 CompatiblePSEditions = @('Desktop', 'Core')
 GUID = '49e3429a-230b-4bc4-81bf-eaa6f0bd2927'
 Author = 'Nicholas Bissell'
@@ -13,21 +13,21 @@ ProcessorArchitecture = 'None'
 FunctionsToExport = @(
     'Set-ModuleSetting'
     'Get-ModuleSetting'
-    'Reset-ModuleSettings'
+    'Reset-Module'
     'Clear-CountryCache'
     'Clear-GroupCache'
     'Clear-TechnologyCache'
-    'Clear-Caches'
-    'Get-Countries'
-    'Get-Groups'
-    'Get-Technologies'
-    'Get-Cities'
-    'Show-Countries'
-    'Show-Groups'
-    'Show-Technologies'
-    'Show-Cities'
-    'Get-Servers'
-    'Get-RecommendedServers'
+    'Clear-Cache'
+    'Get-CountryList'
+    'Get-GroupList'
+    'Get-TechnologyList'
+    'Get-CityList'
+    'Show-CountryList'
+    'Show-GroupList'
+    'Show-TechnologyList'
+    'Show-CityList'
+    'Get-ServerList'
+    'Get-RecommendedList'
 )
 VariablesToExport = @()
 AliasesToExport = @()
@@ -63,9 +63,20 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = @'
+== 0.3.1 - 11th April 2020
+- Change plural function nouns to singular - PS best practices
+    - Get-NordVPNServers ==> Get-NordVPNServerList
+    - Get-NordVPNRecommendedServers ==> Get-NordVPNRecommendedList
+    - *-NordVPNCountries ==> *-NordVPNCountryList
+    - *-NordVPNGroups ==> *-NordVPNGroupList
+    - *-NordVPNTechnologies ==> *-NordVPNTechnologyList
+    - *-NordVPNCities ==> *-NordVPNCityList
+    - Reset-NordVPNModuleSettings ==> Reset-NordVPNModule
+    - Clear-NordVPNCaches ==> Clear-NordVPNCache
+
 == 0.2.1 - 7th April 2020
 - Update version to alpha 0.2
-- Add -Offline parameter to Get-NordVPNCities
+- Add -Offline parameter to Get-NordVPNCityList
 - Update manifest to include zipped server fallback
 - Remove some obsolete code
 - Convert most hashtables to custom objects for easier downstream processing

@@ -178,7 +178,7 @@ function Get-ModuleSetting {
 }
 
 
-function Reset-ModuleSettings {
+function Reset-Module {
     [CmdletBinding(SupportsShouldProcess = $true)]
     [OutputType('System.Void')]
     param (
@@ -196,6 +196,7 @@ function Reset-ModuleSettings {
                 foreach ($key in $DefaultSettings.Keys) {
                     $SETTINGS.$key = $DefaultSettings.$key[1]
                 }
+                Clear-Cache
             }
             $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile
             Write-Verbose "Settings changed: Updated settings file '$SettingsFile'"
@@ -240,6 +241,7 @@ function Get-ModuleSettingNameDynamicParam {
     }
 }
 
+
 function Get-CountryDynamicParam {
     [CmdletBinding()]
     [OutputType('System.Management.Automation.RuntimeDefinedParameter')]
@@ -261,7 +263,7 @@ function Get-CountryDynamicParam {
         $mand = $false
         $fromPipeProp = $true
         $help = 'Please enter a 2-digit ISO 3166-1 country code ' +
-        'e.g GB (run Show-NordVPNCountries for reference)'
+        'e.g GB (run Show-NordVPNCountryList for reference)'
         $ctryAttribCol = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
         foreach ($n in $SetNames) {
             $paramAttrib = New-Object System.Management.Automation.ParameterAttribute
@@ -273,7 +275,7 @@ function Get-CountryDynamicParam {
             $ctryAttribCol.Add($paramAttrib)
         }
 
-        $ctryVals = (Get-Countries).Code
+        $ctryVals = (Get-CountryList).Code
         $ctryValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($ctryVals)
         $ctryAttribCol.Add($ctryValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -306,7 +308,7 @@ function Get-GroupDynamicParam {
         Write-Debug 'Dynamic Group parameter requested.'
         $mand = $false
         $help = 'Please enter a group code e.g. legacy_standard ' +
-        '(run Show-NordVPNGroups for reference)'
+        '(run Show-NordVPNGroupList for reference)'
         $fromPipeProp = $true
         $grpAttribCol = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
         foreach ($n in $SetNames) {
@@ -318,7 +320,7 @@ function Get-GroupDynamicParam {
             $paramAttrib.ValueFromPipelineByPropertyName = $fromPipeProp
             $grpAttribCol.Add($paramAttrib)
         }
-        $grpVals = (Get-Groups).Code
+        $grpVals = (Get-GroupList).Code
         $grpValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($grpVals)
         $grpAttribCol.Add($grpValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -351,7 +353,7 @@ function Get-TechnologyDynamicParam {
         Write-Debug 'Dynamic Technology parameter requested.'
         $mand = $false
         $help = 'Please enter a technology code e.g. openvpn_udp ' +
-        '(run Show-NordVPNTechnologies for reference)'
+        '(run Show-NordVPNTechnologyList for reference)'
         $fromPipeProp = $true
         $techAttribCol = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
         foreach ($n in $SetNames) {
@@ -363,7 +365,7 @@ function Get-TechnologyDynamicParam {
             $paramAttrib.ValueFromPipelineByPropertyName = $fromPipeProp
             $techAttribCol.Add($paramAttrib)
         }
-        $techVals = (Get-Technologies).Code
+        $techVals = (Get-TechnologyList).Code
         $techValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($techVals)
         $techAttribCol.Add($techValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -380,7 +382,7 @@ function Get-TechnologyDynamicParam {
     Given the number of countries with servers, technology types and group
     definitions are unlikely to change from minute-to-minute, this
     significantly reduces web traffic and improves performace. This does not
-    affect Get-NordVPNRecommendedServers which will always result in API calls.
+    affect Get-NordVPNRecommendedList which will always result in API calls.
 #>
 
 function Clear-CountryCache {
@@ -422,7 +424,7 @@ function Clear-TechnologyCache {
 }
 
 
-function Clear-Caches {
+function Clear-Cache {
     [CmdletBinding(SupportsShouldProcess = $true)]
     [OutputType('System.Void')]
     param()
@@ -480,7 +482,7 @@ function Get-List {
 }
 
 
-function ConvertFrom-ServerEntries {
+function ConvertFrom-ServerEntry {
     [CmdletBinding()]
     param(
         [Parameter(
@@ -495,10 +497,10 @@ function ConvertFrom-ServerEntries {
         Write-Verbose "Processing $($Entries.Count) server entries"
         Write-Progress -Activity "Processing server entries" -CurrentOperation "Getting group definitions" -Id 2
         Write-Debug "Attempting to get group list"
-        $GroupList = Get-Groups
+        $GroupList = Get-GroupList
         Write-Progress -Activity "Processing server entries" -CurrentOperation "Getting country definitions" -Id 2
         Write-Debug "Attempting to get countries list"
-        $CountryList = Get-Countries
+        $CountryList = Get-CountryList
         [System.Collections.ArrayList]$NewList = @()
         Write-Debug "Calculating number of cycles"
         $k = 0
@@ -653,7 +655,7 @@ function ConvertFrom-ServerEntries {
     They have been exposed as they are useful in and of themselves.
 #>
 
-function Get-Countries {
+function Get-CountryList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
@@ -741,7 +743,7 @@ function Get-Countries {
 }
 
 
-function Get-Groups {
+function Get-GroupList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
@@ -825,7 +827,7 @@ function Get-Groups {
 }
 
 
-function Get-Technologies {
+function Get-TechnologyList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
@@ -902,7 +904,7 @@ function Get-Technologies {
 }
 
 
-function Get-Cities {
+function Get-CityList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     [OutputType('System.Array')]
     param (
@@ -919,10 +921,10 @@ function Get-Cities {
     process {
         Write-Debug "Cities list requested"
         if ($PSCmdlet.ParameterSetName -eq 'Offline') {
-            $Countries = Get-Countries -Offline
+            $Countries = Get-CountryList -Offline
         }
         else {
-            $Countries = Get-Countries
+            $Countries = Get-CountryList
         }
         if ($PSBoundParameters.Country) {
             $Countries = $Countries | Where-Object { $PSBoundParameters.Country -eq $_.Code }
@@ -945,48 +947,48 @@ function Get-Cities {
     for integration into other processes.
 #>
 
-function Show-Countries {
+function Show-CountryList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     param ()
     begin {
         Write-Host -fo Green "`n`nServer Countries:"
     }
     process {
-        Get-Countries | Sort-Object -Property Id | `
+        Get-CountryList | Sort-Object -Property Id | `
             Select-Object Id, FriendlyName, Code, Cities | Format-Table -AutoSize `
             Id, FriendlyName, Code, @{Label = "Cities"; Expression = { $_.Cities.FriendlyName -join '/' } }
     }
 }
 
 
-function Show-Groups {
+function Show-GroupList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     param ()
     begin {
         Write-Host -fo Green "`n`nServer Groups:"
     }
     process {
-        Get-Groups | Sort-Object -Property Id | `
+        Get-GroupList | Sort-Object -Property Id | `
             Select-Object Id, FriendlyName, Code, Type, Created, Updated | Format-Table -AutoSize `
             Id, FriendlyName, Code, @{Label = "Type"; Expression = { $_.Type.FriendlyName } }, Created, Updated
     }
 }
 
 
-function Show-Technologies {
+function Show-TechnologyList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     param ()
     begin {
         Write-Host -fo Green "`n`nServer Technologies:"
     }
     process {
-        Get-Technologies | Sort-Object -Property Id | `
+        Get-TechnologyList | Sort-Object -Property Id | `
             Select-Object Id, FriendlyName, Code, Created, Updated | Format-Table -AutoSize
     }
 }
 
 
-function Show-Cities {
+function Show-CityList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
     param ()
     dynamicparam {
@@ -1000,12 +1002,12 @@ function Show-Cities {
     }
     process {
         if ($PSBoundParameters.Country) {
-            $CityList = Get-Cities -Country:$PSBoundParameters.Country
+            $CityList = Get-CityList -Country:$PSBoundParameters.Country
         }
         else {
-            $CityList = Get-Cities
+            $CityList = Get-CityList
         }
-        $Countries = Get-NordVPNCountries
+        $Countries = Get-NordVPNCountryList
         $CityList.GetEnumerator() | Sort-Object -Property CountryCode, FriendlyName | `
             Select-Object -Property Id,
         @{Label = 'Country'; Expression = {
@@ -1018,13 +1020,13 @@ function Show-Cities {
 
 <# ##### Primary Functions #####
     These are the main functions for retrieving server lists from the NordVPN API.
-    -Get-NordVPNRecommendedServers allows direct filtering and is ordered by recommendation.
+    -Get-NordVPNRecommendedList allows direct filtering and is ordered by recommendation.
     -Get-NordVPNSevers uses the raw API and only allows limiting results. This is useful
     for statistical collection of server details. In order to use the filters effectively,
     you should not limit the number of entries unlike with the Get..Recommended.. function.
 #>
 
-function Get-RecommendedServers {
+function Get-RecommendedList {
 
     [CmdletBinding(DefaultParameterSetName = "DefaultOperation")]
     [OutputType('System.Array')]
@@ -1074,7 +1076,7 @@ function Get-RecommendedServers {
         $CountryId = $null
         if ($null -ne $PSBoundParameters.Country) {
             $CountryId = (
-                (Get-Countries) | Where-Object {
+                (Get-CountryList) | Where-Object {
                     $PSBoundParameters.Country -eq $_.Code
                 }
             ).Id
@@ -1107,12 +1109,12 @@ function Get-RecommendedServers {
         }
         else {
             Write-Verbose "Finished downloading server list. Count: $($ServerList.Count)"
-            ConvertFrom-ServerEntries $ServerList
+            ConvertFrom-ServerEntry $ServerList
         }
     }
 }
 
-function Get-Servers {
+function Get-ServerList {
 
     [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = "DefaultOperation")]
     [OutputType('System.Array')]
@@ -1183,7 +1185,7 @@ function Get-Servers {
             if ($PSCmdlet.ParameterSetName -eq 'RawData' -and $Raw) {
                 return $RawList
             }
-            $AllServersList = ConvertFrom-ServerEntries $RawList
+            $AllServersList = ConvertFrom-ServerEntry $RawList
             if ($UpdateFallback) {
                 Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
                     'Writing XML => NordVPN_Servers.xml'

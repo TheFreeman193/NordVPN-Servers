@@ -1,11 +1,11 @@
 ---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
-online version:
+online version: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNGroupList.md
 schema: 2.0.0
 ---
 
-# Show-NordVPNGroups
+# Show-NordVPNGroupList
 
 ## SYNOPSIS
 Shows all the NordVPN server groups in a neat format.
@@ -13,18 +13,18 @@ Shows all the NordVPN server groups in a neat format.
 ## SYNTAX
 
 ```
-Show-NordVPNGroups [<CommonParameters>]
+Show-NordVPNGroupList [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Displays a formatted table of NordVPN server groups. This output
-is useful for cross-referencing group names with their codes/IDs.
+Displays a formatted table of NordVPN server groups.
+This output is useful for cross-referencing group names with their codes/IDs.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Show-NordVPNGroups
+```
+PS C:\> Show-NordVPNGroupList
 
 Server Groups:
 
@@ -45,8 +45,8 @@ Id FriendlyName                      Code                             Type      
 25 Africa, the Middle East and India africa_the_middle_east_and_india Regions         2017-10-27 14:40:12 2017-10-30 0…
 ```
 
-Displays a list of NordVPN server groups. Each entry details the name, ID,
-code, type, and creation/update dates of the group.
+Displays a list of NordVPN server groups.
+Each entry details the name, ID, code, type, and creation/update dates of the group.
 
 ## PARAMETERS
 
@@ -56,7 +56,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
@@ -64,6 +63,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Help Page on GitHub](https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNGroups.md)
+[Help Page on GitHub](https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNGroupList.md)
 
-[Help Index](./INDEX.md)
+[Help Index]()
+

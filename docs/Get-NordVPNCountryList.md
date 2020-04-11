@@ -1,11 +1,11 @@
 ---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
-online version:
+online version: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Get-NordVPNCountryList.md
 schema: 2.0.0
 ---
 
-# Get-NordVPNCountries
+# Get-NordVPNCountryList
 
 ## SYNOPSIS
 Gets a list of countries with NordVPN servers.
@@ -14,38 +14,34 @@ Gets a list of countries with NordVPN servers.
 
 ### DefaultOperation (Default)
 ```
-Get-NordVPNCountries [-UpdateFallback] [<CommonParameters>]
+Get-NordVPNCountryList [-UpdateFallback] [<CommonParameters>]
 ```
 
 ### Offline
 ```
-Get-NordVPNCountries [-Offline] [<CommonParameters>]
+Get-NordVPNCountryList [-Offline] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of all countries with NordVPN servers. By default, the required
-data is downloaded from the NordVPN web API and processed to produce an array
-of country entries, each of which is a hashtable.
+Returns a list of all countries with NordVPN servers.
+By default, the required data is downloaded from the NordVPN web API and processed to produce an array of country entries, each of which is a hashtable.
 
 The structure of a country entry is as follows (powershell notation):
 
-```powershell
 @{
-    Id           = [Int64] # Unique ID for country
-    Code         = [String] # Two-letter unique short code for country
-    FriendlyName = [String] # Full name of country
-    Cities       = [Array] # Array of City entries&sup1;
-}
-```
+     Id           = \[Int64\] # Unique ID for country
+     Code         = \[String\] # Two-letter unique short code for country
+     FriendlyName = \[String\] # Full name of country
+     Cities       = \[Array\] # Array of City entries{1}
+ }
 
-&sup1;To see the structure of a City entry, run `Get-Help Get-NordVPNCities`
-and refer to the function description.
+{1}To see the structure of a City entry, run `Get-Help Get-NordVPNCityList` and refer to the function description.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Get-NordVPNCountries | Select Id, FriendlyName, Code
+```
+PS C:\> Get-NordVPNCountryList | Select Id, FriendlyName, Code
 
  Id FriendlyName           Code
  -- ------------           ----
@@ -110,13 +106,12 @@ PS C:\> Get-NordVPNCountries | Select Id, FriendlyName, Code
 234 Vietnam                VN
 ```
 
-Gets the list of countries that currently host NordVPN servers and shows the
-unique ID, full name, and ISO country code for each.
+Gets the list of countries that currently host NordVPN servers and shows the unique ID, full name, and ISO country code for each.
 
 ### Example 2
-```powershell
-PS C:\> $allServers = Get-NordVPNServers
-PS C:\> Get-NordVPNCountries | Select-Object FriendlyName, Code | `
+```
+PS C:\> $allServers = Get-NordVPNServerList
+PS C:\> Get-NordVPNCountryList | Select-Object FriendlyName, Code | `
 >> Format-Table FriendlyName, @{
 >>     Label = "No. Servers"
 >>     Expression = {($allServers | Where-Object CountryCode -eq $_.Code).Count}
@@ -185,16 +180,15 @@ United States                 1781
 Vietnam                         13
 ```
 
-Displays a list of countries with NordVPN servers, with the number of servers
-in each country. Notable is the use of a calculated property in Format-Table.
+Displays a list of countries with NordVPN servers, with the number of servers in each country.
+Notable is the use of a calculated property in Format-Table.
 
 ## PARAMETERS
 
 ### -Offline
-Temporarily overrides the *OfflineMode* setting and uses the fallback
-file stored in *NordVPN_Countries.xml*. This does not change the value of
-the setting but is useful when access to the web API is not available. The
-fallback file can be updated when online with `-UpdateFallback`.
+Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml .
+This does not change the value of the setting but is useful when access to the web API is not available.
+The fallback file can be updated when online with `-UpdateFallback`.
 
 ```yaml
 Type: SwitchParameter
@@ -203,16 +197,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -UpdateFallback
-Passing this switch causes the function to update the *NordVPN_Countries.xml*
-fallback file, using the data retrieved from the NordVPN web API or cache. This
-functionality cannot be used when *OfflineMode* is enabled or the `-Offline`
-switch parameter is passed.
+Passing this switch causes the function to update the NordVPN_Countries.xml fallback file, using the data retrieved from the NordVPN web API or cache.
+This functionality cannot be used when OfflineMode is enabled or the `-Offline` switch parameter is passed.
 
 ```yaml
 Type: SwitchParameter
@@ -221,7 +213,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -232,25 +224,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Array
-
 ## NOTES
-The module utilises a countries cache to reduce API calls. Further calls after
-the initial download will retrieve data from a local cache of the country list
-until the number of seconds defined with `Set-NordVPNCountryCacheLifetime`
-(default: 600s) has passed, after which the cache will be updated using the
-API. To force downloading from the API, run `Clear-NordVPNCountryCache` first.
+The module utilises a countries cache to reduce API calls.
+Further calls after the initial download will retrieve data from a local cache of the country list until the number of seconds defined with `Set-NordVPNCountryCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API.
+To force downloading from the API, run `Clear-NordVPNCountryCache` first.
 
-If the module is configured to only use the fallback files, with the command
-`Set-NordVPNModuleSetting OfflineMode 1`, the country list will be retrieved from
-*NordVPN_Countries.xml* in the module directory. This is useful for offline
-environments. Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.
+If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the country list will be retrieved from NordVPN_Countries.xml in the module directory.
+This is useful for offline environments.
+Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.
 
 ## RELATED LINKS
 
-[Help Page on GitHub](https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Get-NordVPNCountries.md)
+[Help Page on GitHub](https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Get-NordVPNCountryList.md)
 
-[Help Index](./INDEX.md)
+[Help Index]()

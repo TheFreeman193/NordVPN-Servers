@@ -3,7 +3,7 @@
 ## 0.2.1 - 7th April 2020
 
 - Update version to alpha 0.2
-- Add -Offline parameter to Get-NordVPNCities
+- Add -Offline parameter to Get-NordVPNCityList
 - Update manifest to include zipped server fallback
 - Remove some obsolete code
 - Convert most hashtables to custom objects for easier downstream processing

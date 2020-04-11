@@ -25,11 +25,11 @@ available settings are described below:
 
 - `OfflineMode` When this setting is enabled, the country, group, and
   technology lists are retrieved from the fallback files in the module root
-  directory. The `Get-NordVPNServers` function also uses local fallback files,
-  and `Get-NordVPNRecommendedServers` is unavailable in this mode. The files used
+  directory. The `Get-NordVPNServerList` function also uses local fallback files,
+  and `Get-NordVPNRecommendedList` is unavailable in this mode. The files used
   are described later in this topic.
 
-- `DeleteServerFallbackAfterUse` When `Get-NordVPNServers` is used with the
+- `DeleteServerFallbackAfterUse` When `Get-NordVPNServerList` is used with the
   `-Offline` switch or when *OfflineMode* is enabled, the compressed server
   list is expanded and read from. If this setting is disabled (default) then
   the expanded fallback file is kept when the function has completed. If
@@ -53,8 +53,8 @@ XML format.
 The final item in the list is the compressed version of the server fallback file.
 
 These files can be updated using the `-UpdateFallback` switch parameter in the
-functions `Get-NordVPNCountries`, `Get-NordVPNGroups`,
-`Get-NordVPNTechnologies`, and `Get-NordVPNServers`. The files are utilised
+functions `Get-NordVPNCountryList`, `Get-NordVPNGroupList`,
+`Get-NordVPNTechnologyList`, and `Get-NordVPNServerList`. The files are utilised
 when the *OfflineMode* setting is enabled, or when the `-Offline` switch
 parameter is passed to one of the four functions above.
 
@@ -94,9 +94,9 @@ This will reset 'CountryCacheLifetime' to its default of 600. Are you sure?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-The `Reset-NordVPNModuleSettings` function is used to reset the values of a
+The `Reset-NordVPNModule` function is used to reset the values of a
 module setting to its default value. See the
-[Reset-NordVPNModuleSettings](.\Reset-NordVPNModuleSettings.md) help topic for
+[Reset-NordVPNModule](.\Reset-NordVPNModule.md) help topic for
 full usage.
 
 ```powershell
@@ -111,7 +111,7 @@ OfflineMode                    False
 GroupCacheLifetime             400
 
 # Resets all module settings back to default
-Reset-NordVPNModuleSettings
+Reset-NordVPNModule
 
 Get-NordVPNModuleSetting
 
@@ -132,7 +132,7 @@ settings being reverted to their defaults.
 
 - [Set-NordVPNModuleSetting](./Set-NordVPNModuleSetting.md)
 - [Get-NordVPNModuleSetting](./Get-NordVPNModuleSetting.md)
-- [Reset-NordVPNModuleSettings](./Reset-NordVPNModuleSettings.md)
+- [Reset-NordVPNModule](./Reset-NordVPNModule.md)
 - **[Module Homepage](../README.md)**
 - **[Help Index](./INDEX.md)**
 

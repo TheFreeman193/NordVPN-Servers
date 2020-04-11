@@ -21,11 +21,11 @@ LONG DESCRIPTION
     redownloaded the   next time it is needed.
     - `OfflineMode` When this setting is enabled, the country, group, and  
     technology lists are retrieved from the fallback files in the module root  
-    directory. The `Get-NordVPNServers` function also uses local fallback files,
-      and `Get-NordVPNRecommendedServers` is unavailable in this mode. The files
-    used   are described later in this topic.
-    - `DeleteServerFallbackAfterUse` When `Get-NordVPNServers` is used with the 
-     `-Offline` switch or when
+    directory. The `Get-NordVPNServerList` function also uses local fallback
+    files,   and `Get-NordVPNRecommendedList` is unavailable in this mode. The
+    files used   are described later in this topic.
+    - `DeleteServerFallbackAfterUse` When `Get-NordVPNServerList` is used with
+    the   `-Offline` switch or when
     OfflineMode
     is enabled, the compressed server   list is expanded and read from. If this
     setting is disabled (default) then   the expanded fallback file is kept when
@@ -46,9 +46,9 @@ FALLBACK FILES
     |  `NordVPN_Servers.xml.zip` | 2.7 MB       |
     The final item in the list is the compressed version of the server fallback file.
     These files can be updated using the `-UpdateFallback` switch parameter in
-    the functions `Get-NordVPNCountries`, `Get-NordVPNGroups`,
-    `Get-NordVPNTechnologies`, and `Get-NordVPNServers`. The files are utilized
-    when the
+    the functions `Get-NordVPNCountryList`, `Get-NordVPNGroupList`,
+    `Get-NordVPNTechnologyList`, and `Get-NordVPNServerList`. The files are
+    utilized when the
     OfflineMode
     setting is enabled, or when the `-Offline` switch parameter is passed to one
     of the four functions above.
@@ -87,9 +87,9 @@ EXAMPLES
     This will reset 'CountryCacheLifetime' to its default of 600. Are you sure?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 
-    The `Reset-NordVPNModuleSettings` function is used to reset the values of a
-    module setting to its default value. See the
-    Reset-NordVPNModuleSettings
+    The `Reset-NordVPNModule` function is used to reset the values of a module
+    setting to its default value. See the
+    Reset-NordVPNModule
     help topic for full usage.
 
     Get-NordVPNModuleSetting
@@ -103,7 +103,7 @@ EXAMPLES
     GroupCacheLifetime             400
     
     # Resets all module settings back to default
-    Reset-NordVPNModuleSettings
+    Reset-NordVPNModule
     
     Get-NordVPNModuleSetting
     
@@ -125,7 +125,7 @@ SEE ALSO
     -
     Get-NordVPNModuleSetting
     -
-    Reset-NordVPNModuleSettings
+    Reset-NordVPNModule
     -
     [Module Homepage](../README.md)
     -
