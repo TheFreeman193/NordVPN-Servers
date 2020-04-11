@@ -26,7 +26,7 @@ needed by the module.
 ### Example 1
 ```powershell
 PS C:\> Clear-NordVPNGroupCache
-PS C:\> Get-NordVPNGroups >$null
+PS C:\> Get-NordVPNGroupList >$null
 ```
 
 Clears the group cache and regenerates it by getting the
@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 
 ## NOTES
-If you are running `Get-NordVPNGroups` with the `-UpdateFallback`
+If you are running `Get-NordVPNGroupList` with the `-UpdateFallback`
 parameter, the fallback file *NordVPN_Groups.xml* may be updated from the
 cache. If you wish to ensure the files are updated using the latest data from
 the API, you should run `Clear-NordVPNGroupCache` to ensure the data is
@@ -86,7 +86,7 @@ The cache only persists as long as the PowerShell session in which the module
 is loaded. If the module is first loaded without an internet connection, no
 cache will be created and the fallback file *NordVPN_Groups.xml* will be
 used instead. If you wish to avoid unnecessary attempts to download the latest
-data from the NordVPN API, you can call `Get-NordVPNGroups -Offline`
+data from the NordVPN API, you can call `Get-NordVPNGroupList -Offline`
 which skips any API requests and uses the fallback file instead.
 
 ## RELATED LINKS

@@ -26,7 +26,7 @@ needed by the module.
 ### Example 1
 ```powershell
 PS C:\> Clear-NordVPNCountryCache
-PS C:\> Get-NordVPNCountries >$null
+PS C:\> Get-NordVPNCountryList >$null
 ```
 
 Clears the country cache and regenerates it by getting the
@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 
 ## NOTES
-If you are running `Get-NordVPNCountries` with the `-UpdateFallback`
+If you are running `Get-NordVPNCountryList` with the `-UpdateFallback`
 parameter, the fallback file *NordVPN_Countries.xml* may be updated from the
 cache. If you wish to ensure the files are updated using the latest data from
 the API, you should run `Clear-NordVPNCountryCache` to ensure the data is
@@ -86,7 +86,7 @@ The cache only persists as long as the PowerShell session in which the module
 is loaded. If the module is first loaded without an internet connection, no
 cache will be created and the fallback file *NordVPN_Countries.xml* will be
 used instead. If you wish to avoid unnecessary attempts to download the latest
-data from the NordVPN API, you can call `Get-NordVPNCountries -Offline`
+data from the NordVPN API, you can call `Get-NordVPNCountryList -Offline`
 which skips any API requests and uses the fallback file instead.
 
 ## RELATED LINKS

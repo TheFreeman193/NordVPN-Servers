@@ -1,11 +1,11 @@
 ---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
-online version:
+online version: https://thefreeman193.github.io/NordVPN-Servers/Show-NordVPNTechnologyList.html
 schema: 2.0.0
 ---
 
-# Show-NordVPNTechnologies
+# Show-NordVPNTechnologyList
 
 ## SYNOPSIS
 Shows all the NordVPN server technologies in a neat format.
@@ -13,18 +13,18 @@ Shows all the NordVPN server technologies in a neat format.
 ## SYNTAX
 
 ```
-Show-NordVPNTechnologies [<CommonParameters>]
+Show-NordVPNTechnologyList [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Displays a formatted table of NordVPN compatible technologies. This output
-is useful for cross-referencing technologies with their codes/IDs.
+Displays a formatted table of NordVPN compatible technologies.
+This output is useful for cross-referencing technologies with their codes/IDs.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Show-NordVPNTechnologies
+```
+PS C:\> Show-NordVPNTechnologyList
 
 Server Technologies:
 
@@ -53,8 +53,8 @@ Id FriendlyName              Code                  Created             Updated
 48 v2ray                     v2ray                 2019-10-28 13:29:37 2019-10-28 13:29:37
 ```
 
-Displays a list of NordVPN's compatible server technologies. Each entry details
-the name, ID, code, and creation/update dates of the technology entry.
+Displays a list of NordVPN's compatible server technologies.
+Each entry details the name, ID, code, and creation/update dates of the technology entry.
 
 ## PARAMETERS
 
@@ -64,7 +64,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
@@ -72,6 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Show-NordVPNTechnologies.html)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Show-NordVPNTechnologyList.html)
 
-[Help Index](./HELPINDEX.md)
+[Help Index]()
+

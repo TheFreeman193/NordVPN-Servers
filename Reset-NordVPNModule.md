@@ -1,11 +1,11 @@
 ---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
-online version:
+online version: https://thefreeman193.github.io/NordVPN-Servers/Reset-NordVPNModule.html
 schema: 2.0.0
 ---
 
-# Reset-NordVPNModuleSettings
+# Reset-NordVPNModule
 
 ## SYNOPSIS
 Resets all settings for the module.
@@ -13,19 +13,18 @@ Resets all settings for the module.
 ## SYNTAX
 
 ```
-Reset-NordVPNModuleSettings [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-NordVPNModule [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Resets all settings for the NordVPN-Servers module back to their default
-values. The function will always prompt for confirmation before this happens,
-unless the `-Force` switch parameter is passed.
+Resets all settings for the NordVPN-Servers module back to their default values.
+The function will always prompt for confirmation before this happens, unless the `-Force` switch parameter is passed.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Reset-NordVPNModuleSettings -Verbose
+```
+PS C:\> Reset-NordVPNModule -Verbose
 
 Reset settings to default
 This will reset all NordVPN-Servers module settings to their defaults. Are you sure?
@@ -34,9 +33,8 @@ VERBOSE: Performing the operation "Reset defaults" on target "All settings".
 VERBOSE: Settings changed: Updated settings file 'NordVPN-Servers.settings.json'
 ```
 
-Demonstrates the confirmation and operations performed when the module settings
-are reset. If the confirmation prompt is accepted with 'Y', the settings are
-first cleared in the module memory, before the settings file is updated.
+Demonstrates the confirmation and operations performed when the module settings are reset.
+If the confirmation prompt is accepted with 'Y', the settings are first cleared in the module memory, before the settings file is updated.
 
 ## PARAMETERS
 
@@ -50,7 +48,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -65,7 +63,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,7 +79,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -92,7 +90,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### None
@@ -100,6 +97,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Reset-NordVPNModuleSettings.html)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Reset-NordVPNModule.html)
 
-[Help Index](./HELPINDEX.md)
+[Help Index]()

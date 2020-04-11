@@ -6,23 +6,23 @@
 
 ## Functions
 
-- [Clear-NordVPNCaches](./Clear-NordVPNCaches.md)
+- [Clear-NordVPNCache](./Clear-NordVPNCache.md)
 - [Clear-NordVPNCountryCache](./Clear-NordVPNCountryCache.md)
 - [Clear-NordVPNGroupCache](./Clear-NordVPNGroupCache.md)
 - [Clear-NordVPNTechnologyCache](./Clear-NordVPNTechnologyCache.md)
-- [Get-NordVPNCities](./Get-NordVPNCities.md)
-- [Get-NordVPNCountries](./Get-NordVPNCountries.md)
-- [Get-NordVPNGroups](./Get-NordVPNGroups.md)
+- [Get-NordVPNCityList](./Get-NordVPNCityList.md)
+- [Get-NordVPNCountryList](./Get-NordVPNCountryList.md)
+- [Get-NordVPNGroupList](./Get-NordVPNGroupList.md)
 - [Get-NordVPNModuleSetting](./Get-NordVPNModuleSetting.md)
-- [Get-NordVPNRecommendedServers](./Get-NordVPNRecommendedServers.md)
-- [Get-NordVPNServers](./Get-NordVPNServers.md)
-- [Get-NordVPNTechnologies](./Get-NordVPNTechnologies.md)
-- [Reset-NordVPNModuleSettings](./Reset-NordVPNModuleSettings.md)
+- [Get-NordVPNRecommendedList](./Get-NordVPNRecommendedList.md)
+- [Get-NordVPNServerList](./Get-NordVPNServerList.md)
+- [Get-NordVPNTechnologyList](./Get-NordVPNTechnologyList.md)
+- [Reset-NordVPNModule](./Reset-NordVPNModule.md)
 - [Set-NordVPNModuleSetting](./Set-NordVPNModuleSetting.md)
-- [Show-NordVPNCities](./Show-NordVPNCities.md)
-- [Show-NordVPNCountries](./Show-NordVPNCountries.md)
-- [Show-NordVPNGroups](./Show-NordVPNGroups.md)
-- [Show-NordVPNTechnologies](./Show-NordVPNTechnologies.md)
+- [Show-NordVPNCityList](./Show-NordVPNCityList.md)
+- [Show-NordVPNCountryList](./Show-NordVPNCountryList.md)
+- [Show-NordVPNGroupList](./Show-NordVPNGroupList.md)
+- [Show-NordVPNTechnologyList](./Show-NordVPNTechnologyList.md)
 
 ## SEE ALSO
 

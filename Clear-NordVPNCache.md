@@ -1,11 +1,11 @@
 ---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
-online version:
+online version: https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCache.html
 schema: 2.0.0
 ---
 
-# Clear-NordVPNCaches
+# Clear-NordVPNCache
 
 ## SYNOPSIS
 Clears the country, group, and technology caches.
@@ -13,12 +13,12 @@ Clears the country, group, and technology caches.
 ## SYNTAX
 
 ```
-Clear-NordVPNCaches [-WhatIf] [-Confirm] [<CommonParameters>]
+Clear-NordVPNCache [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-A convenience function to clear all of the NordVPN-Servers list caches. This
-is the same as calling:
+A convenience function to clear all of the NordVPN-Servers list caches.
+This is the same as calling:
 
 - `Clear-NordVPNCountryCache`
 - `Clear-NordVPNGroupCache`
@@ -27,8 +27,8 @@ is the same as calling:
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> Clear-NordVPNCaches -Verbose
+```
+PS C:\> Clear-NordVPNCache -Verbose
 VERBOSE: Cleared the NordVPN country cache.
 VERBOSE: Cleared the NordVPN group cache.
 VERBOSE: Cleared the NordVPN technology cache.
@@ -48,13 +48,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -63,7 +64,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -74,19 +75,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### None
-
 ## NOTES
-These caches store the mostly-static lists of NordVPN server technologies and
-groups, plus the list of countries with servers. The caches exist to reduce the
-number of needed web calls to the NordVPN API since the entries are unlikely to
-change day-to-day.
+These caches store the mostly-static lists of NordVPN server technologies and groups, plus the list of countries with servers.
+The caches exist to reduce the number of needed web calls to the NordVPN API since the entries are unlikely to change day-to-day.
 
 ## RELATED LINKS
 
-[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCaches.html)
+[This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCache.html)
 
-[Help Index](./HELPINDEX.md)
+[Help Index]()
