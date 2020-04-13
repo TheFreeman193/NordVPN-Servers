@@ -1,4 +1,4 @@
----
+﻿---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
 online version: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNTechnologyList.md

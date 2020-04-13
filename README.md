@@ -15,6 +15,8 @@ This module provides various functions for retrieving country, grouping,
 ## Documentation
 A full set of Markdown help files can be found **[here][help index]**.
 
+You can also see the GitHub Pages website **[here][pages home]**.
+
 ## Configuration
 Information on configuring the module can be found
  **[here][about settings]**.
@@ -58,3 +60,4 @@ The module changelog can be found **[here][changelog]**.
 [img license]: https://img.shields.io/github/license/TheFreeman193/NordVPN-Servers
 [img cc2]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
 [img release]: https://img.shields.io/github/v/release/TheFreeman193/NordVPN-Servers
+[pages home]: https://thefreeman193.github.io/NordVPN-Servers

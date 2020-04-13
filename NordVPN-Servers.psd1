@@ -1,4 +1,4 @@
-@{
+﻿@{
 RootModule = 'NordVPN-Servers.psm1'
 ModuleVersion = '0.3.1'
 CompatiblePSEditions = @('Desktop', 'Core')
