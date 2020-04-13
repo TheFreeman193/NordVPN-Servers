@@ -1,4 +1,4 @@
-# About NordVPN-Servers Settings
+﻿# About NordVPN-Servers Settings
 ## about_NordVPN-Servers_Settings
 
 # SHORT DESCRIPTION

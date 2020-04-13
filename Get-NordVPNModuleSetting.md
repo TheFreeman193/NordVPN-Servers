@@ -1,4 +1,4 @@
----
+﻿---
 external help file: NordVPN-Servers-help.xml
 Module Name: NordVPN-Servers
 online version:
