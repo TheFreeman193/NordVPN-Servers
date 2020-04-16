@@ -1,3 +1,5 @@
+#Requires -Module @{ ModuleName = 'Microsoft.PowerShell.Archive'; ModuleVersion = '1.0' }
+
 New-Variable -Option Constant -Scope Script TechnologyURL 'https://api.nordvpn.com/v1/technologies'
 New-Variable -Option Constant -Scope Script GroupURL 'https://api.nordvpn.com/v1/servers/groups'
 New-Variable -Option Constant -Scope Script CountryURL 'https://api.nordvpn.com/v1/servers/countries'
@@ -27,22 +29,22 @@ New-Variable -Option Constant -Scope Script DefaultSettings @{
     OfflineMode                  = @([Boolean], $false)
     DeleteServerFallbackAfterUse = @([Boolean], $false)
 }
-
-$SettingsIn = Get-Content $SettingsFile -ea:si | ConvertFrom-Json
-$SETTINGS = @{ }
-if ($null -eq $SettingsIn) {
-    foreach ($key in $DefaultSettings.Keys) {
-        $SETTINGS.$key = $DefaultSettings.$key[1]
-    }
-    $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile -Force
-    Write-Verbose "Wrote default settings to '$SettingsFile'"
-}
-else {
-    foreach ($entry in $SettingsIn.PSObject.Properties) {
-        $SETTINGS[$entry.Name] = $entry.Value -as $DefaultSettings[$entry.Name][0]
-    }
-    Write-Verbose "Loaded persistent settings from '$SettingsFile'"
-}
+New-Variable -Option Constant -Scope Script KnownCountries @(
+    'AL', 'AR', 'AU', 'AT', 'BE', 'BA', 'BR', 'BG', 'CA', 'CL', 'CR', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'GE', 'DE',
+    'GR', 'HK', 'HU', 'IS', 'IN', 'ID', 'IE', 'IL', 'IT', 'JP', 'LV', 'LU', 'MY', 'MX', 'MD', 'NL', 'NZ', 'MK', 'NO', 'PL',
+    'PT', 'RO', 'RS', 'SG', 'SK', 'SI', 'ZA', 'KR', 'ES', 'SE', 'CH', 'TW', 'TH', 'TR', 'UA', 'AE', 'GB', 'US', 'VN'
+)
+New-Variable -Option Constant -Scope Script KnownGroups @(
+    'legacy_double_vpn', 'legacy_onion_over_vpn', 'legacy_ultra_fast_tv', 'legacy_anti_ddos',
+    'legacy_dedicated_ip', 'legacy_standard', 'legacy_netflix_usa', 'legacy_p2p', 'legacy_obfuscated_servers',
+    'europe', 'the_americas', 'asia_pacific', 'africa_the_middle_east_and_india'
+)
+New-Variable -Option Constant -Scope Script KnownTechnologies @(
+    'ikev2', 'openvpn_udp', 'openvpn_tcp', 'socks', 'proxy', 'pptp', 'l2tp', 'openvpn_xor_udp', 'openvpn_xor_tcp',
+    'proxy_cybersec', 'proxy_ssl', 'proxy_ssl_cybersec', 'ikev2_v6', 'openvpn_udp_v6', 'openvpn_tcp_v6',
+    'wireguard_udp', 'openvpn_udp_tls_crypt', 'openvpn_tcp_tls_crypt', 'openvpn_dedicated_udp',
+    'openvpn_dedicated_tcp', 'v2ray'
+)
 
 [DateTime]$script:CountryCacheDate = [DateTime]::MinValue
 [DateTime]$script:TechnologyCacheDate = [DateTime]::MinValue
@@ -50,6 +52,30 @@ else {
 New-Variable -Scope Script CountryCache $null
 New-Variable -Scope Script TechnologyCache $null
 New-Variable -Scope Script GroupCache $null
+
+Function LoadSettings {
+    $SettingsIn = Get-Content $SettingsFile -ea:si | ConvertFrom-Json
+    $script:SETTINGS = @{ }
+    if ($null -eq $SettingsIn) {
+        foreach ($key in $DefaultSettings.Keys) {
+            $SETTINGS.$key = $DefaultSettings.$key[1]
+        }
+        $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile -Force
+        Write-Verbose "Wrote default settings to '$SettingsFile'"
+    }
+    else {
+        foreach ($entry in $SettingsIn.PSObject.Properties) {
+            if ($DefaultSettings.ContainsKey($entry.Name)) {
+                $SETTINGS[$entry.Name] = $entry.Value -as $DefaultSettings[$entry.Name][0]
+            }
+            else {
+                Write-Warning "Invalid setting $($entry.Name) not loaded"
+            }
+        }
+        Write-Verbose "Loaded persistent settings from '$SettingsFile'"
+    }
+}
+LoadSettings
 
 <# ##### Settings access #####
     Functions to modify and read config
@@ -83,45 +109,40 @@ function Set-ModuleSetting {
         return $paramDict
     }
     process {
-        Write-Debug ("Parameter set name: {0}" -f $PSCmdlet.ParameterSetName)
-        if ($null -ne $SETTINGS[$PSBoundParameters.Name]) {
-            $Name = $PSBoundParameters.Name
-            if ($PSCmdlet.ParameterSetName -eq 'SetDefault') {
-                $defaultValue = $DefaultSettings[$Name][1]
-                if ($PSCmdlet.ShouldContinue(
-                        ("This will reset '{0}' to its default of {1}. Are you sure?" -f
-                            $Name, $defaultValue),
-                        "Reset setting to default"
-                    )
-                ) {
-                    if ($PSCmdlet.ShouldProcess("Setting: $Name", "Reset default: $defaultValue")) {
-                        $SETTINGS[$Name] = $defaultValue
-                    }
-                    $SettingsChanged = $true
-                }
-                return
-            }
-            $targetType = $DefaultSettings[$Name][0]
-            $Value = $PSBoundParameters.Value -as $targetType
-            if ($Value -is $targetType) {
-                if ($PSCmdlet.ShouldProcess("Setting: $Name", "Update value: $Value")) {
-                    if ($SETTINGS[$Name] -ne $Value) { $SettingsChanged = $true }
-                    $SETTINGS[$Name] = $Value
-                }
-            }
-            else {
-                throw ("The type of value '{0}' does not match required type: {1}" -f
-                    $PSBoundParameters.Value, $targetType
+        Write-Debug ("Parameter set name: $($PSCmdlet.ParameterSetName)")
+        $Name = $PSBoundParameters.Name
+        if ($PSCmdlet.ParameterSetName -eq 'SetDefault') {
+            $defaultValue = $DefaultSettings[$Name][1]
+            if ($Force -or $PSCmdlet.ShouldContinue(
+                    ("This will reset '{0}' to its default of {1}. Are you sure?" -f
+                        $Name, $defaultValue),
+                    "Reset setting to default"
                 )
+            ) {
+                if ($PSCmdlet.ShouldProcess("Setting: $Name", "Reset default: $defaultValue")) {
+                    $SETTINGS[$Name] = $defaultValue
+                }
+                $SettingsChanged = $true
+            }
+            return
+        }
+        $targetType = $DefaultSettings[$Name][0]
+        $Value = $PSBoundParameters.Value -as $targetType
+        if ($Value -is $targetType) {
+            if ($PSCmdlet.ShouldProcess("Setting: $Name", "Update value: $Value")) {
+                if ($SETTINGS[$Name] -ne $Value) { $SettingsChanged = $true }
+                $SETTINGS[$Name] = $Value
             }
         }
         else {
-            throw "No setting $Name exists!"
+            throw ("The type of value '{0}' does not match required type: {1}" -f
+                $PSBoundParameters.Value, $targetType
+            )
         }
     }
     end {
         if ($SettingsChanged) {
-            $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile
+            $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile -Force
             Write-Verbose "Settings changed: Updated settings file '$SettingsFile'"
         }
     }
@@ -132,17 +153,11 @@ function Get-ModuleSetting {
     [CmdletBinding(DefaultParameterSetName = 'GetAll')]
     [OutputType("System.Object")]
     param (
-        [Parameter(
-            Mandatory = $true,
-            ParameterSetName = 'GetDefault'
-        )]
+        [Parameter(Mandatory = $true, ParameterSetName = 'GetDefault')]
         [Switch]
         $Default,
 
-        [Parameter(
-            Mandatory = $true,
-            ParameterSetName = 'GetType'
-        )]
+        [Parameter(Mandatory = $true, ParameterSetName = 'GetType')]
         [Switch]
         $Type
     )
@@ -154,25 +169,17 @@ function Get-ModuleSetting {
         return $paramDict
     }
     process {
-        if ($PSCmdlet.ParameterSetName -eq 'GetAll') {
-            return $SETTINGS.Clone()
-        }
-        if ($null -ne $SETTINGS[$PSBoundParameters.Name]) {
-            if ($PSCmdlet.ParameterSetName -eq 'GetDefault') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'GetDefault' {
                 $DefaultSettings[$PSBoundParameters.Name][1]
             }
-            elseif ($PSCmdlet.ParameterSetName -eq 'GetType') {
+            'GetType' {
                 $DefaultSettings[$PSBoundParameters.Name][0]
             }
-            elseif ($PSCmdlet.ParameterSetName -eq 'GetValue') {
+            'GetValue' {
                 $SETTINGS[$PSBoundParameters.Name]
             }
-            else {
-                throw "Invalid parameter set"
-            }
-        }
-        else {
-            throw "No setting $Name exists!"
+            default { $SETTINGS.Clone() }
         }
     }
 }
@@ -186,7 +193,7 @@ function Reset-Module {
         $Force
     )
     process {
-        if ($PSCmdlet.ShouldContinue(
+        if ($Force -or $PSCmdlet.ShouldContinue(
                 "This will reset all NordVPN-Servers module settings to their defaults. Are you sure?",
                 "Reset settings to default"
             )
@@ -212,10 +219,7 @@ function Get-ModuleSettingNameDynamicParam {
     [CmdletBinding()]
     [OutputType('System.Management.Automation.RuntimeDefinedParameter')]
     param (
-        [Parameter(
-            Mandatory = $true,
-            Position = 1
-        )]
+        [Parameter(Mandatory = $true, Position = 1)]
         [String[]]
         $SetNames
     )
@@ -252,7 +256,11 @@ function Get-CountryDynamicParam {
 
         [Parameter(Mandatory = $true, Position = 1)]
         [String[]]
-        $SetNames
+        $SetNames,
+
+        [Parameter(Mandatory = $false, Position = 2)]
+        [Switch]
+        $Offline
     )
     begin {
         $oldProgressPreference = $ProgressPreference
@@ -274,8 +282,13 @@ function Get-CountryDynamicParam {
             $paramAttrib.ValueFromPipelineByPropertyName = $fromPipeProp
             $ctryAttribCol.Add($paramAttrib)
         }
-
-        $ctryVals = (Get-CountryList).Code
+        if ($Offline) {
+            $ctryVals = (Get-CountryList -Offline).Code
+        }
+        else {
+            $ctryVals = (Get-CountryList).Code
+        }
+        if ($ctryVals.Count -lt 1) { $ctryVals = $KnownCountries }
         $ctryValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($ctryVals)
         $ctryAttribCol.Add($ctryValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -298,7 +311,11 @@ function Get-GroupDynamicParam {
 
         [Parameter(Mandatory = $true, Position = 1)]
         [String[]]
-        $SetNames
+        $SetNames,
+
+        [Parameter(Mandatory = $false, Position = 2)]
+        [Switch]
+        $Offline
     )
     begin {
         $oldProgressPreference = $ProgressPreference
@@ -320,7 +337,13 @@ function Get-GroupDynamicParam {
             $paramAttrib.ValueFromPipelineByPropertyName = $fromPipeProp
             $grpAttribCol.Add($paramAttrib)
         }
-        $grpVals = (Get-GroupList).Code
+        if ($Offline) {
+            $grpVals = (Get-GroupList -Offline).Code
+        }
+        else {
+            $grpVals = (Get-GroupList).Code
+        }
+        if ($grpVals.Count -lt 1) { $grpVals = $KnownGroups }
         $grpValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($grpVals)
         $grpAttribCol.Add($grpValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -343,7 +366,11 @@ function Get-TechnologyDynamicParam {
 
         [Parameter(Mandatory = $true, Position = 1)]
         [String[]]
-        $SetNames
+        $SetNames,
+
+        [Parameter(Mandatory = $false, Position = 2)]
+        [Switch]
+        $Offline
     )
     begin {
         $oldProgressPreference = $ProgressPreference
@@ -365,7 +392,13 @@ function Get-TechnologyDynamicParam {
             $paramAttrib.ValueFromPipelineByPropertyName = $fromPipeProp
             $techAttribCol.Add($paramAttrib)
         }
-        $techVals = (Get-TechnologyList).Code
+        if ($Offline) {
+            $techVals = (Get-TechnologyList -Offline).Code
+        }
+        else {
+            $techVals = (Get-TechnologyList).Code
+        }
+        if ($techVals.Count -lt 1) { $techVals = $KnownTechnologies }
         $techValidateSet = New-Object System.Management.Automation.ValidateSetAttribute($techVals)
         $techAttribCol.Add($techValidateSet)
         New-Object System.Management.Automation.RuntimeDefinedParameter(
@@ -457,7 +490,7 @@ function Get-List {
         }
         $RawList = try {
             Write-Progress -Activity "Processing lists" -CurrentOperation "Downloading server data" -Id 1
-            Write-Debug "Attempting HTTPS request to API"
+            Write-Debug "Attempting HTTPS request to API: $URL"
             $data = Invoke-RestMethod -Uri $URL
             if ($data.Count -lt 1) {
                 Write-Debug "Received no data from the API"
@@ -467,16 +500,14 @@ function Get-List {
             Write-Progress -Activity "Processing lists" -Id 1 -Completed
         }
         catch [System.Net.WebException] {
-            Write-Warning "A web exception occurred: $($_.Exception.Message)"
+            Write-Warning ("NordVPN API web exception: {0}`nResponse: {1}`nStatus: {2}" -f `
+                    $_.Exception.Message, $_.Exception.Response, $_.Exception.Status)
+            return $false
         }
         catch {
-            Write-Error "A general exception occurred: $($_.Exception.Message)"
+            Write-Warning ("An exception occurred accessing the NordVPN API: $($_.Exception.Message)")
+            return $false
         }
-        if ($RawList -isnot [Object]) {
-            Write-Warning "Failed to parse JSON correctly."
-            return
-        }
-
         $RawList
     }
 }
@@ -485,10 +516,7 @@ function Get-List {
 function ConvertFrom-ServerEntry {
     [CmdletBinding()]
     param(
-        [Parameter(
-            Position = 0,
-            Mandatory = $true
-        )]
+        [Parameter(Position = 0, Mandatory = $true)]
         [PSCustomObject]
         $Entries
     )
@@ -682,7 +710,15 @@ function Get-CountryList {
         ) {
             Write-Debug "Requesting country list from the API"
             $CountryList = Get-List $CountryURL
-            if ($null -eq $CountryList) { return }
+            if ($CountryList -isnot [Array]) {
+                if ($CountryList -is [Boolean]) {
+                    $SUCCESS = $false
+                    return
+                }
+                else {
+                    throw "Invalid data returned by Get-List!"
+                }
+            }
             Write-Verbose "Downloaded latest Country list"
             [System.Collections.ArrayList]$NewList = @()
             $i = 0
@@ -726,8 +762,8 @@ function Get-CountryList {
             Write-Verbose "Used Country cache"
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                Write-Verbose "Exported technology cache to fallback: $CountryFallback"
                 $CountryCache.ToArray() | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
+                Write-Verbose "Exported country cache to fallback: $CountryFallback"
             }
             $CountryCache.ToArray()
         }
@@ -735,7 +771,7 @@ function Get-CountryList {
     end {
         if (!$SUCCESS) {
             if (!($Settings.OfflineMode -or $Offline)) {
-                Write-Warning "Used Country fallback file '$CountryFallback'"
+                Write-Verbose "Used Country fallback file '$CountryFallback'"
             }
             Import-Clixml -Path $CountryFallback
         }
@@ -770,7 +806,15 @@ function Get-GroupList {
             ((Get-Date) -gt ($GroupCacheDate.AddSeconds($SETTINGS.GroupCacheLifetime)))
         ) {
             $GroupList = Get-List $GroupURL
-            if ($null -eq $GroupList) { return }
+            if ($GroupList -isnot [Array]) {
+                if ($GroupList -is [Boolean]) {
+                    $SUCCESS = $false
+                    return
+                }
+                else {
+                    throw "Invalid data returned by Get-List!"
+                }
+            }
             Write-Verbose "Downloaded latest group list"
             [System.Collections.ArrayList]$NewList = @()
             $i = 0
@@ -810,8 +854,8 @@ function Get-GroupList {
             Write-Verbose "Used Group cache"
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                Write-Verbose "Exported technology cache to fallback: $GroupFallback"
                 $GroupCache.ToArray() | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
+                Write-Verbose "Exported group cache to fallback: $GroupFallback"
             }
             $GroupCache.ToArray()
         }
@@ -819,7 +863,7 @@ function Get-GroupList {
     end {
         if (!$SUCCESS) {
             if (!($Settings.OfflineMode -or $Offline)) {
-                Write-Warning "Used group fallback file '$GroupFallback'"
+                Write-Verbose "Used group fallback file '$GroupFallback'"
             }
             Import-Clixml -Path $GroupFallback
         }
@@ -854,7 +898,15 @@ function Get-TechnologyList {
             ((Get-Date) -gt ($TechnologyCacheDate.AddSeconds($SETTINGS.TechnologyCacheLifetime)))
         ) {
             $TechnologyList = Get-List $TechnologyURL
-            if ($null -eq $TechnologyList) { return }
+            if ($TechnologyList -isnot [Array]) {
+                if ($TechnologyList -is [Boolean]) {
+                    $SUCCESS = $false
+                    return
+                }
+                else {
+                    throw "Invalid data returned by Get-List!"
+                }
+            }
             Write-Verbose "Downloaded latest Technology list"
             [System.Collections.ArrayList]$NewList = @()
             $i = 0
@@ -878,8 +930,8 @@ function Get-TechnologyList {
             Set-Variable -Scope Script -Force TechnologyCacheDate (Get-Date)
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                Write-Verbose "Exported downloaded technology list to fallback: $TechnologyFallback"
                 $NewList.ToArray() | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
+                Write-Verbose "Exported downloaded technology list to fallback: $TechnologyFallback"
             }
             $NewList.ToArray()
         }
@@ -896,7 +948,7 @@ function Get-TechnologyList {
     end {
         if (!$SUCCESS) {
             if (!($Settings.OfflineMode -or $Offline)) {
-                Write-Warning "Used technology fallback file '$TechnologyFallback'"
+                Write-Verbose "Used technology fallback file '$TechnologyFallback'"
             }
             Import-Clixml -Path $TechnologyFallback
         }
@@ -914,13 +966,13 @@ function Get-CityList {
     )
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 'DefaultOperation'))
+        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 @('DefaultOperation', 'Offline') -Offline:$Offline))
 
         $ParamDict
     }
     process {
         Write-Debug "Cities list requested"
-        if ($PSCmdlet.ParameterSetName -eq 'Offline') {
+        if ($Offline) {
             $Countries = Get-CountryList -Offline
         }
         else {
@@ -949,71 +1001,140 @@ function Get-CityList {
 
 function Show-CountryList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param ()
+    param (
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
+        $Offline
+    )
     begin {
-        Write-Host -fo Green "`n`nServer Countries:"
+        $OldFG = $Host.UI.RawUI.ForegroundColor
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
+        Write-Output "`n`nServer Countries:"
     }
     process {
-        Get-CountryList | Sort-Object -Property Id | `
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
+        if ($Offline) {
+            $CountryList = Get-CountryList -Offline
+        }
+        else {
+            $CountryList = Get-CountryList
+        }
+        $CountryList | Sort-Object -Property Id | `
             Select-Object Id, FriendlyName, Code, Cities | Format-Table -AutoSize `
             Id, FriendlyName, Code, @{Label = "Cities"; Expression = { $_.Cities.FriendlyName -join '/' } }
+    }
+    end {
+        $Host.UI.RawUI.ForegroundColor = $OldFG
     }
 }
 
 
 function Show-GroupList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param ()
+    param (
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
+        $Offline
+    )
     begin {
-        Write-Host -fo Green "`n`nServer Groups:"
+        $OldFG = $Host.UI.RawUI.ForegroundColor
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
+        Write-Output "`n`nServer Groups:"
     }
     process {
-        Get-GroupList | Sort-Object -Property Id | `
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
+        if ($Offline) {
+            $GroupList = Get-GroupList -Offline
+        }
+        else {
+            $GroupList = Get-GroupList
+        }
+        $GroupList | Sort-Object -Property Id | `
             Select-Object Id, FriendlyName, Code, Type, Created, Updated | Format-Table -AutoSize `
             Id, FriendlyName, Code, @{Label = "Type"; Expression = { $_.Type.FriendlyName } }, Created, Updated
+    }
+    end {
+        $Host.UI.RawUI.ForegroundColor = $OldFG
     }
 }
 
 
 function Show-TechnologyList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param ()
+    param (
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
+        $Offline
+    )
     begin {
-        Write-Host -fo Green "`n`nServer Technologies:"
+        $OldFG = $Host.UI.RawUI.ForegroundColor
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
+        Write-Output "`n`nServer Technologies:"
     }
     process {
-        Get-TechnologyList | Sort-Object -Property Id | `
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
+        if ($Offline) {
+            $TechnologyList = Get-TechnologyList -Offline
+        }
+        else {
+            $TechnologyList = Get-TechnologyList
+        }
+        $TechnologyList | Sort-Object -Property Id | `
             Select-Object Id, FriendlyName, Code, Created, Updated | Format-Table -AutoSize
+    }
+    end {
+        $Host.UI.RawUI.ForegroundColor = $OldFG
     }
 }
 
 
 function Show-CityList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param ()
+    param (
+        [Parameter(ParameterSetName = 'Offline')]
+        [Switch]
+        $Offline
+    )
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 'DefaultOperation'))
+        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 @('DefaultOperation', 'Offline') -Offline:$Offline))
 
         $ParamDict
     }
     begin {
-        Write-Host -fo Green "`n`nServer Cities:"
+        $OldFG = $Host.UI.RawUI.ForegroundColor
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
+        Write-Output "`n`nServer Cities:"
     }
     process {
-        if ($PSBoundParameters.Country) {
-            $CityList = Get-CityList -Country:$PSBoundParameters.Country
+        if ($Offline) {
+            if ($PSBoundParameters.Country) {
+                $CityList = Get-CityList -Country:$PSBoundParameters.Country -Offline
+            }
+            else {
+                $CityList = Get-CityList -Offline
+            }
+            $Countries = Get-CountryList -Offline
         }
         else {
-            $CityList = Get-CityList
+            if ($PSBoundParameters.Country) {
+                $CityList = Get-CityList -Country:$PSBoundParameters.Country
+            }
+            else {
+                $CityList = Get-CityList
+            }
+            $Countries = Get-CountryList
         }
-        $Countries = Get-NordVPNCountryList
-        $CityList.GetEnumerator() | Sort-Object -Property CountryCode, FriendlyName | `
+        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
+        $CityList | Sort-Object -Property CountryCode, FriendlyName | `
             Select-Object -Property Id,
         @{Label = 'Country'; Expression = {
                 $ctry = $_.CountryCode; ($Countries | Where-Object { $_.Code -eq $ctry }).FriendlyName }
         },
         FriendlyName, Code, Latitude, Longitude, HubScore | Format-Table -AutoSize
+    }
+    end {
+        $Host.UI.RawUI.ForegroundColor = $OldFG
     }
 }
 
@@ -1021,13 +1142,12 @@ function Show-CityList {
 <# ##### Primary Functions #####
     These are the main functions for retrieving server lists from the NordVPN API.
     -Get-NordVPNRecommendedList allows direct filtering and is ordered by recommendation.
-    -Get-NordVPNSevers uses the raw API and only allows limiting results. This is useful
+    -Get-NordVPNServerList uses the raw API and only allows limiting results. This is useful
     for statistical collection of server details. In order to use the filters effectively,
     you should not limit the number of entries unlike with the Get..Recommended.. function.
 #>
 
 function Get-RecommendedList {
-
     [CmdletBinding(DefaultParameterSetName = "DefaultOperation")]
     [OutputType('System.Array')]
     param (
@@ -1046,9 +1166,9 @@ function Get-RecommendedList {
     )
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 @('DefaultOperation')))
-        $ParamDict.Add('Group', (Get-GroupDynamicParam 1 @('DefaultOperation')))
-        $ParamDict.Add('Technology', (Get-TechnologyDynamicParam 2 @('DefaultOperation')))
+        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 @('DefaultOperation') -Offline:$Offline))
+        $ParamDict.Add('Group', (Get-GroupDynamicParam 1 @('DefaultOperation') -Offline:$Offline))
+        $ParamDict.Add('Technology', (Get-TechnologyDynamicParam 2 @('DefaultOperation') -Offline:$Offline))
 
         $ParamDict
     }
@@ -1067,12 +1187,6 @@ function Get-RecommendedList {
         }
     }
     process {
-        if ($Settings.OfflineMode) {
-            Write-Warning ("The recommended functionality does not work in offline mode.`n" +
-                "Use Set-NordVPNModuleSetting OfflineMode 0 first."
-            )
-            return
-        }
         $CountryId = $null
         if ($null -ne $PSBoundParameters.Country) {
             $CountryId = (
@@ -1115,14 +1229,13 @@ function Get-RecommendedList {
 }
 
 function Get-ServerList {
-
     [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = "DefaultOperation")]
     [OutputType('System.Array')]
     param (
         [Parameter(
             Position = 0,
             HelpMessage = { $GetServersLimitParamHelp },
-            ParameterSetName = "WithFirst"
+            ParameterSetName = "DefaultOperation"
         )]
         [Parameter(
             Position = 0,
@@ -1147,15 +1260,15 @@ function Get-ServerList {
     )
     dynamicparam {
         $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-        $allowedParamSets = @('DefaultOperation', 'Offline', 'WithFirst')
-        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 $allowedParamSets))
-        $ParamDict.Add('Group', (Get-GroupDynamicParam 1 $allowedParamSets))
-        $ParamDict.Add('Technology', (Get-TechnologyDynamicParam 2 $allowedParamSets))
+        $allowedParamSets = @('DefaultOperation', 'Offline')
+        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 $allowedParamSets $Offline))
+        $ParamDict.Add('Group', (Get-GroupDynamicParam 1 $allowedParamSets $Offline))
+        $ParamDict.Add('Technology', (Get-TechnologyDynamicParam 2 $allowedParamSets $Offline))
 
         $ParamDict
     }
     begin {
-        if (($Settings.OfflineMode -or $Offline -or $UpdateFallback -and $Raw)) {
+        if (($Settings.OfflineMode -or $Offline -or $UpdateFallback) -and $Raw) {
             throw ("You cannot use the -Raw switch in offline mode, or" +
                 " with -UpdateFallback.")
         }
@@ -1166,10 +1279,10 @@ function Get-ServerList {
                     Write-Verbose "Importing server list"
                     Write-Progress -Activity "Setting up" -Id 3 -CurrentOperation `
                         'Expanding offline servers list: NordVPN_Servers.xml.zip => NordVPN_Servers.xml'
-                    Expand-Archive $ServersCompressed $PSScriptRoot -Force
+                    $ServersCompressed | Expand-Archive -DestinationPath $PSScriptRoot -Force
                 }
                 else {
-                    throw ('No NordVPN_Servers.xml.zip or NordVPN_Servers.xml file found!' +
+                    throw ("$ServersCompressed or $ServerFallback file not found!" +
                         ' Cannot create fallback file.')
                 }
             }
@@ -1210,7 +1323,12 @@ function Get-ServerList {
             $(if ($Settings.OfflineMode) { 'the fallback file' } else { 'the API' })
             return
         }
-        $ServerList = $AllServersList.Clone()
+        if ($AllServersList.Count -gt 1) {
+            $ServerList = $AllServersList.Clone()
+        }
+        else {
+            $ServerList = @($AllServersList).Clone()
+        }
         if ($null -ne $PSBoundParameters.Country) {
             Write-Verbose "Filtering by country: $($PSBoundParameters.Country)"
             $ServerList = $ServerList | Where-Object CountryCode -eq $PSBoundParameters.Country
@@ -1228,11 +1346,11 @@ function Get-ServerList {
             }
         }
         if ($ServerList.Count -gt 0) {
-            Write-Verbose "Building structures for list with $($ServerList.Count) entries"
             $ServerList
         }
         else {
-            Write-Warning ("No servers in the first $([Math]::min($First,$RawList.Count)) results matched the filters! Filters:" +
+            Write-Warning ('No servers in the first {0} results matched the filters! Filters:' `
+                    -f [Math]::min($First, $RawList.Count) +
                 $(if ($PSBoundParameters.Country) { "`n  Country: {0}" -f $PSBoundParameters.Country }) +
                 $(if ($PSBoundParameters.Group) { "`n  Group: {0}" -f $PSBoundParameters.Group }) +
                 $(if ($PSBoundParameters.Technology) { "`n  Technology: {0}" -f $PSBoundParameters.Technology }) +
