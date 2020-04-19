@@ -4,7 +4,7 @@ First of all, thank you for being a part of this and the wider GitHub community!
 
 ## Code of conduct
 
-![Contributor Covenant][img cc2]
+[![Contributor Covenant][img cc2]][code of conduct]
 
 Please adhere to the **[code of conduct][code of conduct]** which is
  adapted from the [contributor covenant 2.0][cc2].
