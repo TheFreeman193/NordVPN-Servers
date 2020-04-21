@@ -211,7 +211,7 @@ VERBOSE: Cleared the NordVPN technology cache.</dev:code>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Clear-NordVPNCountryCache
-PS C:\&gt; Get-NordVPNCountryList &gt;$null</dev:code>
+PS C:\&gt; Get-NordVPNCountryList | Out-Null</dev:code>
         <dev:remarks>
           <maml:para>Clears the country cache and regenerates it by getting the country list from the API.</maml:para>
         </dev:remarks>
@@ -323,7 +323,7 @@ PS C:\&gt; Get-NordVPNCountryList &gt;$null</dev:code>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Clear-NordVPNGroupCache
-PS C:\&gt; Get-NordVPNGroupList &gt;$null</dev:code>
+PS C:\&gt; Get-NordVPNGroupList | Out-Null</dev:code>
         <dev:remarks>
           <maml:para>Clears the group cache and regenerates it by getting the group list from the API.</maml:para>
         </dev:remarks>
@@ -435,7 +435,7 @@ PS C:\&gt; Get-NordVPNGroupList &gt;$null</dev:code>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Clear-NordVPNTechnologyCache
-PS C:\&gt; Get-NordVPNTechnologyList &gt;$null</dev:code>
+PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
         <dev:remarks>
           <maml:para>Clears the technology cache and regenerates it by getting the technology list from the API.</maml:para>
         </dev:remarks>
@@ -463,8 +463,7 @@ PS C:\&gt; Get-NordVPNTechnologyList &gt;$null</dev:code>
     </command:details>
     <maml:description>
       <maml:para>Returns a list of all cities with NordVPN servers, either globally or within a specific country with the `-Country` parameter. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of city entries, each of which is a hashtable.</maml:para>
-      <maml:para>The structure of a city entry is as follows (PowerShell notation):</maml:para>
-      <maml:para>@{      Id           = [Int64] # Unique ID for city      Code         = [String] # Unique short code for city      FriendlyName = [String] # Full name of city      Latitude     = [Double] # Latitude of city (+ve: N/-ve: S)      Longitude    = [Double] # Longitude of city (+ve: E/-ve: W)      CountryCode  = [String] # Two letter unique code of country      HubScore     = [Int16] # Hub score /100, currently not used  }</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a city entry.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -542,9 +541,6 @@ PS C:\&gt; Get-NordVPNTechnologyList &gt;$null</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-NordVPNCityList</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
@@ -587,7 +583,7 @@ PS C:\&gt; Get-NordVPNTechnologyList &gt;$null</dev:code>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>None</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -597,7 +593,7 @@ PS C:\&gt; Get-NordVPNTechnologyList &gt;$null</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Array</maml:name>
+          <maml:name>NordVPNCityList</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -660,7 +656,11 @@ de570.nordvpn.com
 de650.nordvpn.com
 de717.nordvpn.com</dev:code>
         <dev:remarks>
-          <maml:para>Gets the top 5 NordVPN servers in each city that hosts servers, in Germany. Line 1 stores the country code for Germany (DE). Lines 2-3 get an array of codes for each city in Germany. Line 4 uses `Get-NordVPNRecommendedList` to get a list of all the recommended servers in Germany. Lines 5-8 loop through the `$cities` array and select the first 5 servers from the `$recommended` list for each city code. The result is two lists of 5 servers.</maml:para>
+          <maml:para>Gets the top 5 NordVPN servers in each city that hosts servers, in Germany.</maml:para>
+          <maml:para>- Line 1 stores the country code for Germany (DE).</maml:para>
+          <maml:para>- Lines 2-3 get an array of codes for each city in Germany.</maml:para>
+          <maml:para>- Line 4 uses `Get-NordVPNRecommendedList` to get a list of all the recommended</maml:para>
+          <maml:para>  servers in Germany. - Lines 5-8 loop through the `$cities` array and select the first 5 servers   from the `$recommended` list for each city code. The result is two lists of   5 servers.</maml:para>
           <maml:para>Notable is the use of the backtick ` to continue a long command on the next line, as well as to escape the colon after the `$city` variable on line 6.</maml:para>
         </dev:remarks>
       </command:example>
@@ -687,9 +687,7 @@ de717.nordvpn.com</dev:code>
     </command:details>
     <maml:description>
       <maml:para>Returns a list of all countries with NordVPN servers. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of country entries, each of which is a hashtable.</maml:para>
-      <maml:para>The structure of a country entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id           = [Int64] # Unique ID for country      Code         = [String] # Two-letter unique short code for country      FriendlyName = [String] # Full name of country      Cities       = [Array] # Array of City entries{1}  }</maml:para>
-      <maml:para>{1}To see the structure of a City entry, run `Get-Help Get-NordVPNCityList` and refer to the function description.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a country entry.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -697,7 +695,7 @@ de717.nordvpn.com</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -725,7 +723,7 @@ de717.nordvpn.com</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -760,7 +758,7 @@ de717.nordvpn.com</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Array</maml:name>
+          <maml:name>NordVPNCountryList</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -770,7 +768,8 @@ de717.nordvpn.com</dev:code>
     <maml:alertSet>
       <maml:alert>
         <maml:para>The module utilises a countries cache to reduce API calls. Further calls after the initial download will retrieve data from a local cache of the country list until the number of seconds defined with `Set-NordVPNCountryCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API. To force downloading from the API, run `Clear-NordVPNCountryCache` first.</maml:para>
-        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the country list will be retrieved from NordVPN_Countries.xml in the module directory. This is useful for offline environments. Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the country list will be retrieved from NordVPN_Countries.xml in the module directory. This is useful for offline environments.</maml:para>
+        <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -940,8 +939,7 @@ Vietnam                         13</dev:code>
     </command:details>
     <maml:description>
       <maml:para>Returns a list of all groups that NordVPN servers are tagged with. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of group entries, each of which is a hashtable.</maml:para>
-      <maml:para>The structure of a group entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id           = [Int64] # Unique ID for group      Code         = [String] # Unique short code for group      FriendlyName = [String] # Full name of group      Created      = [DateTime] # When group entry was first registered      Updated      = [DateTime] # When group entry was last revised      Type         = [Hashtable]@{          Id           = [Int32] # Unique ID for group type          Created      = [DateTime] # When group type entry was first registered          Updated      = [DateTime] # When group type entry was last revised          FriendlyName = [String] # Full name of group type          Code         = [String] # Unique short code for group type      }  }</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a group entry.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -949,7 +947,8 @@ Vietnam                         13</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -977,7 +976,8 @@ Vietnam                         13</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1012,7 +1012,7 @@ Vietnam                         13</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Array</maml:name>
+          <maml:name>NordVPNGroupList</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1021,8 +1021,10 @@ Vietnam                         13</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>The module utilises a group cache to reduce API calls. Further calls after the initial download will retrieve data from a local cache of the group list until the number of seconds defined with `Set-NordVPNGroupCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API. To force downloading from the API, run `Clear-NordVPNGroupCache` first.</maml:para>
-        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the group list will be retrieved from NordVPN_Groups.xml in the module directory. This is useful for offline environments. Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>The module utilises a group cache to reduce API calls. Further calls after the initial download will retrieve data from a local cache of the group list until the number of seconds defined with `Set-NordVPNGroupCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API.</maml:para>
+        <maml:para>To force downloading from the API, run `Clear-NordVPNGroupCache` first.</maml:para>
+        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the group list will be retrieved from NordVPN_Groups.xml in the module directory. This is useful for offline environments.</maml:para>
+        <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1082,7 +1084,7 @@ Africa, the Middle East and India         128</dev:code>
         <dev:remarks>
           <maml:para>Displays a list of NordVPN server groups, with the number of servers in each group. Notable is the use of a calculated property in Format-Table.</maml:para>
           <maml:para>Observing the mutual exclusivity of some groups, the total number of servers can be calculated and verified:</maml:para>
-          <maml:para>Taking the the sum of Double VPN, Dedicated IP, Standard, and Obfuscated servers: 67 + 118 + 5177 + 467 = 5829 . Taking the sum of Europe, Americas, APAC and AMEI: 2737 + 2307 + 657 + 128 = 5829 .</maml:para>
+          <maml:para>- Taking the the sum of Double VPN, Dedicated IP, Standard, and Obfuscated   servers: `67 + 118 + 5177 + 467 = 5829`. - Taking the sum of Europe, Americas, APAC and AMEI:   `2737 + 2307 + 657 + 128 = 5829`.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1104,6 +1106,7 @@ Africa, the Middle East and India         128</dev:code>
     </command:details>
     <maml:description>
       <maml:para>Retrieves the current value of a module setting. The default value and required type of the setting value can also be obtained.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Settings (./about_NordVPN-Servers_Settings.md)for more on the module settings.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1114,11 +1117,11 @@ Africa, the Middle East and India         128</dev:code>
             <maml:para>The name of the module setting to get the value, default value or type of.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">GroupCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
           </command:parameterValueGroup>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1147,11 +1150,11 @@ Africa, the Middle East and India         128</dev:code>
             <maml:para>The name of the module setting to get the value, default value or type of.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">GroupCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
           </command:parameterValueGroup>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1180,11 +1183,11 @@ Africa, the Middle East and India         128</dev:code>
             <maml:para>The name of the module setting to get the value, default value or type of.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">GroupCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
           </command:parameterValueGroup>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1339,38 +1342,14 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
     </command:details>
     <maml:description>
       <maml:para>Returns a list of servers recommended by NordVPN, sorted by lowest Load. By default, this function returns the best five servers with the passed parameters, but this limit can be set with the `-Limit` parameter, to return from 1 server to the entire sorted list.</maml:para>
-      <maml:para>The recommended server functionality of the NordVPN web API permits direct filtering in the API request, meaning only details of servers matching the country, technology, and group specified will need to be downloaded. This is in contrast to `Get-NordVPNServerList`, which uses the raw list functionality of the web API and does not support direct filtering. This function is therefore much more efficient as less data must be downloaded and no filtering needs to be done locally. It is suggested to use this function unless absolutely necessary (such as where all servers must be indexed, including those that are full/unavailable.)</maml:para>
-      <maml:para>The structure of a server entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id             = [Int64] # Unique ID for server      Created        = [DateTime] # When server entry was first registered      Updated        = [DateTime] # When server entry was last revised      Hostname       = [String] # The DNS hostname of the server      Load           = [UInt16] # The percentage load on the server      Status         = [String] # The current status of the server      PrimaryIP      = [String] # The main IPv4 address used by the server      Country        = [Hashtable] # Country entry {1}      CountryCode    = [String] # 2-letter code of country where server is located      City           = [Hashtable] # City entry {2}      CityCode       = [String] # Uniqude code of city where server is located      Groups         = [Array] # Entries for groups this server is part of {3}      Technologies   = [Array] # Entries for technologies supported by the server {4}      Services       = [Array] # Entries for services the server supports {5}      Specifications = [Array] # Entries for additional server metadata {6}      IPs            = [Array] # Entries for IP addresses assoicated with the server {7}      Locations      = [Array] # Entries for locations associated with server {8}  }</maml:para>
-      <maml:para>{1} To see the structure of a Country entry, run `Get-Help Get-NordVPNCountryList` (./Get-NordVPNCountryList.md)and refer to the function description.</maml:para>
-      <maml:para>{2} To see the structure of a City entry, run `Get-Help Get-NordVPNCityList` (./Get-NordVPNCityList.md)and refer to the function description.</maml:para>
-      <maml:para>{3} To see the structure of a Group entry, run `Get-Help Get-NordVPNGroupList` (./Get-NordVPNGroupList.md)and refer to the function description.</maml:para>
-      <maml:para>{4} To see the structure of a Technology entry, run `Get-Help Get-NordVPNTechnologyList` (./Get-NordVPNTechnologyList.md)and refer to the function description.</maml:para>
-      <maml:para>{5} To see the structure of a Service entry, run `Get-Help Get-NordVPNTechnologyList` (./Get-NordVPNTechnologyList.md)and refer the structure of a technology entry in the function description. Service entries utilise the same structure.</maml:para>
-      <maml:para>{6} The structure of a Specification entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id           = [Int64] # Unique ID for the specification      FriendlyName = [String] # Full name of the specification      Code         = [String] # Short code for the specification      Values       = [Array]@( # Metadata entries          [Hashtable]@{              Id    = [Int64] # Unique ID for the value              Value = [object] # Actual value data          }          ...      )  }</maml:para>
-      <maml:para>{7} The structure of an IP Address entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id      = # [String] Unique ID for the entry      Version = # [UInt16] The internet protocol version of the IP      Address = # [String] The IP address in dot-decimal notation      EntryId = # [String] Unique ID for the IP itself  }</maml:para>
-      <maml:para>{8} The structure of a location entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id          = [Int64] # Unique ID for location      Latitude    = [Double] # Latitude of location (+ve: N/-ve: S)      Longitude   = [Double] # Longitude of location (+ve: E/-ve: W)      CountryCode = [String] # Two-letter unique short code for associated country      CityCode    = [String] # Unique short code for associated city      Created     = [DateTime] # When location was first registered      Updated     = [DateTime] # When location entry was last revised  }</maml:para>
+      <maml:para>The recommended server functionality of the NordVPN web API permits direct filtering in the API request, meaning only details of servers matching the country, technology, and group specified will need to be downloaded. This is in contrast to `Get-NordVPNServerList`, which uses the raw list functionality of the web API and does not support direct filtering.</maml:para>
+      <maml:para>This function is therefore much more efficient as less data must be downloaded and no filtering needs to be done locally. It is suggested to use this function unless absolutely necessary (such as where all servers must be indexed, including those that are full/unavailable.)</maml:para>
+      <maml:para>The structures of objects returned by this function can be found in the about topic About NordVPN-Servers Classes (.\about_NordVPN-Servers_Classes.md).</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-NordVPNRecommendedList</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
-          <maml:name>Limit</maml:name>
-          <maml:Description>
-            <maml:para>The maximum number of servers to return (1-65535). NOTE : fewer results may be returned from the search if filters are applied.</maml:para>
-            <maml:para>If no value is passed with `-Limit`, the function returns the top 5 servers.</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
-          <dev:type>
-            <maml:name>UInt16</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>5</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>Country</maml:name>
           <maml:Description>
             <maml:para>A 2-digit ISO 3166-1 country code to filter the results by. You can see a list of country codes using `Show-NordVPNCountryList`. Examples include GB (United Kingdom), US (United States), and DE (Germany).</maml:para>
@@ -1444,7 +1423,20 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Limit</maml:name>
+          <maml:Description>
+            <maml:para>The maximum number of servers to return (1-65535). NOTE : fewer results may be returned from the search if filters are applied.</maml:para>
+            <maml:para>If no value is passed with `-Limit`, the function returns the top 5 servers.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+          <dev:type>
+            <maml:name>UInt16</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>5</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>Group</maml:name>
           <maml:Description>
             <maml:para>The short code of the group to filter the results by. You can see a list of country codes using `Show-NordVPNGroupList`. Examples include legacy_standard (Standard Servers) and the_americas (Americas region).</maml:para>
@@ -1472,7 +1464,7 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Technology</maml:name>
           <maml:Description>
             <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
@@ -1522,7 +1514,7 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>Country</maml:name>
         <maml:Description>
           <maml:para>A 2-digit ISO 3166-1 country code to filter the results by. You can see a list of country codes using `Show-NordVPNCountryList`. Examples include GB (United Kingdom), US (United States), and DE (Germany).</maml:para>
@@ -1535,7 +1527,7 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
         <maml:name>Group</maml:name>
         <maml:Description>
           <maml:para>The short code of the group to filter the results by. You can see a list of country codes using `Show-NordVPNGroupList`. Examples include legacy_standard (Standard Servers) and the_americas (Americas region).</maml:para>
@@ -1561,19 +1553,6 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
         </dev:type>
         <dev:defaultValue>5</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
-        <maml:name>Technology</maml:name>
-        <maml:Description>
-          <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
-          <maml:para>A list of available technologies is generated dynamically using `Get-NordVPNTechnologyList`, and can be accessed by typing `-Technology` followed by a space and pressing the tab key.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Raw</maml:name>
         <maml:Description>
@@ -1586,11 +1565,24 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+        <maml:name>Technology</maml:name>
+        <maml:Description>
+          <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
+          <maml:para>A list of available technologies is generated dynamically using `Get-NordVPNTechnologyList`, and can be accessed by typing `-Technology` followed by a space and pressing the tab key.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>None</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1600,7 +1592,7 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Array</maml:name>
+          <maml:name>NordVPNServerList</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1609,9 +1601,10 @@ GroupCacheLifetime           System.UInt32            600           600</dev:cod
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>IMPORTANT : Even if the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, this function will still attempt to utilise the NordVPN web API. This is because recommendations are inherently dynamic and therefore it would be futile to store these offline. To work with server lists offline, you should use `Get-NordVPNServerList`, which responds to the offline mode and can use a list stored in NordVPN_Servers.xml in the module directory.</maml:para>
+        <maml:para>IMPORTANT : Even if the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, this function will still attempt to utilise the NordVPN web API. This is because recommendations are inherently dynamic and therefore it would be futile to store these offline.</maml:para>
+        <maml:para>To work with server lists offline, you should use `Get-NordVPNServerList`, which responds to the offline mode and can use a list stored in NordVPN_Servers.xml in the module directory.</maml:para>
         <maml:para>The recommendations functionality of the NordVPN web API will not display servers filtered by certain technologies, unless the associated group is also supplied. These required pairings are as follows:</maml:para>
-        <maml:para>| Technology Code       | Group Code                | | --------------------: | :------------------------ | | openvpn_dedicated_udp | legacy_dedicated_ip       | | openvpn_dedicated_tcp | legacy_dedicated_ip       | | openvpn_xor_udp       | legacy_obfuscated_servers | | openvpn_xor_tcp       | legacy_obfuscated_servers |</maml:para>
+        <maml:para>`regular       Technology Code Group Code       --------------- ---------- openvpn_dedicated_udp legacy_dedicated_ip openvpn_dedicated_tcp legacy_dedicated_ip       openvpn_xor_udp legacy_obfuscated_servers       openvpn_xor_tcp legacy_obfuscated_servers `regular</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1700,7 +1693,8 @@ us2914.nordvpn.c… US            10
 us2905.nordvpn.c… US            11
 us2938.nordvpn.c… US            12</dev:code>
         <dev:remarks>
-          <maml:para>Creates three custom filter profiles, passes them to `Get-NordVPNRecommendedList` and displays the results as a list with the hostname, country code and current load. Notable is that the recommendations functionality of the NordVPN web API will not display servers filtered by certain technologies, unless the associated group is also supplied. See the notes section of this help for more details.</maml:para>
+          <maml:para>Creates three custom filter profiles, passes them to `Get-NordVPNRecommendedList` and displays the results as a list with the hostname, country code and current load.</maml:para>
+          <maml:para>Notable is that the recommendations functionality of the NordVPN web API will not display servers filtered by certain technologies, unless the associated group is also supplied. See the notes section of this help for more details.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1725,21 +1719,10 @@ us2938.nordvpn.c… US            12</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns a list of NordVPN servers. By default, this function returns all servers that match the passed parameters, but the search can be limited to the first x servers with  `-First x`. NOTE : Using the `-First` parameter will result in some servers matching the filters being missed. You should only do so if this instance is acceptable.</maml:para>
+      <maml:para>Returns a list of NordVPN servers. By default, this function returns all servers that match the passed parameters, but the search can be limited to the first x servers with  `-First x`.</maml:para>
+      <maml:para>NOTE : Using the `-First` parameter will result in some servers matching the filters being missed. You should only do so if this instance is acceptable.</maml:para>
       <maml:para>This function utilises the raw NordVPN servers web API. This means that a large quantity of data (~20 MB) must be downloaded and parsed, as the raw API does not support direct filtering, and therefore this must be done locally. For this reason, it is recommended to use `Get-NordVPNRecommendedList` which utilises the recommended servers API, which supports direct filtering. This function should be used in scenarios where all servers need to be indexed, including those that are full/unavailable.</maml:para>
-      <maml:para>The structure of a server entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id             = [Int64] # Unique ID for server      Created        = [DateTime] # When server entry was first registered      Updated        = [DateTime] # When server entry was last revised      Hostname       = [String] # The DNS hostname of the server      Load           = [UInt16] # The percentage load on the server      Status         = [String] # The current status of the server      PrimaryIP      = [String] # The main IPv4 address used by the server      Country        = [Hashtable] # Country entry {1}      CountryCode    = [String] # 2-letter code of country where server is located      City           = [Hashtable] # City entry {2}      CityCode       = [String] # Uniqude code of city where server is located      Groups         = [Array] # Entries for groups this server is part of {3}      Technologies   = [Array] # Entries for technologies supported by the server {4}      Services       = [Array] # Entries for services the server supports {5}      Specifications = [Array] # Entries for additional server metadata {6}      IPs            = [Array] # Entries for IP addresses assoicated with the server {7}      Locations      = [Array] # Entries for locations associated with server {8}  }</maml:para>
-      <maml:para>{1} To see the structure of a Country entry, run `Get-Help Get-NordVPNCountryList` (./Get-NordVPNCountryList.md)and refer to the function description.</maml:para>
-      <maml:para>{2} To see the structure of a City entry, run `Get-Help Get-NordVPNCityList` (./Get-NordVPNCityList.md)and refer to the function description.</maml:para>
-      <maml:para>{3} To see the structure of a Group entry, run `Get-Help Get-NordVPNGroupList` (./Get-NordVPNGroupList.md)and refer to the function description.</maml:para>
-      <maml:para>{4} To see the structure of a Technology entry, run `Get-Help Get-NordVPNTechnologyList` (./Get-NordVPNTechnologyList.md)and refer to the function description.</maml:para>
-      <maml:para>{5} To see the structure of a Service entry, run `Get-Help Get-NordVPNTechnologyList` (./Get-NordVPNTechnologyList.md)and refer the structure of a technology entry in the function description. Service entries utilise the same structure.</maml:para>
-      <maml:para>{6} The structure of a Specification entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id           = [Int64] # Unique ID for the specification      FriendlyName = [String] # Full name of the specification      Code         = [String] # Short code for the specification      Values       = [Array]@( # Metadata entries          [Hashtable]@{              Id    = [Int64] # Unique ID for the value              Value = [object] # Actual value data          }          ...      )  }</maml:para>
-      <maml:para>{7} The structure of an IP Address entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id      = # [String] Unique ID for the entry      Version = # [UInt16] The internet protocol version of the IP      Address = # [String] The IP address in dot-decimal notation      EntryId = # [String] Unique ID for the IP itself  }</maml:para>
-      <maml:para>{8} The structure of a location entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id          = [Int64] # Unique ID for location      Latitude    = [Double] # Latitude of location (+ve: N/-ve: S)      Longitude   = [Double] # Longitude of location (+ve: E/-ve: W)      CountryCode = [String] # Two-letter unique short code for associated country      CityCode    = [String] # Unique short code for associated city      Created     = [DateTime] # When location was first registered      Updated     = [DateTime] # When location entry was last revised  }</maml:para>
+      <maml:para>The structures of objects returned by this function can be found in the about topic About NordVPN-Servers Classes (.\about_NordVPN-Servers_Classes.md).</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1747,7 +1730,57 @@ us2938.nordvpn.c… US            12</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>First</maml:name>
           <maml:Description>
-            <maml:para>Searches only the number of servers specified (1-65535). NOTE : Lowering this number may result in some servers matching the filters to be missed.</maml:para>
+            <maml:para>Searches only the number of servers specified (1-65535).</maml:para>
+            <maml:para>`NOTE:` Lowering this number may result in some servers matching the filters to be missed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+          <dev:type>
+            <maml:name>UInt16</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>8192</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UpdateFallback</maml:name>
+          <maml:Description>
+            <maml:para>Passing this switch causes the function to update the NordVPN_Servers.xml.zip file, using the data retrieved from the NordVPN web API or cache. This is useful if many called will be made to `Get-NordVPNServerList`, since the offline data can be loaded much more quickly and does not need to be parsed, unlike data directly from the web API.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-NordVPNServerList</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>First</maml:name>
+          <maml:Description>
+            <maml:para>Searches only the number of servers specified (1-65535).</maml:para>
+            <maml:para>`NOTE:` Lowering this number may result in some servers matching the filters to be missed.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
           <dev:type>
@@ -1771,7 +1804,7 @@ us2938.nordvpn.c… US            12</dev:code>
           <maml:name>Raw</maml:name>
           <maml:Description>
             <maml:para>Returns the raw server entry data without processing. This speeds up operation but results in an inconsistent data structure due to the API's naming conventions.</maml:para>
-            <maml:para>You cannot use this switch with the `-Country`, `-Group`, or `-Technology` filter parameters, or the `-Offline`/`-UpdateFallback` parameters.</maml:para>
+            <maml:para>You cannot use this switch with the `-Offline` or `-UpdateFallback` parameters.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -1793,493 +1826,6 @@ us2938.nordvpn.c… US            12</dev:code>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-NordVPNServerList</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
-          <maml:name>Country</maml:name>
-          <maml:Description>
-            <maml:para>A 2-digit ISO 3166-1 country code to filter the results by. You can see a list of country codes using `Show-NordVPNCountryList`. Examples include GB (United Kingdom), US (United States), and DE (Germany).</maml:para>
-            <maml:para>A list of available countries is generated dynamically using `Get-NordVPNCountryList`, and can be accessed by typing `-Country` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">AL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BG</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CY</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CZ</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">FI</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">FR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IN</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ID</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">JP</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">LV</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">LU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MY</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MX</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MD</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NZ</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NO</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">PL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">PT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RO</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SG</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SI</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ZA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">KR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ES</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CH</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TW</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TH</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">UA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GB</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">VN</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
-          <maml:name>Group</maml:name>
-          <maml:Description>
-            <maml:para>The short code of the group to filter the results by. You can see a list of country codes using `Show-NordVPNGroupList`. Examples include legacy_standard (Standard Servers) and the_americas (Americas region).</maml:para>
-            <maml:para>A list of available groups is generated dynamically using `Get-NordVPNGroupList`, and can be accessed by typing `-Group` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">legacy_double_vpn</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_onion_over_vpn</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_ultra_fast_tv</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_anti_ddos</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_dedicated_ip</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_standard</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_netflix_usa</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_p2p</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_obfuscated_servers</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">europe</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">the_americas</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">asia_pacific</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">africa_the_middle_east_and_india</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
-          <maml:name>Technology</maml:name>
-          <maml:Description>
-            <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
-            <maml:para>A list of available technologies is generated dynamically using `Get-NordVPNTechnologyList`, and can be accessed by typing `-Technology` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">ikev2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">socks</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">pptp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">l2tp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_xor_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_xor_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_cybersec</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_ssl</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_ssl_cybersec</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ikev2_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">wireguard_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp_tls_crypt</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp_tls_crypt</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_dedicated_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_dedicated_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">v2ray</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
-          <maml:Description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>UpdateFallback</maml:name>
-          <maml:Description>
-            <maml:para>Passing this switch causes the function to update the NordVPN_Servers.xml.zip fallback file, using the data retrieved from the NordVPN web API or cache. This is useful if many called will be made to `Get-NordVPNServerList`, since the offline data can be loaded much more quickly and does not need to be parsed, unlike data directly from the web API.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
-          <maml:name>WhatIf</maml:name>
-          <maml:Description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-NordVPNServerList</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
-          <maml:name>First</maml:name>
-          <maml:Description>
-            <maml:para>Searches only the number of servers specified (1-65535). NOTE : Lowering this number may result in some servers matching the filters to be missed.</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
-          <dev:type>
-            <maml:name>UInt16</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>8192</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
-          <maml:name>Country</maml:name>
-          <maml:Description>
-            <maml:para>A 2-digit ISO 3166-1 country code to filter the results by. You can see a list of country codes using `Show-NordVPNCountryList`. Examples include GB (United Kingdom), US (United States), and DE (Germany).</maml:para>
-            <maml:para>A list of available countries is generated dynamically using `Get-NordVPNCountryList`, and can be accessed by typing `-Country` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">AL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BG</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CY</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CZ</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">FI</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">FR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IN</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ID</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">JP</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">LV</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">LU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MY</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MX</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MD</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NZ</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NO</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">PL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">PT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RO</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SG</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SI</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ZA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">KR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ES</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CH</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TW</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TH</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">UA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GB</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">VN</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
-          <maml:name>Group</maml:name>
-          <maml:Description>
-            <maml:para>The short code of the group to filter the results by. You can see a list of country codes using `Show-NordVPNGroupList`. Examples include legacy_standard (Standard Servers) and the_americas (Americas region).</maml:para>
-            <maml:para>A list of available groups is generated dynamically using `Get-NordVPNGroupList`, and can be accessed by typing `-Group` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">legacy_double_vpn</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_onion_over_vpn</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_ultra_fast_tv</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_anti_ddos</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_dedicated_ip</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_standard</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_netflix_usa</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_p2p</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_obfuscated_servers</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">europe</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">the_americas</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">asia_pacific</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">africa_the_middle_east_and_india</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
-          <maml:name>Technology</maml:name>
-          <maml:Description>
-            <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
-            <maml:para>A list of available technologies is generated dynamically using `Get-NordVPNTechnologyList`, and can be accessed by typing `-Technology` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">ikev2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">socks</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">pptp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">l2tp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_xor_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_xor_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_cybersec</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_ssl</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_ssl_cybersec</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ikev2_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">wireguard_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp_tls_crypt</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp_tls_crypt</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_dedicated_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_dedicated_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">v2ray</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
-          <maml:Description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
-          <maml:name>WhatIf</maml:name>
-          <maml:Description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-NordVPNServerList</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
-          <maml:name>Country</maml:name>
-          <maml:Description>
-            <maml:para>A 2-digit ISO 3166-1 country code to filter the results by. You can see a list of country codes using `Show-NordVPNCountryList`. Examples include GB (United Kingdom), US (United States), and DE (Germany).</maml:para>
-            <maml:para>A list of available countries is generated dynamically using `Get-NordVPNCountryList`, and can be accessed by typing `-Country` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">AL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">BG</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CY</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CZ</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">FI</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">FR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">HU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IN</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ID</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">IT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">JP</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">LV</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">LU</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MY</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MX</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MD</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NZ</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">MK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NO</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">PL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">PT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RO</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SG</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SK</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SI</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ZA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">KR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ES</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CH</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TW</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TH</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">TR</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">UA</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GB</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">VN</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
-          <maml:name>Group</maml:name>
-          <maml:Description>
-            <maml:para>The short code of the group to filter the results by. You can see a list of country codes using `Show-NordVPNGroupList`. Examples include legacy_standard (Standard Servers) and the_americas (Americas region).</maml:para>
-            <maml:para>A list of available groups is generated dynamically using `Get-NordVPNGroupList`, and can be accessed by typing `-Group` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">legacy_double_vpn</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_onion_over_vpn</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_ultra_fast_tv</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_anti_ddos</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_dedicated_ip</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_standard</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_netflix_usa</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_p2p</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">legacy_obfuscated_servers</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">europe</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">the_americas</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">asia_pacific</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">africa_the_middle_east_and_india</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
-          <maml:name>Technology</maml:name>
-          <maml:Description>
-            <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
-            <maml:para>A list of available technologies is generated dynamically using `Get-NordVPNTechnologyList`, and can be accessed by typing `-Technology` followed by a space and pressing the tab key.</maml:para>
-          </maml:Description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">ikev2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">socks</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">pptp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">l2tp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_xor_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_xor_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_cybersec</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_ssl</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">proxy_ssl_cybersec</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ikev2_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp_v6</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">wireguard_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_udp_tls_crypt</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_tcp_tls_crypt</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_dedicated_udp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">openvpn_dedicated_tcp</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">v2ray</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
           <maml:Description>
@@ -2294,7 +1840,7 @@ us2938.nordvpn.c… US            12</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Servers.xml.zip . This does not change the value of the setting but is useful when many calls to `Get-NordVPNServerList` will be made. The first call can be used to update the fallback with `-UpdateFallback` and subsequent calls can utilise `-Offline` to use the downloaded copy.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Servers.xml.zip. This does not change the value of the setting but is useful when many calls to `Get-NordVPNServerList` will be made. The first call can be used to update the fallback with `-UpdateFallback` and subsequent calls can utilise `-Offline` to use the downloaded copy.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -2328,36 +1874,11 @@ us2938.nordvpn.c… US            12</dev:code>
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Raw</maml:name>
-        <maml:Description>
-          <maml:para>Returns the raw server entry data without processing. This speeds up operation but results in an inconsistent data structure due to the API's naming conventions.</maml:para>
-          <maml:para>You cannot use this switch with the `-Country`, `-Group`, or `-Technology` filter parameters, or the `-Offline`/`-UpdateFallback` parameters.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
-        <maml:name>Country</maml:name>
-        <maml:Description>
-          <maml:para>A 2-digit ISO 3166-1 country code to filter the results by. You can see a list of country codes using `Show-NordVPNCountryList`. Examples include GB (United Kingdom), US (United States), and DE (Germany).</maml:para>
-          <maml:para>A list of available countries is generated dynamically using `Get-NordVPNCountryList`, and can be accessed by typing `-Country` followed by a space and pressing the tab key.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>First</maml:name>
         <maml:Description>
-          <maml:para>Searches only the number of servers specified (1-65535). NOTE : Lowering this number may result in some servers matching the filters to be missed.</maml:para>
+          <maml:para>Searches only the number of servers specified (1-65535).</maml:para>
+          <maml:para>`NOTE:` Lowering this number may result in some servers matching the filters to be missed.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
         <dev:type>
@@ -2366,23 +1887,10 @@ us2938.nordvpn.c… US            12</dev:code>
         </dev:type>
         <dev:defaultValue>8192</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
-        <maml:name>Group</maml:name>
-        <maml:Description>
-          <maml:para>The short code of the group to filter the results by. You can see a list of country codes using `Show-NordVPNGroupList`. Examples include legacy_standard (Standard Servers) and the_americas (Americas region).</maml:para>
-          <maml:para>A list of available groups is generated dynamically using `Get-NordVPNGroupList`, and can be accessed by typing `-Group` followed by a space and pressing the tab key.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Servers.xml.zip . This does not change the value of the setting but is useful when many calls to `Get-NordVPNServerList` will be made. The first call can be used to update the fallback with `-UpdateFallback` and subsequent calls can utilise `-Offline` to use the downloaded copy.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Servers.xml.zip. This does not change the value of the setting but is useful when many calls to `Get-NordVPNServerList` will be made. The first call can be used to update the fallback with `-UpdateFallback` and subsequent calls can utilise `-Offline` to use the downloaded copy.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2391,23 +1899,23 @@ us2938.nordvpn.c… US            12</dev:code>
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none">
-        <maml:name>Technology</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Raw</maml:name>
         <maml:Description>
-          <maml:para>The short code of the technology to filter the results by. You can see a list of country codes using `Show-NordVPNTechnologyList`. Examples include ikev2 (IKEv2/IPSec), openvpn_xor_udp (Obfuscated OpenVPN/UDP), and proxy_ssl (HTTPS Proxy/SSL).</maml:para>
-          <maml:para>A list of available technologies is generated dynamically using `Get-NordVPNTechnologyList`, and can be accessed by typing `-Technology` followed by a space and pressing the tab key.</maml:para>
+          <maml:para>Returns the raw server entry data without processing. This speeds up operation but results in an inconsistent data structure due to the API's naming conventions.</maml:para>
+          <maml:para>You cannot use this switch with the `-Offline` or `-UpdateFallback` parameters.</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>UpdateFallback</maml:name>
         <maml:Description>
-          <maml:para>Passing this switch causes the function to update the NordVPN_Servers.xml.zip fallback file, using the data retrieved from the NordVPN web API or cache. This is useful if many called will be made to `Get-NordVPNServerList`, since the offline data can be loaded much more quickly and does not need to be parsed, unlike data directly from the web API.</maml:para>
+          <maml:para>Passing this switch causes the function to update the NordVPN_Servers.xml.zip file, using the data retrieved from the NordVPN web API or cache. This is useful if many called will be made to `Get-NordVPNServerList`, since the offline data can be loaded much more quickly and does not need to be parsed, unlike data directly from the web API.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2432,7 +1940,7 @@ us2938.nordvpn.c… US            12</dev:code>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>None</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -2442,7 +1950,7 @@ us2938.nordvpn.c… US            12</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Array</maml:name>
+          <maml:name>NordVPNServerList</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -2451,7 +1959,9 @@ us2938.nordvpn.c… US            12</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the server list will be retrieved from NordVPN_Servers.xml in the module directory. This is useful for offline environments. Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage. NOTE : The NordVPN_Servers.xml fallback file is not included with the module as must be generated using `Get-NordVPNServerList -UpdateFallback` should this functionality be required.</maml:para>
+        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the server list will be retrieved from NordVPN_Servers.xml in the module directory. This is useful for offline environments.</maml:para>
+        <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>NOTE : The NordVPN_Servers.xml fallback file is not included with the module as must be generated using `Get-NordVPNServerList -UpdateFallback` should this functionality be required.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2520,7 +2030,8 @@ Get-NordVPNServerList: Parameter set cannot be resolved using the specified name
 PS C:\&gt; Get-NordVPNServerList -Offline -First 100
 Get-NordVPNServerList: Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided.</dev:code>
         <dev:remarks>
-          <maml:para>Demonstrates the mutual exclusivity of the `-Offline`, `-UpdateFallback`, and `-First &lt;int&gt;` parameters. The `-First` parameter is designed to reduce the amount of data received from the API, at the expensive of completeness in results if any filters are applied. Since this results in an incomplete list, the function will not allow the fallback file to be updated. Likewise, the `-First` parameter is inconsequential when using local data. The fallback file will also not be updated if the data is being retrieved from it.</maml:para>
+          <maml:para>Demonstrates the mutual exclusivity of the `-Offline`, `-UpdateFallback`, and `-First &lt;int&gt;` parameters. The `-First` parameter is designed to reduce the amount of data received from the API, at the expensive of completeness in results if any filters are applied. Since this results in an incomplete list, the function will not allow the fallback file to be updated.</maml:para>
+          <maml:para>Likewise, the `-First` parameter is inconsequential when using local data. The fallback file will also not be updated if the data is being retrieved from it.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -2610,9 +2121,10 @@ PS C:\&gt; (Get-ItemProperty .\NordVPN_Servers.xml).Length / 1MB
 PS C:\&gt; (Get-ItemProperty .\NordVPN_Servers.xml.zip).Length / 1MB
 2.66928958892822</dev:code>
         <dev:remarks>
-          <maml:para>Demonstrates the time taken to download and process all server entries, as well as the additional time when these processed entries are written to file and compressed. The operation is ~40% longer when the fallback file is updated. However, using the fallback file which contains pre-processed server entries, is 5-6x faster than downloading and processing this data. This is true even when the setting DeleteServerFallbackAfterUse is enabled, meaning the archive is extracted each time the function is run.</maml:para>
+          <maml:para>Demonstrates the time taken to download and process all server entries, as well as the additional time when these processed entries are written to file and compressed. The operation is ~40% longer when the fallback file is updated. However, using the fallback file which contains pre-processed server entries, is 5-6x faster than downloading and processing this data. This is true even when the setting `DeleteServerFallbackAfterUse` is enabled, meaning the archive is extracted each time the function is run.</maml:para>
           <maml:para>It is therefore important to consider how often the list of registered servers needed to be updated, and the fallback used where necessary to improve performance and reduce load on the web API.</maml:para>
-          <maml:para>Also notable is the size of the uncompressed server fallback file (~50 MB). When the file is updated, it is automatically compressed to a much more reasonable ~3 MB. By default, the uncompressed file is kept to improve performance when using the local data. However, on systems where storage space is an important consideration, such as thin clients, the setting DeleteServerFallbackAfterUse can be enabled, which causes the uncompressed file to be deleted after each use. In this way, it behaves as a temporary file and only the much smaller compressed version needs to persist on the disk. Use `Set-NordVPNModuleSetting DeleteServerFallbackAfterUse 1` to enable this feature.</maml:para>
+          <maml:para>Also notable is the size of the uncompressed server fallback file (~50 MB). When the file is updated, it is automatically compressed to a much more reasonable ~2 MB. By default, the uncompressed file is kept to improve performance when using the local data. However, on systems where storage space is an important consideration, such as thin clients, the setting `DeleteServerFallbackAfterUse` can be enabled, which causes the uncompressed file to be deleted after each use. In this way, it behaves as a temporary file and only the much smaller compressed version needs to persist on the disk.</maml:para>
+          <maml:para>Use `Set-NordVPNModuleSetting DeleteServerFallbackAfterUse 1` to enable this feature.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -2656,7 +2168,7 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -2684,7 +2196,7 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2719,7 +2231,7 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Array</maml:name>
+          <maml:name>NordVPNTechnologyList</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -2728,8 +2240,10 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>The module utilises a group cache to reduce API calls. Further calls after the initial download will retrieve data from a local cache of the group list until the number of seconds defined with `Set-NordVPNTechnologyCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API. To force downloading from the API, run `Clear-NordVPNTechnologyCache` first.</maml:para>
-        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the technology list will be retrieved from NordVPN_Technologies.xml in the module directory. This is useful for offline environments. Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>The module utilises a group cache to reduce API calls. Further calls after the initial download will retrieve data from a local cache of the group list until the number of seconds defined with `Set-NordVPNTechnologyCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API.</maml:para>
+        <maml:para>To force downloading from the API, run `Clear-NordVPNTechnologyCache` first.</maml:para>
+        <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the technology list will be retrieved from NordVPN_Technologies.xml in the module directory. This is useful for offline environments.</maml:para>
+        <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2865,10 +2379,10 @@ OpenVPN TCP Dedicated      2.01%</dev:code>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Reset-NordVPNModule</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Force</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
           <maml:Description>
-            <maml:para>Resets the module setting default without confirmation.</maml:para>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -2876,10 +2390,10 @@ OpenVPN TCP Dedicated      2.01%</dev:code>
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
           <maml:Description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Resets the module setting default without confirmation.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -2901,10 +2415,10 @@ OpenVPN TCP Dedicated      2.01%</dev:code>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Force</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
         <maml:Description>
-          <maml:para>Resets the module setting default without confirmation.</maml:para>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2913,10 +2427,10 @@ OpenVPN TCP Dedicated      2.01%</dev:code>
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-        <maml:name>Confirm</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
         <maml:Description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          <maml:para>Resets the module setting default without confirmation.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -3000,6 +2514,7 @@ VERBOSE: Settings changed: Updated settings file 'NordVPN-Servers.settings.json'
     </command:details>
     <maml:description>
       <maml:para>This function is used to modify persistent settings for the NordVPN-Servers module. It also allows resetting individual settings to their defaults. Use this to configure the cache lifetimes, offline mode, and whether or not the extracted NordVPN_Servers.xml fallback file is deleted after use.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Settings (./about_NordVPN-Servers_Settings.md)for more on the module settings.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -3010,11 +2525,11 @@ VERBOSE: Settings changed: Updated settings file 'NordVPN-Servers.settings.json'
             <maml:para>The name of the module setting to be changed/reset.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">GroupCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CountryCacheLifetime</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DeleteServerFallbackAfterUse</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">OfflineMode</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">TechnologyCacheLifetime</command:parameterValue>
           </command:parameterValueGroup>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -3083,6 +2598,18 @@ VERBOSE: Settings changed: Updated settings file 'NordVPN-Servers.settings.json'
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:Description>
+          <maml:para>Sets or resets the module setting without confirmation.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
@@ -3106,18 +2633,6 @@ VERBOSE: Settings changed: Updated settings file 'NordVPN-Servers.settings.json'
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Force</maml:name>
-        <maml:Description>
-          <maml:para>Sets or resets the module setting without confirmation.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
@@ -3214,251 +2729,6 @@ True</dev:code>
       <maml:navigationLink>
         <maml:linkText>Help Page on GitHub</maml:linkText>
         <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Set-NordVPNModuleSetting.md</maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Help Index</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </command:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Show-NordVPNCountryList</command:name>
-      <command:verb>Show</command:verb>
-      <command:noun>NordVPNCountryList</command:noun>
-      <maml:description>
-        <maml:para>Shows all the countries with NordVPN servers in a neat format.</maml:para>
-      </maml:description>
-    </command:details>
-    <maml:description>
-      <maml:para>Displays a formatted table of countries that contain NordVPN servers. This output is useful for cross-referencing country names with their codes/IDs.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Show-NordVPNCountryList</maml:name>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters />
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Show-NordVPNCountryList
-
-Server Countries:
-
- Id FriendlyName           Code Cities
- -- ------------           ---- ------
-  2 Albania                AL   Tirana
- 10 Argentina              AR   Buenos Aires
- 13 Australia              AU   Adelaide/Brisbane/Melbourne/Perth/Sydney
- 14 Austria                AT   Vienna
- 21 Belgium                BE   Brussels
- 27 Bosnia and Herzegovina BA   Sarajevo
-...</dev:code>
-        <dev:remarks>
-          <maml:para>Displays a list of countries with NordVPN servers. Each entry details the name, ID, country code, and the names of the cities with servers in that country.</maml:para>
-        </dev:remarks>
-      </command:example>
-    </command:examples>
-    <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Help Page on GitHub</maml:linkText>
-        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNCountryList.md</maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Help Index</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </command:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Show-NordVPNGroupList</command:name>
-      <command:verb>Show</command:verb>
-      <command:noun>NordVPNGroupList</command:noun>
-      <maml:description>
-        <maml:para>Shows all the NordVPN server groups in a neat format.</maml:para>
-      </maml:description>
-    </command:details>
-    <maml:description>
-      <maml:para>Displays a formatted table of NordVPN server groups. This output is useful for cross-referencing group names with their codes/IDs.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Show-NordVPNGroupList</maml:name>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters />
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Show-NordVPNGroupList
-
-Server Groups:
-
-Id FriendlyName                      Code                             Type            Created             Updated
--- ------------                      ----                             ----            -------             -------
- 1 Double VPN                        legacy_double_vpn                Legacy category 2017-06-13 13:41:00 2017-06-13 1…
- 3 Onion Over VPN                    legacy_onion_over_vpn            Legacy category 2017-06-13 13:41:22 2017-11-06 1…
- 5 Ultra fast TV                     legacy_ultra_fast_tv             Legacy category 2017-06-13 13:41:42 2017-06-13 1…
- 7 Anti DDoS                         legacy_anti_ddos                 Legacy category 2017-06-13 13:42:08 2017-06-13 1…
- 9 Dedicated IP                      legacy_dedicated_ip              Legacy category 2017-06-13 13:42:36 2018-08-22 1…
-11 Standard VPN servers              legacy_standard                  Legacy category 2017-06-13 13:43:00 2017-06-13 1…
-13 Netflix USA                       legacy_netflix_usa               Legacy category 2017-06-13 13:43:20 2017-06-13 1…
-15 P2P                               legacy_p2p                       Legacy category 2017-06-13 13:43:38 2017-06-13 1…
-17 Obfuscated Servers                legacy_obfuscated_servers        Legacy category 2017-06-13 13:44:10 2017-06-13 1…
-19 Europe                            europe                           Regions         2017-10-27 14:17:17 2017-10-27 1…
-21 The Americas                      the_americas                     Regions         2017-10-27 14:23:03 2017-10-30 0…
-23 Asia Pacific                      asia_pacific                     Regions         2017-10-27 14:23:51 2017-10-30 0…
-25 Africa, the Middle East and India africa_the_middle_east_and_india Regions         2017-10-27 14:40:12 2017-10-30 0…</dev:code>
-        <dev:remarks>
-          <maml:para>Displays a list of NordVPN server groups. Each entry details the name, ID, code, type, and creation/update dates of the group.</maml:para>
-        </dev:remarks>
-      </command:example>
-    </command:examples>
-    <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Help Page on GitHub</maml:linkText>
-        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNGroupList.md</maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Help Index</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </command:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Show-NordVPNTechnologyList</command:name>
-      <command:verb>Show</command:verb>
-      <command:noun>NordVPNTechnologyList</command:noun>
-      <maml:description>
-        <maml:para>Shows all the NordVPN server technologies in a neat format.</maml:para>
-      </maml:description>
-    </command:details>
-    <maml:description>
-      <maml:para>Displays a formatted table of NordVPN compatible technologies. This output is useful for cross-referencing technologies with their codes/IDs.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Show-NordVPNTechnologyList</maml:name>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters />
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-        </dev:type>
-        <maml:description>
-          <maml:para></maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Show-NordVPNTechnologyList
-
-Server Technologies:
-
-Id FriendlyName              Code                  Created             Updated
--- ------------              ----                  -------             -------
- 1 IKEv2/IPSec               ikev2                 2017-03-21 12:00:24 2017-09-05 14:20:16
- 3 OpenVPN UDP               openvpn_udp           2017-05-04 08:03:24 2017-05-09 19:27:37
- 5 OpenVPN TCP               openvpn_tcp           2017-05-09 19:28:14 2017-05-09 19:28:14
- 7 Socks 5                   socks                 2017-05-09 19:28:57 2017-06-13 14:27:05
- 9 HTTP Proxy                proxy                 2017-05-09 19:29:09 2017-06-13 14:25:29
-11 PPTP                      pptp                  2017-05-09 19:29:16 2017-05-09 19:29:16
-13 L2TP/IPSec                l2tp                  2017-05-09 19:29:26 2017-09-05 14:19:42
-15 OpenVPN UDP Obfuscated    openvpn_xor_udp       2017-05-26 14:04:04 2017-11-07 08:37:53
-17 OpenVPN TCP Obfuscated    openvpn_xor_tcp       2017-05-26 14:04:27 2017-11-07 08:38:16
-19 HTTP CyberSec Proxy       proxy_cybersec        2017-08-22 12:44:49 2017-08-22 12:44:49
-21 HTTP Proxy (SSL)          proxy_ssl             2017-10-02 12:45:14 2017-10-02 12:45:14
-23 HTTP CyberSec Proxy (SSL) proxy_ssl_cybersec    2017-10-02 12:50:49 2017-10-02 12:50:49
-26 IKEv2/IPSec IPv6          ikev2_v6              2018-09-18 13:35:16 2018-09-18 13:35:16
-29 OpenVPN UDP IPv6          openvpn_udp_v6        2018-09-18 13:35:38 2018-09-18 13:35:38
-32 OpenVPN TCP IPv6          openvpn_tcp_v6        2018-09-18 13:36:02 2018-09-18 13:36:02
-35 Wireguard                 wireguard_udp         2019-02-14 14:08:43 2019-02-14 14:08:43
-38 OpenVPN UDP TLS Crypt     openvpn_udp_tls_crypt 2019-03-21 14:52:42 2019-03-21 14:52:42
-41 OpenVPN TCP TLS Crypt     openvpn_tcp_tls_crypt 2019-03-21 14:53:05 2019-03-21 14:53:05
-42 OpenVPN UDP Dedicated     openvpn_dedicated_udp 2019-09-19 14:49:18 2019-09-19 14:49:18
-45 OpenVPN TCP Dedicated     openvpn_dedicated_tcp 2019-09-19 14:49:54 2019-09-19 14:49:54
-48 v2ray                     v2ray                 2019-10-28 13:29:37 2019-10-28 13:29:37</dev:code>
-        <dev:remarks>
-          <maml:para>Displays a list of NordVPN's compatible server technologies. Each entry details the name, ID, code, and creation/update dates of the technology entry.</maml:para>
-        </dev:remarks>
-      </command:example>
-    </command:examples>
-    <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Help Page on GitHub</maml:linkText>
-        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Show-NordVPNTechnologyList.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Help Index</maml:linkText>

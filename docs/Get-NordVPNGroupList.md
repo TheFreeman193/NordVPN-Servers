@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Get-NordVPNGroupList.md
-schema: 2.0.0
----
-
+﻿
 # Get-NordVPNGroupList
 
 ## SYNOPSIS
@@ -24,24 +18,11 @@ Get-NordVPNGroupList [-Offline] [<CommonParameters>]
 
 ## DESCRIPTION
 Returns a list of all groups that NordVPN servers are tagged with.
-By default, the required data is downloaded from the NordVPN web API and processed to produce an array of group entries, each of which is a hashtable.
+By default, the required data is downloaded from the NordVPN web API and
+processed to produce an array of group entries, each of which is a hashtable.
 
-The structure of a group entry is as follows (powershell notation):
-
-@{
-     Id           = \[Int64\] # Unique ID for group
-     Code         = \[String\] # Unique short code for group
-     FriendlyName = \[String\] # Full name of group
-     Created      = \[DateTime\] # When group entry was first registered
-     Updated      = \[DateTime\] # When group entry was last revised
-     Type         = \[Hashtable\]@{
-         Id           = \[Int32\] # Unique ID for group type
-         Created      = \[DateTime\] # When group type entry was first registered
-         Updated      = \[DateTime\] # When group type entry was last revised
-         FriendlyName = \[String\] # Full name of group type
-         Code         = \[String\] # Unique short code for group type
-     }
- }
+Please see [About NordVPN-Servers Classes](./about_NordVPN-Servers_Classes.md)
+to view the complete structure of a group entry.
 
 ## EXAMPLES
 
@@ -100,19 +81,24 @@ Asia Pacific                              657
 Africa, the Middle East and India         128
 ```
 
-Displays a list of NordVPN server groups, with the number of servers in each group.
-Notable is the use of a calculated property in Format-Table.
+Displays a list of NordVPN server groups, with the number of servers in each
+group. Notable is the use of a calculated property in Format-Table.
 
-Observing the mutual exclusivity of some groups, the total number of servers can be calculated and verified:
+Observing the mutual exclusivity of some groups, the total number of servers
+can be calculated and verified:
 
-Taking the the sum of Double VPN, Dedicated IP, Standard, and Obfuscated servers: 67 + 118 + 5177 + 467 = 5829 .
-Taking the sum of Europe, Americas, APAC and AMEI: 2737 + 2307 + 657 + 128 = 5829 .
+- Taking the the sum of Double VPN, Dedicated IP, Standard, and Obfuscated
+  servers: `67 + 118 + 5177 + 467 = 5829`.
+- Taking the sum of Europe, Americas, APAC and AMEI:
+  `2737 + 2307 + 657 + 128 = 5829`.
 
 ## PARAMETERS
 
 ### -Offline
-Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml .
-This does not change the value of the setting but is useful when access to the web API is not available.
+Temporarily overrides the OfflineMode setting and uses the fallback file stored
+in NordVPN_Groups.xml. This does not change the value of the setting but is
+useful when access to the web API is not available.
+
 The fallback file can be updated when online with `-UpdateFallback`.
 
 ```yaml
@@ -128,8 +114,10 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateFallback
-Passing this switch causes the function to update the NordVPN_Groups.xml fallback file, using the data retrieved from the NordVPN web API or cache.
-This functionality cannot be used when OfflineMode is enabled or the `-Offline` switch parameter is passed.
+Passing this switch causes the function to update the NordVPN_Groups.xml
+fallback file, using the data retrieved from the NordVPN web API or cache.
+This functionality cannot be used when OfflineMode is enabled or the `-Offline`
+switch parameter is passed.
 
 ```yaml
 Type: SwitchParameter
@@ -151,14 +139,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 ## OUTPUTS
 
-### System.Array
+### NordVPNGroupList
 ## NOTES
 The module utilises a group cache to reduce API calls.
-Further calls after the initial download will retrieve data from a local cache of the group list until the number of seconds defined with `Set-NordVPNGroupCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API.
+Further calls after the initial download will retrieve data from a local cache
+of the group list until the number of seconds defined with
+`Set-NordVPNGroupCacheLifetime` (default: 600s) has passed, after which the
+cache will be updated using the API.
+
 To force downloading from the API, run `Clear-NordVPNGroupCache` first.
 
-If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the group list will be retrieved from NordVPN_Groups.xml in the module directory.
-This is useful for offline environments.
+If the module is configured to only use the fallback files, with the command
+`Set-NordVPNModuleSetting OfflineMode 1`, the group list will be retrieved from
+NordVPN_Groups.xml in the module directory. This is useful for offline
+environments.
+
 Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.
 
 ## RELATED LINKS

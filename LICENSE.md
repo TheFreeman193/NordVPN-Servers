@@ -1,5 +1,7 @@
 # MIT License
 
+![MIT License](./LICENSE.svg)
+
 ## Copyright &copy; 2020 Nicholas Bissell (_TheFreeman193_)
 
 ---

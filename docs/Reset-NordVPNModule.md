@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Reset-NordVPNModule.md
-schema: 2.0.0
----
-
+﻿
 # Reset-NordVPNModule
 
 ## SYNOPSIS
@@ -17,8 +11,9 @@ Reset-NordVPNModule [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Resets all settings for the NordVPN-Servers module back to their default values.
-The function will always prompt for confirmation before this happens, unless the `-Force` switch parameter is passed.
+Resets all settings for the NordVPN-Servers module back to their default
+values. The function will always prompt for confirmation before this happens,
+unless the `-Force` switch parameter is passed.
 
 ## EXAMPLES
 
@@ -33,25 +28,11 @@ VERBOSE: Performing the operation "Reset defaults" on target "All settings".
 VERBOSE: Settings changed: Updated settings file 'NordVPN-Servers.settings.json'
 ```
 
-Demonstrates the confirmation and operations performed when the module settings are reset.
-If the confirmation prompt is accepted with 'Y', the settings are first cleared in the module memory, before the settings file is updated.
+Demonstrates the confirmation and operations performed when the module settings
+are reset. If the confirmation prompt is accepted with 'Y', the settings are
+first cleared in the module memory, before the settings file is updated.
 
 ## PARAMETERS
-
-### -Force
-Resets the module setting default without confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -60,6 +41,21 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Resets the module setting default without confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -99,4 +95,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Help Page on GitHub](https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Reset-NordVPNModule.md)
 
-[Help Index]()
+[Help Index](./INDEX.md)

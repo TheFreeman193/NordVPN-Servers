@@ -1,4 +1,5 @@
-﻿# About NordVPN-Servers Settings
+﻿
+# About NordVPN-Servers Settings
 ## about_NordVPN-Servers_Settings
 
 # SHORT DESCRIPTION
@@ -44,11 +45,11 @@ XML format.
 
 |                   Filename | Approx. size |
 | -------------------------: | :----------- |
-|    `NordVPN_Countries.xml` | 115 KB       |
-|       `NordVPN_Groups.xml` | 18 KB        |
-| `NordVPN_Technologies.xml` | 12 KB        |
+|    `NordVPN_Countries.xml` | 57 KB        |
+|       `NordVPN_Groups.xml` | 10 KB        |
+| `NordVPN_Technologies.xml` | 8 KB         |
 |      `NordVPN_Servers.xml` | 50 MB        |
-|  `NordVPN_Servers.xml.zip` | 2.7 MB       |
+|  `NordVPN_Servers.xml.zip` | 1.5 MB       |
 
 The final item in the list is the compressed version of the server fallback file.
 

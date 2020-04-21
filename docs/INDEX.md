@@ -1,8 +1,10 @@
-﻿# NordVPN-Servers Help Topics
+﻿
+# NordVPN-Servers Help Topics
 
 ## About_ topics
 
 - [about NordVPN-Servers Settings](./about_NordVPN-Servers_Settings.md)
+- [about NordVPN-Servers Classes](./about_NordVPN-Servers_Classes.md)
 
 ## Functions
 
@@ -19,10 +21,6 @@
 - [Get-NordVPNTechnologyList](./Get-NordVPNTechnologyList.md)
 - [Reset-NordVPNModule](./Reset-NordVPNModule.md)
 - [Set-NordVPNModuleSetting](./Set-NordVPNModuleSetting.md)
-- [Show-NordVPNCityList](./Show-NordVPNCityList.md)
-- [Show-NordVPNCountryList](./Show-NordVPNCountryList.md)
-- [Show-NordVPNGroupList](./Show-NordVPNGroupList.md)
-- [Show-NordVPNTechnologyList](./Show-NordVPNTechnologyList.md)
 
 ## SEE ALSO
 

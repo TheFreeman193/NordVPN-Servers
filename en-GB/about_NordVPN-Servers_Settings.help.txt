@@ -13,14 +13,14 @@ LONG DESCRIPTION
     - `CountryCacheLifetime` How long the country cache remains valid after
     being   downloaded, in seconds. After this time, the cache is redownloaded
     the next   time it is needed.
-    - `GroupCacheLifetime` How long the group cache remains valid after being  
-    downloaded, in seconds. After this time, the cache is redownloaded the next 
+    - `GroupCacheLifetime` How long the group cache remains valid after being
+    downloaded, in seconds. After this time, the cache is redownloaded the next
      time it is needed.
     - `TechnologyCacheLifetime` How long the technology cache remains valid
     after   being downloaded, in seconds. After this time, the cache is
     redownloaded the   next time it is needed.
-    - `OfflineMode` When this setting is enabled, the country, group, and  
-    technology lists are retrieved from the fallback files in the module root  
+    - `OfflineMode` When this setting is enabled, the country, group, and
+    technology lists are retrieved from the fallback files in the module root
     directory. The `Get-NordVPNServerList` function also uses local fallback
     files,   and `Get-NordVPNRecommendedList` is unavailable in this mode. The
     files used   are described later in this topic.
@@ -37,13 +37,15 @@ FALLBACK FILES
     The fallback files are stored in the module directory and contain
     pre-processed copies of the data available from the NordVPN web API. They
     are stored in CLI XML format.
-    |                   Filename | Approx. size |
-    | -------------------------: | :----------- |
-    |    `NordVPN_Countries.xml` | 115 KB       |
-    |       `NordVPN_Groups.xml` | 18 KB        |
-    | `NordVPN_Technologies.xml` | 12 KB        |
-    |      `NordVPN_Servers.xml` | 50 MB        |
-    |  `NordVPN_Servers.xml.zip` | 2.7 MB       |
+
+                    Filename  Approx. size
+    -----------------------:  :-----------
+    NordVPN_Countries.xml     57 KB
+    NordVPN_Groups.xml        10 KB
+    NordVPN_Technologies.xml  8 KB
+    NordVPN_Servers.xml       50 MB
+    NordVPN_Servers.xml.zip   1.5 MB
+
     The final item in the list is the compressed version of the server fallback file.
     These files can be updated using the `-UpdateFallback` switch parameter in
     the functions `Get-NordVPNCountryList`, `Get-NordVPNGroupList`,
@@ -62,7 +64,7 @@ EXAMPLES
     help topic for full usage.
 
     Get-NordVPNModuleSetting
-    
+
     Name                           Value
     ----                           -----
     TechnologyCacheLifetime        600
@@ -79,10 +81,10 @@ EXAMPLES
 
     # Sets the country cache lifetime to 5 minutes.
     Set-NordVPNModuleSetting CountryCacheLifetime 300
-    
+
     # Sets the country cache lifetime back to default
     Set-NordVPNModuleSetting CountryCacheLifetime
-    
+
     Reset setting to default
     This will reset 'CountryCacheLifetime' to its default of 600. Are you sure?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -93,7 +95,7 @@ EXAMPLES
     help topic for full usage.
 
     Get-NordVPNModuleSetting
-    
+
     Name                           Value
     ----                           -----
     TechnologyCacheLifetime        500
@@ -101,12 +103,12 @@ EXAMPLES
     CountryCacheLifetime           300
     OfflineMode                    False
     GroupCacheLifetime             400
-    
+
     # Resets all module settings back to default
     Reset-NordVPNModule
-    
+
     Get-NordVPNModuleSetting
-    
+
     Name                           Value
     ----                           -----
     TechnologyCacheLifetime        600
@@ -139,4 +141,3 @@ KEYWORDS
     - about_NordVPNServers_Configuration
     - about_NordVPNServers_Setup
     - about_NordVPNServers
-

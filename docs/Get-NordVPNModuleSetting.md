@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version:
-schema: 2.0.0
----
-
+﻿
 # Get-NordVPNModuleSetting
 
 ## SYNOPSIS
@@ -35,6 +29,9 @@ Get-NordVPNModuleSetting [-Name] <String> [<CommonParameters>]
 ## DESCRIPTION
 Retrieves the current value of a module setting. The default value and required
 type of the setting value can also be obtained.
+
+Please see [About NordVPN-Servers Settings](./about_NordVPN-Servers_Settings.md)
+for more on the module settings.
 
 ## EXAMPLES
 
@@ -125,7 +122,7 @@ The name of the module setting to get the value, default value or type of.
 Type: String
 Parameter Sets: GetDefault, GetType, GetValue
 Aliases:
-Accepted values: TechnologyCacheLifetime, DeleteServerFallbackAfterUse, CountryCacheLifetime, OfflineMode, GroupCacheLifetime
+Accepted values: GroupCacheLifetime, CountryCacheLifetime, DeleteServerFallbackAfterUse, OfflineMode, TechnologyCacheLifetime
 
 Required: True
 Position: 0

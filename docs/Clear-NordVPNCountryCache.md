@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version:
-schema: 2.0.0
----
-
+﻿
 # Clear-NordVPNCountryCache
 
 ## SYNOPSIS
@@ -26,7 +20,7 @@ needed by the module.
 ### Example 1
 ```powershell
 PS C:\> Clear-NordVPNCountryCache
-PS C:\> Get-NordVPNCountryList >$null
+PS C:\> Get-NordVPNCountryList | Out-Null
 ```
 
 Clears the country cache and regenerates it by getting the

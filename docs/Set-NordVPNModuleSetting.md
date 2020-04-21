@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version:
-schema: 2.0.0
----
-
+﻿
 # Set-NordVPNModuleSetting
 
 ## SYNOPSIS
@@ -27,6 +21,9 @@ This function is used to modify persistent settings for the NordVPN-Servers
 module. It also allows resetting individual settings to their defaults. Use
 this to configure the cache lifetimes, offline mode, and whether or not the
 extracted NordVPN_Servers.xml fallback file is deleted after use.
+
+Please see [About NordVPN-Servers Settings](./about_NordVPN-Servers_Settings.md)
+for more on the module settings.
 
 ## EXAMPLES
 
@@ -103,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Sets or resets the module setting without confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the module setting to be changed/reset.
 
@@ -110,7 +122,7 @@ The name of the module setting to be changed/reset.
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TechnologyCacheLifetime, DeleteServerFallbackAfterUse, CountryCacheLifetime, OfflineMode, GroupCacheLifetime
+Accepted values: GroupCacheLifetime, CountryCacheLifetime, DeleteServerFallbackAfterUse, OfflineMode, TechnologyCacheLifetime
 
 Required: True
 Position: 0
@@ -130,21 +142,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Sets or resets the module setting without confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

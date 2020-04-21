@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version:
-schema: 2.0.0
----
-
+﻿
 # Clear-NordVPNGroupCache
 
 ## SYNOPSIS
@@ -26,7 +20,7 @@ needed by the module.
 ### Example 1
 ```powershell
 PS C:\> Clear-NordVPNGroupCache
-PS C:\> Get-NordVPNGroupList >$null
+PS C:\> Get-NordVPNGroupList | Out-Null
 ```
 
 Clears the group cache and regenerates it by getting the
