@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="297" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-04-21" time="17:04:35">
+  <environment user="Nick" clr-version="Unknown" platform="Microsoft Windows 10 Pro|C:\Windows|\Device\Harddisk1\Partition4" nunit-version="2.5.8.0" user-domain="MAIN" cwd="D:\Git\PowerShellModules\NordVPN-Servers" machine-name="MAIN" os-version="10.0.18363" />
+  <culture-info current-culture="en-GB" current-uiculture="en-GB" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="71.2392" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name=".\tests\NordVPN-Servers.Tests.ps1" executed="True" result="Success" success="True" time="71.2392" asserts="0" description=".\tests\NordVPN-Servers.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Fundamental requirements" executed="True" result="Success" success="True" time="0.9874" asserts="0" description="Fundamental requirements">
+            <results>
+              <test-suite type="TestFixture" name="Exports" executed="True" result="Success" success="True" time="0.5318" asserts="0" description="Exports">
+                <results>
+                  <test-case description="Exports only correct function members" name="Fundamental requirements.Exports.Exports only correct function members" time="0.0204" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Set-NordVPNModuleSetting has correct parameters" name="Fundamental requirements.Exports.Function Set-NordVPNModuleSetting has correct parameters" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Reset-NordVPNModule has correct parameters" name="Fundamental requirements.Exports.Function Reset-NordVPNModule has correct parameters" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Clear-NordVPNCache has correct parameters" name="Fundamental requirements.Exports.Function Clear-NordVPNCache has correct parameters" time="0.0032" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Clear-NordVPNTechnologyCache has correct parameters" name="Fundamental requirements.Exports.Function Clear-NordVPNTechnologyCache has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Clear-NordVPNGroupCache has correct parameters" name="Fundamental requirements.Exports.Function Clear-NordVPNGroupCache has correct parameters" time="0.0212" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Clear-NordVPNCountryCache has correct parameters" name="Fundamental requirements.Exports.Function Clear-NordVPNCountryCache has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNTechnologyList has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNTechnologyList has correct parameters" time="0.0114" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNModuleSetting has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNModuleSetting has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNServerList has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNServerList has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNCityList has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNCityList has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNRecommendedList has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNRecommendedList has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNCountryList has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNCountryList has correct parameters" time="0.0119" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Function Get-NordVPNGroupList has correct parameters" name="Fundamental requirements.Exports.Function Get-NordVPNGroupList has correct parameters" time="0.0033" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Fallback files" executed="True" result="Success" success="True" time="0.1326" asserts="0" description="Fallback files">
+                <results>
+                  <test-case description="Includes fallback files" name="Fundamental requirements.Fallback files.Includes fallback files" time="0.035" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Default settings" executed="True" result="Success" success="True" time="0.1951" asserts="0" description="Default settings">
+                <results>
+                  <test-case description="Can generate default module settings file" name="Fundamental requirements.Default settings.Can generate default module settings file" time="0.0337" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Is able to generate default settings" name="Fundamental requirements.Default settings.Is able to generate default settings" time="0.0218" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Class Methods" executed="True" result="Success" success="True" time="4.8921" asserts="0" description="Class Methods">
+            <results>
+              <test-suite type="TestFixture" name="Cities" executed="True" result="Success" success="True" time="0.4113" asserts="0" description="Cities">
+                <results>
+                  <test-case description="Can construct new city list" name="Class Methods.Cities.Can construct new city list" time="0.0332" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new city entry" name="Class Methods.Cities.Can construct new city entry" time="0.0204" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Cities can be added to CityList" name="Class Methods.Cities.Cities can be added to CityList" time="0.0298" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="City can be cloned" name="Class Methods.Cities.City can be cloned" time="0.0711" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="CityList can be cloned" name="Class Methods.Cities.CityList can be cloned" time="0.0684" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Countries" executed="True" result="Success" success="True" time="0.422" asserts="0" description="Countries">
+                <results>
+                  <test-case description="Can construct new country list" name="Class Methods.Countries.Can construct new country list" time="0.0259" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new country entry" name="Class Methods.Countries.Can construct new country entry" time="0.0186" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Countries can be added to CountryList" name="Class Methods.Countries.Countries can be added to CountryList" time="0.0307" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Country can be cloned" name="Class Methods.Countries.Country can be cloned" time="0.053" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="CountryList can be cloned" name="Class Methods.Countries.CountryList can be cloned" time="0.0608" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Groups" executed="True" result="Success" success="True" time="0.448" asserts="0" description="Groups">
+                <results>
+                  <test-case description="Can construct new group list" name="Class Methods.Groups.Can construct new group list" time="0.0263" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new group entry" name="Class Methods.Groups.Can construct new group entry" time="0.0315" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Groups can be added to GroupList" name="Class Methods.Groups.Groups can be added to GroupList" time="0.0288" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Group can be cloned" name="Class Methods.Groups.Group can be cloned" time="0.088" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="GroupList can be cloned" name="Class Methods.Groups.GroupList can be cloned" time="0.075" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Technologies" executed="True" result="Success" success="True" time="0.3955" asserts="0" description="Technologies">
+                <results>
+                  <test-case description="Can construct new technology list" name="Class Methods.Technologies.Can construct new technology list" time="0.0282" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new technology entry" name="Class Methods.Technologies.Can construct new technology entry" time="0.0262" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technologies can be added to TechnologyList" name="Class Methods.Technologies.Technologies can be added to TechnologyList" time="0.011" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technology can be cloned" name="Class Methods.Technologies.Technology can be cloned" time="0.0516" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="TechnologyList can be cloned" name="Class Methods.Technologies.TechnologyList can be cloned" time="0.0609" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Services" executed="True" result="Success" success="True" time="0.3702" asserts="0" description="Services">
+                <results>
+                  <test-case description="Can construct new service list" name="Class Methods.Services.Can construct new service list" time="0.0307" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new service entry" name="Class Methods.Services.Can construct new service entry" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Services can be added to ServiceList" name="Class Methods.Services.Services can be added to ServiceList" time="0.0106" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Service can be cloned" name="Class Methods.Services.Service can be cloned" time="0.0541" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="ServiceList can be cloned" name="Class Methods.Services.ServiceList can be cloned" time="0.0634" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="IPAddresses" executed="True" result="Success" success="True" time="0.3722" asserts="0" description="IPAddresses">
+                <results>
+                  <test-case description="Can construct new IP address list" name="Class Methods.IPAddresses.Can construct new IP address list" time="0.0259" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new IP entry" name="Class Methods.IPAddresses.Can construct new IP entry" time="0.0291" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="IP addresses can be added to IPAddressList" name="Class Methods.IPAddresses.IP addresses can be added to IPAddressList" time="0.0339" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="IPAddress can be cloned" name="Class Methods.IPAddresses.IPAddress can be cloned" time="0.0634" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="IPAddressList can be cloned" name="Class Methods.IPAddresses.IPAddressList can be cloned" time="0.0467" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Values" executed="True" result="Success" success="True" time="0.3177" asserts="0" description="Values">
+                <results>
+                  <test-case description="Can construct new Value list" name="Class Methods.Values.Can construct new Value list" time="0.0267" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new value entry" name="Class Methods.Values.Can construct new value entry" time="0.0189" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Values can be added to ValueList" name="Class Methods.Values.Values can be added to ValueList" time="0.0289" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Value can be cloned" name="Class Methods.Values.Value can be cloned" time="0.0533" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="ValueList can be cloned" name="Class Methods.Values.ValueList can be cloned" time="0.0502" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Specifications" executed="True" result="Success" success="True" time="0.3884" asserts="0" description="Specifications">
+                <results>
+                  <test-case description="Can construct new specification list" name="Class Methods.Specifications.Can construct new specification list" time="0.0248" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new specification entry" name="Class Methods.Specifications.Can construct new specification entry" time="0.0345" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Specifications can be added to SpecificationList" name="Class Methods.Specifications.Specifications can be added to SpecificationList" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Specification can be cloned" name="Class Methods.Specifications.Specification can be cloned" time="0.0693" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="SpecificationList can be cloned" name="Class Methods.Specifications.SpecificationList can be cloned" time="0.0587" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Locations" executed="True" result="Success" success="True" time="0.3747" asserts="0" description="Locations">
+                <results>
+                  <test-case description="Can construct new location list" name="Class Methods.Locations.Can construct new location list" time="0.0291" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new location entry" name="Class Methods.Locations.Can construct new location entry" time="0.008" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Locations can be added to LocationList" name="Class Methods.Locations.Locations can be added to LocationList" time="0.0102" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Location can be cloned" name="Class Methods.Locations.Location can be cloned" time="0.0636" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="LocationList can be cloned" name="Class Methods.Locations.LocationList can be cloned" time="0.0668" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Servers" executed="True" result="Success" success="True" time="1.2407" asserts="0" description="Servers">
+                <results>
+                  <test-case description="Can construct new server list" name="Class Methods.Servers.Can construct new server list" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can construct new Server entry" name="Class Methods.Servers.Can construct new Server entry" time="0.0295" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Locations can be added to server entry" name="Class Methods.Servers.Locations can be added to server entry" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Specifications can be added to server entry" name="Class Methods.Servers.Specifications can be added to server entry" time="0.0242" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="IP addresses can be added to server entry" name="Class Methods.Servers.IP addresses can be added to server entry" time="0.0374" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Services can be added to server entry" name="Class Methods.Servers.Services can be added to server entry" time="0.0278" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Groups can be added to server entry" name="Class Methods.Servers.Groups can be added to server entry" time="0.0316" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technologies can be added to server entry" name="Class Methods.Servers.Technologies can be added to server entry" time="0.0236" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Servers can be added to ServerList" name="Class Methods.Servers.Servers can be added to ServerList" time="0.0277" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Server can be cloned" name="Class Methods.Servers.Server can be cloned" time="0.387" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="ServerList can be cloned" name="Class Methods.Servers.ServerList can be cloned" time="0.3535" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Cache functionality" executed="True" result="Success" success="True" time="4.107" asserts="0" description="Cache functionality">
+            <results>
+              <test-suite type="TestFixture" name="Initialisation" executed="True" result="Success" success="True" time="0.1205" asserts="0" description="Initialisation">
+                <results>
+                  <test-case description="Empty cache at initialisation" name="Cache functionality.Initialisation.Empty cache at initialisation" time="0.0571" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Population" executed="True" result="Success" success="True" time="1.2733" asserts="0" description="Population">
+                <results>
+                  <test-case description="Country cache populated after country list download" name="Cache functionality.Population.Country cache populated after country list download" time="0.7562" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Group cache populated after group list download" name="Cache functionality.Population.Group cache populated after group list download" time="0.1327" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technology cache populated after technology list download" name="Cache functionality.Population.Technology cache populated after technology list download" time="0.131" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Utilisation" executed="True" result="Success" success="True" time="1.3895" asserts="0" description="Utilisation">
+                <results>
+                  <test-case description="Country cache utilised if not expired" name="Cache functionality.Utilisation.Country cache utilised if not expired" time="0.7737" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Group cache utilised if not expired" name="Cache functionality.Utilisation.Group cache utilised if not expired" time="0.2541" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technology cache utilised if not expired" name="Cache functionality.Utilisation.Technology cache utilised if not expired" time="0.2421" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Expiry" executed="True" result="Success" success="True" time="1.0163" asserts="0" description="Expiry">
+                <results>
+                  <test-case description="Country list downloaded on cache expiry" name="Cache functionality.Expiry.Country list downloaded on cache expiry" time="0.6029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Group list downloaded on cache expiry" name="Cache functionality.Expiry.Group list downloaded on cache expiry" time="0.13" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technology list downloaded on cache expiry" name="Cache functionality.Expiry.Technology list downloaded on cache expiry" time="0.1287" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Manual clearing" executed="True" result="Success" success="True" time="0.1638" asserts="0" description="Manual clearing">
+                <results>
+                  <test-case description="Country cache cleared on user request" name="Cache functionality.Manual clearing.Country cache cleared on user request" time="0.0237" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Group cache cleared on user request" name="Cache functionality.Manual clearing.Group cache cleared on user request" time="0.0247" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Technology cache cleared on user request" name="Cache functionality.Manual clearing.Technology cache cleared on user request" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Server fallback file functionality" executed="True" result="Success" success="True" time="21.4109" asserts="0" description="Server fallback file functionality">
+            <results>
+              <test-suite type="TestFixture" name="Exceptions" executed="True" result="Success" success="True" time="0.5846" asserts="0" description="Exceptions">
+                <results>
+                  <test-case description="throws error when neither ZIP/XML fallback found" name="Server fallback file functionality.Exceptions.throws error when neither ZIP/XML fallback found" time="0.0577" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Attempts to extract ZIP if XML not found" name="Server fallback file functionality.Exceptions.Attempts to extract ZIP if XML not found" time="0.1718" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Attempts to read XML extracted from archive" name="Server fallback file functionality.Exceptions.Attempts to read XML extracted from archive" time="0.1416" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Normal operation" executed="True" result="Success" success="True" time="20.7731" asserts="0" description="Normal operation">
+                <results>
+                  <test-case description="Can extract ZIP and read XML fallback" name="Server fallback file functionality.Normal operation.Can extract ZIP and read XML fallback" time="18.751" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can regenerate server fallback files" name="Server fallback file functionality.Normal operation.Can regenerate server fallback files" time="1.8492" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Peripheral fallbacks" executed="True" result="Success" success="True" time="5.508" asserts="0" description="Peripheral fallbacks">
+            <results>
+              <test-suite type="TestFixture" name="Manual utilisation" executed="True" result="Success" success="True" time="0.2231" asserts="0" description="Manual utilisation">
+                <results>
+                  <test-case description="XML fallbacks used when -Offline is passed" name="Peripheral fallbacks.Manual utilisation.XML fallbacks used when -Offline is passed" time="0.0591" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="XML fallbacks used when offline setting is present" name="Peripheral fallbacks.Manual utilisation.XML fallbacks used when offline setting is present" time="0.0751" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Normal operation" executed="True" result="Success" success="True" time="4.2592" asserts="0" description="Normal operation">
+                <results>
+                  <test-case description="Can read country XML fallback" name="Peripheral fallbacks.Normal operation.Can read country XML fallback" time="3.0706" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can read group XML fallback" name="Peripheral fallbacks.Normal operation.Can read group XML fallback" time="0.5876" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can read technology XML fallback" name="Peripheral fallbacks.Normal operation.Can read technology XML fallback" time="0.5286" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Regeneration" executed="True" result="Success" success="True" time="0.937" asserts="0" description="Regeneration">
+                <results>
+                  <test-case description="Can regenerate country fallback file from cache" name="Peripheral fallbacks.Regeneration.Can regenerate country fallback file from cache" time="0.273" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can regenerate country fallback file from API" name="Peripheral fallbacks.Regeneration.Can regenerate country fallback file from API" time="0.174" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can regenerate group fallback file from cache" name="Peripheral fallbacks.Regeneration.Can regenerate group fallback file from cache" time="0.0838" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can regenerate group fallback file from API" name="Peripheral fallbacks.Regeneration.Can regenerate group fallback file from API" time="0.0557" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can regenerate technology fallback file from cache" name="Peripheral fallbacks.Regeneration.Can regenerate technology fallback file from cache" time="0.1062" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can regenerate technology fallback file from API" name="Peripheral fallbacks.Regeneration.Can regenerate technology fallback file from API" time="0.0766" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="List handling" executed="True" result="Success" success="True" time="2.7328" asserts="0" description="List handling">
+            <results>
+              <test-suite type="TestFixture" name="Peripheral API calls" executed="True" result="Success" success="True" time="0.3683" asserts="0" description="Peripheral API calls">
+                <results>
+                  <test-case description="Should use fallback if country API returns no data" name="List handling.Peripheral API calls.Should use fallback if country API returns no data" time="0.0471" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should use fallback if group API returns no data" name="List handling.Peripheral API calls.Should use fallback if group API returns no data" time="0.0291" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should use fallback if technology API returns no data" name="List handling.Peripheral API calls.Should use fallback if technology API returns no data" time="0.0261" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should throw exception when country list not returned" name="List handling.Peripheral API calls.Should throw exception when country list not returned" time="0.0252" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should throw exception when group list not returned" name="List handling.Peripheral API calls.Should throw exception when group list not returned" time="0.0244" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should throw exception when technology list not returned" name="List handling.Peripheral API calls.Should throw exception when technology list not returned" time="0.0242" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="General API calls" executed="True" result="Success" success="True" time="0.2098" asserts="0" description="General API calls">
+                <results>
+                  <test-case description="Should handle web exception from API" name="List handling.General API calls.Should handle web exception from API" time="0.0179" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should handle general exception accessing API" name="List handling.General API calls.Should handle general exception accessing API" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return proper list data if API call succeeded" name="List handling.General API calls.Should return proper list data if API call succeeded" time="0.0247" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Server API calls" executed="True" result="Success" success="True" time="2.0834" asserts="0" description="Server API calls">
+                <results>
+                  <test-case description="Get-List does not make API calls in Offline Mode" name="List handling.Server API calls.Get-List does not make API calls in Offline Mode" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-RecommendedList throws error in offline mode" name="List handling.Server API calls.Get-RecommendedList throws error in offline mode" time="0.0593" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-RecommendedList throws error when no data returned from API" name="List handling.Server API calls.Get-RecommendedList throws error when no data returned from API" time="0.0841" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList throws error when no data returned from API" name="List handling.Server API calls.Get-ServerList throws error when no data returned from API" time="0.0065" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-RecommendedList shows warning when no data was returned due to filters" name="List handling.Server API calls.Get-RecommendedList shows warning when no data was returned due to filters" time="0.1317" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList throws error when -Raw and -Offline are passed together" name="List handling.Server API calls.Get-ServerList throws error when -Raw and -Offline are passed together" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList throws error when -Ofline and -UpdateFallback are passed together" name="List handling.Server API calls.Get-ServerList throws error when -Ofline and -UpdateFallback are passed together" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList throws error when -Raw and -UpdateFallback are passed together" name="List handling.Server API calls.Get-ServerList throws error when -Raw and -UpdateFallback are passed together" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList throws error when -UpdateFallback is passed in offline mode" name="List handling.Server API calls.Get-ServerList throws error when -UpdateFallback is passed in offline mode" time="0.0037" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList throws error when -Raw is passed in offline mode" name="List handling.Server API calls.Get-ServerList throws error when -Raw is passed in offline mode" time="0.0034" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-ServerList deletes uncompressed fallback file only when delete setting enabled" name="List handling.Server API calls.Get-ServerList deletes uncompressed fallback file only when delete setting enabled" time="1.4928" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Get-Serverlist throws error when data processing fails" name="List handling.Server API calls.Get-Serverlist throws error when data processing fails" time="0.0144" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Data outputs" executed="True" result="Success" success="True" time="4.998" asserts="0" description="Data outputs">
+            <results>
+              <test-suite type="TestFixture" name="Country, group, and technology lists" executed="True" result="Success" success="True" time="0.9774" asserts="0" description="Country, group, and technology lists">
+                <results>
+                  <test-case description="Produces country list data" name="Data outputs.Country, group, and technology lists.Produces country list data" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces city list data" name="Data outputs.Country, group, and technology lists.Produces city list data" time="0.2179" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces city list data from country fallback" name="Data outputs.Country, group, and technology lists.Produces city list data from country fallback" time="0.0729" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces filtered city list when -Country is passed" name="Data outputs.Country, group, and technology lists.Produces filtered city list when -Country is passed" time="0.1777" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces group list data" name="Data outputs.Country, group, and technology lists.Produces group list data" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces technology list data" name="Data outputs.Country, group, and technology lists.Produces technology list data" time="0.0225" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces detached clone of country list via method member" name="Data outputs.Country, group, and technology lists.Produces detached clone of country list via method member" time="0.0759" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces detached clone of group list via method member" name="Data outputs.Country, group, and technology lists.Produces detached clone of group list via method member" time="0.0319" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces detached clone of Technology list via method member" name="Data outputs.Country, group, and technology lists.Produces detached clone of Technology list via method member" time="0.0352" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Server lists" executed="True" result="Success" success="True" time="3.9444" asserts="0" description="Server lists">
+                <results>
+                  <test-case description="Produces server list data" name="Data outputs.Server lists.Produces server list data" time="0.0532" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces recommended server list data" name="Data outputs.Server lists.Produces recommended server list data" time="0.8727" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces recommended list data with filters" name="Data outputs.Server lists.Produces recommended list data with filters" time="0.9746" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces detached clone of server list via method member" name="Data outputs.Server lists.Produces detached clone of server list via method member" time="0.8545" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces raw recommended RESTful API data on request" name="Data outputs.Server lists.Produces raw recommended RESTful API data on request" time="0.2245" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Produces raw RESTful API data on request" name="Data outputs.Server lists.Produces raw RESTful API data on request" time="0.0896" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Module settings" executed="True" result="Success" success="True" time="0.7684" asserts="0" description="Module settings">
+            <results>
+              <test-suite type="TestFixture" name="Retrieval" executed="True" result="Success" success="True" time="0.2594" asserts="0" description="Retrieval">
+                <results>
+                  <test-case description="Can retrieve internal values" name="Module settings.Retrieval.Can retrieve internal values" time="0.0507" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can retrieve default values" name="Module settings.Retrieval.Can retrieve default values" time="0.0378" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can retrieve required value types" name="Module settings.Retrieval.Can retrieve required value types" time="0.0353" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can retrieve all values on request" name="Module settings.Retrieval.Can retrieve all values on request" time="0.0202" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throws error when passed invalid setting name" name="Module settings.Retrieval.Throws error when passed invalid setting name" time="0.0075" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Modification" executed="True" result="Success" success="True" time="0.3231" asserts="0" description="Modification">
+                <results>
+                  <test-case description="Can modify the internal state of setting: CountryCacheLifetime" name="Module settings.Modification.Can modify the internal state of setting: CountryCacheLifetime" time="0.0118" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can modify the internal state of setting: GroupCacheLifetime" name="Module settings.Modification.Can modify the internal state of setting: GroupCacheLifetime" time="0.0222" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can modify the internal state of setting: TechnologyCacheLifetime" name="Module settings.Modification.Can modify the internal state of setting: TechnologyCacheLifetime" time="0.0071" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can modify the internal state of setting: OfflineMode" name="Module settings.Modification.Can modify the internal state of setting: OfflineMode" time="0.0195" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can modify the internal state of setting: DeleteServerFallbackAfterUse" name="Module settings.Modification.Can modify the internal state of setting: DeleteServerFallbackAfterUse" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Writes out any changes to settings file" name="Module settings.Modification.Writes out any changes to settings file" time="0.0023" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can reset the internal state of setting: CountryCacheLifetime" name="Module settings.Modification.Can reset the internal state of setting: CountryCacheLifetime" time="0.0236" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can reset the internal state of setting: GroupCacheLifetime" name="Module settings.Modification.Can reset the internal state of setting: GroupCacheLifetime" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can reset the internal state of setting: TechnologyCacheLifetime" name="Module settings.Modification.Can reset the internal state of setting: TechnologyCacheLifetime" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can reset the internal state of setting: OfflineMode" name="Module settings.Modification.Can reset the internal state of setting: OfflineMode" time="0.0215" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can reset the internal state of setting: DeleteServerFallbackAfterUse" name="Module settings.Modification.Can reset the internal state of setting: DeleteServerFallbackAfterUse" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Accepts integers for boolean properties" name="Module settings.Modification.Accepts integers for boolean properties" time="0.0233" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throws error on incorrect data type" name="Module settings.Modification.Throws error on incorrect data type" time="0.0135" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Throws error when passed invalid setting name" name="Module settings.Modification.Throws error when passed invalid setting name" time="0.023" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Loading in" executed="True" result="Success" success="True" time="0.1229" asserts="0" description="Loading in">
+                <results>
+                  <test-case description="Can generate new settings profile/file if deleted" name="Module settings.Loading in.Can generate new settings profile/file if deleted" time="0.0175" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Skips invalid settings not defined in DefaultSettings" name="Module settings.Loading in.Skips invalid settings not defined in DefaultSettings" time="0.0074" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Dynamic parameters" executed="True" result="Success" success="True" time="0.3922" asserts="0" description="Dynamic parameters">
+            <results>
+              <test-suite type="TestFixture" name="Generation" executed="True" result="Success" success="True" time="0.3434" asserts="0" description="Generation">
+                <results>
+                  <test-case description="Can provide dynamic country codes" name="Dynamic parameters.Generation.Can provide dynamic country codes" time="0.0779" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can provide dynamic country codes when country list unavailable" name="Dynamic parameters.Generation.Can provide dynamic country codes when country list unavailable" time="0.0293" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can provide dynamic group codes" name="Dynamic parameters.Generation.Can provide dynamic group codes" time="0.0327" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can provide dynamic group codes when group list unavailable" name="Dynamic parameters.Generation.Can provide dynamic group codes when group list unavailable" time="0.0261" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can provide dynamic technology codes" name="Dynamic parameters.Generation.Can provide dynamic technology codes" time="0.0322" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can provide dynamic technology codes when technology list unavailable" name="Dynamic parameters.Generation.Can provide dynamic technology codes when technology list unavailable" time="0.0295" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Online Tests" executed="True" result="Success" success="True" time="24.9279" asserts="0" description="Online Tests">
+            <results>
+              <test-suite type="TestFixture" name="Country API" executed="True" result="Success" success="True" time="0.4302" asserts="0" description="Country API">
+                <results>
+                  <test-case description="Can download and parse country list" name="Online Tests.Country API.Can download and parse country list" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct country members: random sample #1" name="Online Tests.Country API.Contains correct country members: random sample #1" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each country contains correct city members" name="Online Tests.Country API.    Each country contains correct city members" time="0.0288" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct country members: random sample #2" name="Online Tests.Country API.Contains correct country members: random sample #2" time="0.0032" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each country contains correct city members" name="Online Tests.Country API.    Each country contains correct city members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct country members: random sample #3" name="Online Tests.Country API.Contains correct country members: random sample #3" time="0.0179" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each country contains correct city members" name="Online Tests.Country API.    Each country contains correct city members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct country members: random sample #4" name="Online Tests.Country API.Contains correct country members: random sample #4" time="0.0028" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each country contains correct city members" name="Online Tests.Country API.    Each country contains correct city members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct country members: random sample #5" name="Online Tests.Country API.Contains correct country members: random sample #5" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each country contains correct city members" name="Online Tests.Country API.    Each country contains correct city members" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="City API" executed="True" result="Success" success="True" time="0.4503" asserts="0" description="City API">
+                <results>
+                  <test-case description="Can download and parse city list" name="Online Tests.City API.Can download and parse city list" time="0.0035" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct city members: random sample #1" name="Online Tests.City API.Contains correct city members: random sample #1" time="0.0172" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct city members: random sample #2" name="Online Tests.City API.Contains correct city members: random sample #2" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct city members: random sample #3" name="Online Tests.City API.Contains correct city members: random sample #3" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct city members: random sample #4" name="Online Tests.City API.Contains correct city members: random sample #4" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct city members: random sample #5" name="Online Tests.City API.Contains correct city members: random sample #5" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Group API" executed="True" result="Success" success="True" time="0.3637" asserts="0" description="Group API">
+                <results>
+                  <test-case description="Can download and parse group list" name="Online Tests.Group API.Can download and parse group list" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct group members: random sample #1" name="Online Tests.Group API.Contains correct group members: random sample #1" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each group contains correct type members" name="Online Tests.Group API.    Each group contains correct type members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct group members: random sample #2" name="Online Tests.Group API.Contains correct group members: random sample #2" time="0.0174" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each group contains correct type members" name="Online Tests.Group API.    Each group contains correct type members" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct group members: random sample #3" name="Online Tests.Group API.Contains correct group members: random sample #3" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each group contains correct type members" name="Online Tests.Group API.    Each group contains correct type members" time="0.0028" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct group members: random sample #4" name="Online Tests.Group API.Contains correct group members: random sample #4" time="0.0177" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each group contains correct type members" name="Online Tests.Group API.    Each group contains correct type members" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct group members: random sample #5" name="Online Tests.Group API.Contains correct group members: random sample #5" time="0.0028" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each group contains correct type members" name="Online Tests.Group API.    Each group contains correct type members" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Technology API" executed="True" result="Success" success="True" time="0.3721" asserts="0" description="Technology API">
+                <results>
+                  <test-case description="Can download and parse technology list" name="Online Tests.Technology API.Can download and parse technology list" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct technology members: random sample #1" name="Online Tests.Technology API.Contains correct technology members: random sample #1" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct technology members: random sample #2" name="Online Tests.Technology API.Contains correct technology members: random sample #2" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct technology members: random sample #3" name="Online Tests.Technology API.Contains correct technology members: random sample #3" time="0.0238" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct technology members: random sample #4" name="Online Tests.Technology API.Contains correct technology members: random sample #4" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct technology members: random sample #5" name="Online Tests.Technology API.Contains correct technology members: random sample #5" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Raw Server API" executed="True" result="Success" success="True" time="8.6157" asserts="0" description="Raw Server API">
+                <results>
+                  <test-case description="Can download and parse server list" name="Online Tests.Raw Server API.Can download and parse server list" time="0.0236" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #1" name="Online Tests.Raw Server API.Contains correct server members: random sample #1" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Raw Server API.    Each server contains correct country member" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Raw Server API.    Each server contains correct city member" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Raw Server API.    Each server contains correct location members" time="0.0115" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Raw Server API.    Each server contains correct service members" time="0.0092" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Raw Server API.    Each server contains correct specification members" time="0.0117" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Raw Server API.    Each server contains correct group members" time="0.0108" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Raw Server API.    Each server contains correct technology members" time="0.0273" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Raw Server API.    Each server contains correct IP address members" time="0.0075" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #2" name="Online Tests.Raw Server API.Contains correct server members: random sample #2" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Raw Server API.    Each server contains correct country member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Raw Server API.    Each server contains correct city member" time="0.0084" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Raw Server API.    Each server contains correct location members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Raw Server API.    Each server contains correct service members" time="0.0071" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Raw Server API.    Each server contains correct specification members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Raw Server API.    Each server contains correct group members" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Raw Server API.    Each server contains correct technology members" time="0.0286" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Raw Server API.    Each server contains correct IP address members" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #3" name="Online Tests.Raw Server API.Contains correct server members: random sample #3" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Raw Server API.    Each server contains correct country member" time="0.0063" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Raw Server API.    Each server contains correct city member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Raw Server API.    Each server contains correct location members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Raw Server API.    Each server contains correct service members" time="0.0109" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Raw Server API.    Each server contains correct specification members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Raw Server API.    Each server contains correct group members" time="0.01" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Raw Server API.    Each server contains correct technology members" time="0.0267" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Raw Server API.    Each server contains correct IP address members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #4" name="Online Tests.Raw Server API.Contains correct server members: random sample #4" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Raw Server API.    Each server contains correct country member" time="0.0063" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Raw Server API.    Each server contains correct city member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Raw Server API.    Each server contains correct location members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Raw Server API.    Each server contains correct service members" time="0.0115" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Raw Server API.    Each server contains correct specification members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Raw Server API.    Each server contains correct group members" time="0.0135" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Raw Server API.    Each server contains correct technology members" time="0.0288" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Raw Server API.    Each server contains correct IP address members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #5" name="Online Tests.Raw Server API.Contains correct server members: random sample #5" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Raw Server API.    Each server contains correct country member" time="0.0028" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Raw Server API.    Each server contains correct city member" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Raw Server API.    Each server contains correct location members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Raw Server API.    Each server contains correct service members" time="0.0074" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Raw Server API.    Each server contains correct specification members" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Raw Server API.    Each server contains correct group members" time="0.0134" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Raw Server API.    Each server contains correct technology members" time="0.0258" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Raw Server API.    Each server contains correct IP address members" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can return raw NordVPN API data" name="Online Tests.Raw Server API.Can return raw NordVPN API data" time="0.8664" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Recommended Server API" executed="True" result="Success" success="True" time="14.4062" asserts="0" description="Recommended Server API">
+                <results>
+                  <test-case description="Can download and parse server list" name="Online Tests.Recommended Server API.Can download and parse server list" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #1" name="Online Tests.Recommended Server API.Contains correct server members: random sample #1" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Recommended Server API.    Each server contains correct country member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Recommended Server API.    Each server contains correct city member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Recommended Server API.    Each server contains correct location members" time="0.0085" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Recommended Server API.    Each server contains correct service members" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Recommended Server API.    Each server contains correct specification members" time="0.0115" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Recommended Server API.    Each server contains correct group members" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Recommended Server API.    Each server contains correct technology members" time="0.0237" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Recommended Server API.    Each server contains correct IP address members" time="0.0084" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #2" name="Online Tests.Recommended Server API.Contains correct server members: random sample #2" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Recommended Server API.    Each server contains correct country member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Recommended Server API.    Each server contains correct city member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Recommended Server API.    Each server contains correct location members" time="0.0085" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Recommended Server API.    Each server contains correct service members" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Recommended Server API.    Each server contains correct specification members" time="0.0087" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Recommended Server API.    Each server contains correct group members" time="0.01" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Recommended Server API.    Each server contains correct technology members" time="0.0261" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Recommended Server API.    Each server contains correct IP address members" time="0.0083" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #3" name="Online Tests.Recommended Server API.Contains correct server members: random sample #3" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Recommended Server API.    Each server contains correct country member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Recommended Server API.    Each server contains correct city member" time="0.0067" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Recommended Server API.    Each server contains correct location members" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Recommended Server API.    Each server contains correct service members" time="0.0072" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Recommended Server API.    Each server contains correct specification members" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Recommended Server API.    Each server contains correct group members" time="0.0098" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Recommended Server API.    Each server contains correct technology members" time="0.0296" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Recommended Server API.    Each server contains correct IP address members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #4" name="Online Tests.Recommended Server API.Contains correct server members: random sample #4" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Recommended Server API.    Each server contains correct country member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Recommended Server API.    Each server contains correct city member" time="0.003" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Recommended Server API.    Each server contains correct location members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Recommended Server API.    Each server contains correct service members" time="0.0071" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Recommended Server API.    Each server contains correct specification members" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Recommended Server API.    Each server contains correct group members" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Recommended Server API.    Each server contains correct technology members" time="0.0308" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Recommended Server API.    Each server contains correct IP address members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Contains correct server members: random sample #5" name="Online Tests.Recommended Server API.Contains correct server members: random sample #5" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct country member" name="Online Tests.Recommended Server API.    Each server contains correct country member" time="0.0071" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct city member" name="Online Tests.Recommended Server API.    Each server contains correct city member" time="0.0029" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct location members" name="Online Tests.Recommended Server API.    Each server contains correct location members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct service members" name="Online Tests.Recommended Server API.    Each server contains correct service members" time="0.0113" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct specification members" name="Online Tests.Recommended Server API.    Each server contains correct specification members" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct group members" name="Online Tests.Recommended Server API.    Each server contains correct group members" time="0.0138" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct technology members" name="Online Tests.Recommended Server API.    Each server contains correct technology members" time="0.0265" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="    Each server contains correct IP address members" name="Online Tests.Recommended Server API.    Each server contains correct IP address members" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can filter by country" name="Online Tests.Recommended Server API.Can filter by country" time="1.7705" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can filter by technology" name="Online Tests.Recommended Server API.Can filter by technology" time="1.6153" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can filter by group" name="Online Tests.Recommended Server API.Can filter by group" time="1.5191" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Can return raw NordVPN API data" name="Online Tests.Recommended Server API.Can return raw NordVPN API data" time="1.9898" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-case description="Test network connection before online tests" name="Online Tests.Test network connection before online tests" time="0.002" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

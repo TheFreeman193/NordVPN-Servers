@@ -4,6 +4,12 @@ en-GB/about_INDEX.help.txt
 .old/
 .docs/
 pages/
+/tests/countries_*.xml
+/tests/cities_*.xml
+/tests/groups_*.xml
+/tests/technologies_*.xml
+/tests/servers_*.xml
+/tests/recommended_*.xml
 NordVPN_Servers.xml
 BuildDocs.ps1
 BritishEnglish-AmericanEnglish.csv
