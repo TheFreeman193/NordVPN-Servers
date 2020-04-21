@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version: https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCache.html
-schema: 2.0.0
----
-
+﻿
 # Clear-NordVPNCache
 
 ## SYNOPSIS
@@ -86,4 +80,4 @@ The caches exist to reduce the number of needed web calls to the NordVPN API sin
 
 [This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Clear-NordVPNCache.html)
 
-[Help Index]()
+[Help Index](./HELPINDEX.md)

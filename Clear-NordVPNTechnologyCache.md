@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version:
-schema: 2.0.0
----
-
+﻿
 # Clear-NordVPNTechnologyCache
 
 ## SYNOPSIS
@@ -26,7 +20,7 @@ needed by the module.
 ### Example 1
 ```powershell
 PS C:\> Clear-NordVPNTechnologyCache
-PS C:\> Get-NordVPNTechnologyList >$null
+PS C:\> Get-NordVPNTechnologyList | Out-Null
 ```
 
 Clears the technology cache and regenerates it by getting the

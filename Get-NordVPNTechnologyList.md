@@ -1,10 +1,4 @@
-﻿---
-external help file: NordVPN-Servers-help.xml
-Module Name: NordVPN-Servers
-online version: https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNTechnologyList.html
-schema: 2.0.0
----
-
+﻿
 # Get-NordVPNTechnologyList
 
 ## SYNOPSIS
@@ -24,7 +18,9 @@ Get-NordVPNTechnologyList [-Offline] [<CommonParameters>]
 
 ## DESCRIPTION
 Returns a list of all technologies that NordVPN servers support.
-By default, the required data is downloaded from the NordVPN web API and processed to produce an array of technology entries, each of which is a hashtable.
+By default, the required data is downloaded from the NordVPN web API and
+processed to produce an array of technology entries, each of which is a
+hashtable.
 
 The structure of a technology entry is as follows (powershell notation):
 
@@ -67,7 +63,8 @@ Id FriendlyName              Code
 48 v2ray                     v2ray
 ```
 
-Displays a list of all compatible NordVPN server technologies, by their names, short codes, and IDs.
+Displays a list of all compatible NordVPN server technologies, by their names,
+short codes, and IDs.
 
 ### Example 2
 ```
@@ -106,7 +103,8 @@ OpenVPN TCP Dedicated             118
 v2ray                               0
 ```
 
-Displays a list of NordVPN supported server technologies, with the number of servers compatible with that technology.
+Displays a list of NordVPN supported server technologies, with the number of
+servers compatible with that technology.
 Notable is the use of a calculated property in Format-Table.
 
 ### Example 3
@@ -141,17 +139,20 @@ OpenVPN UDP Dedicated      2.01%
 OpenVPN TCP Dedicated      2.01%
 ```
 
-Similar to example 2, except the percentage of servers that support each technology is being calculated.
-The technologies with no current support are also excluded from the list.
+Similar to example 2, except the percentage of servers that support each
+technology is being calculated. The technologies with no current support
+are also excluded from the list.
 
-Here, the -f Format operator (https://docs.microsoft.com/en-us/dotnet/api/system.string.format)is used to take a decimal value and display a padded percentage to 2 d.p.
+Here, the -f [Format operator](https://docs.microsoft.com/en-us/dotnet/api/system.string.format)
+is used to take a decimal value and display a padded percentage to 2 d.p.
 
 ## PARAMETERS
 
 ### -Offline
-Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml .
-This does not change the value of the setting but is useful when access to the web API is not available.
-The fallback file can be updated when online with `-UpdateFallback`.
+Temporarily overrides the OfflineMode setting and uses the fallback file stored
+in NordVPN_Technologies.xml. This does not change the value of the setting but
+is useful when access to the web API is not available. The fallback file can be
+updated when online with `-UpdateFallback`.
 
 ```yaml
 Type: SwitchParameter
@@ -166,8 +167,10 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateFallback
-Passing this switch causes the function to update the NordVPN_Technologies.xml fallback file, using the data retrieved from the NordVPN web API or cache.
-This functionality cannot be used when OfflineMode is enabled or the `-Offline` switch parameter is passed.
+Passing this switch causes the function to update the NordVPN_Technologies.xml
+fallback file, using the data retrieved from the NordVPN web API or cache.
+This functionality cannot be used when OfflineMode is enabled or the
+`-Offline` switch parameter is passed.
 
 ```yaml
 Type: SwitchParameter
@@ -189,18 +192,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 ## OUTPUTS
 
-### System.Array
+### NordVPNTechnologyList
 ## NOTES
 The module utilises a group cache to reduce API calls.
-Further calls after the initial download will retrieve data from a local cache of the group list until the number of seconds defined with `Set-NordVPNTechnologyCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API.
+Further calls after the initial download will retrieve data from a local cache
+of the group list until the number of seconds defined with
+`Set-NordVPNTechnologyCacheLifetime` (default: 600s) has passed, after which
+the cache will be updated using the API.
+
 To force downloading from the API, run `Clear-NordVPNTechnologyCache` first.
 
-If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the technology list will be retrieved from NordVPN_Technologies.xml in the module directory.
-This is useful for offline environments.
+If the module is configured to only use the fallback files, with the command
+`Set-NordVPNModuleSetting OfflineMode 1`, the technology list will be retrieved
+from NordVPN_Technologies.xml in the module directory. This is useful for
+offline environments.
+
 Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.
 
 ## RELATED LINKS
 
 [This page on GitHub Pages](https://thefreeman193.github.io/NordVPN-Servers/Get-NordVPNTechnologyList.html)
 
-[Help Index]()
+[Help Index](./HELPINDEX.md)
