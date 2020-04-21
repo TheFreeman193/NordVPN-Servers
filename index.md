@@ -61,12 +61,12 @@ Please adhere to the **[code of conduct][conduct]** which is
 
 The module changelog can be found **[here][changelog]**.
 
-[license]: https://github\.com/TheFreeman193/NordVPN-Servers/blob/master/LICENSE.md
-[conduct]: https://github\.com/TheFreeman193/NordVPN-Servers/blob/master/CODE_OF_CONDUCT.md
+[license]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/LICENSE.md
+[conduct]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/CODE_OF_CONDUCT.md
 [release]: https://github.com/TheFreeman193/NordVPN-Servers/releases/latest
 [commits]: https://github.com/TheFreeman193/NordVPN-Servers/commits/master
-[changelog]: https://github\.com/TheFreeman193/NordVPN-Servers/blob/master/CHANGELOG.md
-[contrib]: https://github\.com/TheFreeman193/NordVPN-Servers/blob/master/CONTRIBUTING.md
+[changelog]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/CHANGELOG.md
+[contrib]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/CONTRIBUTING.md
 [help index]: ./HELPINDEX.md
 [about settings]: ./about_NordVPN-Servers_Settings.md
 [cc2]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
@@ -79,5 +79,5 @@ The module changelog can be found **[here][changelog]**.
 [pages home]: https://github.com/TheFreeman193/NordVPNServers
 [download zip]: https://github.com/TheFreeman193/NordVPN-Servers/archive/master.zip
 [ps gallery]: https://www.powershellgallery.com/packages/NordVPN-Servers
-[test result]: ./tests/TestResult.xml
-[code coverage]: ./tests/CodeCoverage.xml
+[test result]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/tests/TestResult.xml
+[code coverage]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/tests/CodeCoverage.xml
