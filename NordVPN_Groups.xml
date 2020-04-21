@@ -1,265 +1,297 @@
 <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
   <Obj RefId="0">
     <TN RefId="0">
-      <T>System.Management.Automation.PSCustomObject</T>
+      <T>NordVPNGroup</T>
+      <T>NordVPNDatedItem</T>
+      <T>NordVPNItem</T>
       <T>System.Object</T>
     </TN>
-    <MS>
-      <U64 N="Id">1</U64>
-      <S N="FriendlyName">Double VPN</S>
-      <S N="Code">legacy_double_vpn</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="1">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TN RefId="1">
+          <T>NordVPNDatedItem</T>
+          <T>NordVPNItem</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:41:00</DT>
       <DT N="Updated">2017-06-13T13:41:00</DT>
-    </MS>
+      <S N="Code">legacy_double_vpn</S>
+      <U64 N="Id">1</U64>
+      <S N="FriendlyName">Double VPN</S>
+    </Props>
   </Obj>
   <Obj RefId="2">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">3</U64>
-      <S N="FriendlyName">Onion Over VPN</S>
-      <S N="Code">legacy_onion_over_vpn</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="3">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:41:22</DT>
       <DT N="Updated">2017-11-06T10:16:14</DT>
-    </MS>
+      <S N="Code">legacy_onion_over_vpn</S>
+      <U64 N="Id">3</U64>
+      <S N="FriendlyName">Onion Over VPN</S>
+    </Props>
   </Obj>
   <Obj RefId="4">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">5</U64>
-      <S N="FriendlyName">Ultra fast TV</S>
-      <S N="Code">legacy_ultra_fast_tv</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="5">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:41:42</DT>
       <DT N="Updated">2017-06-13T13:41:42</DT>
-    </MS>
+      <S N="Code">legacy_ultra_fast_tv</S>
+      <U64 N="Id">5</U64>
+      <S N="FriendlyName">Ultra fast TV</S>
+    </Props>
   </Obj>
   <Obj RefId="6">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">7</U64>
-      <S N="FriendlyName">Anti DDoS</S>
-      <S N="Code">legacy_anti_ddos</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="7">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:42:08</DT>
       <DT N="Updated">2017-06-13T13:42:08</DT>
-    </MS>
+      <S N="Code">legacy_anti_ddos</S>
+      <U64 N="Id">7</U64>
+      <S N="FriendlyName">Anti DDoS</S>
+    </Props>
   </Obj>
   <Obj RefId="8">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">9</U64>
-      <S N="FriendlyName">Dedicated IP</S>
-      <S N="Code">legacy_dedicated_ip</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="9">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:42:36</DT>
       <DT N="Updated">2018-08-22T12:54:48</DT>
-    </MS>
+      <S N="Code">legacy_dedicated_ip</S>
+      <U64 N="Id">9</U64>
+      <S N="FriendlyName">Dedicated IP</S>
+    </Props>
   </Obj>
   <Obj RefId="10">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">11</U64>
-      <S N="FriendlyName">Standard VPN servers</S>
-      <S N="Code">legacy_standard</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="11">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:43:00</DT>
       <DT N="Updated">2017-06-13T13:43:00</DT>
-    </MS>
+      <S N="Code">legacy_standard</S>
+      <U64 N="Id">11</U64>
+      <S N="FriendlyName">Standard VPN servers</S>
+    </Props>
   </Obj>
   <Obj RefId="12">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">13</U64>
-      <S N="FriendlyName">Netflix USA</S>
-      <S N="Code">legacy_netflix_usa</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="13">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:43:20</DT>
       <DT N="Updated">2017-06-13T13:43:20</DT>
-    </MS>
+      <S N="Code">legacy_netflix_usa</S>
+      <U64 N="Id">13</U64>
+      <S N="FriendlyName">Netflix USA</S>
+    </Props>
   </Obj>
   <Obj RefId="14">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">15</U64>
-      <S N="FriendlyName">P2P</S>
-      <S N="Code">legacy_p2p</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="15">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:43:38</DT>
       <DT N="Updated">2017-06-13T13:43:38</DT>
-    </MS>
+      <S N="Code">legacy_p2p</S>
+      <U64 N="Id">15</U64>
+      <S N="FriendlyName">P2P</S>
+    </Props>
   </Obj>
   <Obj RefId="16">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">17</U64>
-      <S N="FriendlyName">Obfuscated Servers</S>
-      <S N="Code">legacy_obfuscated_servers</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="17">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">3</U64>
-          <S N="FriendlyName">Legacy category</S>
-          <S N="Code">legacy_group_category</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-06-13T13:40:17</DT>
           <DT N="Updated">2017-06-13T13:40:23</DT>
-        </MS>
+          <S N="Code">legacy_group_category</S>
+          <U64 N="Id">3</U64>
+          <S N="FriendlyName">Legacy category</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-06-13T13:44:10</DT>
       <DT N="Updated">2017-06-13T13:44:10</DT>
-    </MS>
+      <S N="Code">legacy_obfuscated_servers</S>
+      <U64 N="Id">17</U64>
+      <S N="FriendlyName">Obfuscated Servers</S>
+    </Props>
   </Obj>
   <Obj RefId="18">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">19</U64>
-      <S N="FriendlyName">Europe</S>
-      <S N="Code">europe</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="19">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">5</U64>
-          <S N="FriendlyName">Regions</S>
-          <S N="Code">regions</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-10-27T14:16:30</DT>
           <DT N="Updated">2017-10-27T14:16:30</DT>
-        </MS>
+          <S N="Code">regions</S>
+          <U64 N="Id">5</U64>
+          <S N="FriendlyName">Regions</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-10-27T14:17:17</DT>
       <DT N="Updated">2017-10-27T14:17:17</DT>
-    </MS>
+      <S N="Code">europe</S>
+      <U64 N="Id">19</U64>
+      <S N="FriendlyName">Europe</S>
+    </Props>
   </Obj>
   <Obj RefId="20">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">21</U64>
-      <S N="FriendlyName">The Americas</S>
-      <S N="Code">the_americas</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="21">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">5</U64>
-          <S N="FriendlyName">Regions</S>
-          <S N="Code">regions</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-10-27T14:16:30</DT>
           <DT N="Updated">2017-10-27T14:16:30</DT>
-        </MS>
+          <S N="Code">regions</S>
+          <U64 N="Id">5</U64>
+          <S N="FriendlyName">Regions</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-10-27T14:23:03</DT>
       <DT N="Updated">2017-10-30T08:09:48</DT>
-    </MS>
+      <S N="Code">the_americas</S>
+      <U64 N="Id">21</U64>
+      <S N="FriendlyName">The Americas</S>
+    </Props>
   </Obj>
   <Obj RefId="22">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">23</U64>
-      <S N="FriendlyName">Asia Pacific</S>
-      <S N="Code">asia_pacific</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="23">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">5</U64>
-          <S N="FriendlyName">Regions</S>
-          <S N="Code">regions</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-10-27T14:16:30</DT>
           <DT N="Updated">2017-10-27T14:16:30</DT>
-        </MS>
+          <S N="Code">regions</S>
+          <U64 N="Id">5</U64>
+          <S N="FriendlyName">Regions</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-10-27T14:23:51</DT>
       <DT N="Updated">2017-10-30T08:09:57</DT>
-    </MS>
+      <S N="Code">asia_pacific</S>
+      <U64 N="Id">23</U64>
+      <S N="FriendlyName">Asia Pacific</S>
+    </Props>
   </Obj>
   <Obj RefId="24">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">25</U64>
-      <S N="FriendlyName">Africa, the Middle East and India</S>
-      <S N="Code">africa_the_middle_east_and_india</S>
+    <ToString>NordVPNGroup</ToString>
+    <Props>
       <Obj N="Type" RefId="25">
-        <TNRef RefId="0" />
-        <MS>
-          <U64 N="Id">5</U64>
-          <S N="FriendlyName">Regions</S>
-          <S N="Code">regions</S>
+        <TNRef RefId="1" />
+        <ToString>NordVPNDatedItem</ToString>
+        <Props>
           <DT N="Created">2017-10-27T14:16:30</DT>
           <DT N="Updated">2017-10-27T14:16:30</DT>
-        </MS>
+          <S N="Code">regions</S>
+          <U64 N="Id">5</U64>
+          <S N="FriendlyName">Regions</S>
+        </Props>
       </Obj>
       <DT N="Created">2017-10-27T14:40:12</DT>
       <DT N="Updated">2017-10-30T08:10:20</DT>
-    </MS>
+      <S N="Code">africa_the_middle_east_and_india</S>
+      <U64 N="Id">25</U64>
+      <S N="FriendlyName">Africa, the Middle East and India</S>
+    </Props>
   </Obj>
 </Objs>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>NordVPN.LocationListView</Name>
+      <ViewSelectedBy>
+        <TypeName>NordVPNLocation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ID</Label>
+            <Width>8</Width>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Country</Label>
+            <Width>7</Width>
+            <Alignment>Center</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>City Code</Label>
+            <Width>15</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Latitude</Label>
+            <Width>11</Width>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Longitude</Label>
+            <Width>11</Width>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Created</Label>
+            <Width>19</Width>
+            <Alignment>Center</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Updated</Label>
+            <Width>19</Width>
+            <Alignment>Center</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap />
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CountryCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CityCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Latitude</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Longitude</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Created.ToString("yyyy/MM/dd HH:mm:ss")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Updated.ToString("yyyy/MM/dd HH:mm:ss")</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>NordVPN.LocationListWideView</Name>
+      <ViewSelectedBy>
+        <TypeName>NordVPNLocation</TypeName>
+      </ViewSelectedBy>
+      <WideControl>
+        <ColumnNumber>4</ColumnNumber>
+        <WideEntries>
+          <WideEntry>
+            <WideItem>
+              <ScriptBlock>$_.CityCode, $_.CountryCode -join ', '</ScriptBlock>
+            </WideItem>
+          </WideEntry>
+        </WideEntries>
+      </WideControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

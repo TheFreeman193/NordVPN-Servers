@@ -3,25 +3,17 @@
 New-Variable -Option Constant -Scope Script TechnologyURL 'https://api.nordvpn.com/v1/technologies'
 New-Variable -Option Constant -Scope Script GroupURL 'https://api.nordvpn.com/v1/servers/groups'
 New-Variable -Option Constant -Scope Script CountryURL 'https://api.nordvpn.com/v1/servers/countries'
-New-Variable -Option Constant -Scope Script API_ALL_URL 'https://api.nordvpn.com/v1/servers?limit={0}'
-New-Variable -Option Constant -Scope Script API_URL_BASE `
+New-Variable -Option Constant -Scope Script ServerURL 'https://api.nordvpn.com/v1/servers?limit={0}'
+New-Variable -Option Constant -Scope Script RecommendedURL `
     'https://api.nordvpn.com/v1/servers/recommendations?limit={0}'
 New-Variable -Option Constant -Scope Script SettingsFile (Join-Path $PSScriptRoot 'NordVPN-Servers.settings.json')
 New-Variable -Option Constant -Scope Script TechnologyFallback (Join-Path $PSScriptRoot 'NordVPN_Technologies.xml')
 New-Variable -Option Constant -Scope Script GroupFallback (Join-Path $PSScriptRoot 'NordVPN_Groups.xml')
 New-Variable -Option Constant -Scope Script CountryFallback (Join-Path $PSScriptRoot 'NordVPN_Countries.xml')
 New-Variable -Option Constant -Scope Script ServerFallback (Join-Path $PSScriptRoot 'NordVPN_Servers.xml')
-New-Variable -Option Constant -Scope Script GetServersLimitParamHelp (
-    'Gets the first x number of servers specified (1-65535, default: 8192).' +
-    "`nNote:Lowering this number may result in some servers matching the filters to be missed."
-)
-New-Variable -Option Constant -Scope Script FailedList @{
-    Message           = 'Unable to retrieve server list from NordVPN API'
-    Category          = [System.Management.Automation.ErrorCategory]::ResourceUnavailable
-    RecommendedAction = 'Check internet connection and API server status'
-    CategoryActivity  = 'Retrieve server list'
-    CategoryReason    = 'Server list not available'
-}
+New-Variable -Option Constant -Scope Script ServersCompressed ($ServerFallback, '.zip' -join '')
+New-Variable -Option Constant -Scope Script FailedList 'Unable to retrieve server list from NordVPN API'
+New-Variable -Option Constant -Scope Script FailedConv 'Unable to process server list!'
 New-Variable -Option Constant -Scope Script DefaultSettings @{
     CountryCacheLifetime         = @([UInt32], 600)
     GroupCacheLifetime           = @([UInt32], 600)
@@ -30,9 +22,10 @@ New-Variable -Option Constant -Scope Script DefaultSettings @{
     DeleteServerFallbackAfterUse = @([Boolean], $false)
 }
 New-Variable -Option Constant -Scope Script KnownCountries @(
-    'AL', 'AR', 'AU', 'AT', 'BE', 'BA', 'BR', 'BG', 'CA', 'CL', 'CR', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'GE', 'DE',
-    'GR', 'HK', 'HU', 'IS', 'IN', 'ID', 'IE', 'IL', 'IT', 'JP', 'LV', 'LU', 'MY', 'MX', 'MD', 'NL', 'NZ', 'MK', 'NO', 'PL',
-    'PT', 'RO', 'RS', 'SG', 'SK', 'SI', 'ZA', 'KR', 'ES', 'SE', 'CH', 'TW', 'TH', 'TR', 'UA', 'AE', 'GB', 'US', 'VN'
+    'AL', 'AR', 'AU', 'AT', 'BE', 'BA', 'BR', 'BG', 'CA', 'CL', 'CR', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI',
+    'FR', 'GE', 'DE', 'GR', 'HK', 'HU', 'IS', 'IN', 'ID', 'IE', 'IL', 'IT', 'JP', 'LV', 'LU', 'MY', 'MX',
+    'MD', 'NL', 'NZ', 'MK', 'NO', 'PL', 'PT', 'RO', 'RS', 'SG', 'SK', 'SI', 'ZA', 'KR', 'ES', 'SE', 'CH',
+    'TW', 'TH', 'TR', 'UA', 'AE', 'GB', 'US', 'VN'
 )
 New-Variable -Option Constant -Scope Script KnownGroups @(
     'legacy_double_vpn', 'legacy_onion_over_vpn', 'legacy_ultra_fast_tv', 'legacy_anti_ddos',
@@ -54,14 +47,16 @@ New-Variable -Scope Script TechnologyCache $null
 New-Variable -Scope Script GroupCache $null
 
 Function LoadSettings {
-    $SettingsIn = Get-Content $SettingsFile -ea:si | ConvertFrom-Json
+    Write-Debug "Loading in settings from '$SettingsFile'"
+    $SettingsIn = Get-Content $SettingsFile -ErrorAction SilentlyContinue | ConvertFrom-Json
     $script:SETTINGS = @{ }
     if ($null -eq $SettingsIn) {
+        Write-Verbose "No settings file or invalid, resetting..."
         foreach ($key in $DefaultSettings.Keys) {
             $SETTINGS.$key = $DefaultSettings.$key[1]
         }
         $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile -Force
-        Write-Verbose "Wrote default settings to '$SettingsFile'"
+        Write-Debug "Wrote default settings to '$SettingsFile'"
     }
     else {
         foreach ($entry in $SettingsIn.PSObject.Properties) {
@@ -69,7 +64,7 @@ Function LoadSettings {
                 $SETTINGS[$entry.Name] = $entry.Value -as $DefaultSettings[$entry.Name][0]
             }
             else {
-                Write-Warning "Invalid setting $($entry.Name) not loaded"
+                Write-Verbose "Invalid setting $($entry.Name) not loaded"
             }
         }
         Write-Verbose "Loaded persistent settings from '$SettingsFile'"
@@ -109,9 +104,10 @@ function Set-ModuleSetting {
         return $paramDict
     }
     process {
-        Write-Debug ("Parameter set name: $($PSCmdlet.ParameterSetName)")
+        Write-Debug "Set-NordVPNModuleSetting: Param set = $($PSCmdlet.ParameterSetName)"
         $Name = $PSBoundParameters.Name
         if ($PSCmdlet.ParameterSetName -eq 'SetDefault') {
+            Write-Debug "Request to set $Name to default value"
             $defaultValue = $DefaultSettings[$Name][1]
             if ($Force -or $PSCmdlet.ShouldContinue(
                     ("This will reset '{0}' to its default of {1}. Are you sure?" -f
@@ -128,6 +124,7 @@ function Set-ModuleSetting {
         }
         $targetType = $DefaultSettings[$Name][0]
         $Value = $PSBoundParameters.Value -as $targetType
+        Write-Debug "Request to set $Name to $Value"
         if ($Value -is $targetType) {
             if ($PSCmdlet.ShouldProcess("Setting: $Name", "Update value: $Value")) {
                 if ($SETTINGS[$Name] -ne $Value) { $SettingsChanged = $true }
@@ -142,6 +139,7 @@ function Set-ModuleSetting {
     }
     end {
         if ($SettingsChanged) {
+            Write-Debug "Attempting to write $SettingsFile"
             $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile -Force
             Write-Verbose "Settings changed: Updated settings file '$SettingsFile'"
         }
@@ -193,8 +191,10 @@ function Reset-Module {
         $Force
     )
     process {
+        Write-Debug "Request to reset all module settings"
         if ($Force -or $PSCmdlet.ShouldContinue(
-                "This will reset all NordVPN-Servers module settings to their defaults. Are you sure?",
+                "This will reset all NordVPN-Servers module settings to default and clear the cache." +
+                " Are you sure?",
                 "Reset settings to default"
             )
         ) {
@@ -205,6 +205,7 @@ function Reset-Module {
                 }
                 Clear-Cache
             }
+            Write-Debug "Attempting to write $SettingsFile"
             $SETTINGS | ConvertTo-Json | Set-Content $SettingsFile
             Write-Verbose "Settings changed: Updated settings file '$SettingsFile'"
         }
@@ -224,6 +225,7 @@ function Get-ModuleSettingNameDynamicParam {
         $SetNames
     )
     process {
+        Write-Debug 'Dynamic setting name parameter requested.'
         $pos = 0
         $mand = $true
         $help = 'The name of the module setting'
@@ -271,7 +273,7 @@ function Get-CountryDynamicParam {
         $mand = $false
         $fromPipeProp = $true
         $help = 'Please enter a 2-digit ISO 3166-1 country code ' +
-        'e.g GB (run Show-NordVPNCountryList for reference)'
+        'e.g GB (run Get-NordVPNCountryList for reference)'
         $ctryAttribCol = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
         foreach ($n in $SetNames) {
             $paramAttrib = New-Object System.Management.Automation.ParameterAttribute
@@ -325,7 +327,7 @@ function Get-GroupDynamicParam {
         Write-Debug 'Dynamic Group parameter requested.'
         $mand = $false
         $help = 'Please enter a group code e.g. legacy_standard ' +
-        '(run Show-NordVPNGroupList for reference)'
+        '(run Get-NordVPNGroupList for reference)'
         $fromPipeProp = $true
         $grpAttribCol = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
         foreach ($n in $SetNames) {
@@ -380,7 +382,7 @@ function Get-TechnologyDynamicParam {
         Write-Debug 'Dynamic Technology parameter requested.'
         $mand = $false
         $help = 'Please enter a technology code e.g. openvpn_udp ' +
-        '(run Show-NordVPNTechnologyList for reference)'
+        '(run Get-NordVPNTechnologyList for reference)'
         $fromPipeProp = $true
         $techAttribCol = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
         foreach ($n in $SetNames) {
@@ -484,7 +486,7 @@ function Get-List {
     )
     process {
         Write-Debug "NordVPN web API download requested"
-        if ($Settings.OfflineMode) {
+        if ($SETTINGS.OfflineMode) {
             Write-Warning "An attempt was made to use the web API but offline mode is enabled."
             return
         }
@@ -516,160 +518,166 @@ function Get-List {
 function ConvertFrom-ServerEntry {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory = $true)]
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)]
         [PSCustomObject]
-        $Entries
+        $Servers
     )
-    process {
+    begin {
+        Clear-Variable GroupList, CountryList, NewList -ErrorAction SilentlyContinue
+        $Count = $Servers.Count
         Write-Debug "Request to convert server entries"
-        Write-Verbose "Processing $($Entries.Count) server entries"
+        Write-Verbose "Processing $($Count) server entries"
         Write-Progress -Activity "Processing server entries" -CurrentOperation "Getting group definitions" -Id 2
         Write-Debug "Attempting to get group list"
         $GroupList = Get-GroupList
         Write-Progress -Activity "Processing server entries" -CurrentOperation "Getting country definitions" -Id 2
         Write-Debug "Attempting to get countries list"
         $CountryList = Get-CountryList
-        [System.Collections.ArrayList]$NewList = @()
-        Write-Debug "Calculating number of cycles"
         $k = 0
-        $kMax = [Math]::Max($Entries.Count, 1)
-        :serverloop foreach ($svr in $Entries) {
-            if ($k % 100 -eq 0) {
-                Write-Debug "Server entry $k`: ID = $($svr.id)"
-            }
-            $pcc = [Math]::Floor(($k / $kMax) * 100)
-            if ($k % 100 -eq 0) {
+        $kMax = [Math]::Max($Count, 1)
+        $kInterval = [Math]::Max([Math]::Floor(($Count / 100)), 10)
+        Write-Debug "Will update progress every $kInterval servers"
+        $ServersList = [NordVPNServerList]::new()
+    }
+    process {
+        foreach ($Server in $Servers) {
+
+            if ($k % $kInterval -eq 0) {
+                Write-Debug "Server entry $k`: ID = $($Server.id)"
+                $pcc = [Math]::Floor(($k / $kMax) * 100)
                 Write-Progress -Activity "Processing server entries" -Id 2 `
                     -PercentComplete $pcc `
-                    -CurrentOperation ("Server {0}/{1} ({2}%)" -f $k, $Entries.Count, $pcc)
+                    -CurrentOperation ("Server {0}/{1} ({2}%)" -f $k, $Count, $pcc)
             }
-            [System.Collections.ArrayList]$services = @()
-            Write-Information ".. services"
-            foreach ($svc in $svr.services) {
-                [Void]$services.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$svc.id
-                        FriendlyName = [String]$svc.name
-                        Code         = [String]$svc.identifier
-                        Created      = [DateTime]$svc.created_at
-                        Updated      = [DateTime]$svc.updated_at
-                    }
-                )
-            }
-            [System.Collections.ArrayList]$locations = @()
-            Write-Information ".. locations"
-            foreach ($loc in $svr.locations) {
-                [Void]$locations.Add(
-                    [PSCustomObject]@{
-                        Id          = [UInt64]$loc.id
-                        Latitude    = [Double]$loc.latitude
-                        Longitude   = [Double]$loc.longitude
-                        CountryCode = [String]$loc.country.code
-                        CityCode    = [String]$loc.country.city.dns_name
-                        Created     = [DateTime]$loc.created_at
-                        Updated     = [DateTime]$loc.updated_at
-                    }
-                )
-            }
-            [System.Collections.ArrayList]$technologies = @()
-            Write-Information ".. technologies"
-            :techloop foreach ($tech in $svr.technologies) {
-                [Void]$technologies.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$tech.id
-                        FriendlyName = [String]$tech.name
-                        Code         = [String]$tech.identifier
-                        Created      = [DateTime]$tech.created_at
-                        Updated      = [DateTime]$tech.updated_at
-                        Available    = [Boolean]($tech.pivot.status -eq "online")
-                        Status       = [String]$tech.pivot.status
-                    }
-                )
-            }
-            [System.Collections.ArrayList]$groups = @()
-            Write-Information ".. groups"
-            foreach ($grp in $svr.groups) {
-                [Void]$groups.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$grp.id
-                        Code         = [String]($GroupList | Where-Object Id -eq $grp.id).Code
-                        FriendlyName = [String]$grp.title
-                        Created      = [DateTime]$grp.created_at
-                        Updated      = [DateTime]$grp.updated_at
-                        Type         = [PSCustomObject]@{
-                            Id           = [UInt64]$grp.type.id
-                            Created      = [DateTime]$grp.type.created_at
-                            Updated      = [DateTime]$grp.type.updated_at
-                            FriendlyName = [String]$grp.type.title
-                            Code         = [String]$grp.type.identifier
-                        }
-                    }
-                )
-            }
-            [System.Collections.ArrayList]$specs = @()
-            Write-Information ".. specifications"
-            foreach ($spec in $svr.specifications) {
-                [Void]$specs.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$spec.id
-                        FriendlyName = [String]$spec.title
-                        Code         = [String]$spec.identifier
-                        Values       = @(
-                            $spec.values | ForEach-Object {
-                                [PSCustomObject]@{
-                                    Id    = [UInt64]$_.id
-                                    Value = $_.value
-                                }
-                            }
-                        )
-                    }
-                )
-            }
-            [System.Collections.ArrayList]$ipaddresses = @()
-            Write-Information ".. IPs"
-            foreach ($ip in $svr.ips) {
-                [Void]$ipaddresses.Add(
-                    [PSCustomObject]@{
-                        Id      = [UInt64]$ip.ip.id
-                        Version = [UInt16]$ip.ip.version
-                        Address = [String]$ip.ip.ip
-                        EntryId = [UInt64]$ip.id
-                        Created = [DateTime]$ip.created_at
-                        Updated = [DateTime]$ip.updated_at
-                    }
-                )
-            }
-            Write-Information ".. Building final structure"
-            [Void]$NewList.Add(
-                [PSCustomObject]@{
-                    Id             = [UInt64]$svr.id
-                    Created        = [DateTime]$svr.created_at
-                    Updated        = [DateTime]$svr.updated_at
-                    Hostname       = [String]$svr.hostname
-                    Load           = [UInt16]$svr.Load
-                    Status         = [String]$svr.status
-                    PrimaryIP      = [String]$svr.station
-                    Country        = [PSCustomObject]($CountryList | `
-                            Where-Object Id -eq $svr.locations[0].country.id
+
+            $services = [NordVPNServiceList]::new()
+            foreach ($svc in $Server.services) {
+                $services.Add(
+                    [NordVPNService]::new(
+                        $svc.id,
+                        $svc.name,
+                        $svc.identifier,
+                        $svc.created_at,
+                        $svc.updated_at
                     )
-                    CountryCode    = [String]$svr.locations[0].country.code
-                    City           = [PSCustomObject]($CountryList.Cities | `
-                            Where-Object Id -eq $svr.locations[0].country.city.id
+                )
+            }
+
+            $locations = [NordVPNLocationList]::new()
+            foreach ($loc in $Server.locations) {
+                $locations.Add(
+                    [NordVPNLocation]::new(
+                        $loc.id,
+                        $loc.created_at,
+                        $loc.updated_at,
+                        $loc.country.code,
+                        $loc.country.city.dns_name,
+                        $loc.latitude,
+                        $loc.longitude
                     )
-                    CityCode       = [String]$svr.locations[0].country.city.dns_name
-                    Longitude      = [Double]$svr.locations[0].longitude
-                    Latitude       = [Double]$svr.locations[0].latitude
-                    Locations      = [PSCustomObject]$locations
-                    Services       = [PSCustomObject]$services
-                    Technologies   = [PSCustomObject]$technologies
-                    Specifications = [PSCustomObject]$specs
-                    IPs            = [PSCustomObject]$ipaddresses
-                    Groups         = [PSCustomObject]$groups
-                }
+                )
+            }
+
+            $technologies = [NordVPNTechnologyList]::new()
+            foreach ($tech in $Server.technologies) {
+                $technologies.Add(
+                    [NordVPNTechnology]::new(
+                        $tech.id,
+                        $tech.name,
+                        $tech.identifier,
+                        $tech.created_at,
+                        $tech.updated_at,
+                        $tech.pivot.status
+                    )
+                )
+            }
+
+            $groups = [NordVPNGroupList]::new()
+            foreach ($grp in $Server.groups) {
+                $grpCode = ($GroupList | Where-Object Id -eq $grp.id).Code
+                $groups.Add(
+                    [NordVPNGroup]::new(
+                        $grp.id,
+                        $grp.title,
+                        $grpCode,
+                        $grp.created_at,
+                        $grp.updated_at,
+                        $grp.type.id,
+                        $grp.type.title,
+                        $grp.type.identifier,
+                        $grp.type.created_at,
+                        $grp.type.updated_at
+                    )
+                )
+            }
+
+            $specs = [NordVPNSpecificationList]::new()
+            foreach ($spec in $Server.specifications) {
+                $specs.Add(
+                    [NordVPNSpecification]::new(
+                        $spec.id,
+                        $spec.title,
+                        $spec.identifier,
+                        $spec.values
+                    )
+                )
+            }
+
+            $ipaddresses = [NordVPNIPAddressList]::new()
+            foreach ($ip in $Server.ips) {
+                $ipaddresses.Add(
+                    [NordVPNIPAddress]::new(
+                        $ip.ip.id,
+                        $ip.created_at,
+                        $ip.updated_at,
+                        $ip.ip.version,
+                        $ip.ip.ip,
+                        $ip.id
+                    )
+                )
+            }
+
+            $curCountry = $CountryList | Where-Object Id -eq $Server.locations[0].country.id
+            $svrCountry = [NordVPNCountry]::new(
+                $curCountry.Id, $curCountry.FriendlyName, $curCountry.Code
             )
+            $curCity = $curCountry.Cities | Where-Object Id -eq `
+                $Server.locations[0].country.city.id
+            $svrCity = [NordVPNCity]::new(
+                $curCity.Id, $curCity.FriendlyName, $curCity.Code,
+                $curCity.Latitude, $curCity.Longitude, $curCity.HubScore,
+                $curCountry.Code
+            )
+
             $k++
+
+            $ServersList.Add(
+                [NordVPNServer]::new(
+                    $Server.id,
+                    $Server.name,
+                    $Server.created_at,
+                    $Server.updated_at,
+                    $Server.station,
+                    $Server.hostname,
+                    $Server.Load,
+                    $Server.status,
+                    $svrCountry,
+                    $svrCity,
+                    $Server.locations[0].longitude,
+                    $Server.locations[0].latitude,
+                    $locations,
+                    $services,
+                    $technologies,
+                    $specs,
+                    $ipaddresses,
+                    $groups
+                )
+            )
+
         }
-        $NewList
+        ,$ServersList
+    }
+    end {
         Write-Verbose "Finished processing entries"
         Write-Progress -Activity 'Processing server entries' -Id 2 -Completed `
             -CurrentOperation "Finished."
@@ -697,7 +705,8 @@ function Get-CountryList {
     )
     process {
         Write-Debug "Countries list requested"
-        if ($Settings.OfflineMode -or $Offline) {
+        if ($SETTINGS.OfflineMode -or $Offline) {
+            Write-Debug "Get-NordVPNCountryList in Offline mode"
             $SUCCESS = $false
             return
         }
@@ -720,31 +729,16 @@ function Get-CountryList {
                 }
             }
             Write-Verbose "Downloaded latest Country list"
-            [System.Collections.ArrayList]$NewList = @()
+            $NewList = [NordVPNCountryList]::new()
             $i = 0
             foreach ($ctry in $CountryList) {
-                Write-Progress -Activity "Building list" -CurrentOperation "Filling hashtable" -Id 1 `
+                Write-Progress -Activity "Building list" -CurrentOperation "Filling country list" -Id 1 `
                     -PercentComplete (($i / $CountryList.Count) * 100)
                 Write-Debug "Processing entry $i`: Country code = $($ctry.code)"
-                [Void]$NewList.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$ctry.id
-                        FriendlyName = [String]$ctry.name
-                        Code         = [String]$ctry.code
-                        Cities       = @(
-                            $ctry.cities | ForEach-Object {
-                                [PSCustomObject]@{
-                                    Id           = [UInt64]$_.id
-                                    FriendlyName = [String]$_.name
-                                    Code         = [String]$_.dns_name
-                                    Longitude    = [Double]$_.longitude
-                                    Latitude     = [Double]$_.latitude
-                                    HubScore     = [Int16]$_.hub_score
-                                    CountryCode  = [String]$ctry.Code
-                                }
-                            }
-                        )
-                    }
+                $NewList.Add(
+                    [NordVPNCountry]::new(
+                        $ctry.id, $ctry.name, $ctry.code, $ctry.cities
+                    )
                 )
                 $i++
             }
@@ -753,24 +747,24 @@ function Get-CountryList {
             Set-Variable -Scope Script -Force CountryCacheDate (Get-Date)
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $NewList.ToArray() | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
+                $NewList | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported downloaded country list to fallback: $CountryFallback"
             }
-            $NewList.ToArray()
+            , $NewList
         }
-        elseif ($CountryCache -is [System.Collections.ArrayList]) {
+        elseif ($CountryCache -is [NordVPNCountryList]) {
             Write-Verbose "Used Country cache"
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $CountryCache.ToArray() | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
+                $CountryCache | Export-Clixml -Path $CountryFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported country cache to fallback: $CountryFallback"
             }
-            $CountryCache.ToArray()
+            , $CountryCache.Clone()
         }
     }
     end {
         if (!$SUCCESS) {
-            if (!($Settings.OfflineMode -or $Offline)) {
+            if (!($SETTINGS.OfflineMode -or $Offline)) {
                 Write-Verbose "Used Country fallback file '$CountryFallback'"
             }
             Import-Clixml -Path $CountryFallback
@@ -793,7 +787,8 @@ function Get-GroupList {
     )
     process {
         Write-Debug "Groups list requested"
-        if ($Settings.OfflineMode -or $Offline) {
+        if ($SETTINGS.OfflineMode -or $Offline) {
+            Write-Debug "Get-NordVPNGroupList in Offline mode"
             $SUCCESS = $false
             return
         }
@@ -816,27 +811,18 @@ function Get-GroupList {
                 }
             }
             Write-Verbose "Downloaded latest group list"
-            [System.Collections.ArrayList]$NewList = @()
+            $NewList = [NordVPNGroupList]::new()
             $i = 0
             foreach ($grp in $GroupList) {
-                Write-Progress -Activity "Building list" -CurrentOperation "Filling hashtable" -Id 1 `
+                Write-Progress -Activity "Building list" -CurrentOperation "Filling group list" -Id 1 `
                     -PercentComplete (($i / $GroupList.Count) * 100)
                 Write-Debug "Processing entry $i`: Group code = $($grp.identifier)"
-                [Void]$NewList.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$grp.id
-                        FriendlyName = [String]$grp.title
-                        Code         = [String]$grp.identifier
-                        Type         = [PSCustomObject]@{
-                            Id           = [UInt64]$grp.type.id
-                            FriendlyName = [String]$grp.type.title
-                            Code         = [String]$grp.type.identifier
-                            Created      = [DateTime]$grp.type.created_at
-                            Updated      = [DateTime]$grp.type.updated_at
-                        }
-                        Created      = [DateTime]$grp.created_at
-                        Updated      = [DateTime]$grp.updated_at
-                    }
+                $NewList.Add(
+                    [NordVPNGroup]::new(
+                        $grp.id, $grp.title, $grp.identifier, $grp.created_at, $grp.updated_at,
+                        $grp.type.id, $grp.type.title, $grp.type.identifier, $grp.type.created_at,
+                        $grp.type.updated_at
+                    )
                 )
                 $i++
             }
@@ -845,24 +831,24 @@ function Get-GroupList {
             Set-Variable -Scope Script -Force GroupCacheDate (Get-Date)
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $NewList.ToArray() | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
+                $NewList | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported downloaded group list to fallback: $GroupFallback"
             }
-            $NewList.ToArray()
+            , $NewList
         }
-        elseif ($GroupCache -is [System.Collections.ArrayList]) {
+        elseif ($GroupCache -is [NordVPNGroupList]) {
             Write-Verbose "Used Group cache"
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $GroupCache.ToArray() | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
+                $GroupCache | Export-Clixml -Path $GroupFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported group cache to fallback: $GroupFallback"
             }
-            $GroupCache.ToArray()
+            , $GroupCache.Clone()
         }
     }
     end {
         if (!$SUCCESS) {
-            if (!($Settings.OfflineMode -or $Offline)) {
+            if (!($SETTINGS.OfflineMode -or $Offline)) {
                 Write-Verbose "Used group fallback file '$GroupFallback'"
             }
             Import-Clixml -Path $GroupFallback
@@ -885,7 +871,8 @@ function Get-TechnologyList {
     )
     process {
         Write-Debug "Technologies list requested"
-        if ($Settings.OfflineMode -or $Offline) {
+        if ($SETTINGS.OfflineMode -or $Offline) {
+            Write-Debug "Get-NordVPNTechnologyList in Offline mode"
             $SUCCESS = $false
             return
         }
@@ -908,20 +895,16 @@ function Get-TechnologyList {
                 }
             }
             Write-Verbose "Downloaded latest Technology list"
-            [System.Collections.ArrayList]$NewList = @()
+            $NewList = [NordVPNTechnologyList]::new()
             $i = 0
             foreach ($tech in $TechnologyList) {
-                Write-Progress -Activity "Building list" -CurrentOperation "Filling hashtable" -Id 1 `
+                Write-Progress -Activity "Building list" -CurrentOperation "Filling technology list" -Id 1 `
                     -PercentComplete (($i / $TechnologyList.Count) * 100)
                 Write-Debug "Processing entry $i`: Technology code = $($tech.identifier)"
-                [Void]$NewList.Add(
-                    [PSCustomObject]@{
-                        Id           = [UInt64]$tech.id
-                        FriendlyName = [String]$tech.name
-                        Code         = [String]$tech.identifier
-                        Created      = [DateTime]$tech.created_at
-                        Updated      = [DateTime]$tech.updated_at
-                    }
+                $NewList.Add(
+                    [NordVPNTechnology]::new(
+                        $tech.id, $tech.name, $tech.identifier, $tech.created_at, $tech.updated_at
+                    )
                 )
                 $i++
             }
@@ -930,24 +913,24 @@ function Get-TechnologyList {
             Set-Variable -Scope Script -Force TechnologyCacheDate (Get-Date)
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $NewList.ToArray() | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
+                $NewList | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported downloaded technology list to fallback: $TechnologyFallback"
             }
-            $NewList.ToArray()
+            , $NewList
         }
-        elseif ($TechnologyCache -is [System.Collections.ArrayList]) {
+        elseif ($TechnologyCache -is [NordVPNTechnologyList]) {
             Write-Verbose "Used Technology cache"
             $SUCCESS = $true
             if ($UpdateFallback -and !$SETTINGS.OfflineMode) {
-                $TechnologyCache.ToArray() | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
+                $TechnologyCache | Export-Clixml -Path $TechnologyFallback -Encoding UTF8 -Force
                 Write-Verbose "Exported technology cache to fallback: $TechnologyFallback"
             }
-            $TechnologyCache.ToArray()
+            , $TechnologyCache.Clone()
         }
     }
     end {
         if (!$SUCCESS) {
-            if (!($Settings.OfflineMode -or $Offline)) {
+            if (!($SETTINGS.OfflineMode -or $Offline)) {
                 Write-Verbose "Used technology fallback file '$TechnologyFallback'"
             }
             Import-Clixml -Path $TechnologyFallback
@@ -974,167 +957,23 @@ function Get-CityList {
         Write-Debug "Cities list requested"
         if ($Offline) {
             $Countries = Get-CountryList -Offline
+            $CityList = [System.Collections.ArrayList]::new()
         }
         else {
             $Countries = Get-CountryList
+            $CityList = [NordVPNCityList]::new()
         }
         if ($PSBoundParameters.Country) {
             $Countries = $Countries | Where-Object { $PSBoundParameters.Country -eq $_.Code }
         }
-        [System.Collections.ArrayList]$OutList = @()
+
         foreach ($ctry in $Countries) {
             foreach ($city in $ctry.Cities) {
                 Write-Debug "Processing entry: City code = $($city.Code)"
-                [Void]$OutList.Add($city)
+                [void]$CityList.Add($city)
             }
         }
-
-        $OutList
-    }
-}
-
-
-<# ##### Convenience Functions #####
-    These produce pretty output for quick visual reference, as opposed to raw data
-    for integration into other processes.
-#>
-
-function Show-CountryList {
-    [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param (
-        [Parameter(ParameterSetName = 'Offline')]
-        [Switch]
-        $Offline
-    )
-    begin {
-        $OldFG = $Host.UI.RawUI.ForegroundColor
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
-        Write-Output "`n`nServer Countries:"
-    }
-    process {
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
-        if ($Offline) {
-            $CountryList = Get-CountryList -Offline
-        }
-        else {
-            $CountryList = Get-CountryList
-        }
-        $CountryList | Sort-Object -Property Id | `
-            Select-Object Id, FriendlyName, Code, Cities | Format-Table -AutoSize `
-            Id, FriendlyName, Code, @{Label = "Cities"; Expression = { $_.Cities.FriendlyName -join '/' } }
-    }
-    end {
-        $Host.UI.RawUI.ForegroundColor = $OldFG
-    }
-}
-
-
-function Show-GroupList {
-    [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param (
-        [Parameter(ParameterSetName = 'Offline')]
-        [Switch]
-        $Offline
-    )
-    begin {
-        $OldFG = $Host.UI.RawUI.ForegroundColor
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
-        Write-Output "`n`nServer Groups:"
-    }
-    process {
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
-        if ($Offline) {
-            $GroupList = Get-GroupList -Offline
-        }
-        else {
-            $GroupList = Get-GroupList
-        }
-        $GroupList | Sort-Object -Property Id | `
-            Select-Object Id, FriendlyName, Code, Type, Created, Updated | Format-Table -AutoSize `
-            Id, FriendlyName, Code, @{Label = "Type"; Expression = { $_.Type.FriendlyName } }, Created, Updated
-    }
-    end {
-        $Host.UI.RawUI.ForegroundColor = $OldFG
-    }
-}
-
-
-function Show-TechnologyList {
-    [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param (
-        [Parameter(ParameterSetName = 'Offline')]
-        [Switch]
-        $Offline
-    )
-    begin {
-        $OldFG = $Host.UI.RawUI.ForegroundColor
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
-        Write-Output "`n`nServer Technologies:"
-    }
-    process {
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
-        if ($Offline) {
-            $TechnologyList = Get-TechnologyList -Offline
-        }
-        else {
-            $TechnologyList = Get-TechnologyList
-        }
-        $TechnologyList | Sort-Object -Property Id | `
-            Select-Object Id, FriendlyName, Code, Created, Updated | Format-Table -AutoSize
-    }
-    end {
-        $Host.UI.RawUI.ForegroundColor = $OldFG
-    }
-}
-
-
-function Show-CityList {
-    [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    param (
-        [Parameter(ParameterSetName = 'Offline')]
-        [Switch]
-        $Offline
-    )
-    dynamicparam {
-        $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 @('DefaultOperation', 'Offline') -Offline:$Offline))
-
-        $ParamDict
-    }
-    begin {
-        $OldFG = $Host.UI.RawUI.ForegroundColor
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Cyan
-        Write-Output "`n`nServer Cities:"
-    }
-    process {
-        if ($Offline) {
-            if ($PSBoundParameters.Country) {
-                $CityList = Get-CityList -Country:$PSBoundParameters.Country -Offline
-            }
-            else {
-                $CityList = Get-CityList -Offline
-            }
-            $Countries = Get-CountryList -Offline
-        }
-        else {
-            if ($PSBoundParameters.Country) {
-                $CityList = Get-CityList -Country:$PSBoundParameters.Country
-            }
-            else {
-                $CityList = Get-CityList
-            }
-            $Countries = Get-CountryList
-        }
-        $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::White
-        $CityList | Sort-Object -Property CountryCode, FriendlyName | `
-            Select-Object -Property Id,
-        @{Label = 'Country'; Expression = {
-                $ctry = $_.CountryCode; ($Countries | Where-Object { $_.Code -eq $ctry }).FriendlyName }
-        },
-        FriendlyName, Code, Latitude, Longitude, HubScore | Format-Table -AutoSize
-    }
-    end {
-        $Host.UI.RawUI.ForegroundColor = $OldFG
+        , $CityList
     }
 }
 
@@ -1174,17 +1013,10 @@ function Get-RecommendedList {
     }
     begin {
         Write-Debug "Recommended servers list requested"
-        if ($Settings.OfflineMode) {
-            $FallbackErr = @{
-                Message           = 'Cannot use recommendations API when offline mode is enabled!'
-                Category          = [System.Management.Automation.ErrorCategory]::InvalidOperation
-                RecommendedAction = 'Disable offline mode with Set-NordVPNModuleSetting OfflineMode 0'
-                CategoryActivity  = 'Retrieve server list'
-                CategoryReason    = 'Offline mode enabled'
-            }
-            Write-Error @FallbackErr
-            throw $FallbackErr.Message
+        if ($SETTINGS.OfflineMode) {
+            throw 'Cannot use recommendations API when offline mode is enabled!'
         }
+        $ServerList = $null
     }
     process {
         $CountryId = $null
@@ -1195,7 +1027,7 @@ function Get-RecommendedList {
                 }
             ).Id
         }
-        $URL = $API_URL_BASE -f $Limit
+        $URL = $RecommendedURL -f $Limit
         foreach ($cid in $CountryId) {
             $URL += ('&filters[country_id]={0}' -f $cid)
         }
@@ -1206,12 +1038,9 @@ function Get-RecommendedList {
             $URL += ('&filters[servers_groups][identifier]={0}' -f $grp)
         }
         $ServerList = Get-List -URL $URL
-        if ($PSCmdlet.ParameterSetName -eq 'RawData' -and $Raw) {
-            return $ServerList
-        }
-        if ($null -eq $ServerList) {
-            Write-Error @FailedList
-            throw $FailedList.Message
+        if ($null -eq $ServerList) { throw $FailedList }
+        if ($Raw) {
+            return , $ServerList
         }
         if (($ServerList -is [Boolean] -and $true -eq $ServerList) -or ($ServerList.Count -eq 0)) {
             Write-Warning ("No results found for search with filters:" +
@@ -1223,7 +1052,7 @@ function Get-RecommendedList {
         }
         else {
             Write-Verbose "Finished downloading server list. Count: $($ServerList.Count)"
-            ConvertFrom-ServerEntry $ServerList
+            , (ConvertFrom-ServerEntry $ServerList)
         }
     }
 }
@@ -1234,12 +1063,10 @@ function Get-ServerList {
     param (
         [Parameter(
             Position = 0,
-            HelpMessage = { $GetServersLimitParamHelp },
             ParameterSetName = "DefaultOperation"
         )]
         [Parameter(
             Position = 0,
-            HelpMessage = { $GetServersLimitParamHelp },
             ParameterSetName = "RawData"
         )]
         [ValidateRange(1, 65535)]
@@ -1258,34 +1085,39 @@ function Get-ServerList {
         [Switch]
         $Raw
     )
-    dynamicparam {
-        $ParamDict = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-        $allowedParamSets = @('DefaultOperation', 'Offline')
-        $ParamDict.Add('Country', (Get-CountryDynamicParam 0 $allowedParamSets $Offline))
-        $ParamDict.Add('Group', (Get-GroupDynamicParam 1 $allowedParamSets $Offline))
-        $ParamDict.Add('Technology', (Get-TechnologyDynamicParam 2 $allowedParamSets $Offline))
-
-        $ParamDict
-    }
     begin {
-        if (($Settings.OfflineMode -or $Offline -or $UpdateFallback) -and $Raw) {
+        if (($SETTINGS.OfflineMode -or $UpdateFallback) -and $Raw) {
             throw ("You cannot use the -Raw switch in offline mode, or" +
                 " with -UpdateFallback.")
         }
-        $ServersCompressed = $ServerFallback, '.zip' -join ''
-        if ($Settings.OfflineMode -or $Offline) {
+        if ($SETTINGS.OfflineMode -and $UpdateFallback) {
+            throw ("You cannot use the -UpdateFallback switch in offline mode")
+        }
+
+        $AllServersList = $null
+        if ($SETTINGS.OfflineMode -or $Offline) {
             if (!(Test-Path $ServerFallback -PathType Leaf)) {
                 if (Test-Path $ServersCompressed -PathType Leaf) {
                     Write-Verbose "Importing server list"
                     Write-Progress -Activity "Setting up" -Id 3 -CurrentOperation `
                         'Expanding offline servers list: NordVPN_Servers.xml.zip => NordVPN_Servers.xml'
                     $ServersCompressed | Expand-Archive -DestinationPath $PSScriptRoot -Force
+                    if (!(Test-Path $ServerFallback -PathType Leaf)) {
+                        throw "Unable to expand server fallback archive '$ServersCompressed'"
+                    }
                 }
                 else {
-                    throw ("$ServersCompressed or $ServerFallback file not found!" +
+                    throw ("Server fallback archive '$ServersCompressed' not found!" +
                         ' Cannot create fallback file.')
                 }
             }
+            else {
+                Write-Verbose "Located server fallback '$ServerFallback'"
+            }
+        }
+    }
+    process {
+        if ($SETTINGS.OfflineMode -or $Offline) {
             Write-Progress -Activity "Importing server list" -Id 3 -CurrentOperation "Parsing $ServerFallback"
             $AllServersList = Import-Clixml -Path $ServerFallback
             if ($AllServersList.Count -lt 1) {
@@ -1294,70 +1126,28 @@ function Get-ServerList {
             Write-Progress -Activity "Importing server list" -Id 3 -Completed
         }
         else {
-            $RawList = (Get-List -URL ($API_ALL_URL -f $First))
+            $RawList = (Get-List -URL ($ServerURL -f $First))
+            if ($null -eq $RawList) { throw $FailedList }
             if ($PSCmdlet.ParameterSetName -eq 'RawData' -and $Raw) {
-                return $RawList
+                return , $RawList
             }
-            $AllServersList = ConvertFrom-ServerEntry $RawList
-            if ($UpdateFallback) {
-                Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
-                    'Writing XML => NordVPN_Servers.xml'
-                $AllServersList | Export-Clixml -Path $ServerFallback -Encoding UTF8 -Force
-                Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
-                    'Compressing offline servers list: NordVPN_Servers.xml => NordVPN_Servers.xml.zip'
-                Compress-Archive -Path $ServerFallback -DestinationPath $ServersCompressed -Force `
-                    -CompressionLevel Optimal
-                Write-Verbose "Exported downloaded server list to fallback: $ServerFallback"
-                Write-Progress -Activity "Importing server list" -Id 3 -Completed
-            }
+
+            [NordVPNServerList]$AllServersList = ConvertFrom-ServerEntry $RawList
         }
-    }
-    process {
-        if ($PSCmdlet.ParameterSetName -eq 'RawData' -and $Raw) { return }
-        if ($null -eq $AllServersList) {
-            Write-Error @FailedList
-            throw $FailedList.Message
+        if ($null -eq $AllServersList) { throw $FailedConv }
+        if ($UpdateFallback) {
+            Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
+                'Writing XML => NordVPN_Servers.xml'
+            $AllServersList | Export-Clixml -Path $ServerFallback -Encoding UTF8 -Force
+            Write-Progress -Activity "Exporting server list" -Id 3 -CurrentOperation `
+                'Compressing offline servers list: NordVPN_Servers.xml => NordVPN_Servers.xml.zip'
+            Compress-Archive -Path $ServerFallback -DestinationPath $ServersCompressed -Force `
+                -CompressionLevel Optimal
+            Write-Verbose "Exported downloaded server list to fallback: $ServerFallback"
+            Write-Progress -Activity "Importing server list" -Id 3 -Completed
         }
-        if ($AllServersList -is [Boolean] -and $true -eq $AllServersList) {
-            Write-Warning "No values returned from {0}!" -f `
-            $(if ($Settings.OfflineMode) { 'the fallback file' } else { 'the API' })
-            return
-        }
-        if ($AllServersList.Count -gt 1) {
-            $ServerList = $AllServersList.Clone()
-        }
-        else {
-            $ServerList = @($AllServersList).Clone()
-        }
-        if ($null -ne $PSBoundParameters.Country) {
-            Write-Verbose "Filtering by country: $($PSBoundParameters.Country)"
-            $ServerList = $ServerList | Where-Object CountryCode -eq $PSBoundParameters.Country
-        }
-        if ($null -ne $PSBoundParameters.Group) {
-            Write-Verbose "Filtering by group: $($PSBoundParameters.Group)"
-            $ServerList = $ServerList | Where-Object {
-                $_.Groups.Code -contains $PSBoundParameters.Group
-            }
-        }
-        if ($null -ne $PSBoundParameters.Technology) {
-            Write-Verbose "Filtering by technology: $($PSBoundParameters.Technology)"
-            $ServerList = $ServerList | Where-Object {
-                $_.Technologies.Code -contains $PSBoundParameters.Technology
-            }
-        }
-        if ($ServerList.Count -gt 0) {
-            $ServerList
-        }
-        else {
-            Write-Warning ('No servers in the first {0} results matched the filters! Filters:' `
-                    -f [Math]::min($First, $RawList.Count) +
-                $(if ($PSBoundParameters.Country) { "`n  Country: {0}" -f $PSBoundParameters.Country }) +
-                $(if ($PSBoundParameters.Group) { "`n  Group: {0}" -f $PSBoundParameters.Group }) +
-                $(if ($PSBoundParameters.Technology) { "`n  Technology: {0}" -f $PSBoundParameters.Technology }) +
-                "`nTry increasing the value of the -First parameter or adjusting the filters."
-            )
-            @()
-        }
+
+        , $AllServersList
     }
     end {
         if ($SETTINGS.DeleteServerFallbackAfterUse -and (Test-Path $ServerFallback -PathType Leaf)) {

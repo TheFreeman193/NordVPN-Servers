@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.5.0 - 21st April 2020
+
+NOTE: This version makes substantial changes to the data structures
+returned by the module. Please consider this a breaking update
+
+- Add custom formats for Country, City, Group, Technology, Location,
+  IP address, Service, Server, and Specification entries/lists.
+- Remove Show-* functions as format files make these obsolete
+- Tidy some inconsistent code
+- Add custom .NET classes for objects returned; these replace the
+  PSCustomObject structures used previously
+- Change Get-NordVPNServerList functionality to improve efficiency
+- Removed filter params from Get-NordVPNServerList; piping the
+  output through Where-Object is favourable
+- Add some additional checks to Get-NordVPNServerList to ensure that
+  incompatible switches are not accepted
+- Add some extra DEBUG and VERBOSE information
+- Change ConvertFrom-ServerEntry: re-write to utilise new custom
+  classes and improve efficiency
+- Change Get-* functions: re-write to utilise new custom classes
+
 ## 0.4.0 - 15th April 2020
 
 - Add hardcoded country, group, and technology codes as last-line

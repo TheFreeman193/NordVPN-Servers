@@ -1,1748 +1,1893 @@
 <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
   <Obj RefId="0">
     <TN RefId="0">
-      <T>System.Management.Automation.PSCustomObject</T>
+      <T>NordVPNCountry</T>
+      <T>NordVPNItem</T>
       <T>System.Object</T>
     </TN>
-    <MS>
-      <U64 N="Id">2</U64>
-      <S N="FriendlyName">Albania</S>
-      <S N="Code">AL</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="1">
         <TN RefId="1">
-          <T>System.Object[]</T>
-          <T>System.Array</T>
+          <T>NordVPNCityList</T>
+          <T>System.Collections.ArrayList</T>
           <T>System.Object</T>
         </TN>
         <LST>
           <Obj RefId="2">
-            <TNRef RefId="0" />
-            <MS>
+            <TN RefId="2">
+              <T>NordVPNCity</T>
+              <T>NordVPNItem</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">19.818889</Db>
+              <Db N="Latitude">41.3275</Db>
+              <S N="CountryCode">AL</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">tirana</S>
               <U64 N="Id">308615</U64>
               <S N="FriendlyName">Tirana</S>
-              <S N="Code">tirana</S>
-              <Db N="Longitude">19.8188889</Db>
-              <Db N="Latitude">41.3275</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">AL</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">AL</S>
+      <U64 N="Id">2</U64>
+      <S N="FriendlyName">Albania</S>
+    </Props>
   </Obj>
   <Obj RefId="3">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">10</U64>
-      <S N="FriendlyName">Argentina</S>
-      <S N="Code">AR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="4">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="5">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">384866</U64>
-              <S N="FriendlyName">Buenos Aires</S>
-              <S N="Code">buenos-aires</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-58.6725</Db>
               <Db N="Latitude">-34.5875</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">buenos-aires</S>
+              <U64 N="Id">384866</U64>
+              <S N="FriendlyName">Buenos Aires</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">AR</S>
+      <U64 N="Id">10</U64>
+      <S N="FriendlyName">Argentina</S>
+    </Props>
   </Obj>
   <Obj RefId="6">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">13</U64>
-      <S N="FriendlyName">Australia</S>
-      <S N="Code">AU</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="7">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="8">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">452717</U64>
-              <S N="FriendlyName">Adelaide</S>
-              <S N="Code">adelaide</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">138.598633</Db>
               <Db N="Latitude">-34.928661</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AU</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">adelaide</S>
+              <U64 N="Id">452717</U64>
+              <S N="FriendlyName">Adelaide</S>
+            </Props>
           </Obj>
           <Obj RefId="9">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">456494</U64>
-              <S N="FriendlyName">Brisbane</S>
-              <S N="Code">brisbane</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">153.024292</Db>
               <Db N="Latitude">-27.47101</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AU</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">brisbane</S>
+              <U64 N="Id">456494</U64>
+              <S N="FriendlyName">Brisbane</S>
+            </Props>
           </Obj>
           <Obj RefId="10">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">470813</U64>
-              <S N="FriendlyName">Melbourne</S>
-              <S N="Code">melbourne</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">144.963425</Db>
               <Db N="Latitude">-37.813938</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AU</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">melbourne</S>
+              <U64 N="Id">470813</U64>
+              <S N="FriendlyName">Melbourne</S>
+            </Props>
           </Obj>
           <Obj RefId="11">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">475799</U64>
-              <S N="FriendlyName">Perth</S>
-              <S N="Code">perth</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">115.861397</Db>
               <Db N="Latitude">-31.95224</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AU</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">perth</S>
+              <U64 N="Id">475799</U64>
+              <S N="FriendlyName">Perth</S>
+            </Props>
           </Obj>
           <Obj RefId="12">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">479570</U64>
-              <S N="FriendlyName">Sydney</S>
-              <S N="Code">sydney</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">151.205475</Db>
               <Db N="Latitude">-33.861481</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AU</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">sydney</S>
+              <U64 N="Id">479570</U64>
+              <S N="FriendlyName">Sydney</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">AU</S>
+      <U64 N="Id">13</U64>
+      <S N="FriendlyName">Australia</S>
+    </Props>
   </Obj>
   <Obj RefId="13">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">14</U64>
-      <S N="FriendlyName">Austria</S>
-      <S N="Code">AT</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="14">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="15">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">448799</U64>
-              <S N="FriendlyName">Vienna</S>
-              <S N="Code">vienna</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">16.366667</Db>
               <Db N="Latitude">48.2</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AT</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">vienna</S>
+              <U64 N="Id">448799</U64>
+              <S N="FriendlyName">Vienna</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">AT</S>
+      <U64 N="Id">14</U64>
+      <S N="FriendlyName">Austria</S>
+    </Props>
   </Obj>
   <Obj RefId="16">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">21</U64>
-      <S N="FriendlyName">Belgium</S>
-      <S N="Code">BE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="17">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="18">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">654293</U64>
-              <S N="FriendlyName">Brussels</S>
-              <S N="Code">brussels</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">4.333333</Db>
               <Db N="Latitude">50.833333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">BE</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">brussels</S>
+              <U64 N="Id">654293</U64>
+              <S N="FriendlyName">Brussels</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">BE</S>
+      <U64 N="Id">21</U64>
+      <S N="FriendlyName">Belgium</S>
+    </Props>
   </Obj>
   <Obj RefId="19">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">27</U64>
-      <S N="FriendlyName">Bosnia and Herzegovina</S>
-      <S N="Code">BA</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="20">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="21">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">18.383333</Db>
+              <Db N="Latitude">43.85</Db>
+              <S N="CountryCode">BA</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">sarajevo</S>
               <U64 N="Id">556823</U64>
               <S N="FriendlyName">Sarajevo</S>
-              <S N="Code">sarajevo</S>
-              <Db N="Longitude">18.3833333</Db>
-              <Db N="Latitude">43.85</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">BA</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">BA</S>
+      <U64 N="Id">27</U64>
+      <S N="FriendlyName">Bosnia and Herzegovina</S>
+    </Props>
   </Obj>
   <Obj RefId="22">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">30</U64>
-      <S N="FriendlyName">Brazil</S>
-      <S N="Code">BR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="23">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="24">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">943973</U64>
-              <S N="FriendlyName">San Paulo</S>
-              <S N="Code">san-paulo</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-46.616667</Db>
               <Db N="Latitude">-23.533333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">BR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">san-paulo</S>
+              <U64 N="Id">943973</U64>
+              <S N="FriendlyName">San Paulo</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">BR</S>
+      <U64 N="Id">30</U64>
+      <S N="FriendlyName">Brazil</S>
+    </Props>
   </Obj>
   <Obj RefId="25">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">33</U64>
-      <S N="FriendlyName">Bulgaria</S>
-      <S N="Code">BG</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="26">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="27">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">23.316667</Db>
+              <Db N="Latitude">42.683333</Db>
+              <S N="CountryCode">BG</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">sofia</S>
               <U64 N="Id">777368</U64>
               <S N="FriendlyName">Sofia</S>
-              <S N="Code">sofia</S>
-              <Db N="Longitude">23.3166667</Db>
-              <Db N="Latitude">42.6833333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">BG</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">BG</S>
+      <U64 N="Id">33</U64>
+      <S N="FriendlyName">Bulgaria</S>
+    </Props>
   </Obj>
   <Obj RefId="28">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">38</U64>
-      <S N="FriendlyName">Canada</S>
-      <S N="Code">CA</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="29">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="30">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">1048463</U64>
-              <S N="FriendlyName">Montreal</S>
-              <S N="Code">montreal</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-73.583333</Db>
               <Db N="Latitude">45.5</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CA</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">montreal</S>
+              <U64 N="Id">1048463</U64>
+              <S N="FriendlyName">Montreal</S>
+            </Props>
           </Obj>
           <Obj RefId="31">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">1054250</U64>
-              <S N="FriendlyName">Toronto</S>
-              <S N="Code">toronto</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-79.416667</Db>
               <Db N="Latitude">43.666667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CA</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">toronto</S>
+              <U64 N="Id">1054250</U64>
+              <S N="FriendlyName">Toronto</S>
+            </Props>
           </Obj>
           <Obj RefId="32">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">1054610</U64>
-              <S N="FriendlyName">Vancouver</S>
-              <S N="Code">vancouver</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-123.133333</Db>
               <Db N="Latitude">49.25</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CA</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">vancouver</S>
+              <U64 N="Id">1054610</U64>
+              <S N="FriendlyName">Vancouver</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">CA</S>
+      <U64 N="Id">38</U64>
+      <S N="FriendlyName">Canada</S>
+    </Props>
   </Obj>
   <Obj RefId="33">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">43</U64>
-      <S N="FriendlyName">Chile</S>
-      <S N="Code">CL</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="34">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="35">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">1227092</U64>
-              <S N="FriendlyName">Santiago</S>
-              <S N="Code">santiago</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-70.666667</Db>
               <Db N="Latitude">-33.45</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CL</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">santiago</S>
+              <U64 N="Id">1227092</U64>
+              <S N="FriendlyName">Santiago</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">CL</S>
+      <U64 N="Id">43</U64>
+      <S N="FriendlyName">Chile</S>
+    </Props>
   </Obj>
   <Obj RefId="36">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">52</U64>
-      <S N="FriendlyName">Costa Rica</S>
-      <S N="Code">CR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="37">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="38">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2062994</U64>
-              <S N="FriendlyName">San Jose</S>
-              <S N="Code">san-jose</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-84.105407</Db>
               <Db N="Latitude">9.893385</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">san-jose</S>
+              <U64 N="Id">2062994</U64>
+              <S N="FriendlyName">San Jose</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">CR</S>
+      <U64 N="Id">52</U64>
+      <S N="FriendlyName">Costa Rica</S>
+    </Props>
   </Obj>
   <Obj RefId="39">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">54</U64>
-      <S N="FriendlyName">Croatia</S>
-      <S N="Code">HR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="40">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="41">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">3308120</U64>
-              <S N="FriendlyName">Zagreb</S>
-              <S N="Code">zagreb</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">16</Db>
               <Db N="Latitude">45.8</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">HR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">zagreb</S>
+              <U64 N="Id">3308120</U64>
+              <S N="FriendlyName">Zagreb</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">HR</S>
+      <U64 N="Id">54</U64>
+      <S N="FriendlyName">Croatia</S>
+    </Props>
   </Obj>
   <Obj RefId="42">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">56</U64>
-      <S N="FriendlyName">Cyprus</S>
-      <S N="Code">CY</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="43">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="44">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">33.366667</Db>
+              <Db N="Latitude">35.166667</Db>
+              <S N="CountryCode">CY</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">nicosia</S>
               <U64 N="Id">2099627</U64>
               <S N="FriendlyName">Nicosia</S>
-              <S N="Code">nicosia</S>
-              <Db N="Longitude">33.3666667</Db>
-              <Db N="Latitude">35.1666667</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">CY</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">CY</S>
+      <U64 N="Id">56</U64>
+      <S N="FriendlyName">Cyprus</S>
+    </Props>
   </Obj>
   <Obj RefId="45">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">57</U64>
-      <S N="FriendlyName">Czech Republic</S>
-      <S N="Code">CZ</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="46">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="47">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2144945</U64>
-              <S N="FriendlyName">Prague</S>
-              <S N="Code">prague</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">14.466667</Db>
               <Db N="Latitude">50.083333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CZ</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">prague</S>
+              <U64 N="Id">2144945</U64>
+              <S N="FriendlyName">Prague</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">CZ</S>
+      <U64 N="Id">57</U64>
+      <S N="FriendlyName">Czech Republic</S>
+    </Props>
   </Obj>
   <Obj RefId="48">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">58</U64>
-      <S N="FriendlyName">Denmark</S>
-      <S N="Code">DK</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="49">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="50">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2382515</U64>
-              <S N="FriendlyName">Copenhagen</S>
-              <S N="Code">copenhagen</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">12.583333</Db>
               <Db N="Latitude">55.666667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">DK</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">copenhagen</S>
+              <U64 N="Id">2382515</U64>
+              <S N="FriendlyName">Copenhagen</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">DK</S>
+      <U64 N="Id">58</U64>
+      <S N="FriendlyName">Denmark</S>
+    </Props>
   </Obj>
   <Obj RefId="51">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">68</U64>
-      <S N="FriendlyName">Estonia</S>
-      <S N="Code">EE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="52">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="53">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">24.728056</Db>
+              <Db N="Latitude">59.433889</Db>
+              <S N="CountryCode">EE</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">tallinn</S>
               <U64 N="Id">2514182</U64>
               <S N="FriendlyName">Tallinn</S>
-              <S N="Code">tallinn</S>
-              <Db N="Longitude">24.7280556</Db>
-              <Db N="Latitude">59.4338889</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">EE</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">EE</S>
+      <U64 N="Id">68</U64>
+      <S N="FriendlyName">Estonia</S>
+    </Props>
   </Obj>
   <Obj RefId="54">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">73</U64>
-      <S N="FriendlyName">Finland</S>
-      <S N="Code">FI</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="55">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="56">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2704343</U64>
-              <S N="FriendlyName">Helsinki</S>
-              <S N="Code">helsinki</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">24.934167</Db>
               <Db N="Latitude">60.175556</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">FI</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">helsinki</S>
+              <U64 N="Id">2704343</U64>
+              <S N="FriendlyName">Helsinki</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">FI</S>
+      <U64 N="Id">73</U64>
+      <S N="FriendlyName">Finland</S>
+    </Props>
   </Obj>
   <Obj RefId="57">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">74</U64>
-      <S N="FriendlyName">France</S>
-      <S N="Code">FR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="58">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="59">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2886284</U64>
-              <S N="FriendlyName">Paris</S>
-              <S N="Code">paris</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">2.333333</Db>
               <Db N="Latitude">48.866667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">FR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">paris</S>
+              <U64 N="Id">2886284</U64>
+              <S N="FriendlyName">Paris</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">FR</S>
+      <U64 N="Id">74</U64>
+      <S N="FriendlyName">France</S>
+    </Props>
   </Obj>
   <Obj RefId="60">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">80</U64>
-      <S N="FriendlyName">Georgia</S>
-      <S N="Code">GE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="61">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="62">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">44.790833</Db>
+              <Db N="Latitude">41.725</Db>
+              <S N="CountryCode">GE</S>
+              <I16 N="HubScore">-5</I16>
+              <S N="Code">tbilisi</S>
               <U64 N="Id">3032063</U64>
               <S N="FriendlyName">Tbilisi</S>
-              <S N="Code">tbilisi</S>
-              <Db N="Longitude">44.7908333</Db>
-              <Db N="Latitude">41.725</Db>
-              <I16 N="HubScore">-5</I16>
-              <S N="CountryCode">GE</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">GE</S>
+      <U64 N="Id">80</U64>
+      <S N="FriendlyName">Georgia</S>
+    </Props>
   </Obj>
   <Obj RefId="63">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">81</U64>
-      <S N="FriendlyName">Germany</S>
-      <S N="Code">DE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="64">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="65">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2181458</U64>
-              <S N="FriendlyName">Berlin</S>
-              <S N="Code">berlin</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">13.4</Db>
               <Db N="Latitude">52.516667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">DE</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">berlin</S>
+              <U64 N="Id">2181458</U64>
+              <S N="FriendlyName">Berlin</S>
+            </Props>
           </Obj>
           <Obj RefId="66">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2215709</U64>
-              <S N="FriendlyName">Frankfurt</S>
-              <S N="Code">frankfurt</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">8.683333</Db>
               <Db N="Latitude">50.116667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">DE</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">frankfurt</S>
+              <U64 N="Id">2215709</U64>
+              <S N="FriendlyName">Frankfurt</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">DE</S>
+      <U64 N="Id">81</U64>
+      <S N="FriendlyName">Germany</S>
+    </Props>
   </Obj>
   <Obj RefId="67">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">84</U64>
-      <S N="FriendlyName">Greece</S>
-      <S N="Code">GR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="68">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="69">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">23.733333</Db>
+              <Db N="Latitude">37.983333</Db>
+              <S N="CountryCode">GR</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">athens</S>
               <U64 N="Id">3131903</U64>
               <S N="FriendlyName">Athens</S>
-              <S N="Code">athens</S>
-              <Db N="Longitude">23.7333333</Db>
-              <Db N="Latitude">37.9833333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">GR</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">GR</S>
+      <U64 N="Id">84</U64>
+      <S N="FriendlyName">Greece</S>
+    </Props>
   </Obj>
   <Obj RefId="70">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">97</U64>
-      <S N="FriendlyName">Hong Kong</S>
-      <S N="Code">HK</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="71">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="72">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">114.15</Db>
+              <Db N="Latitude">22.283333</Db>
+              <S N="CountryCode">HK</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">hong-kong</S>
               <U64 N="Id">3232931</U64>
               <S N="FriendlyName">Hong Kong</S>
-              <S N="Code">hong-kong</S>
-              <Db N="Longitude">114.15</Db>
-              <Db N="Latitude">22.2833333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">HK</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">HK</S>
+      <U64 N="Id">97</U64>
+      <S N="FriendlyName">Hong Kong</S>
+    </Props>
   </Obj>
   <Obj RefId="73">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">98</U64>
-      <S N="FriendlyName">Hungary</S>
-      <S N="Code">HU</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="74">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="75">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">3348344</U64>
-              <S N="FriendlyName">Budapest</S>
-              <S N="Code">budapest</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">19.083333</Db>
               <Db N="Latitude">47.5</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">HU</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">budapest</S>
+              <U64 N="Id">3348344</U64>
+              <S N="FriendlyName">Budapest</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">HU</S>
+      <U64 N="Id">98</U64>
+      <S N="FriendlyName">Hungary</S>
+    </Props>
   </Obj>
   <Obj RefId="76">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">99</U64>
-      <S N="FriendlyName">Iceland</S>
-      <S N="Code">IS</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="77">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="78">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">4509791</U64>
-              <S N="FriendlyName">Reykjavik</S>
-              <S N="Code">reykjavik</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-21.95</Db>
               <Db N="Latitude">64.15</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">IS</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">reykjavik</S>
+              <U64 N="Id">4509791</U64>
+              <S N="FriendlyName">Reykjavik</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">IS</S>
+      <U64 N="Id">99</U64>
+      <S N="FriendlyName">Iceland</S>
+    </Props>
   </Obj>
   <Obj RefId="79">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">100</U64>
-      <S N="FriendlyName">India</S>
-      <S N="Code">IN</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="80">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="81">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">3988130</U64>
-              <S N="FriendlyName">Chennai</S>
-              <S N="Code">chennai</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">80.283333</Db>
               <Db N="Latitude">13.083333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">IN</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">chennai</S>
+              <U64 N="Id">3988130</U64>
+              <S N="FriendlyName">Chennai</S>
+            </Props>
           </Obj>
           <Obj RefId="82">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">4041548</U64>
-              <S N="FriendlyName">Mumbai</S>
-              <S N="Code">mumbai</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">72.825833</Db>
               <Db N="Latitude">18.975</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">IN</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">mumbai</S>
+              <U64 N="Id">4041548</U64>
+              <S N="FriendlyName">Mumbai</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">IN</S>
+      <U64 N="Id">100</U64>
+      <S N="FriendlyName">India</S>
+    </Props>
   </Obj>
   <Obj RefId="83">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">101</U64>
-      <S N="FriendlyName">Indonesia</S>
-      <S N="Code">ID</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="84">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="85">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">3560288</U64>
-              <S N="FriendlyName">Jakarta</S>
-              <S N="Code">jakarta</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">106.829444</Db>
               <Db N="Latitude">-6.174444</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">ID</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">jakarta</S>
+              <U64 N="Id">3560288</U64>
+              <S N="FriendlyName">Jakarta</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">ID</S>
+      <U64 N="Id">101</U64>
+      <S N="FriendlyName">Indonesia</S>
+    </Props>
   </Obj>
   <Obj RefId="86">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">104</U64>
-      <S N="FriendlyName">Ireland</S>
-      <S N="Code">IE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="87">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="88">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-6.248889</Db>
+              <Db N="Latitude">53.333056</Db>
+              <S N="CountryCode">IE</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">dublin</S>
               <U64 N="Id">3939200</U64>
               <S N="FriendlyName">Dublin</S>
-              <S N="Code">dublin</S>
-              <Db N="Longitude">-6.2488889</Db>
-              <Db N="Latitude">53.3330556</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">IE</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">IE</S>
+      <U64 N="Id">104</U64>
+      <S N="FriendlyName">Ireland</S>
+    </Props>
   </Obj>
   <Obj RefId="89">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">105</U64>
-      <S N="FriendlyName">Israel</S>
-      <S N="Code">IL</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="90">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="91">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">3964220</U64>
-              <S N="FriendlyName">Tel Aviv</S>
-              <S N="Code">tel-aviv</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">34.766667</Db>
               <Db N="Latitude">32.066667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">IL</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">tel-aviv</S>
+              <U64 N="Id">3964220</U64>
+              <S N="FriendlyName">Tel Aviv</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">IL</S>
+      <U64 N="Id">105</U64>
+      <S N="FriendlyName">Israel</S>
+    </Props>
   </Obj>
   <Obj RefId="92">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">106</U64>
-      <S N="FriendlyName">Italy</S>
-      <S N="Code">IT</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="93">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="94">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">4542737</U64>
-              <S N="FriendlyName">Milan</S>
-              <S N="Code">milan</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">9.2</Db>
               <Db N="Latitude">45.466667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">IT</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">milan</S>
+              <U64 N="Id">4542737</U64>
+              <S N="FriendlyName">Milan</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">IT</S>
+      <U64 N="Id">106</U64>
+      <S N="FriendlyName">Italy</S>
+    </Props>
   </Obj>
   <Obj RefId="95">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">108</U64>
-      <S N="FriendlyName">Japan</S>
-      <S N="Code">JP</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="96">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="97">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">4633349</U64>
-              <S N="FriendlyName">Tokyo</S>
-              <S N="Code">tokyo</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">139.751389</Db>
               <Db N="Latitude">35.685</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">JP</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">tokyo</S>
+              <U64 N="Id">4633349</U64>
+              <S N="FriendlyName">Tokyo</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">JP</S>
+      <U64 N="Id">108</U64>
+      <S N="FriendlyName">Japan</S>
+    </Props>
   </Obj>
   <Obj RefId="98">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">119</U64>
-      <S N="FriendlyName">Latvia</S>
-      <S N="Code">LV</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="99">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="100">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">5192828</U64>
-              <S N="FriendlyName">Riga</S>
-              <S N="Code">riga</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">24.1</Db>
               <Db N="Latitude">56.95</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">LV</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">riga</S>
+              <U64 N="Id">5192828</U64>
+              <S N="FriendlyName">Riga</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">LV</S>
+      <U64 N="Id">119</U64>
+      <S N="FriendlyName">Latvia</S>
+    </Props>
   </Obj>
   <Obj RefId="101">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">126</U64>
-      <S N="FriendlyName">Luxembourg</S>
-      <S N="Code">LU</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="102">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="103">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">6.123889</Db>
+              <Db N="Latitude">49.676944</Db>
+              <S N="CountryCode">LU</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">steinsel</S>
               <U64 N="Id">5173235</U64>
               <S N="FriendlyName">Steinsel</S>
-              <S N="Code">steinsel</S>
-              <Db N="Longitude">6.1238889</Db>
-              <Db N="Latitude">49.6769444</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">LU</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">LU</S>
+      <U64 N="Id">126</U64>
+      <S N="FriendlyName">Luxembourg</S>
+    </Props>
   </Obj>
   <Obj RefId="104">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">131</U64>
-      <S N="FriendlyName">Malaysia</S>
-      <S N="Code">MY</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="105">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="106">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">5820143</U64>
-              <S N="FriendlyName">Kuala Lumpur</S>
-              <S N="Code">kuala-lumpur</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">101.7</Db>
               <Db N="Latitude">3.166667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">MY</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">kuala-lumpur</S>
+              <U64 N="Id">5820143</U64>
+              <S N="FriendlyName">Kuala Lumpur</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">MY</S>
+      <U64 N="Id">131</U64>
+      <S N="FriendlyName">Malaysia</S>
+    </Props>
   </Obj>
   <Obj RefId="107">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">140</U64>
-      <S N="FriendlyName">Mexico</S>
-      <S N="Code">MX</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="108">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="109">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">5677037</U64>
-              <S N="FriendlyName">Mexico</S>
-              <S N="Code">mexico</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-99.138611</Db>
               <Db N="Latitude">19.434167</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">MX</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">mexico</S>
+              <U64 N="Id">5677037</U64>
+              <S N="FriendlyName">Mexico</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">MX</S>
+      <U64 N="Id">140</U64>
+      <S N="FriendlyName">Mexico</S>
+    </Props>
   </Obj>
   <Obj RefId="110">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">142</U64>
-      <S N="FriendlyName">Moldova</S>
-      <S N="Code">MD</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="111">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="112">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">5295179</U64>
-              <S N="FriendlyName">Chisinau</S>
-              <S N="Code">chisinau</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">28.8575</Db>
               <Db N="Latitude">47.005556</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">MD</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">chisinau</S>
+              <U64 N="Id">5295179</U64>
+              <S N="FriendlyName">Chisinau</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">MD</S>
+      <U64 N="Id">142</U64>
+      <S N="FriendlyName">Moldova</S>
+    </Props>
   </Obj>
   <Obj RefId="113">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">153</U64>
-      <S N="FriendlyName">Netherlands</S>
-      <S N="Code">NL</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="114">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="115">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">6076868</U64>
-              <S N="FriendlyName">Amsterdam</S>
-              <S N="Code">amsterdam</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">4.916667</Db>
               <Db N="Latitude">52.35</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">NL</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">amsterdam</S>
+              <U64 N="Id">6076868</U64>
+              <S N="FriendlyName">Amsterdam</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">NL</S>
+      <U64 N="Id">153</U64>
+      <S N="FriendlyName">Netherlands</S>
+    </Props>
   </Obj>
   <Obj RefId="116">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">156</U64>
-      <S N="FriendlyName">New Zealand</S>
-      <S N="Code">NZ</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="117">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="118">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">6144239</U64>
-              <S N="FriendlyName">Auckland</S>
-              <S N="Code">auckland</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">174.766667</Db>
               <Db N="Latitude">-36.866667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">NZ</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">auckland</S>
+              <U64 N="Id">6144239</U64>
+              <S N="FriendlyName">Auckland</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">NZ</S>
+      <U64 N="Id">156</U64>
+      <S N="FriendlyName">New Zealand</S>
+    </Props>
   </Obj>
   <Obj RefId="119">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">128</U64>
-      <S N="FriendlyName">North Macedonia</S>
-      <S N="Code">MK</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="120">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="121">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">21.433333</Db>
+              <Db N="Latitude">42</Db>
+              <S N="CountryCode">MK</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">skopje</S>
               <U64 N="Id">5386019</U64>
               <S N="FriendlyName">Skopje</S>
-              <S N="Code">skopje</S>
-              <Db N="Longitude">21.4333333</Db>
-              <Db N="Latitude">42</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">MK</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">MK</S>
+      <U64 N="Id">128</U64>
+      <S N="FriendlyName">North Macedonia</S>
+    </Props>
   </Obj>
   <Obj RefId="122">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">163</U64>
-      <S N="FriendlyName">Norway</S>
-      <S N="Code">NO</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="123">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="124">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">6127364</U64>
-              <S N="FriendlyName">Oslo</S>
-              <S N="Code">oslo</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">10.75</Db>
               <Db N="Latitude">59.916667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">NO</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">oslo</S>
+              <U64 N="Id">6127364</U64>
+              <S N="FriendlyName">Oslo</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">NO</S>
+      <U64 N="Id">163</U64>
+      <S N="FriendlyName">Norway</S>
+    </Props>
   </Obj>
   <Obj RefId="125">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">174</U64>
-      <S N="FriendlyName">Poland</S>
-      <S N="Code">PL</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="126">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="127">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">6863429</U64>
-              <S N="FriendlyName">Warsaw</S>
-              <S N="Code">warsaw</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">21</Db>
               <Db N="Latitude">52.25</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">PL</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">warsaw</S>
+              <U64 N="Id">6863429</U64>
+              <S N="FriendlyName">Warsaw</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">PL</S>
+      <U64 N="Id">174</U64>
+      <S N="FriendlyName">Poland</S>
+    </Props>
   </Obj>
   <Obj RefId="128">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">175</U64>
-      <S N="FriendlyName">Portugal</S>
-      <S N="Code">PT</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="129">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="130">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">6906665</U64>
-              <S N="FriendlyName">Lisbon</S>
-              <S N="Code">lisbon</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-9.133333</Db>
               <Db N="Latitude">38.716667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">PT</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">lisbon</S>
+              <U64 N="Id">6906665</U64>
+              <S N="FriendlyName">Lisbon</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">PT</S>
+      <U64 N="Id">175</U64>
+      <S N="FriendlyName">Portugal</S>
+    </Props>
   </Obj>
   <Obj RefId="131">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">179</U64>
-      <S N="FriendlyName">Romania</S>
-      <S N="Code">RO</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="132">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="133">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">6953096</U64>
-              <S N="FriendlyName">Bucharest</S>
-              <S N="Code">bucharest</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">26.1</Db>
               <Db N="Latitude">44.433333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">RO</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">bucharest</S>
+              <U64 N="Id">6953096</U64>
+              <S N="FriendlyName">Bucharest</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">RO</S>
+      <U64 N="Id">179</U64>
+      <S N="FriendlyName">Romania</S>
+    </Props>
   </Obj>
   <Obj RefId="134">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">192</U64>
-      <S N="FriendlyName">Serbia</S>
-      <S N="Code">RS</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="135">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="136">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">7030907</U64>
-              <S N="FriendlyName">Belgrad</S>
-              <S N="Code">belgrad</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">20.468056</Db>
               <Db N="Latitude">44.818611</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">RS</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">belgrad</S>
+              <U64 N="Id">7030907</U64>
+              <S N="FriendlyName">Belgrad</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">RS</S>
+      <U64 N="Id">192</U64>
+      <S N="FriendlyName">Serbia</S>
+    </Props>
   </Obj>
   <Obj RefId="137">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">195</U64>
-      <S N="FriendlyName">Singapore</S>
-      <S N="Code">SG</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="138">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="139">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">103.855833</Db>
+              <Db N="Latitude">1.293056</Db>
+              <S N="CountryCode">SG</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">singapore</S>
               <U64 N="Id">7867982</U64>
               <S N="FriendlyName">Singapore</S>
-              <S N="Code">singapore</S>
-              <Db N="Longitude">103.8558333</Db>
-              <Db N="Latitude">1.2930556</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">SG</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">SG</S>
+      <U64 N="Id">195</U64>
+      <S N="FriendlyName">Singapore</S>
+    </Props>
   </Obj>
   <Obj RefId="140">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">196</U64>
-      <S N="FriendlyName">Slovakia</S>
-      <S N="Code">SK</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="141">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="142">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">17.116667</Db>
+              <Db N="Latitude">48.15</Db>
+              <S N="CountryCode">SK</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">bratislava</S>
               <U64 N="Id">7884305</U64>
               <S N="FriendlyName">Bratislava</S>
-              <S N="Code">bratislava</S>
-              <Db N="Longitude">17.1166667</Db>
-              <Db N="Latitude">48.15</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">SK</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">SK</S>
+      <U64 N="Id">196</U64>
+      <S N="FriendlyName">Slovakia</S>
+    </Props>
   </Obj>
   <Obj RefId="143">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">197</U64>
-      <S N="FriendlyName">Slovenia</S>
-      <S N="Code">SI</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="144">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="145">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">14.514444</Db>
+              <Db N="Latitude">46.055278</Db>
+              <S N="CountryCode">SI</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">ljubljana</S>
               <U64 N="Id">7874306</U64>
               <S N="FriendlyName">Ljubljana</S>
-              <S N="Code">ljubljana</S>
-              <Db N="Longitude">14.5144444</Db>
-              <Db N="Latitude">46.0552778</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">SI</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">SI</S>
+      <U64 N="Id">197</U64>
+      <S N="FriendlyName">Slovenia</S>
+    </Props>
   </Obj>
   <Obj RefId="146">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">200</U64>
-      <S N="FriendlyName">South Africa</S>
-      <S N="Code">ZA</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="147">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="148">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">9383693</U64>
-              <S N="FriendlyName">Johannesburg</S>
-              <S N="Code">johannesburg</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">28.049815</Db>
               <Db N="Latitude">-26.205171</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">ZA</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">johannesburg</S>
+              <U64 N="Id">9383693</U64>
+              <S N="FriendlyName">Johannesburg</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">ZA</S>
+      <U64 N="Id">200</U64>
+      <S N="FriendlyName">South Africa</S>
+    </Props>
   </Obj>
   <Obj RefId="149">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">114</U64>
-      <S N="FriendlyName">South Korea</S>
-      <S N="Code">KR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="150">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="151">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">4879586</U64>
-              <S N="FriendlyName">Seoul</S>
-              <S N="Code">seoul</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">126.9783</Db>
               <Db N="Latitude">37.5985</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">KR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">seoul</S>
+              <U64 N="Id">4879586</U64>
+              <S N="FriendlyName">Seoul</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">KR</S>
+      <U64 N="Id">114</U64>
+      <S N="FriendlyName">South Korea</S>
+    </Props>
   </Obj>
   <Obj RefId="152">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">202</U64>
-      <S N="FriendlyName">Spain</S>
-      <S N="Code">ES</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="153">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="154">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2619989</U64>
-              <S N="FriendlyName">Madrid</S>
-              <S N="Code">madrid</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-3.69222</Db>
               <Db N="Latitude">40.408566</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">ES</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">madrid</S>
+              <U64 N="Id">2619989</U64>
+              <S N="FriendlyName">Madrid</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">ES</S>
+      <U64 N="Id">202</U64>
+      <S N="FriendlyName">Spain</S>
+    </Props>
   </Obj>
   <Obj RefId="155">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">208</U64>
-      <S N="FriendlyName">Sweden</S>
-      <S N="Code">SE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="156">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="157">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">7852919</U64>
-              <S N="FriendlyName">Stockholm</S>
-              <S N="Code">stockholm</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">18.05</Db>
               <Db N="Latitude">59.333333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">SE</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">stockholm</S>
+              <U64 N="Id">7852919</U64>
+              <S N="FriendlyName">Stockholm</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">SE</S>
+      <U64 N="Id">208</U64>
+      <S N="FriendlyName">Sweden</S>
+    </Props>
   </Obj>
   <Obj RefId="158">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">209</U64>
-      <S N="FriendlyName">Switzerland</S>
-      <S N="Code">CH</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="159">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="160">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">1171814</U64>
-              <S N="FriendlyName">Zurich</S>
-              <S N="Code">zurich</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">8.55</Db>
               <Db N="Latitude">47.366667</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">CH</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">zurich</S>
+              <U64 N="Id">1171814</U64>
+              <S N="FriendlyName">Zurich</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">CH</S>
+      <U64 N="Id">209</U64>
+      <S N="FriendlyName">Switzerland</S>
+    </Props>
   </Obj>
   <Obj RefId="161">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">211</U64>
-      <S N="FriendlyName">Taiwan</S>
-      <S N="Code">TW</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="162">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="163">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">121.525</Db>
+              <Db N="Latitude">25.039167</Db>
+              <S N="CountryCode">TW</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">taipei</S>
               <U64 N="Id">8544365</U64>
               <S N="FriendlyName">Taipei</S>
-              <S N="Code">taipei</S>
-              <Db N="Longitude">121.525</Db>
-              <Db N="Latitude">25.0391667</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">TW</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">TW</S>
+      <U64 N="Id">211</U64>
+      <S N="FriendlyName">Taiwan</S>
+    </Props>
   </Obj>
   <Obj RefId="164">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">214</U64>
-      <S N="FriendlyName">Thailand</S>
-      <S N="Code">TH</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="165">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="166">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">8121638</U64>
-              <S N="FriendlyName">Bangkok</S>
-              <S N="Code">bangkok</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">100.501444</Db>
               <Db N="Latitude">13.753979</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">TH</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">bangkok</S>
+              <U64 N="Id">8121638</U64>
+              <S N="FriendlyName">Bangkok</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">TH</S>
+      <U64 N="Id">214</U64>
+      <S N="FriendlyName">Thailand</S>
+    </Props>
   </Obj>
   <Obj RefId="167">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">220</U64>
-      <S N="FriendlyName">Turkey</S>
-      <S N="Code">TR</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="168">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="169">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">8401790</U64>
-              <S N="FriendlyName">Istanbul</S>
-              <S N="Code">istanbul</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">28.964722</Db>
               <Db N="Latitude">41.018611</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">TR</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">istanbul</S>
+              <U64 N="Id">8401790</U64>
+              <S N="FriendlyName">Istanbul</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">TR</S>
+      <U64 N="Id">220</U64>
+      <S N="FriendlyName">Turkey</S>
+    </Props>
   </Obj>
   <Obj RefId="170">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">225</U64>
-      <S N="FriendlyName">Ukraine</S>
-      <S N="Code">UA</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="171">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="172">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">8615126</U64>
-              <S N="FriendlyName">Kiev</S>
-              <S N="Code">kiev</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">30.516667</Db>
               <Db N="Latitude">50.433333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">UA</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">kiev</S>
+              <U64 N="Id">8615126</U64>
+              <S N="FriendlyName">Kiev</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">UA</S>
+      <U64 N="Id">225</U64>
+      <S N="FriendlyName">Ukraine</S>
+    </Props>
   </Obj>
   <Obj RefId="173">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">226</U64>
-      <S N="FriendlyName">United Arab Emirates</S>
-      <S N="Code">AE</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="174">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="175">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">728</U64>
-              <S N="FriendlyName">Dubai</S>
-              <S N="Code">dubai</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">55.304717</Db>
               <Db N="Latitude">25.258172</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">AE</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">dubai</S>
+              <U64 N="Id">728</U64>
+              <S N="FriendlyName">Dubai</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">AE</S>
+      <U64 N="Id">226</U64>
+      <S N="FriendlyName">United Arab Emirates</S>
+    </Props>
   </Obj>
   <Obj RefId="176">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">227</U64>
-      <S N="FriendlyName">United Kingdom</S>
-      <S N="Code">GB</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="177">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="178">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">2989907</U64>
-              <S N="FriendlyName">London</S>
-              <S N="Code">london</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-0.093689</Db>
               <Db N="Latitude">51.514125</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">GB</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">london</S>
+              <U64 N="Id">2989907</U64>
+              <S N="FriendlyName">London</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">GB</S>
+      <U64 N="Id">227</U64>
+      <S N="FriendlyName">United Kingdom</S>
+    </Props>
   </Obj>
   <Obj RefId="179">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">228</U64>
-      <S N="FriendlyName">United States</S>
-      <S N="Code">US</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="180">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="181">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-84.388056</Db>
+              <Db N="Latitude">33.748889</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">atlanta</S>
               <U64 N="Id">8792429</U64>
               <S N="FriendlyName">Atlanta</S>
-              <S N="Code">atlanta</S>
-              <Db N="Longitude">-84.3880556</Db>
-              <Db N="Latitude">33.7488889</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="182">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-78.878611</Db>
+              <Db N="Latitude">42.886389</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">buffalo</S>
               <U64 N="Id">8963153</U64>
               <S N="FriendlyName">Buffalo</S>
-              <S N="Code">buffalo</S>
-              <Db N="Longitude">-78.8786111</Db>
-              <Db N="Latitude">42.8863889</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="183">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-80.843333</Db>
+              <Db N="Latitude">35.226944</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">charlotte</S>
               <U64 N="Id">8980922</U64>
               <S N="FriendlyName">Charlotte</S>
-              <S N="Code">charlotte</S>
-              <Db N="Longitude">-80.8433333</Db>
-              <Db N="Latitude">35.2269444</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="184">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">8815352</U64>
-              <S N="FriendlyName">Chicago</S>
-              <S N="Code">chicago</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">-87.65</Db>
               <Db N="Latitude">41.85</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">US</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">chicago</S>
+              <U64 N="Id">8815352</U64>
+              <S N="FriendlyName">Chicago</S>
+            </Props>
           </Obj>
           <Obj RefId="185">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-96.8</Db>
+              <Db N="Latitude">32.783333</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">dallas</S>
               <U64 N="Id">9080300</U64>
               <S N="FriendlyName">Dallas</S>
-              <S N="Code">dallas</S>
-              <Db N="Longitude">-96.8</Db>
-              <Db N="Latitude">32.7833333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="186">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-104.984167</Db>
+              <Db N="Latitude">39.739167</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">denver</S>
               <U64 N="Id">8770934</U64>
               <S N="FriendlyName">Denver</S>
-              <S N="Code">denver</S>
-              <Db N="Longitude">-104.9841667</Db>
-              <Db N="Latitude">39.7391667</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="187">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-118.242778</Db>
+              <Db N="Latitude">34.052222</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">los-angeles</S>
               <U64 N="Id">8761958</U64>
               <S N="FriendlyName">Los Angeles</S>
-              <S N="Code">los-angeles</S>
-              <Db N="Longitude">-118.2427778</Db>
-              <Db N="Latitude">34.0522222</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="188">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-77.475556</Db>
+              <Db N="Latitude">38.750833</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">manassas</S>
               <U64 N="Id">9113744</U64>
               <S N="FriendlyName">Manassas</S>
-              <S N="Code">manassas</S>
-              <Db N="Longitude">-77.4755556</Db>
-              <Db N="Latitude">38.7508333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="189">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-80.193889</Db>
+              <Db N="Latitude">25.773889</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">miami</S>
               <U64 N="Id">8787782</U64>
               <S N="FriendlyName">Miami</S>
-              <S N="Code">miami</S>
-              <Db N="Longitude">-80.1938889</Db>
-              <Db N="Latitude">25.7738889</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="190">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-74.006389</Db>
+              <Db N="Latitude">40.714167</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">new-york</S>
               <U64 N="Id">8971718</U64>
               <S N="FriendlyName">New York</S>
-              <S N="Code">new-york</S>
-              <Db N="Longitude">-74.0063889</Db>
-              <Db N="Latitude">40.7141667</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="191">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-112.073333</Db>
+              <Db N="Latitude">33.448333</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">phoenix</S>
               <U64 N="Id">8741960</U64>
               <S N="FriendlyName">Phoenix</S>
-              <S N="Code">phoenix</S>
-              <Db N="Longitude">-112.0733333</Db>
-              <Db N="Latitude">33.4483333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="192">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-90.197778</Db>
+              <Db N="Latitude">38.627222</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">saint-louis</S>
               <U64 N="Id">8934551</U64>
               <S N="FriendlyName">Saint Louis</S>
-              <S N="Code">saint-louis</S>
-              <Db N="Longitude">-90.1977778</Db>
-              <Db N="Latitude">38.6272222</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="193">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-111.890278</Db>
+              <Db N="Latitude">40.760833</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">salt-lake-city</S>
               <U64 N="Id">9097865</U64>
               <S N="FriendlyName">Salt Lake City</S>
-              <S N="Code">salt-lake-city</S>
-              <Db N="Longitude">-111.8902778</Db>
-              <Db N="Latitude">40.7608333</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="194">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-122.466</Db>
+              <Db N="Latitude">37.769814</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">san-francisco</S>
               <U64 N="Id">8766359</U64>
               <S N="FriendlyName">San Francisco</S>
-              <S N="Code">san-francisco</S>
-              <Db N="Longitude">-122.4660005</Db>
-              <Db N="Latitude">37.7698135</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
           <Obj RefId="195">
-            <TNRef RefId="0" />
-            <MS>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
+              <Db N="Longitude">-122.330833</Db>
+              <Db N="Latitude">47.606389</Db>
+              <S N="CountryCode">US</S>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">seattle</S>
               <U64 N="Id">9128402</U64>
               <S N="FriendlyName">Seattle</S>
-              <S N="Code">seattle</S>
-              <Db N="Longitude">-122.3308333</Db>
-              <Db N="Latitude">47.6063889</Db>
-              <I16 N="HubScore">0</I16>
-              <S N="CountryCode">US</S>
-            </MS>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">US</S>
+      <U64 N="Id">228</U64>
+      <S N="FriendlyName">United States</S>
+    </Props>
   </Obj>
   <Obj RefId="196">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">234</U64>
-      <S N="FriendlyName">Vietnam</S>
-      <S N="Code">VN</S>
+    <ToString>NordVPNCountry</ToString>
+    <Props>
       <Obj N="Cities" RefId="197">
         <TNRef RefId="1" />
         <LST>
           <Obj RefId="198">
-            <TNRef RefId="0" />
-            <MS>
-              <U64 N="Id">9270302</U64>
-              <S N="FriendlyName">Hanoi</S>
-              <S N="Code">hanoi</S>
+            <TNRef RefId="2" />
+            <ToString>NordVPNCity</ToString>
+            <Props>
               <Db N="Longitude">105.85</Db>
               <Db N="Latitude">21.033333</Db>
-              <I16 N="HubScore">0</I16>
               <S N="CountryCode">VN</S>
-            </MS>
+              <I16 N="HubScore">0</I16>
+              <S N="Code">hanoi</S>
+              <U64 N="Id">9270302</U64>
+              <S N="FriendlyName">Hanoi</S>
+            </Props>
           </Obj>
         </LST>
       </Obj>
-    </MS>
+      <S N="Code">VN</S>
+      <U64 N="Id">234</U64>
+      <S N="FriendlyName">Vietnam</S>
+    </Props>
   </Obj>
 </Objs>

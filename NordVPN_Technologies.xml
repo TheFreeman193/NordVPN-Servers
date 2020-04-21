@@ -1,215 +1,259 @@
 <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
   <Obj RefId="0">
     <TN RefId="0">
-      <T>System.Management.Automation.PSCustomObject</T>
+      <T>NordVPNTechnology</T>
+      <T>NordVPNDatedItem</T>
+      <T>NordVPNItem</T>
       <T>System.Object</T>
     </TN>
-    <MS>
-      <U64 N="Id">1</U64>
-      <S N="FriendlyName">IKEv2/IPSec</S>
-      <S N="Code">ikev2</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-03-21T12:00:24</DT>
       <DT N="Updated">2017-09-05T14:20:16</DT>
-    </MS>
+      <S N="Code">ikev2</S>
+      <U64 N="Id">1</U64>
+      <S N="FriendlyName">IKEv2/IPSec</S>
+    </Props>
   </Obj>
   <Obj RefId="1">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">3</U64>
-      <S N="FriendlyName">OpenVPN UDP</S>
-      <S N="Code">openvpn_udp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-04T08:03:24</DT>
       <DT N="Updated">2017-05-09T19:27:37</DT>
-    </MS>
+      <S N="Code">openvpn_udp</S>
+      <U64 N="Id">3</U64>
+      <S N="FriendlyName">OpenVPN UDP</S>
+    </Props>
   </Obj>
   <Obj RefId="2">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">5</U64>
-      <S N="FriendlyName">OpenVPN TCP</S>
-      <S N="Code">openvpn_tcp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-09T19:28:14</DT>
       <DT N="Updated">2017-05-09T19:28:14</DT>
-    </MS>
+      <S N="Code">openvpn_tcp</S>
+      <U64 N="Id">5</U64>
+      <S N="FriendlyName">OpenVPN TCP</S>
+    </Props>
   </Obj>
   <Obj RefId="3">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">7</U64>
-      <S N="FriendlyName">Socks 5</S>
-      <S N="Code">socks</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-09T19:28:57</DT>
       <DT N="Updated">2017-06-13T14:27:05</DT>
-    </MS>
+      <S N="Code">socks</S>
+      <U64 N="Id">7</U64>
+      <S N="FriendlyName">Socks 5</S>
+    </Props>
   </Obj>
   <Obj RefId="4">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">9</U64>
-      <S N="FriendlyName">HTTP Proxy</S>
-      <S N="Code">proxy</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-09T19:29:09</DT>
       <DT N="Updated">2017-06-13T14:25:29</DT>
-    </MS>
+      <S N="Code">proxy</S>
+      <U64 N="Id">9</U64>
+      <S N="FriendlyName">HTTP Proxy</S>
+    </Props>
   </Obj>
   <Obj RefId="5">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">11</U64>
-      <S N="FriendlyName">PPTP</S>
-      <S N="Code">pptp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-09T19:29:16</DT>
       <DT N="Updated">2017-05-09T19:29:16</DT>
-    </MS>
+      <S N="Code">pptp</S>
+      <U64 N="Id">11</U64>
+      <S N="FriendlyName">PPTP</S>
+    </Props>
   </Obj>
   <Obj RefId="6">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">13</U64>
-      <S N="FriendlyName">L2TP/IPSec</S>
-      <S N="Code">l2tp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-09T19:29:26</DT>
       <DT N="Updated">2017-09-05T14:19:42</DT>
-    </MS>
+      <S N="Code">l2tp</S>
+      <U64 N="Id">13</U64>
+      <S N="FriendlyName">L2TP/IPSec</S>
+    </Props>
   </Obj>
   <Obj RefId="7">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">15</U64>
-      <S N="FriendlyName">OpenVPN UDP Obfuscated</S>
-      <S N="Code">openvpn_x005F_xor_udp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-26T14:04:04</DT>
       <DT N="Updated">2017-11-07T08:37:53</DT>
-    </MS>
+      <S N="Code">openvpn_x005F_xor_udp</S>
+      <U64 N="Id">15</U64>
+      <S N="FriendlyName">OpenVPN UDP Obfuscated</S>
+    </Props>
   </Obj>
   <Obj RefId="8">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">17</U64>
-      <S N="FriendlyName">OpenVPN TCP Obfuscated</S>
-      <S N="Code">openvpn_x005F_xor_tcp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-05-26T14:04:27</DT>
       <DT N="Updated">2017-11-07T08:38:16</DT>
-    </MS>
+      <S N="Code">openvpn_x005F_xor_tcp</S>
+      <U64 N="Id">17</U64>
+      <S N="FriendlyName">OpenVPN TCP Obfuscated</S>
+    </Props>
   </Obj>
   <Obj RefId="9">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">19</U64>
-      <S N="FriendlyName">HTTP CyberSec Proxy</S>
-      <S N="Code">proxy_cybersec</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-08-22T12:44:49</DT>
       <DT N="Updated">2017-08-22T12:44:49</DT>
-    </MS>
+      <S N="Code">proxy_cybersec</S>
+      <U64 N="Id">19</U64>
+      <S N="FriendlyName">HTTP CyberSec Proxy</S>
+    </Props>
   </Obj>
   <Obj RefId="10">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">21</U64>
-      <S N="FriendlyName">HTTP Proxy (SSL)</S>
-      <S N="Code">proxy_ssl</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-10-02T12:45:14</DT>
       <DT N="Updated">2017-10-02T12:45:14</DT>
-    </MS>
+      <S N="Code">proxy_ssl</S>
+      <U64 N="Id">21</U64>
+      <S N="FriendlyName">HTTP Proxy (SSL)</S>
+    </Props>
   </Obj>
   <Obj RefId="11">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">23</U64>
-      <S N="FriendlyName">HTTP CyberSec Proxy (SSL)</S>
-      <S N="Code">proxy_ssl_cybersec</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2017-10-02T12:50:49</DT>
       <DT N="Updated">2017-10-02T12:50:49</DT>
-    </MS>
+      <S N="Code">proxy_ssl_cybersec</S>
+      <U64 N="Id">23</U64>
+      <S N="FriendlyName">HTTP CyberSec Proxy (SSL)</S>
+    </Props>
   </Obj>
   <Obj RefId="12">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">26</U64>
-      <S N="FriendlyName">IKEv2/IPSec IPv6</S>
-      <S N="Code">ikev2_v6</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2018-09-18T13:35:16</DT>
       <DT N="Updated">2018-09-18T13:35:16</DT>
-    </MS>
+      <S N="Code">ikev2_v6</S>
+      <U64 N="Id">26</U64>
+      <S N="FriendlyName">IKEv2/IPSec IPv6</S>
+    </Props>
   </Obj>
   <Obj RefId="13">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">29</U64>
-      <S N="FriendlyName">OpenVPN UDP IPv6</S>
-      <S N="Code">openvpn_udp_v6</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2018-09-18T13:35:38</DT>
       <DT N="Updated">2018-09-18T13:35:38</DT>
-    </MS>
+      <S N="Code">openvpn_udp_v6</S>
+      <U64 N="Id">29</U64>
+      <S N="FriendlyName">OpenVPN UDP IPv6</S>
+    </Props>
   </Obj>
   <Obj RefId="14">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">32</U64>
-      <S N="FriendlyName">OpenVPN TCP IPv6</S>
-      <S N="Code">openvpn_tcp_v6</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2018-09-18T13:36:02</DT>
       <DT N="Updated">2018-09-18T13:36:02</DT>
-    </MS>
+      <S N="Code">openvpn_tcp_v6</S>
+      <U64 N="Id">32</U64>
+      <S N="FriendlyName">OpenVPN TCP IPv6</S>
+    </Props>
   </Obj>
   <Obj RefId="15">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">35</U64>
-      <S N="FriendlyName">Wireguard</S>
-      <S N="Code">wireguard_udp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2019-02-14T14:08:43</DT>
       <DT N="Updated">2019-02-14T14:08:43</DT>
-    </MS>
+      <S N="Code">wireguard_udp</S>
+      <U64 N="Id">35</U64>
+      <S N="FriendlyName">Wireguard</S>
+    </Props>
   </Obj>
   <Obj RefId="16">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">38</U64>
-      <S N="FriendlyName">OpenVPN UDP TLS Crypt</S>
-      <S N="Code">openvpn_udp_tls_crypt</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2019-03-21T14:52:42</DT>
       <DT N="Updated">2019-03-21T14:52:42</DT>
-    </MS>
+      <S N="Code">openvpn_udp_tls_crypt</S>
+      <U64 N="Id">38</U64>
+      <S N="FriendlyName">OpenVPN UDP TLS Crypt</S>
+    </Props>
   </Obj>
   <Obj RefId="17">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">41</U64>
-      <S N="FriendlyName">OpenVPN TCP TLS Crypt</S>
-      <S N="Code">openvpn_tcp_tls_crypt</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2019-03-21T14:53:05</DT>
       <DT N="Updated">2019-03-21T14:53:05</DT>
-    </MS>
+      <S N="Code">openvpn_tcp_tls_crypt</S>
+      <U64 N="Id">41</U64>
+      <S N="FriendlyName">OpenVPN TCP TLS Crypt</S>
+    </Props>
   </Obj>
   <Obj RefId="18">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">42</U64>
-      <S N="FriendlyName">OpenVPN UDP Dedicated</S>
-      <S N="Code">openvpn_dedicated_udp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2019-09-19T14:49:18</DT>
       <DT N="Updated">2019-09-19T14:49:18</DT>
-    </MS>
+      <S N="Code">openvpn_dedicated_udp</S>
+      <U64 N="Id">42</U64>
+      <S N="FriendlyName">OpenVPN UDP Dedicated</S>
+    </Props>
   </Obj>
   <Obj RefId="19">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">45</U64>
-      <S N="FriendlyName">OpenVPN TCP Dedicated</S>
-      <S N="Code">openvpn_dedicated_tcp</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2019-09-19T14:49:54</DT>
       <DT N="Updated">2019-09-19T14:49:54</DT>
-    </MS>
+      <S N="Code">openvpn_dedicated_tcp</S>
+      <U64 N="Id">45</U64>
+      <S N="FriendlyName">OpenVPN TCP Dedicated</S>
+    </Props>
   </Obj>
   <Obj RefId="20">
     <TNRef RefId="0" />
-    <MS>
-      <U64 N="Id">48</U64>
-      <S N="FriendlyName">v2ray</S>
-      <S N="Code">v2ray</S>
+    <ToString>NordVPNTechnology</ToString>
+    <Props>
+      <Nil N="Status" />
       <DT N="Created">2019-10-28T13:29:37</DT>
       <DT N="Updated">2019-10-28T13:29:37</DT>
-    </MS>
+      <S N="Code">v2ray</S>
+      <U64 N="Id">48</U64>
+      <S N="FriendlyName">v2ray</S>
+    </Props>
   </Obj>
 </Objs>
