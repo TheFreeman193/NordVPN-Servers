@@ -5,8 +5,8 @@
 [![Commits since release][img commits since release]][commits]
 [![Repo size][img size]][download zip]
 
-[![Test result](./tests/TestResult.svg)][test result]
-[![Test result](./tests/CodeCoverage.svg)][code coverage]
+[![Test result](./TestResult.svg)][test result]
+[![Test result](./CodeCoverage.svg)][code coverage]
 [![GitHub Pages][img pages status]][pages home]
 <!-- [![PowerShell Gallery][img ps gallery release]][ps gallery] -->
 <!-- [![PowerShell Gallery][img ps gallery compat]][ps gallery] -->
