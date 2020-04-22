@@ -693,7 +693,7 @@ function ConvertFrom-ServerEntry {
 
 function Get-CountryList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    [OutputType('System.Array')]
+    [OutputType('NordVPNCountryList')]
     param (
         [Parameter(ParameterSetName = 'DefaultOperation')]
         [Switch]
@@ -775,7 +775,7 @@ function Get-CountryList {
 
 function Get-GroupList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    [OutputType('System.Array')]
+    [OutputType('NordVPNGroupList')]
     param (
         [Parameter(ParameterSetName = 'DefaultOperation')]
         [Switch]
@@ -859,7 +859,7 @@ function Get-GroupList {
 
 function Get-TechnologyList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    [OutputType('System.Array')]
+    [OutputType('NordVPNTechnologyList')]
     param (
         [Parameter(ParameterSetName = 'DefaultOperation')]
         [Switch]
@@ -941,7 +941,7 @@ function Get-TechnologyList {
 
 function Get-CityList {
     [CmdletBinding(DefaultParameterSetName = 'DefaultOperation')]
-    [OutputType('System.Array')]
+    [OutputType('NordVPNCityList')]
     param (
         [Parameter(ParameterSetName = 'Offline')]
         [Switch]
@@ -955,7 +955,7 @@ function Get-CityList {
     }
     process {
         Write-Debug "Cities list requested"
-        if ($Offline) {
+        if ($Offline -or $SETTINGS.OfflineMode) {
             $Countries = Get-CountryList -Offline
             $CityList = [System.Collections.ArrayList]::new()
         }
@@ -988,7 +988,7 @@ function Get-CityList {
 
 function Get-RecommendedList {
     [CmdletBinding(DefaultParameterSetName = "DefaultOperation")]
-    [OutputType('System.Array')]
+    [OutputType('NordVPNServerList')]
     param (
         [Parameter(
             Position = 0,
@@ -1059,7 +1059,7 @@ function Get-RecommendedList {
 
 function Get-ServerList {
     [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = "DefaultOperation")]
-    [OutputType('System.Array')]
+    [OutputType('NordVPNServerList')]
     param (
         [Parameter(
             Position = 0,
@@ -1119,9 +1119,15 @@ function Get-ServerList {
     process {
         if ($SETTINGS.OfflineMode -or $Offline) {
             Write-Progress -Activity "Importing server list" -Id 3 -CurrentOperation "Parsing $ServerFallback"
-            $AllServersList = Import-Clixml -Path $ServerFallback
-            if ($AllServersList.Count -lt 1) {
+            $ImportServersList = Import-Clixml -Path $ServerFallback
+            if ($ImportServersList.Count -lt 1) {
                 throw "Unable to import server fallback list from $ServerFallback!"
+            }
+            if ($First) {
+                $AllServersList = $ImportServersList | Select-Object -First $First
+            }
+            else {
+                $AllServersList = $ImportServersList
             }
             Write-Progress -Activity "Importing server list" -Id 3 -Completed
         }

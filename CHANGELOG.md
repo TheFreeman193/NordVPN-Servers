@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 - 22nd April 2020
+
+- Fix issue where Get-NordVPNCityList returns empty list in offline
+  mode if -Offline switch not present
+- Add handling of -First parameter in offline mode for
+  Get-NordVPNServerList
+- Update output types to reflect new custom classes
+
 ## 0.5.0 - 21st April 2020
 
 NOTE: This version makes substantial changes to the data structures

@@ -6,7 +6,7 @@
 [![Repo size][img size]][download zip]
 
 [![Test result](./tests/TestResult.svg)][test result]
-[![Test result](./tests/CodeCoverage.svg)][code coverage]
+[![Code coverage](./tests/CodeCoverage.svg)][code coverage]
 [![GitHub Pages][img pages status]][pages home]
 <!-- [![PowerShell Gallery][img ps gallery release]][ps gallery] -->
 <!-- [![PowerShell Gallery][img ps gallery compat]][ps gallery] -->
