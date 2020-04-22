@@ -1,6 +1,6 @@
 ﻿@{
   RootModule = 'NordVPN-Servers.psm1'
-  ModuleVersion = '0.5.1'
+  ModuleVersion = '0.5.2'
   CompatiblePSEditions = @('Desktop', 'Core')
   GUID = '49e3429a-230b-4bc4-81bf-eaa6f0bd2927'
   Author = 'Nicholas Bissell'
@@ -112,6 +112,12 @@
 
       # ReleaseNotes of this module
       ReleaseNotes = @'
+## 0.5.2 - 22nd April 2020
+
+- Remove unnecessary check in Get-NordVPNServerList
+- Update testing suite to handle PS Gallery folder structure
+- Update included fallback data
+
 ## 0.5.1 - 22nd April 2020
 
 - Fix issue where Get-NordVPNCityList returns empty list in offline

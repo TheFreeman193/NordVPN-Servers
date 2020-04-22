@@ -16,7 +16,11 @@ if ((Get-PSCallStack).Command -notcontains 'Run-Tests.ps1') {
 Write-Information "Setting up test $TestID" -InformationAction Continue
 
 $ModulePath = Resolve-Path (Split-Path $PSScriptRoot)
-$ModuleName = Split-Path $ModulePath -Leaf
+if ((Split-Path $ModulePath -Leaf) -match '\d+\.\d+\.\d+') {
+    $ModuleName = Split-Path (Split-Path $ModulePath) -Leaf
+} else {
+    $ModuleName = Split-Path $ModulePath -Leaf
+}
 Push-Location $ModulePath
 
 # Clear any existing instance
@@ -26,7 +30,7 @@ Get-Module -Name $ModuleName -All | Remove-Module -Force -ErrorAction Stop
 Import-Module -Name Microsoft.PowerShell.Archive -force
 
 # Import latest instance
-Import-Module -Name $ModuleName -Force -ErrorAction Stop
+Import-Module -Name "$ModulePath\$ModuleName.psd1" -Force -ErrorAction Stop
 
 # Import custom classes
 . .\NordVPN-Servers.Classes.ps1

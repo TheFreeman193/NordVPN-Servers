@@ -30,7 +30,11 @@ function GetTestData {
 
 # Ensure we're in the right place
 $ModulePath = Resolve-Path (Split-Path $PSScriptRoot)
-$ModuleName = Split-Path $ModulePath -Leaf
+if ((Split-Path $ModulePath -Leaf) -match '\d+\.\d+\.\d+') {
+    $ModuleName = Split-Path (Split-Path $ModulePath) -Leaf
+} else {
+    $ModuleName = Split-Path $ModulePath -Leaf
+}
 Push-Location $ModulePath
 
 if (!((Test-Path NordVPN-Servers.psm1 -PathType Leaf) -and (Test-Path .\tests\ -PathType Container))) {
@@ -65,7 +69,7 @@ if (
 
 # Force latest module state
 Get-Module $ModuleName -All | Remove-Module -Force -ErrorAction Stop
-Import-Module $ModuleName -Force -ErrorAction Stop
+Import-Module -Name "$ModulePath\$ModuleName.psd1" -Force -ErrorAction Stop
 
 $curOfflineMode = Get-NordVPNModuleSetting OfflineMode
 Set-NordVPNModuleSetting OfflineMode $false -ErrorAction Stop

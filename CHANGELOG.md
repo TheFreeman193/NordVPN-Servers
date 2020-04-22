@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.2 - 22nd April 2020
+
+- Remove unnecessary check in Get-NordVPNServerList
+- Update testing suite to handle PS Gallery folder structure
+- Update included fallback data
+
 ## 0.5.1 - 22nd April 2020
 
 - Fix issue where Get-NordVPNCityList returns empty list in offline

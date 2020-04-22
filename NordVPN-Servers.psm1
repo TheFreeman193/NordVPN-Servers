@@ -1123,12 +1123,9 @@ function Get-ServerList {
             if ($ImportServersList.Count -lt 1) {
                 throw "Unable to import server fallback list from $ServerFallback!"
             }
-            if ($First) {
-                $AllServersList = $ImportServersList | Select-Object -First $First
-            }
-            else {
-                $AllServersList = $ImportServersList
-            }
+
+            $AllServersList = $ImportServersList | Select-Object -First $First
+
             Write-Progress -Activity "Importing server list" -Id 3 -Completed
         }
         else {

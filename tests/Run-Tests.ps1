@@ -18,7 +18,11 @@ param (
 )
 
 $ModulePath = Resolve-Path (Split-Path $PSScriptRoot)
-$ModuleName = Split-Path $ModulePath -Leaf
+if ((Split-Path $ModulePath -Leaf) -match '\d+\.\d+\.\d+') {
+    $ModuleName = Split-Path (Split-Path $ModulePath) -Leaf
+} else {
+    $ModuleName = Split-Path $ModulePath -Leaf
+}
 Push-Location $ModulePath
 
 if (!((Test-Path NordVPN-Servers.psm1 -PathType Leaf) -and (Test-Path .\tests\ -PathType Container))) {
