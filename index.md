@@ -13,7 +13,10 @@
 
 A cross-platform PowerShell module for interacting with the NordVPN API.
 
+<img src='./NordVPN-Servers.png' width='140' align='right' alt='Project logo'/>
+
 ## Introduction
+
 This module provides various functions for retrieving country, grouping,
  technology, and server information from the web API provided by NordVPN.
  Possible filter parameters are generated dynamically by retrieving lists of
@@ -21,24 +24,29 @@ This module provides various functions for retrieving country, grouping,
  stored locally as an offline fallback, and these can be updated.
 
 ## Documentation
+
 Please see the help index **[here][help index]**.
 
 You can also see the GitHub repository **[here][pages home]**.
 
 ## Configuration
+
 Information on configuring the module can be found
  **[here][about settings]**.
 
 ## License
+
 This module and its associated assets are released under the
  **[MIT license][license]**.
 
 ## Contributing
+
 Suggestions and pull requests are welcomed, provided they are beneficial and
  well-documented. A full contributing guide can be found
  **[here][contrib]**.
 
 ### Translations
+
 If you'd like to translate a help file, please create a pull request. Approved
  translations will also be added to the PowerShell Gallery. The module itself
  does not currently support language files.
