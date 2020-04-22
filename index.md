@@ -6,7 +6,7 @@
 [![Repo size][img size]][download zip]
 
 [![Test result](./TestResult.svg)][test result]
-[![Test result](./CodeCoverage.svg)][code coverage]
+[![Code coverage](./CodeCoverage.svg)][code coverage]
 [![GitHub Pages][img pages status]][pages home]
 <!-- [![PowerShell Gallery][img ps gallery release]][ps gallery] -->
 <!-- [![PowerShell Gallery][img ps gallery compat]][ps gallery] -->
@@ -76,7 +76,7 @@ The module changelog can be found **[here][changelog]**.
 [img size]: https://img.shields.io/github/repo-size/TheFreeman193/NordVPN-Servers?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOS45NzggMjkuOTc4Ij48cGF0aCBkPSJNMjUuNDYyIDE5LjEwNXY2Ljg0OEg0LjUxNXYtNi44NDhILjQ4OXY4Ljg2MWMwIDEuMTExLjkgMi4wMTIgMi4wMTYgMi4wMTJoMjQuOTY3YzEuMTE1IDAgMi4wMTYtLjkgMi4wMTYtMi4wMTJ2LTguODYxaC00LjAyNnpNMTQuNjIgMTguNDI2bC01Ljc2NC02Ljk2NXMtLjg3Ny0uODI4LjA3NC0uODI4aDMuMjQ4VjkuMjE3LjQ5NFMxMi4wNDkgMCAxMi43OTMgMGg0LjU3MmMuNTM2IDAgLjUyNC40MTYuNTI0LjQxNlYxMC40MjRoMi45OThjMS4xNTQgMCAuMjg1Ljg2Ny4yODUuODY3cy00LjkwNCA2LjUxLTUuNTg4IDcuMTkzYy0uNDkyLjQ5NS0uOTY0LS4wNTgtLjk2NC0uMDU4eiIvPjwvc3ZnPg==
 [img ps gallery compat]: https://img.shields.io/powershellgallery/p/NordVPN-Servers?color=blue&label=Supports&logo=powershell&logoColor=lightblue
 [img ps gallery release]: https://img.shields.io/powershellgallery/v/NordVPN-Servers?label=Gallery
-[pages home]: https://github.com/TheFreeman193/NordVPNServers
+[pages home]: https://github.com/TheFreeman193/NordVPN-Servers
 [download zip]: https://github.com/TheFreeman193/NordVPN-Servers/archive/master.zip
 [ps gallery]: https://www.powershellgallery.com/packages/NordVPN-Servers
 [test result]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/tests/TestResult.xml
