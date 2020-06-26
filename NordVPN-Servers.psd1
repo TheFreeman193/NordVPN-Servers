@@ -1,6 +1,6 @@
 ﻿@{
   RootModule = 'NordVPN-Servers.psm1'
-  ModuleVersion = '0.5.2'
+  ModuleVersion = '0.5.3'
   CompatiblePSEditions = @('Desktop', 'Core')
   GUID = '49e3429a-230b-4bc4-81bf-eaa6f0bd2927'
   Author = 'Nicholas Bissell'
@@ -112,6 +112,10 @@
 
       # ReleaseNotes of this module
       ReleaseNotes = @'
+## 0.5.3 - 26th June 2020
+
+- Add support for updatable help
+
 ## 0.5.2 - 22nd April 2020
 
 - Remove unnecessary check in Get-NordVPNServerList
@@ -214,7 +218,7 @@ returned by the module. Please consider this a breaking update
   } # End of PrivateData hashtable
 
   # HelpInfo URI of this module
-  HelpInfoURI = 'https://github.com/TheFreeman193/NordVPN-Servers/blob/master/README.md'
+  HelpInfoURI = 'https://github.com/TheFreeman193/NordVPN-Servers/UpdatableHelp'
 
   # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
   DefaultCommandPrefix = 'NordVPN'

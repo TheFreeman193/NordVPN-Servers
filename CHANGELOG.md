@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.3 - 26th June 2020
+
+- Add support for updatable help
+
 ## 0.5.2 - 22nd April 2020
 
 - Remove unnecessary check in Get-NordVPNServerList
