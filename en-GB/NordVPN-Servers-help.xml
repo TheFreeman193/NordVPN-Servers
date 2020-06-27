@@ -739,7 +739,7 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Help Page on GitHub</maml:linkText>
-        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Find-NordVPNCountry.md</maml:uri>
+        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Find-NordVPNCity.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Help Index</maml:linkText>
@@ -964,7 +964,7 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Help Page on GitHub</maml:linkText>
-        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Find-NordVPNCity.md</maml:uri>
+        <maml:uri>https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Find-NordVPNCountry.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Help Index</maml:linkText>
