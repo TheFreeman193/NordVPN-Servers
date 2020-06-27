@@ -25,6 +25,7 @@
 ## SEE ALSO
 
 - **[Module homepage](./index.md)**
+- **[Updatable Help Files](https://thefreeman193.github.io/NordVPN-Servers/UpdatableHelp/index.html)**
 
 ### RELATED LINKS
 
