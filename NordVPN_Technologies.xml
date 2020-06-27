@@ -250,10 +250,10 @@
     <Props>
       <Nil N="Status" />
       <DT N="Created">2019-10-28T13:29:37</DT>
-      <DT N="Updated">2019-10-28T13:29:37</DT>
-      <S N="Code">v2ray</S>
+      <DT N="Updated">2020-05-14T06:18:41</DT>
+      <S N="Code">skylark</S>
       <U64 N="Id">48</U64>
-      <S N="FriendlyName">v2ray</S>
+      <S N="FriendlyName">Skylark</S>
     </Props>
   </Obj>
 </Objs>
