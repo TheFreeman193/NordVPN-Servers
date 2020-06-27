@@ -218,7 +218,7 @@ returned by the module. Please consider this a breaking update
   } # End of PrivateData hashtable
 
   # HelpInfo URI of this module
-  HelpInfoURI = 'https://github.com/TheFreeman193/NordVPN-Servers/UpdatableHelp'
+  HelpInfoURI = 'https://thefreeman193.github.io/NordVPN-Servers/UpdatableHelp/'
 
   # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
   DefaultCommandPrefix = 'NordVPN'
