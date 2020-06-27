@@ -3,12 +3,12 @@
   <HelpContentURI>https://thefreeman193.github.io/NordVPN-Servers/UpdatableHelp/</HelpContentURI>
   <SupportedUICultures>
     <UICulture>
-      <UICultureName>en-GB</UICultureName>
-      <UICultureVersion>1.0.16.3</UICultureVersion>
+      <UICultureName>en-US</UICultureName>
+      <UICultureVersion>2.0.0.1</UICultureVersion>
     </UICulture>
     <UICulture>
-      <UICultureName>en-US</UICultureName>
-      <UICultureVersion>1.0.16.3</UICultureVersion>
+      <UICultureName>en-GB</UICultureName>
+      <UICultureVersion>2.0.0.1</UICultureVersion>
     </UICulture>
   </SupportedUICultures>
 </HelpInfo>
