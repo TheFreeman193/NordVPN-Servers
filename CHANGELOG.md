@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1 - 27th June 2020
+
+- Add -TypeCode parameter to Find-NordVPNGroup
+
 ## 0.6.0 - 27th June 2020
 
 - Add Find-NordVPNCountry

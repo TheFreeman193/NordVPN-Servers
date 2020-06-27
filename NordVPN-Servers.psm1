@@ -1180,9 +1180,21 @@ function Find-Group {
         [String]
         $Code,
 
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByTypeCode',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a group type code e.g. regions. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $TypeCode,
+
         [Parameter(ParameterSetName = 'ById')]
         [Parameter(ParameterSetName = 'ByCode')]
         [Parameter(ParameterSetName = 'ByFriendlyName')]
+        [Parameter(ParameterSetName = 'ByTypeCode')]
         [Switch]
         $Offline
     )
@@ -1204,6 +1216,9 @@ function Find-Group {
             }
             'ByFriendlyName' {
                 $Groups | Where-Object {$_.FriendlyName -like $PSBoundParameters.FriendlyName}
+            }
+            'ByTypeCode' {
+                $Groups | Where-Object {$_.Type.Code -like $PSBoundParameters.TypeCode}
             }
             default {}
         }
