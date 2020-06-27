@@ -977,6 +977,306 @@ function Get-CityList {
     }
 }
 
+function Find-Country {
+    [CmdletBinding(DefaultParameterSetName = 'ByFriendlyName')]
+    [OutputType('NordVPNCountry')]
+    param (
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByFriendlyName',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a country name. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [Alias('Name')]
+        [String]
+        $FriendlyName,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ById',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a country ID. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Id,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByCode',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a 2-letter country Code. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Code,
+
+        [Parameter(ParameterSetName = 'ById')]
+        [Parameter(ParameterSetName = 'ByCode')]
+        [Parameter(ParameterSetName = 'ByFriendlyName')]
+        [Switch]
+        $Offline
+    )
+    process {
+        Write-Debug "Country search requested"
+        Write-Verbose "Search mode: $($PSCmdlet.ParameterSetName)"
+        if ($Offline -or $SETTINGS.OfflineMode) {
+            $Countries = Get-CountryList -Offline
+        }
+        else {
+            $Countries = Get-CountryList
+        }
+        switch ($PSCmdlet.ParameterSetName) {
+            'ByCode' {
+                $Countries | Where-Object {$_.Code -like $PSBoundParameters.Code}
+            }
+            'ById' {
+                $Countries | Where-Object {$_.Id -like $PSBoundParameters.Id}
+            }
+            'ByFriendlyName' {
+                $Countries | Where-Object {$_.FriendlyName -like $PSBoundParameters.FriendlyName}
+            }
+            default {}
+        }
+    }
+}
+
+function Find-City {
+    [CmdletBinding(DefaultParameterSetName = 'ByFriendlyName')]
+    [OutputType('NordVPNCity')]
+    param (
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByFriendlyName',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a city name. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [Alias('Name')]
+        [String]
+        $FriendlyName,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ById',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a city ID. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Id,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByCode',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a city code. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Code,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByCountryCode',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a 2-letter country code. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $CountryCode,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByHubScore',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a hub score. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $HubScore,
+
+        [Parameter(ParameterSetName = 'ById')]
+        [Parameter(ParameterSetName = 'ByCode')]
+        [Parameter(ParameterSetName = 'ByFriendlyName')]
+        [Parameter(ParameterSetName = 'ByCountryCode')]
+        [Parameter(ParameterSetName = 'ByHubScore')]
+        [Switch]
+        $Offline
+    )
+    process {
+        Write-Debug "City search requested"
+        if ($Offline -or $SETTINGS.OfflineMode) {
+            $Cities = Get-CityList -Offline
+        }
+        else {
+            $Cities = Get-CityList
+        }
+        switch ($PSCmdlet.ParameterSetName) {
+            'ByCode' {
+                $Cities | Where-Object {$_.Code -like $PSBoundParameters.Code}
+            }
+            'ById' {
+                $Cities | Where-Object {$_.Id -like $PSBoundParameters.Id}
+            }
+            'ByFriendlyName' {
+                $Cities | Where-Object {$_.FriendlyName -like $PSBoundParameters.FriendlyName}
+            }
+            'ByCountryCode' {
+                $Cities | Where-Object {$_.CountryCode -like $PSBoundParameters.CountryCode}
+            }
+            'ByHubScore' {
+                $Cities | Where-Object {$_.HubScore -like $PSBoundParameters.HubScore}
+            }
+            default {}
+        }
+    }
+}
+
+function Find-Group {
+    [CmdletBinding(DefaultParameterSetName = 'ByFriendlyName')]
+    [OutputType('NordVPNGroup')]
+    param (
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByFriendlyName',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a group name. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [Alias('Name')]
+        [String]
+        $FriendlyName,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ById',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a group ID. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Id,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByCode',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a group Code. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Code,
+
+        [Parameter(ParameterSetName = 'ById')]
+        [Parameter(ParameterSetName = 'ByCode')]
+        [Parameter(ParameterSetName = 'ByFriendlyName')]
+        [Switch]
+        $Offline
+    )
+    process {
+        Write-Debug "Group search requested"
+        Write-Verbose "Search mode: $($PSCmdlet.ParameterSetName)"
+        if ($Offline -or $SETTINGS.OfflineMode) {
+            $Groups = Get-GroupList -Offline
+        }
+        else {
+            $Groups = Get-GroupList
+        }
+        switch ($PSCmdlet.ParameterSetName) {
+            'ByCode' {
+                $Groups | Where-Object {$_.Code -like $PSBoundParameters.Code}
+            }
+            'ById' {
+                $Groups | Where-Object {$_.Id -like $PSBoundParameters.Id}
+            }
+            'ByFriendlyName' {
+                $Groups | Where-Object {$_.FriendlyName -like $PSBoundParameters.FriendlyName}
+            }
+            default {}
+        }
+    }
+}
+
+function Find-Technology {
+    [CmdletBinding(DefaultParameterSetName = 'ByFriendlyName')]
+    [OutputType('NordVPNTechnology')]
+    param (
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByFriendlyName',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a technology name. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [Alias('Name')]
+        [String]
+        $FriendlyName,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ById',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a technology ID. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Id,
+
+        [SupportsWildcards()]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = 'ByCode',
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = 'Please enter a technology Code. Wildcard characters (?*[]) are allowed.',
+            Mandatory = $true
+        )]
+        [String]
+        $Code,
+
+        [Parameter(ParameterSetName = 'ById')]
+        [Parameter(ParameterSetName = 'ByCode')]
+        [Parameter(ParameterSetName = 'ByFriendlyName')]
+        [Switch]
+        $Offline
+    )
+    process {
+        Write-Debug "Technology search requested"
+        Write-Verbose "Search mode: $($PSCmdlet.ParameterSetName)"
+        if ($Offline -or $SETTINGS.OfflineMode) {
+            $Technologies = Get-TechnologyList -Offline
+        }
+        else {
+            $Technologies = Get-TechnologyList
+        }
+        switch ($PSCmdlet.ParameterSetName) {
+            'ByCode' {
+                $Technologies | Where-Object {$_.Code -like $PSBoundParameters.Code}
+            }
+            'ById' {
+                $Technologies | Where-Object {$_.Id -like $PSBoundParameters.Id}
+            }
+            'ByFriendlyName' {
+                $Technologies | Where-Object {$_.FriendlyName -like $PSBoundParameters.FriendlyName}
+            }
+            default {}
+        }
+    }
+}
 
 <# ##### Primary Functions #####
     These are the main functions for retrieving server lists from the NordVPN API.

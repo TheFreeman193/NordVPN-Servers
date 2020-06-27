@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0 - 27th June 2020
+
+- Add Find-NordVPNCountry
+  - Permits wildcard searches by Friendly Name, code, and ID
+- Add Find-NordVPNCity
+  - Permits wildcard searches by Friendly Name, code, ID, country code, and hub score
+- Add Find-NordVPNGroup
+  - Permits wildcard searches by Friendly Name, code, and ID
+- Add Find-NordVPNTechnology
+  - Permits wildcard searches by Friendly Name, code, and ID
+
 ## 0.5.3 - 26th June 2020
 
 - Add support for updatable help
@@ -25,7 +36,7 @@ returned by the module. Please consider this a breaking update
 
 - Add custom formats for Country, City, Group, Technology, Location,
   IP address, Service, Server, and Specification entries/lists.
-- Remove Show-* functions as format files make these obsolete
+- Remove Show-\* functions as format files make these obsolete
 - Tidy some inconsistent code
 - Add custom .NET classes for objects returned; these replace the
   PSCustomObject structures used previously
@@ -37,7 +48,7 @@ returned by the module. Please consider this a breaking update
 - Add some extra DEBUG and VERBOSE information
 - Change ConvertFrom-ServerEntry: re-write to utilise new custom
   classes and improve efficiency
-- Change Get-* functions: re-write to utilise new custom classes
+- Change Get-\* functions: re-write to utilise new custom classes
 
 ## 0.4.0 - 15th April 2020
 
@@ -55,7 +66,7 @@ returned by the module. Please consider this a breaking update
   Get-(Country,Group,Technology)List functions
 - Change warning for fallback file usage in online mode to verbose
   message
-- Change calls to Write-Host in Show-* functions to Write-Output and
+- Change calls to Write-Host in Show-\* functions to Write-Output and
   increase contrast (Grey => White)
 - Add invalid entry handling for settings import from JSON
 - Fix issue where -First parameter fails to resolve in
@@ -65,11 +76,11 @@ returned by the module. Please consider this a breaking update
 - Fix issue where PSCX definition of Expand-Archive was interfering
   with Pester tests.
 - Update manifest tags, copyright
-- Add -Offline switch parameter to Show-* Functions
+- Add -Offline switch parameter to Show-\* Functions
 - Fix some incorrect logic when handling -Raw switch for
   Get-NordVPNServerList
 - Add -Offline switch parameter to internal DynamicParam providers, to
-  prevent API calls when Get-* or Show-* functions are called with
+  prevent API calls when Get-\* or Show-\* functions are called with
   -Offline
 - Tidy up some inconsistent code (w/o functional changes)
 

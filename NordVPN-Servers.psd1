@@ -1,6 +1,6 @@
 ﻿@{
   RootModule = 'NordVPN-Servers.psm1'
-  ModuleVersion = '0.5.3'
+  ModuleVersion = '0.6.0'
   CompatiblePSEditions = @('Desktop', 'Core')
   GUID = '49e3429a-230b-4bc4-81bf-eaa6f0bd2927'
   Author = 'Nicholas Bissell'
@@ -32,6 +32,10 @@
     'Get-GroupList'
     'Get-TechnologyList'
     'Get-CityList'
+    'Find-Country'
+    'Find-Group'
+    'Find-Technology'
+    'Find-City'
     'Get-ServerList'
     'Get-RecommendedList'
   )
@@ -112,6 +116,17 @@
 
       # ReleaseNotes of this module
       ReleaseNotes = @'
+## 0.6.0 - 27th June 2020
+
+- Add Find-NordVPNCountry
+  - Permits wildcard searches by Friendly Name, code, and ID
+- Add Find-NordVPNCity
+  - Permits wildcard searches by Friendly Name, code, ID, country code, and hub score
+- Add Find-NordVPNGroup
+  - Permits wildcard searches by Friendly Name, code, and ID
+- Add Find-NordVPNTechnology
+  - Permits wildcard searches by Friendly Name, code, and ID
+
 ## 0.5.3 - 26th June 2020
 
 - Add support for updatable help
