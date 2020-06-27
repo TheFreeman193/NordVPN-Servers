@@ -159,3 +159,7 @@ Please refer to the help topic for [Get-NordVPNCountryList](./Get-NordVPNCountry
 for more details on offline usage, caching, and fallback files.
 
 ## RELATED LINKS
+
+[Help Page on GitHub](https://github.com/TheFreeman193/NordVPN-Servers/blob/master/docs/Find-NordVPNCity.md)
+
+[Help Index](./INDEX.md)
