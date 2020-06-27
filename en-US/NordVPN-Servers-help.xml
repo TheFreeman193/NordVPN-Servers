@@ -454,6 +454,981 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Find-NordVPNCity</command:name>
+      <command:verb>Find</command:verb>
+      <command:noun>NordVPNCity</command:noun>
+      <maml:description>
+        <maml:para>Searches for cities with NordVPN servers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Searches for and returns a list of cities that contain NordVPN servers.</maml:para>
+      <maml:para>By default, the required data is downloaded from the NordVPN web API and processed to produce an array of matching city entries, each of which is a NordVPNCity object.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a city entry.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCity</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Code</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a city code. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCity</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>CountryCode</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a 2-letter country code. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCity</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>FriendlyName</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a city name. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCity</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>HubScore</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a hub score. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCity</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a city ID. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Code</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a city code. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>CountryCode</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a 2-letter country code. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>FriendlyName</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a city name. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>HubScore</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a hub score. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a city ID. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Offline</maml:name>
+        <maml:Description>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>NordVPNCity</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Please refer to the help topic for Get-NordVPNCityList (./Get-NordVPNCityList.md)for more details on offline usage, caching, and fallback files.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNCity -CountryCode CA
+     ID Country Friendly Name             City Code                     Latitude    Longitude HubScore
+     -- ------- -------------             ---------                     --------    --------- --------
+1048463   CA    Montreal                  montreal                          45.5   -73.583333    0
+1054250   CA    Toronto                   toronto                      43.666667   -79.416667    0
+1054610   CA    Vancouver                 vancouver                        49.25  -123.133333    0</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all cities in Canada which host NordVPN servers.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNCity -FriendlyName *a
+
+         ID Country Friendly Name             City Code                     Latitude    Longitude HubScore
+         -- ------- -------------             ---------                     --------    --------- --------
+     308615   AL    Tirana                    tirana                         41.3275    19.818889    0
+     448799   AT    Vienna                    vienna                            48.2    16.366667    0
+     777368   BG    Sofia                     sofia                        42.683333    23.316667    0
+    2099627   CY    Nicosia                   nicosia                      35.166667    33.366667    0
+    3560288   ID    Jakarta                   jakarta                      -6.174444   106.829444    0
+    5192828   LV    Riga                      riga                             56.95         24.1    0
+    7884305   SK    Bratislava                bratislava                       48.15    17.116667    0
+    7874306   SI    Ljubljana                 ljubljana                    46.055278    14.514444    0
+    8792429   US    Atlanta                   atlanta                      33.748889   -84.388056    0</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all cities which host NordVPN servers, whose names finish with the letter 'a'.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Find-NordVPNCountry</command:name>
+      <command:verb>Find</command:verb>
+      <command:noun>NordVPNCountry</command:noun>
+      <maml:description>
+        <maml:para>Searches for countries with NordVPN servers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Searches for and returns a list of countries that contain NordVPN servers.</maml:para>
+      <maml:para>By default, the required data is downloaded from the NordVPN web API and processed to produce an array of matching country entries, each of which is a NordVPNCountry object.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a country entry.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCountry</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Code</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a 2-letter country Code. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCountry</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>FriendlyName</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a country name. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNCountry</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a country ID. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Code</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a 2-letter country Code. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>FriendlyName</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a country name. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a country ID. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Offline</maml:name>
+        <maml:Description>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>NordVPNCountry</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Please refer to the help topic for Get-NordVPNCountryList (./Get-NordVPNCountryList.md)for more details on offline usage, caching, and fallback files.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNCountry -Code A?
+
+   ID Name                            Code Cities
+   -- ----                            ---- ------
+    2 Albania                          AL  Tirana
+   10 Argentina                        AR  Buenos Aires
+   13 Australia                        AU  Adelaide, Brisbane, Melbourne, Perth, Sydney
+   14 Austria                          AT  Vienna
+  226 United Arab Emirates             AE  Dubai</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all countries hosting NordVPN servers, whose ISO country code begins with the letter 'A'.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNCountry -Id 2??
+
+   ID Name                            Code Cities
+   -- ----                            ---- ------
+  200 South Africa                     ZA  Johannesburg
+  202 Spain                            ES  Madrid
+  208 Sweden                           SE  Stockholm
+  209 Switzerland                      CH  Zurich
+  211 Taiwan                           TW  Taipei
+  214 Thailand                         TH  Bangkok
+  220 Turkey                           TR  Istanbul
+  225 Ukraine                          UA  Kiev
+  226 United Arab Emirates             AE  Dubai
+  227 United Kingdom                   GB  London
+  228 United States                    US  Atlanta, Buffalo, Charlotte, Chicago, Dallas, Denver, Los
+                                           Angeles, Manassas, Miami, New York, Phoenix, Saint Louis,
+                                           Salt Lake City, San Francisco, Seattle
+  234 Vietnam                          VN  Hanoi</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all countries hosting NordVPN servers, whose ID is in the range 200-299.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Find-NordVPNGroup</command:name>
+      <command:verb>Find</command:verb>
+      <command:noun>NordVPNGroup</command:noun>
+      <maml:description>
+        <maml:para>Searches for NordVPN server groups.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Searches for and returns a list of groups used to tag NordVPN servers.</maml:para>
+      <maml:para>By default, the required data is downloaded from the NordVPN web API and processed to produce an array of matching group entries, each of which is a NordVPNGroup object.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a group entry.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNGroup</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Code</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a group Code. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNGroup</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>FriendlyName</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a group name. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNGroup</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a group ID. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNGroup</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>TypeCode</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a group type code e.g. 'regions'. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Code</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a group Code. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>FriendlyName</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a group name. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a group ID. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>TypeCode</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a group type code e.g. 'regions'. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Offline</maml:name>
+        <maml:Description>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>NordVPNGroup</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Please refer to the help topic for Get-NordVPNGroupList (./Get-NordVPNGroupList.md)for more details on offline usage, caching, and fallback files.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNGroup -TypeCode legacy*
+
+  ID Name                      Group Code                             Type          Created     Updated
+  -- ----                      ----------                             ----          -------     -------
+   1 Double VPN                legacy_double_vpn                      Legacy      2017/06/13  2017/06/13
+   3 Onion Over VPN            legacy_onion_over_vpn                  Legacy      2017/06/13  2017/11/06
+   5 Ultra fast TV             legacy_ultra_fast_tv                   Legacy      2017/06/13  2017/06/13
+   7 Anti DDoS                 legacy_anti_ddos                       Legacy      2017/06/13  2017/06/13
+   9 Dedicated IP              legacy_dedicated_ip                    Legacy      2017/06/13  2018/08/22
+  11 Standard VPN servers      legacy_standard                        Legacy      2017/06/13  2017/06/13
+  13 Netflix USA               legacy_netflix_usa                     Legacy      2017/06/13  2017/06/13
+  15 P2P                       legacy_p2p                             Legacy      2017/06/13  2017/06/13
+  17 Obfuscated Servers        legacy_obfuscated_servers              Legacy      2017/06/13  2017/06/13</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all NordVPN server groups with a type code beginning with legacy. This returns all groups with type 'legacy_group_category'.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNGroup -TypeCode regions
+
+ ID Name                      Group Code                             Type          Created     Updated
+  -- ----                      ----------                             ----          -------     -------
+  19 Europe                    europe                                 Regions     2017/10/27  2017/10/27
+  21 The Americas              the_americas                           Regions     2017/10/27  2017/10/30
+  23 Asia Pacific              asia_pacific                           Regions     2017/10/27  2017/10/30
+  25 Africa, the Middle East   africa_the_middle_east_and_india       Regions     2017/10/27  2017/10/30
+     and India</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all NordVPN server region groups.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Find-NordVPNTechnology</command:name>
+      <command:verb>Find</command:verb>
+      <command:noun>NordVPNTechnology</command:noun>
+      <maml:description>
+        <maml:para>Searches for supported technologies of NordVPN servers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Searches for and returns a list of technologies supported by NordVPN servers.</maml:para>
+      <maml:para>By default, the required data is downloaded from the NordVPN web API and processed to produce an array of matching technology entries, each of which is a NordVPNTechnology object.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a technology entry.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNTechnology</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Code</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a technology Code. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNTechnology</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>FriendlyName</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a technology name. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-NordVPNTechnology</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:Description>
+            <maml:para>Please enter a technology ID. Wildcard characters (?*[]) are allowed.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Offline</maml:name>
+          <maml:Description>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Code</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a technology Code. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>FriendlyName</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a technology name. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:Description>
+          <maml:para>Please enter a technology ID. Wildcard characters (?*[]) are allowed.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Offline</maml:name>
+        <maml:Description>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>NordVPNTechnology</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Please refer to the help topic for Get-NordVPNTechnologyList (./Get-NordVPNTechnologyList.md)for more details on offline usage, caching, and fallback files.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-NordVPNTechnology -Code openvpn*
+
+  ID Name                           Code                               Created             Updated
+  -- ----                           ----                               -------             -------
+   3 OpenVPN UDP                    openvpn_udp                  2017/05/04 08:03:24 2017/05/09 19:27:37
+   5 OpenVPN TCP                    openvpn_tcp                  2017/05/09 19:28:14 2017/05/09 19:28:14
+  15 OpenVPN UDP Obfuscated         openvpn_xor_udp              2017/05/26 14:04:04 2017/11/07 08:37:53
+  17 OpenVPN TCP Obfuscated         openvpn_xor_tcp              2017/05/26 14:04:27 2017/11/07 08:38:16
+  29 OpenVPN UDP IPv6               openvpn_udp_v6               2018/09/18 13:35:38 2018/09/18 13:35:38
+  32 OpenVPN TCP IPv6               openvpn_tcp_v6               2018/09/18 13:36:02 2018/09/18 13:36:02
+  38 OpenVPN UDP TLS Crypt          openvpn_udp_tls_crypt        2019/03/21 14:52:42 2019/03/21 14:52:42
+  41 OpenVPN TCP TLS Crypt          openvpn_tcp_tls_crypt        2019/03/21 14:53:05 2019/03/21 14:53:05
+  42 OpenVPN UDP Dedicated          openvpn_dedicated_udp        2019/09/19 14:49:18 2019/09/19 14:49:18
+  45 OpenVPN TCP Dedicated          openvpn_dedicated_tcp        2019/09/19 14:49:54 2019/09/19 14:49:54</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all NordVPN server technologies with codes beginning with 'openvpn'.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $allServers = Get-NordVPNServerList
+PS C:\&gt; $numServers = $allServers.Count
+PS C:\&gt; Find-NordVPNTechnology -FriendlyName *UDP* | `
+&gt;&gt; Format-Table FriendlyName, @{
+&gt;&gt;     Label = "% Server support"
+&gt;&gt;     FormatString = '{0,6:p2}'
+&gt;&gt;     Expression = {
+&gt;&gt;         $techCode = $_.Code
+&gt;&gt;         $numSupport = ($allServers | Where-Object {$_.Technologies.Code -contains $techCode}).Count
+&gt;&gt;         $numSupport / $numServers
+&gt;&gt;     }
+&gt;&gt; } -AutoSize
+
+FriendlyName           % Server support
+------------           ----------------
+OpenVPN UDP                      90.46%
+OpenVPN UDP Obfuscated            9.52%
+OpenVPN UDP IPv6                  0.00%
+OpenVPN UDP TLS Crypt             0.00%
+OpenVPN UDP Dedicated             2.56%</dev:code>
+        <dev:remarks>
+          <maml:para>Searches for all server technologies with 'UDP' in the friendly name and displays beside each the percentage of NordVPN servers that currently support it.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Get-NordVPNCityList</command:name>
       <command:verb>Get</command:verb>
       <command:noun>NordVPNCityList</command:noun>
@@ -462,7 +1437,7 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns a list of all cities with NordVPN servers, either globally or within a specific country with the `-Country` parameter. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of city entries, each of which is a hashtable.</maml:para>
+      <maml:para>Returns a list of all cities with NordVPN servers, either globally or within a specific country with the `-Country` parameter. By default, the required data is downloaded from the NordVPN web API and processed to produce a list of city entries, each of which is a NordVPNCity object.</maml:para>
       <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a city entry.</maml:para>
     </maml:description>
     <command:syntax>
@@ -544,7 +1519,8 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `Get-NordVPNCountryList -UpdateFallback`.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `Get-NordVPNCountryList -UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -570,7 +1546,8 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `Get-NordVPNCountryList -UpdateFallback`.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml , which is needed to retrieve the list of cities. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `Get-NordVPNCountryList -UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -604,63 +1581,228 @@ PS C:\&gt; Get-NordVPNTechnologyList | Out-Null</dev:code>
       <maml:alert>
         <maml:para>This function relies on `Get-NordVPNCountryList` as city details are included as part of the countries list. Further calls after the initial download will utilize a local cache of the country list until the number of seconds defined with `Set-NordVPNCountryCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API.</maml:para>
         <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the country list, and therefore city list, will be retrieved from the XML fallback file in the module directory.</maml:para>
+        <maml:para>As the list returned is a custom class, in order to pass it through the pipeline, you should use the GetEnumerator() (https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)method, e.g `(Get-NordVPNCountryList).GetEnumerator() | ...`</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-NordVPNCityList -Country US | Select Code,FriendlyName
+        <dev:code>PS C:\&gt; Get-NordVPNCityList
 
-Code           FriendlyName
-----           ------------
-atlanta        Atlanta
-buffalo        Buffalo
-charlotte      Charlotte
-chicago        Chicago
-dallas         Dallas
-denver         Denver
-los-angeles    Los Angeles
-manassas       Manassas
-miami          Miami
-new-york       New York
-phoenix        Phoenix
-saint-louis    Saint Louis
-salt-lake-city Salt Lake City
-san-francisco  San Francisco
-seattle        Seattle</dev:code>
+     ID Country Friendly Name             City Code                     Latitude    Longitude HubScore
+     -- ------- -------------             ---------                     --------    --------- --------
+ 308615   AL    Tirana                    tirana                         41.3275    19.818889    0
+ 384866   AR    Buenos Aires              buenos-aires                  -34.5875     -58.6725    0
+ 452717   AU    Adelaide                  adelaide                    -34.928661   138.598633    0
+ 456494   AU    Brisbane                  brisbane                     -27.47101   153.024292    0
+ 470813   AU    Melbourne                 melbourne                   -37.813938   144.963425    0
+ 475799   AU    Perth                     perth                        -31.95224   115.861397    0
+ 479570   AU    Sydney                    sydney                      -33.861481   151.205475    0
+ 448799   AT    Vienna                    vienna                            48.2    16.366667    0
+ 654293   BE    Brussels                  brussels                     50.833333     4.333333    0
+ 556823   BA    Sarajevo                  sarajevo                         43.85    18.383333    0
+ 943973   BR    San Paulo                 san-paulo                   -23.533333   -46.616667    0
+ 777368   BG    Sofia                     sofia                        42.683333    23.316667    0
+1048463   CA    Montreal                  montreal                          45.5   -73.583333    0
+1054250   CA    Toronto                   toronto                      43.666667   -79.416667    0
+1054610   CA    Vancouver                 vancouver                        49.25  -123.133333    0
+1227092   CL    Santiago                  santiago                        -33.45   -70.666667    0
+2062994   CR    San Jose                  san-jose                      9.893385   -84.105407    0
+3308120   HR    Zagreb                    zagreb                            45.8           16    0
+2099627   CY    Nicosia                   nicosia                      35.166667    33.366667    0
+2144945   CZ    Prague                    prague                       50.083333    14.466667    0
+2382515   DK    Copenhagen                copenhagen                   55.666667    12.583333    0
+2514182   EE    Tallinn                   tallinn                      59.433889    24.728056    0
+2704343   FI    Helsinki                  helsinki                     60.175556    24.934167    0
+2886284   FR    Paris                     paris                        48.866667     2.333333    0
+3032063   GE    Tbilisi                   tbilisi                         41.725    44.790833    -5
+2181458   DE    Berlin                    berlin                       52.516667         13.4    0
+2215709   DE    Frankfurt                 frankfurt                    50.116667     8.683333    0
+3131903   GR    Athens                    athens                       37.983333    23.733333    0
+3232931   HK    Hong Kong                 hong-kong                    22.283333       114.15    0
+3348344   HU    Budapest                  budapest                          47.5    19.083333    0
+4509791   IS    Reykjavik                 reykjavik                        64.15       -21.95    0
+3988130   IN    Chennai                   chennai                      13.083333    80.283333    0
+4041548   IN    Mumbai                    mumbai                          18.975    72.825833    0
+3560288   ID    Jakarta                   jakarta                      -6.174444   106.829444    0
+3939200   IE    Dublin                    dublin                       53.333056    -6.248889    0
+3964220   IL    Tel Aviv                  tel-aviv                     32.066667    34.766667    0
+4542737   IT    Milan                     milan                        45.466667          9.2    0
+4633349   JP    Tokyo                     tokyo                           35.685   139.751389    0
+5192828   LV    Riga                      riga                             56.95         24.1    0
+5173235   LU    Steinsel                  steinsel                     49.676944     6.123889    0
+5820143   MY    Kuala Lumpur              kuala-lumpur                  3.166667        101.7    0
+5677037   MX    Mexico                    mexico                       19.434167   -99.138611    0
+5295179   MD    Chisinau                  chisinau                     47.005556      28.8575    0
+6076868   NL    Amsterdam                 amsterdam                        52.35     4.916667    0
+6144239   NZ    Auckland                  auckland                    -36.866667   174.766667    0
+5386019   MK    Skopje                    skopje                              42    21.433333    0
+6127364   NO    Oslo                      oslo                         59.916667        10.75    0
+6863429   PL    Warsaw                    warsaw                           52.25           21    0
+6906665   PT    Lisbon                    lisbon                       38.716667    -9.133333    0
+6953096   RO    Bucharest                 bucharest                    44.433333         26.1    0
+7030907   RS    Belgrad                   belgrad                      44.818611    20.468056    0
+7867982   SG    Singapore                 singapore                     1.293056   103.855833    0
+7884305   SK    Bratislava                bratislava                       48.15    17.116667    0
+7874306   SI    Ljubljana                 ljubljana                    46.055278    14.514444    0
+9383693   ZA    Johannesburg              johannesburg                -26.205171    28.049815    0
+4879586   KR    Seoul                     seoul                          37.5985     126.9783    0
+2619989   ES    Madrid                    madrid                       40.408566     -3.69222    0
+7852919   SE    Stockholm                 stockholm                    59.333333        18.05    0
+1171814   CH    Zurich                    zurich                       47.366667         8.55    0
+8544365   TW    Taipei                    taipei                       25.039167      121.525    0
+8121638   TH    Bangkok                   bangkok                      13.753979   100.501444    0
+8401790   TR    Istanbul                  istanbul                     41.018611    28.964722    0
+8615126   UA    Kiev                      kiev                         50.433333    30.516667    0
+    728   AE    Dubai                     dubai                        25.258172    55.304717    0
+2989907   GB    London                    london                       51.514125    -0.093689    0
+8792429   US    Atlanta                   atlanta                      33.748889   -84.388056    0
+8963153   US    Buffalo                   buffalo                      42.886389   -78.878611    0
+8980922   US    Charlotte                 charlotte                    35.226944   -80.843333    0
+8815352   US    Chicago                   chicago                          41.85       -87.65    0
+9080300   US    Dallas                    dallas                       32.783333        -96.8    0
+8770934   US    Denver                    denver                       39.739167  -104.984167    0
+8761958   US    Los Angeles               los-angeles                  34.052222  -118.242778    0
+9113744   US    Manassas                  manassas                     38.750833   -77.475556    0
+8787782   US    Miami                     miami                        25.773889   -80.193889    0
+8971718   US    New York                  new-york                     40.714167   -74.006389    0
+8741960   US    Phoenix                   phoenix                      33.448333  -112.073333    0
+8934551   US    Saint Louis               saint-louis                  38.627222   -90.197778    0
+9097865   US    Salt Lake City            salt-lake-city               40.760833  -111.890278    0
+8766359   US    San Francisco             san-francisco                37.769814     -122.466    0
+9128402   US    Seattle                   seattle                      47.606389  -122.330833    0
+9270302   VN    Hanoi                     hanoi                        21.033333       105.85    0</dev:code>
         <dev:remarks>
           <maml:para>Retrieves the list of US cities which host NordVPN servers and gets the unique code for each, alongside its name.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $allServers = Get-NordVPNServerList
+PS C:\&gt; (Get-NordVPNCityList).GetEnumerator() | Sort-Object CountryCode | `
+&gt;&gt; Format-Table CountryCode,FriendlyName, @{
+&gt;&gt;     Label = "No. Servers"
+&gt;&gt;     Expression = {
+&gt;&gt;         $cityCode = $_.Code
+&gt;&gt;         ($allServers | Where-Object {$_.City.Code -eq $cityCode}).Count
+&gt;&gt;     }
+&gt;&gt; } -AutoSize
+
+CountryCode FriendlyName   No. Servers
+----------- ------------   -----------
+AE          Dubai                   20
+AL          Tirana                   6
+AR          Buenos Aires            18
+AT          Vienna                  29
+AU          Adelaide                23
+AU          Brisbane                43
+AU          Melbourne               37
+AU          Perth                   28
+AU          Sydney                  55
+BA          Sarajevo                 2
+BE          Brussels                50
+BG          Sofia                   17
+BR          San Paulo               21
+CA          Vancouver              113
+CA          Toronto                133
+CA          Montreal               157
+CH          Zurich                  99
+CL          Santiago                10
+CR          San Jose                 5
+CY          Nicosia                  7
+CZ          Prague                  29
+DE          Berlin                  78
+DE          Frankfurt              159
+DK          Copenhagen              63
+EE          Tallinn                 13
+ES          Madrid                  60
+FI          Helsinki                24
+FR          Paris                  218
+GB          London                 391
+GE          Tbilisi                  3
+GR          Athens                  16
+HK          Hong Kong               76
+HR          Zagreb                   4
+HU          Budapest                16
+ID          Jakarta                 14
+IE          Dublin                  36
+IL          Tel Aviv                18
+IN          Chennai                  8
+IN          Mumbai                  20
+IS          Reykjavik                8
+IT          Milan                   64
+JP          Tokyo                   90
+KR          Seoul                   10
+LU          Steinsel                19
+LV          Riga                    13
+MD          Chisinau                 4
+MK          Skopje                   2
+MX          Mexico                  14
+MY          Kuala Lumpur             9
+NL          Amsterdam              220
+NO          Oslo                    57
+NZ          Auckland                24
+PL          Warsaw                  39
+PT          Lisbon                  25
+RO          Bucharest               16
+RS          Belgrad                 20
+SE          Stockholm              131
+SG          Singapore              124
+SI          Ljubljana                5
+SK          Bratislava              10
+TH          Bangkok                  6
+TR          Istanbul                 7
+TW          Taipei                  96
+UA          Kiev                    22
+US          Miami                  144
+US          San Francisco          152
+US          Salt Lake City          38
+US          Saint Louis             51
+US          Phoenix                 51
+US          New York               443
+US          Manassas                41
+US          Seattle                105
+US          Denver                  60
+US          Dallas                 149
+US          Chicago                 96
+US          Charlotte               43
+US          Buffalo                 65
+US          Atlanta                 84
+US          Los Angeles            227
+VN          Hanoi                   15
+ZA          Johannesburg            48</dev:code>
+        <dev:remarks>
+          <maml:para>Displays a list of cities that host NordVPN servers, with the number of servers in each city. Notable is the use of a calculated property in Format-Table.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
         <dev:code>PS C:\&gt; $country = 'DE'
-PS C:\&gt; $cities = Get-NordVPNCityList -Country $country | `
-&gt;&gt; Select-Object -ExpandProperty Code
+PS C:\&gt; $cities = (Get-NordVPNCityList -Country $country).FriendlyName
 PS C:\&gt; $recommended = Get-NordVPNRecommendedList -Limit 8192 -Country $country
 PS C:\&gt; foreach ($city in $cities) {
 &gt;&gt;     Write-Host "Top 5 servers in $city`:"
-&gt;&gt;     $recommended | Where-Object {$_.City.Code -eq $city} | `
+&gt;&gt;     $recommended | Where-Object {$_.City.FriendlyName -eq $city} | `
 &gt;&gt;         Select-Object -ExpandProperty Hostname -First 5 | Format-List
 &gt;&gt; }
-Top 5 servers in berlin:
-de659.nordvpn.com
-de418.nordvpn.com
-de647.nordvpn.com
+Top 5 servers in Berlin:
+de660.nordvpn.com
 de661.nordvpn.com
-de448.nordvpn.com
-Top 5 servers in frankfurt:
-de749.nordvpn.com
-de715.nordvpn.com
-de570.nordvpn.com
-de650.nordvpn.com
-de717.nordvpn.com</dev:code>
+de693.nordvpn.com
+de852.nordvpn.com
+de841.nordvpn.com
+Top 5 servers in Frankfurt:
+de856.nordvpn.com
+de828.nordvpn.com
+de738.nordvpn.com
+de710.nordvpn.com
+de858.nordvpn.com</dev:code>
         <dev:remarks>
           <maml:para>Gets the top 5 NordVPN servers in each city that hosts servers, in Germany.</maml:para>
           <maml:para>- Line 1 stores the country code for Germany (DE).</maml:para>
-          <maml:para>- Lines 2-3 get an array of codes for each city in Germany.</maml:para>
-          <maml:para>- Line 4 uses `Get-NordVPNRecommendedList` to get a list of all the recommended</maml:para>
-          <maml:para>  servers in Germany. - Lines 5-8 loop through the `$cities` array and select the first 5 servers   from the `$recommended` list for each city code. The result is two lists of   5 servers.</maml:para>
+          <maml:para>- Line 2 gets an array of names for each city in Germany with servers.</maml:para>
+          <maml:para>- Line 3 uses `Get-NordVPNRecommendedList` to get a list of all the recommended</maml:para>
+          <maml:para>  servers in Germany. - Lines 4-8 loop through the `$cities` array and select the first 5 servers   from the `$recommended` list for each city name. The result is two lists of   5 servers.</maml:para>
           <maml:para>Notable is the use of the backtick ` to continue a long command on the next line, as well as to escape the colon after the `$city` variable on line 6.</maml:para>
         </dev:remarks>
       </command:example>
@@ -686,7 +1828,7 @@ de717.nordvpn.com</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns a list of all countries with NordVPN servers. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of country entries, each of which is a hashtable.</maml:para>
+      <maml:para>Returns a list of all countries with NordVPN servers. By default, the required data is downloaded from the NordVPN web API and processed to produce a list of country entries, each of which is a NordVPNCountry object.</maml:para>
       <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a country entry.</maml:para>
     </maml:description>
     <command:syntax>
@@ -695,7 +1837,8 @@ de717.nordvpn.com</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -723,7 +1866,8 @@ de717.nordvpn.com</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Countries.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -770,148 +1914,154 @@ de717.nordvpn.com</dev:code>
         <maml:para>The module utilizes a countries cache to reduce API calls. Further calls after the initial download will retrieve data from a local cache of the country list until the number of seconds defined with `Set-NordVPNCountryCacheLifetime` (default: 600s) has passed, after which the cache will be updated using the API. To force downloading from the API, run `Clear-NordVPNCountryCache` first.</maml:para>
         <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the country list will be retrieved from NordVPN_Countries.xml in the module directory. This is useful for offline environments.</maml:para>
         <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>As the list returned is a custom class, in order to pass it through the pipeline, you should use the GetEnumerator() (https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)method, e.g `(Get-NordVPNCountryList).GetEnumerator() | ...`</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-NordVPNCountryList | Select Id, FriendlyName, Code
+        <dev:code>PS C:\&gt; Get-NordVPNCountryList
 
- Id FriendlyName           Code
- -- ------------           ----
-  2 Albania                AL
- 10 Argentina              AR
- 13 Australia              AU
- 14 Austria                AT
- 21 Belgium                BE
- 27 Bosnia and Herzegovina BA
- 30 Brazil                 BR
- 33 Bulgaria               BG
- 38 Canada                 CA
- 43 Chile                  CL
- 52 Costa Rica             CR
- 54 Croatia                HR
- 56 Cyprus                 CY
- 57 Czech Republic         CZ
- 58 Denmark                DK
- 68 Estonia                EE
- 73 Finland                FI
- 74 France                 FR
- 80 Georgia                GE
- 81 Germany                DE
- 84 Greece                 GR
- 97 Hong Kong              HK
- 98 Hungary                HU
- 99 Iceland                IS
-100 India                  IN
-101 Indonesia              ID
-104 Ireland                IE
-105 Israel                 IL
-106 Italy                  IT
-108 Japan                  JP
-119 Latvia                 LV
-126 Luxembourg             LU
-131 Malaysia               MY
-140 Mexico                 MX
-142 Moldova                MD
-153 Netherlands            NL
-156 New Zealand            NZ
-128 North Macedonia        MK
-163 Norway                 NO
-174 Poland                 PL
-175 Portugal               PT
-179 Romania                RO
-192 Serbia                 RS
-195 Singapore              SG
-196 Slovakia               SK
-197 Slovenia               SI
-200 South Africa           ZA
-114 South Korea            KR
-202 Spain                  ES
-208 Sweden                 SE
-209 Switzerland            CH
-211 Taiwan                 TW
-214 Thailand               TH
-220 Turkey                 TR
-225 Ukraine                UA
-226 United Arab Emirates   AE
-227 United Kingdom         GB
-228 United States          US
-234 Vietnam                VN</dev:code>
+   ID Name                            Code Cities
+   -- ----                            ---- ------
+    2 Albania                          AL  Tirana
+   10 Argentina                        AR  Buenos Aires
+   13 Australia                        AU  Adelaide, Brisbane, Melbourne, Perth, Sydney
+   14 Austria                          AT  Vienna
+   21 Belgium                          BE  Brussels
+   27 Bosnia and Herzegovina           BA  Sarajevo
+   30 Brazil                           BR  San Paulo
+   33 Bulgaria                         BG  Sofia
+   38 Canada                           CA  Montreal, Toronto, Vancouver
+   43 Chile                            CL  Santiago
+   52 Costa Rica                       CR  San Jose
+   54 Croatia                          HR  Zagreb
+   56 Cyprus                           CY  Nicosia
+   57 Czech Republic                   CZ  Prague
+   58 Denmark                          DK  Copenhagen
+   68 Estonia                          EE  Tallinn
+   73 Finland                          FI  Helsinki
+   74 France                           FR  Paris
+   80 Georgia                          GE  Tbilisi
+   81 Germany                          DE  Berlin, Frankfurt
+   84 Greece                           GR  Athens
+   97 Hong Kong                        HK  Hong Kong
+   98 Hungary                          HU  Budapest
+   99 Iceland                          IS  Reykjavik
+  100 India                            IN  Chennai, Mumbai
+  101 Indonesia                        ID  Jakarta
+  104 Ireland                          IE  Dublin
+  105 Israel                           IL  Tel Aviv
+  106 Italy                            IT  Milan
+  108 Japan                            JP  Tokyo
+  119 Latvia                           LV  Riga
+  126 Luxembourg                       LU  Steinsel
+  131 Malaysia                         MY  Kuala Lumpur
+  140 Mexico                           MX  Mexico
+  142 Moldova                          MD  Chisinau
+  153 Netherlands                      NL  Amsterdam
+  156 New Zealand                      NZ  Auckland
+  128 North Macedonia                  MK  Skopje
+  163 Norway                           NO  Oslo
+  174 Poland                           PL  Warsaw
+  175 Portugal                         PT  Lisbon
+  179 Romania                          RO  Bucharest
+  192 Serbia                           RS  Belgrad
+  195 Singapore                        SG  Singapore
+  196 Slovakia                         SK  Bratislava
+  197 Slovenia                         SI  Ljubljana
+  200 South Africa                     ZA  Johannesburg
+  114 South Korea                      KR  Seoul
+  202 Spain                            ES  Madrid
+  208 Sweden                           SE  Stockholm
+  209 Switzerland                      CH  Zurich
+  211 Taiwan                           TW  Taipei
+  214 Thailand                         TH  Bangkok
+  220 Turkey                           TR  Istanbul
+  225 Ukraine                          UA  Kiev
+  226 United Arab Emirates             AE  Dubai
+  227 United Kingdom                   GB  London
+  228 United States                    US  Atlanta, Buffalo, Charlotte, Chicago, Dallas, Denver, Los
+                                           Angeles, Manassas, Miami, New York, Phoenix, Saint Louis,
+                                           Salt Lake City, San Francisco, Seattle
+  234 Vietnam                          VN  Hanoi</dev:code>
         <dev:remarks>
-          <maml:para>Gets the list of countries that currently host NordVPN servers and shows the unique ID, full name, and ISO country code for each.</maml:para>
+          <maml:para>Gets the list of countries that currently host NordVPN servers and shows the unique ID, full name, ISO code, and cities with servers, for each.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; $allServers = Get-NordVPNServerList
-PS C:\&gt; Get-NordVPNCountryList | Select-Object FriendlyName, Code | `
+PS C:\&gt; Get-NordVPNCountryList | `
 &gt;&gt; Format-Table FriendlyName, @{
 &gt;&gt;     Label = "No. Servers"
-&gt;&gt;     Expression = {($allServers | Where-Object CountryCode -eq $_.Code).Count}
-&gt;&gt; }
+&gt;&gt;     Expression = {
+&gt;&gt;         $countryCode = $_.Code
+&gt;&gt;         ($allServers | Where-Object {$_.Country.Code -eq $countryCode}).Count
+&gt;&gt;     }
+&gt;&gt; } -AutoSize
 
 FriendlyName           No. Servers
 ------------           -----------
-Albania                          9
-Argentina                       21
-Australia                      270
-Austria                         41
-Belgium                         84
-Bosnia and Herzegovina           4
-Brazil                          32
-Bulgaria                        25
-Canada                         442
+Albania                          6
+Argentina                       18
+Australia                      186
+Austria                         29
+Belgium                         50
+Bosnia and Herzegovina           2
+Brazil                          21
+Bulgaria                        17
+Canada                         403
 Chile                           10
 Costa Rica                       5
-Croatia                          7
+Croatia                          4
 Cyprus                           7
-Czech Republic                  55
-Denmark                         90
-Estonia                         12
-Finland                         40
-France                         255
-Georgia                          4
-Germany                        312
-Greece                          14
-Hong Kong                       84
-Hungary                         21
-Iceland                         11
-India                           31
-Indonesia                       11
-Ireland                         65
-Israel                          19
-Italy                           71
-Japan                           70
-Latvia                          25
+Czech Republic                  29
+Denmark                         63
+Estonia                         13
+Finland                         24
+France                         218
+Georgia                          3
+Germany                        237
+Greece                          16
+Hong Kong                       76
+Hungary                         16
+Iceland                          8
+India                           28
+Indonesia                       14
+Ireland                         36
+Israel                          18
+Italy                           64
+Japan                           90
+Latvia                          13
 Luxembourg                      19
-Malaysia                        10
+Malaysia                         9
 Mexico                          14
-Moldova                          7
-Netherlands                    272
-New Zealand                     40
+Moldova                          4
+Netherlands                    220
+New Zealand                     24
 North Macedonia                  2
-Norway                          82
-Poland                          63
+Norway                          57
+Poland                          39
 Portugal                        25
-Romania                         27
-Serbia                          40
+Romania                         16
+Serbia                          20
 Singapore                      124
-Slovakia                        28
+Slovakia                        10
 Slovenia                         5
-South Africa                    43
+South Africa                    48
 South Korea                     10
-Spain                           48
-Sweden                         196
-Switzerland                    135
-Taiwan                          18
-Thailand                         7
-Turkey                          15
-Ukraine                         13
+Spain                           60
+Sweden                         131
+Switzerland                     99
+Taiwan                          96
+Thailand                         6
+Turkey                           7
+Ukraine                         22
 United Arab Emirates            20
-United Kingdom                 624
-United States                 1781
-Vietnam                         13</dev:code>
+United Kingdom                 391
+United States                 1749
+Vietnam                         15</dev:code>
         <dev:remarks>
           <maml:para>Displays a list of countries with NordVPN servers, with the number of servers in each country. Notable is the use of a calculated property in Format-Table.</maml:para>
         </dev:remarks>
@@ -938,7 +2088,7 @@ Vietnam                         13</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns a list of all groups that NordVPN servers are tagged with. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of group entries, each of which is a hashtable.</maml:para>
+      <maml:para>Returns a list of all groups that NordVPN servers are tagged with. By default, the required data is downloaded from the NordVPN web API and processed to produce a list of group entries, each of which is a NordVPNGroup object.</maml:para>
       <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a group entry.</maml:para>
     </maml:description>
     <command:syntax>
@@ -947,7 +2097,7 @@ Vietnam                         13</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
             <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
@@ -976,7 +2126,7 @@ Vietnam                         13</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml. This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Groups.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
           <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1025,31 +2175,29 @@ Vietnam                         13</dev:code>
         <maml:para>To force downloading from the API, run `Clear-NordVPNGroupCache` first.</maml:para>
         <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the group list will be retrieved from NordVPN_Groups.xml in the module directory. This is useful for offline environments.</maml:para>
         <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>As the list returned is a custom class, in order to pass it through the pipeline, you should use the GetEnumerator() (https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)method, e.g `(Get-NordVPNGroupList).GetEnumerator() | ...`</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; PS C:\&gt; Get-NordVPNGroupList | Select-Object Id, FriendlyName, Code, @{
-&gt;&gt;     Label = "Type"
-&gt;&gt;     Expression = {$_.Type.FriendlyName}
-&gt;&gt; }
+        <dev:code>PS C:\&gt; Get-NordVPNGroupList
 
-Id FriendlyName                      Code                             Type
--- ------------                      ----                             ----
- 1 Double VPN                        legacy_double_vpn                Legacy category
- 3 Onion Over VPN                    legacy_onion_over_vpn            Legacy category
- 5 Ultra fast TV                     legacy_ultra_fast_tv             Legacy category
- 7 Anti DDoS                         legacy_anti_ddos                 Legacy category
- 9 Dedicated IP                      legacy_dedicated_ip              Legacy category
-11 Standard VPN servers              legacy_standard                  Legacy category
-13 Netflix USA                       legacy_netflix_usa               Legacy category
-15 P2P                               legacy_p2p                       Legacy category
-17 Obfuscated Servers                legacy_obfuscated_servers        Legacy category
-19 Europe                            europe                           Regions
-21 The Americas                      the_americas                     Regions
-23 Asia Pacific                      asia_pacific                     Regions
-25 Africa, the Middle East and India africa_the_middle_east_and_india Regions</dev:code>
+  ID Name                      Group Code                             Type          Created     Updated
+  -- ----                      ----------                             ----          -------     -------
+   1 Double VPN                legacy_double_vpn                      Legacy      2017/06/13  2017/06/13
+   3 Onion Over VPN            legacy_onion_over_vpn                  Legacy      2017/06/13  2017/11/06
+   5 Ultra fast TV             legacy_ultra_fast_tv                   Legacy      2017/06/13  2017/06/13
+   7 Anti DDoS                 legacy_anti_ddos                       Legacy      2017/06/13  2017/06/13
+   9 Dedicated IP              legacy_dedicated_ip                    Legacy      2017/06/13  2018/08/22
+  11 Standard VPN servers      legacy_standard                        Legacy      2017/06/13  2017/06/13
+  13 Netflix USA               legacy_netflix_usa                     Legacy      2017/06/13  2017/06/13
+  15 P2P                       legacy_p2p                             Legacy      2017/06/13  2017/06/13
+  17 Obfuscated Servers        legacy_obfuscated_servers              Legacy      2017/06/13  2017/06/13
+  19 Europe                    europe                                 Regions     2017/10/27  2017/10/27
+  21 The Americas              the_americas                           Regions     2017/10/27  2017/10/30
+  23 Asia Pacific              asia_pacific                           Regions     2017/10/27  2017/10/30
+  25 Africa, the Middle East   africa_the_middle_east_and_india       Regions     2017/10/27  2017/10/30</dev:code>
         <dev:remarks>
           <maml:para>Displays a list of all NordVPN server groups, and their codes, IDs, and types.</maml:para>
         </dev:remarks>
@@ -1057,7 +2205,7 @@ Id FriendlyName                      Code                             Type
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; $allServers = Get-NordVPNServerList
-PS C:\&gt; Get-NordVPNGroupList | Select-Object FriendlyName, Code | `
+PS C:\&gt; Get-NordVPNGroupList | `
 &gt;&gt; Format-Table FriendlyName, @{
 &gt;&gt;     Label = "No. Servers"
 &gt;&gt;     Expression = {
@@ -1068,23 +2216,23 @@ PS C:\&gt; Get-NordVPNGroupList | Select-Object FriendlyName, Code | `
 
 FriendlyName                      No. Servers
 ------------                      -----------
-Double VPN                                 67
-Onion Over VPN                              0
+Double VPN                                 90
+Onion Over VPN                              3
 Ultra fast TV                               0
 Anti DDoS                                   0
-Dedicated IP                              118
-Standard VPN servers                     5177
+Dedicated IP                              127
+Standard VPN servers                     4271
 Netflix USA                                 0
-P2P                                      4988
-Obfuscated Servers                        467
-Europe                                   2737
-The Americas                             2307
-Asia Pacific                              657
-Africa, the Middle East and India         128</dev:code>
+P2P                                      4020
+Obfuscated Servers                        473
+Europe                                   1974
+The Americas                             2219
+Asia Pacific                              650
+Africa, the Middle East and India         121</dev:code>
         <dev:remarks>
           <maml:para>Displays a list of NordVPN server groups, with the number of servers in each group. Notable is the use of a calculated property in Format-Table.</maml:para>
           <maml:para>Observing the mutual exclusivity of some groups, the total number of servers can be calculated and verified:</maml:para>
-          <maml:para>- Taking the the sum of Double VPN, Dedicated IP, Standard, and Obfuscated   servers: `67 + 118 + 5177 + 467 = 5829`. - Taking the sum of Europe, Americas, APAC and AMEI:   `2737 + 2307 + 657 + 128 = 5829`.</maml:para>
+          <maml:para>- Taking the the sum of Double VPN, Onion, Dedicated IP, Standard, and Obfuscated   servers: `90 + 3 + 127 + 4271 + 473 = 4964`. - Taking the sum of Europe, Americas, APAC and AMEI:   `1974 + 2219 + 650 + 121 = 4964`.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -2158,9 +3306,8 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns a list of all technologies that NordVPN servers support. By default, the required data is downloaded from the NordVPN web API and processed to produce an array of technology entries, each of which is a hashtable.</maml:para>
-      <maml:para>The structure of a technology entry is as follows (powershell notation):</maml:para>
-      <maml:para>@{      Id           = [Int64] # Unique ID for technology      Code         = [String] # Unique short code for technology      FriendlyName = [String] # Full name of technology      Created      = [DateTime] # When technology entry was first registered      Updated      = [DateTime] # When technology entry was last revised  }</maml:para>
+      <maml:para>Returns a list of all technologies that NordVPN servers support. By default, the required data is downloaded from the NordVPN web API and processed to produce a list of technology entries, each of which is a NordVPNTechnology object.</maml:para>
+      <maml:para>Please see About NordVPN-Servers Classes (./about_NordVPN-Servers_Classes.md)to view the complete structure of a technology entry.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2168,7 +3315,8 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Offline</maml:name>
           <maml:Description>
-            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+            <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+            <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -2196,7 +3344,8 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Offline</maml:name>
         <maml:Description>
-          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml. This does not change the value of the setting but is useful when access to the web API is not available. The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
+          <maml:para>Temporarily overrides the OfflineMode setting and uses the fallback file stored in NordVPN_Technologies.xml . This does not change the value of the setting but is useful when access to the web API is not available.</maml:para>
+          <maml:para>The fallback file can be updated when online with `-UpdateFallback`.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2244,44 +3393,45 @@ PS C:\&gt; (Measure-Command {Get-NordVPNServerList}).TotalSeconds
         <maml:para>To force downloading from the API, run `Clear-NordVPNTechnologyCache` first.</maml:para>
         <maml:para>If the module is configured to only use the fallback files, with the command `Set-NordVPNModuleSetting OfflineMode 1`, the technology list will be retrieved from NordVPN_Technologies.xml in the module directory. This is useful for offline environments.</maml:para>
         <maml:para>Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.</maml:para>
+        <maml:para>As the list returned is a custom class, in order to pass it through the pipeline, you should use the GetEnumerator() (https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)method, e.g `(Get-NordVPNTechnologyList).GetEnumerator() | ...`</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-NordVPNTechnologyList | Select-Object Id, FriendlyName, Code
+        <dev:code>PS C:\&gt; Get-NordVPNTechnologyList
 
-Id FriendlyName              Code
--- ------------              ----
- 1 IKEv2/IPSec               ikev2
- 3 OpenVPN UDP               openvpn_udp
- 5 OpenVPN TCP               openvpn_tcp
- 7 Socks 5                   socks
- 9 HTTP Proxy                proxy
-11 PPTP                      pptp
-13 L2TP/IPSec                l2tp
-15 OpenVPN UDP Obfuscated    openvpn_xor_udp
-17 OpenVPN TCP Obfuscated    openvpn_xor_tcp
-19 HTTP CyberSec Proxy       proxy_cybersec
-21 HTTP Proxy (SSL)          proxy_ssl
-23 HTTP CyberSec Proxy (SSL) proxy_ssl_cybersec
-26 IKEv2/IPSec IPv6          ikev2_v6
-29 OpenVPN UDP IPv6          openvpn_udp_v6
-32 OpenVPN TCP IPv6          openvpn_tcp_v6
-35 Wireguard                 wireguard_udp
-38 OpenVPN UDP TLS Crypt     openvpn_udp_tls_crypt
-41 OpenVPN TCP TLS Crypt     openvpn_tcp_tls_crypt
-42 OpenVPN UDP Dedicated     openvpn_dedicated_udp
-45 OpenVPN TCP Dedicated     openvpn_dedicated_tcp
-48 v2ray                     v2ray</dev:code>
+  ID Name                           Code                               Created             Updated
+  -- ----                           ----                               -------             -------
+   1 IKEv2/IPSec                    ikev2                        2017/03/21 12:00:24 2017/09/05 14:20:16
+   3 OpenVPN UDP                    openvpn_udp                  2017/05/04 08:03:24 2017/05/09 19:27:37
+   5 OpenVPN TCP                    openvpn_tcp                  2017/05/09 19:28:14 2017/05/09 19:28:14
+   7 Socks 5                        socks                        2017/05/09 19:28:57 2017/06/13 14:27:05
+   9 HTTP Proxy                     proxy                        2017/05/09 19:29:09 2017/06/13 14:25:29
+  11 PPTP                           pptp                         2017/05/09 19:29:16 2017/05/09 19:29:16
+  13 L2TP/IPSec                     l2tp                         2017/05/09 19:29:26 2017/09/05 14:19:42
+  15 OpenVPN UDP Obfuscated         openvpn_xor_udp              2017/05/26 14:04:04 2017/11/07 08:37:53
+  17 OpenVPN TCP Obfuscated         openvpn_xor_tcp              2017/05/26 14:04:27 2017/11/07 08:38:16
+  19 HTTP CyberSec Proxy            proxy_cybersec               2017/08/22 12:44:49 2017/08/22 12:44:49
+  21 HTTP Proxy (SSL)               proxy_ssl                    2017/10/02 12:45:14 2017/10/02 12:45:14
+  23 HTTP CyberSec Proxy (SSL)      proxy_ssl_cybersec           2017/10/02 12:50:49 2017/10/02 12:50:49
+  26 IKEv2/IPSec IPv6               ikev2_v6                     2018/09/18 13:35:16 2018/09/18 13:35:16
+  29 OpenVPN UDP IPv6               openvpn_udp_v6               2018/09/18 13:35:38 2018/09/18 13:35:38
+  32 OpenVPN TCP IPv6               openvpn_tcp_v6               2018/09/18 13:36:02 2018/09/18 13:36:02
+  35 Wireguard                      wireguard_udp                2019/02/14 14:08:43 2019/02/14 14:08:43
+  38 OpenVPN UDP TLS Crypt          openvpn_udp_tls_crypt        2019/03/21 14:52:42 2019/03/21 14:52:42
+  41 OpenVPN TCP TLS Crypt          openvpn_tcp_tls_crypt        2019/03/21 14:53:05 2019/03/21 14:53:05
+  42 OpenVPN UDP Dedicated          openvpn_dedicated_udp        2019/09/19 14:49:18 2019/09/19 14:49:18
+  45 OpenVPN TCP Dedicated          openvpn_dedicated_tcp        2019/09/19 14:49:54 2019/09/19 14:49:54
+  48 Skylark                        skylark                      2019/10/28 13:29:37 2020/05/14 06:18:41</dev:code>
         <dev:remarks>
-          <maml:para>Displays a list of all compatible NordVPN server technologies, by their names, short codes, and IDs.</maml:para>
+          <maml:para>Displays a list of all compatible NordVPN server technologies, along with their names, short codes, and IDs.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; $allServers = Get-NordVPNServerList
-PS C:\&gt; Get-NordVPNTechnologyList | Select-Object FriendlyName, Code | `
+PS C:\&gt; Get-NordVPNTechnologyList | `
 &gt;&gt; Format-Table FriendlyName, @{
 &gt;&gt;     Label = "No. Servers"
 &gt;&gt;     Expression = {
@@ -2292,27 +3442,27 @@ PS C:\&gt; Get-NordVPNTechnologyList | Select-Object FriendlyName, Code | `
 
 FriendlyName              No. Servers
 ------------              -----------
-IKEv2/IPSec                      5169
-OpenVPN UDP                      5353
-OpenVPN TCP                      5355
-Socks 5                          3413
-HTTP Proxy                       3984
+IKEv2/IPSec                      4274
+OpenVPN UDP                      4492
+OpenVPN TCP                      4492
+Socks 5                           443
+HTTP Proxy                       1799
 PPTP                                0
 L2TP/IPSec                          0
-OpenVPN UDP Obfuscated            458
-OpenVPN TCP Obfuscated            467
-HTTP CyberSec Proxy              3981
-HTTP Proxy (SSL)                 5150
-HTTP CyberSec Proxy (SSL)        5141
+OpenVPN UDP Obfuscated            473
+OpenVPN TCP Obfuscated            473
+HTTP CyberSec Proxy              1799
+HTTP Proxy (SSL)                 4273
+HTTP CyberSec Proxy (SSL)        4273
 IKEv2/IPSec IPv6                    0
 OpenVPN UDP IPv6                    0
 OpenVPN TCP IPv6                    0
-Wireguard                         970
+Wireguard                        4230
 OpenVPN UDP TLS Crypt               0
 OpenVPN TCP TLS Crypt               0
-OpenVPN UDP Dedicated             118
-OpenVPN TCP Dedicated             118
-v2ray                               0</dev:code>
+OpenVPN UDP Dedicated             127
+OpenVPN TCP Dedicated             127
+Skylark                             1</dev:code>
         <dev:remarks>
           <maml:para>Displays a list of NordVPN supported server technologies, with the number of servers compatible with that technology. Notable is the use of a calculated property in Format-Table.</maml:para>
         </dev:remarks>
@@ -2321,32 +3471,40 @@ v2ray                               0</dev:code>
         <maml:title>-------------------------- Example 3 --------------------------</maml:title>
         <dev:code>PS C:\&gt; $allServers = Get-NordVPNServerList
 PS C:\&gt; $numServers = $allServers.Count
-PS C:\&gt; Get-NordVPNTechnologyList | Select-Object FriendlyName, Code | `
-&gt;&gt; Select-Object FriendlyName, @{
+PS C:\&gt; (Get-NordVPNTechnologyList).GetEnumerator() | `
+&gt;&gt; Format-Table FriendlyName, @{
 &gt;&gt;     Label = "% Server support"
 &gt;&gt;     Expression = {
 &gt;&gt;         $techCode = $_.Code
 &gt;&gt;         $numSupport = ($allServers | Where-Object {$_.Technologies.Code -contains $techCode}).Count
-&gt;&gt;         $pcSupport = $numSupport / $numServers
-&gt;&gt;         if ($pcSupport -gt 0) {'{0,6:p2}' -f $pcSupport}
+&gt;&gt;         $numSupport / $numServers
 &gt;&gt;     }
-&gt;&gt; } | Where-Object "% Server support" -ne $null | Format-Table -AutoSize
+&gt;&gt;     FormatString = '{0,6:p2}'
+&gt;&gt; } -AutoSize
 
 FriendlyName              % Server support
 ------------              ----------------
-IKEv2/IPSec               88.82%
-OpenVPN UDP               91.97%
-OpenVPN TCP               92.03%
-Socks 5                   58.04%
-HTTP Proxy                67.80%
-OpenVPN UDP Obfuscated     7.80%
-OpenVPN TCP Obfuscated     7.95%
-HTTP CyberSec Proxy       67.74%
-HTTP Proxy (SSL)          88.43%
-HTTP CyberSec Proxy (SSL) 88.37%
-Wireguard                 17.29%
-OpenVPN UDP Dedicated      2.01%
-OpenVPN TCP Dedicated      2.01%</dev:code>
+IKEv2/IPSec                         86.07%
+OpenVPN UDP                         90.46%
+OpenVPN TCP                         90.46%
+Socks 5                              8.92%
+HTTP Proxy                          36.23%
+OpenVPN UDP Obfuscated               9.52%
+OpenVPN TCP Obfuscated               9.52%
+HTTP CyberSec Proxy                 36.23%
+HTTP Proxy (SSL)                    86.05%
+HTTP CyberSec Proxy (SSL)           86.05%
+Wireguard                           85.18%
+OpenVPN UDP Dedicated                2.56%
+OpenVPN TCP Dedicated                2.56%
+Skylark                              0.02%
+PPTP                                 0.00%
+L2TP/IPSec                           0.00%
+IKEv2/IPSec IPv6                     0.00%
+OpenVPN UDP IPv6                     0.00%
+OpenVPN TCP IPv6                     0.00%
+OpenVPN UDP TLS Crypt                0.00%
+OpenVPN TCP TLS Crypt                0.00%</dev:code>
         <dev:remarks>
           <maml:para>Similar to example 2, except the percentage of servers that support each technology is being calculated. The technologies with no current support are also excluded from the list.</maml:para>
           <maml:para>Here, the -f Format operator (https://docs.microsoft.com/en-us/dotnet/api/system.string.format)is used to take a decimal value and display a padded percentage to 2 d.p.</maml:para>

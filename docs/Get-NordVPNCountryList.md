@@ -19,7 +19,8 @@ Get-NordVPNCountryList [-Offline] [<CommonParameters>]
 ## DESCRIPTION
 Returns a list of all countries with NordVPN servers.
 By default, the required data is downloaded from the NordVPN web API and
-processed to produce an array of country entries, each of which is a hashtable.
+processed to produce a list of country entries, each of which is a
+NordVPNCountry object.
 
 Please see [About NordVPN-Servers Classes](./about_NordVPN-Servers_Classes.md)
 to view the complete structure of a country entry.
@@ -28,144 +29,149 @@ to view the complete structure of a country entry.
 
 ### Example 1
 ```
-PS C:\> Get-NordVPNCountryList | Select Id, FriendlyName, Code
+PS C:\> Get-NordVPNCountryList
 
- Id FriendlyName           Code
- -- ------------           ----
-  2 Albania                AL
- 10 Argentina              AR
- 13 Australia              AU
- 14 Austria                AT
- 21 Belgium                BE
- 27 Bosnia and Herzegovina BA
- 30 Brazil                 BR
- 33 Bulgaria               BG
- 38 Canada                 CA
- 43 Chile                  CL
- 52 Costa Rica             CR
- 54 Croatia                HR
- 56 Cyprus                 CY
- 57 Czech Republic         CZ
- 58 Denmark                DK
- 68 Estonia                EE
- 73 Finland                FI
- 74 France                 FR
- 80 Georgia                GE
- 81 Germany                DE
- 84 Greece                 GR
- 97 Hong Kong              HK
- 98 Hungary                HU
- 99 Iceland                IS
-100 India                  IN
-101 Indonesia              ID
-104 Ireland                IE
-105 Israel                 IL
-106 Italy                  IT
-108 Japan                  JP
-119 Latvia                 LV
-126 Luxembourg             LU
-131 Malaysia               MY
-140 Mexico                 MX
-142 Moldova                MD
-153 Netherlands            NL
-156 New Zealand            NZ
-128 North Macedonia        MK
-163 Norway                 NO
-174 Poland                 PL
-175 Portugal               PT
-179 Romania                RO
-192 Serbia                 RS
-195 Singapore              SG
-196 Slovakia               SK
-197 Slovenia               SI
-200 South Africa           ZA
-114 South Korea            KR
-202 Spain                  ES
-208 Sweden                 SE
-209 Switzerland            CH
-211 Taiwan                 TW
-214 Thailand               TH
-220 Turkey                 TR
-225 Ukraine                UA
-226 United Arab Emirates   AE
-227 United Kingdom         GB
-228 United States          US
-234 Vietnam                VN
+   ID Name                            Code Cities
+   -- ----                            ---- ------
+    2 Albania                          AL  Tirana
+   10 Argentina                        AR  Buenos Aires
+   13 Australia                        AU  Adelaide, Brisbane, Melbourne, Perth, Sydney
+   14 Austria                          AT  Vienna
+   21 Belgium                          BE  Brussels
+   27 Bosnia and Herzegovina           BA  Sarajevo
+   30 Brazil                           BR  San Paulo
+   33 Bulgaria                         BG  Sofia
+   38 Canada                           CA  Montreal, Toronto, Vancouver
+   43 Chile                            CL  Santiago
+   52 Costa Rica                       CR  San Jose
+   54 Croatia                          HR  Zagreb
+   56 Cyprus                           CY  Nicosia
+   57 Czech Republic                   CZ  Prague
+   58 Denmark                          DK  Copenhagen
+   68 Estonia                          EE  Tallinn
+   73 Finland                          FI  Helsinki
+   74 France                           FR  Paris
+   80 Georgia                          GE  Tbilisi
+   81 Germany                          DE  Berlin, Frankfurt
+   84 Greece                           GR  Athens
+   97 Hong Kong                        HK  Hong Kong
+   98 Hungary                          HU  Budapest
+   99 Iceland                          IS  Reykjavik
+  100 India                            IN  Chennai, Mumbai
+  101 Indonesia                        ID  Jakarta
+  104 Ireland                          IE  Dublin
+  105 Israel                           IL  Tel Aviv
+  106 Italy                            IT  Milan
+  108 Japan                            JP  Tokyo
+  119 Latvia                           LV  Riga
+  126 Luxembourg                       LU  Steinsel
+  131 Malaysia                         MY  Kuala Lumpur
+  140 Mexico                           MX  Mexico
+  142 Moldova                          MD  Chisinau
+  153 Netherlands                      NL  Amsterdam
+  156 New Zealand                      NZ  Auckland
+  128 North Macedonia                  MK  Skopje
+  163 Norway                           NO  Oslo
+  174 Poland                           PL  Warsaw
+  175 Portugal                         PT  Lisbon
+  179 Romania                          RO  Bucharest
+  192 Serbia                           RS  Belgrad
+  195 Singapore                        SG  Singapore
+  196 Slovakia                         SK  Bratislava
+  197 Slovenia                         SI  Ljubljana
+  200 South Africa                     ZA  Johannesburg
+  114 South Korea                      KR  Seoul
+  202 Spain                            ES  Madrid
+  208 Sweden                           SE  Stockholm
+  209 Switzerland                      CH  Zurich
+  211 Taiwan                           TW  Taipei
+  214 Thailand                         TH  Bangkok
+  220 Turkey                           TR  Istanbul
+  225 Ukraine                          UA  Kiev
+  226 United Arab Emirates             AE  Dubai
+  227 United Kingdom                   GB  London
+  228 United States                    US  Atlanta, Buffalo, Charlotte, Chicago, Dallas, Denver, Los
+                                           Angeles, Manassas, Miami, New York, Phoenix, Saint Louis,
+                                           Salt Lake City, San Francisco, Seattle
+  234 Vietnam                          VN  Hanoi
 ```
 
 Gets the list of countries that currently host NordVPN servers and shows the
-unique ID, full name, and ISO country code for each.
+unique ID, full name, ISO code, and cities with servers, for each.
 
 ### Example 2
 ```
 PS C:\> $allServers = Get-NordVPNServerList
-PS C:\> Get-NordVPNCountryList | Select-Object FriendlyName, Code | `
+PS C:\> Get-NordVPNCountryList | `
 >> Format-Table FriendlyName, @{
 >>     Label = "No. Servers"
->>     Expression = {($allServers | Where-Object CountryCode -eq $_.Code).Count}
->> }
+>>     Expression = {
+>>         $countryCode = $_.Code
+>>         ($allServers | Where-Object {$_.Country.Code -eq $countryCode}).Count
+>>     }
+>> } -AutoSize
 
 FriendlyName           No. Servers
 ------------           -----------
-Albania                          9
-Argentina                       21
-Australia                      270
-Austria                         41
-Belgium                         84
-Bosnia and Herzegovina           4
-Brazil                          32
-Bulgaria                        25
-Canada                         442
+Albania                          6
+Argentina                       18
+Australia                      186
+Austria                         29
+Belgium                         50
+Bosnia and Herzegovina           2
+Brazil                          21
+Bulgaria                        17
+Canada                         403
 Chile                           10
 Costa Rica                       5
-Croatia                          7
+Croatia                          4
 Cyprus                           7
-Czech Republic                  55
-Denmark                         90
-Estonia                         12
-Finland                         40
-France                         255
-Georgia                          4
-Germany                        312
-Greece                          14
-Hong Kong                       84
-Hungary                         21
-Iceland                         11
-India                           31
-Indonesia                       11
-Ireland                         65
-Israel                          19
-Italy                           71
-Japan                           70
-Latvia                          25
+Czech Republic                  29
+Denmark                         63
+Estonia                         13
+Finland                         24
+France                         218
+Georgia                          3
+Germany                        237
+Greece                          16
+Hong Kong                       76
+Hungary                         16
+Iceland                          8
+India                           28
+Indonesia                       14
+Ireland                         36
+Israel                          18
+Italy                           64
+Japan                           90
+Latvia                          13
 Luxembourg                      19
-Malaysia                        10
+Malaysia                         9
 Mexico                          14
-Moldova                          7
-Netherlands                    272
-New Zealand                     40
+Moldova                          4
+Netherlands                    220
+New Zealand                     24
 North Macedonia                  2
-Norway                          82
-Poland                          63
+Norway                          57
+Poland                          39
 Portugal                        25
-Romania                         27
-Serbia                          40
+Romania                         16
+Serbia                          20
 Singapore                      124
-Slovakia                        28
+Slovakia                        10
 Slovenia                         5
-South Africa                    43
+South Africa                    48
 South Korea                     10
-Spain                           48
-Sweden                         196
-Switzerland                    135
-Taiwan                          18
-Thailand                         7
-Turkey                          15
-Ukraine                         13
+Spain                           60
+Sweden                         131
+Switzerland                     99
+Taiwan                          96
+Thailand                         6
+Turkey                           7
+Ukraine                         22
 United Arab Emirates            20
-United Kingdom                 624
-United States                 1781
-Vietnam                         13
+United Kingdom                 391
+United States                 1749
+Vietnam                         15
 ```
 
 Displays a list of countries with NordVPN servers, with the number of servers
@@ -175,9 +181,10 @@ in each country. Notable is the use of a calculated property in Format-Table.
 
 ### -Offline
 Temporarily overrides the OfflineMode setting and uses the fallback file stored
-in NordVPN_Countries.xml. This does not change the value of the setting but is
-useful when access to the web API is not available. The fallback file can be
-updated when online with `-UpdateFallback`.
+in *NordVPN_Countries.xml*. This does not change the value of the setting but
+is useful when access to the web API is not available.
+
+The fallback file can be updated when online with `-UpdateFallback`.
 
 ```yaml
 Type: SwitchParameter
@@ -192,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateFallback
-Passing this switch causes the function to update the NordVPN_Countries.xml
+Passing this switch causes the function to update the *NordVPN_Countries.xml*
 fallback file, using the data retrieved from the NordVPN web API or cache.
 This functionality cannot be used when OfflineMode is enabled or the `-Offline`
 switch parameter is passed.
@@ -232,6 +239,10 @@ from NordVPN_Countries.xml in the module directory.
 This is useful for offline environments.
 
 Use `Set-NordVPNModuleSetting OfflineMode 0` to restore web API usage.
+
+As the list returned is a custom class, in order to pass it through the
+pipeline, you should use the [GetEnumerator()](https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator)
+method, e.g `(Get-NordVPNCountryList).GetEnumerator() | ...`
 
 ## RELATED LINKS
 
