@@ -20,8 +20,9 @@ A cross-platform PowerShell module for interacting with the NordVPN API.
 This module provides various functions for retrieving country, grouping,
  technology, and server information from the web API provided by NordVPN.
  Possible filter parameters are generated dynamically by retrieving lists of
- valid entries from the API. A list of countries, groups, and technologies is
- stored locally as an offline fallback, and these can be updated.
+ valid entries from the API. Lists of countries, groups, technologies, and
+ servers are included as an offline fallback, and these can be updated.
+ Sessional caching of country, group, and technology data is customisable.
 
 ## Documentation
 
@@ -33,6 +34,20 @@ You can also see the GitHub repository **[here][pages home]**.
 
 Information on configuring the module can be found
  **[here][about settings]**.
+
+## Testing
+
+The module includes a complete testing suite using [Pester][pester site]. This
+ may be found in the *tests* directory in the module root. A custom script
+ permits in-place integration testing by protecting related files. Test result
+ and code coverage reports are included, as is a script for regenerating test
+ data. Also included for reference is the script used to generate result &
+ coverage badges for GitHub.
+
+## Updatable Help
+
+This module supports updatable help, currently in UI cultures *en-GB* and
+ *en-US*. You can download these directly [here][updatable help].
 
 ## License
 
@@ -47,9 +62,10 @@ Suggestions and pull requests are welcomed, provided they are beneficial and
 
 ### Translations
 
-If you'd like to translate a help file, please create a pull request. Approved
- translations will also be added to the PowerShell Gallery. The module itself
- does not currently support language files.
+If you'd like to translate the help documentation, please create a pull
+ request. Approved translations will also be added to the PowerShell
+ Gallery and Updatable Help. The module itself does not currently support
+ custom languages.
 
 ## Requirements
 
@@ -79,7 +95,7 @@ The module changelog can be found **[here][changelog]**.
 [about settings]: ./about_NordVPN-Servers_Settings.md
 [cc2]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
 [img release]: https://img.shields.io/github/v/release/TheFreeman193/NordVPN-Servers?sort=semver&logo=GitHub
-[img commits since release]: https://img.shields.io/github/commits-since/TheFreeman193/NordVPN-Servers/latest/master?sort=semver&logo=git&label=Commits
+[img commits since release]: https://img.shields.io/github/commits-since/TheFreeman193/NordVPN-Servers/latest/master?sort=semver&logo=git
 [img pages status]: https://img.shields.io/github/deployments/TheFreeman193/NordVPN-Servers/github-pages?label=Pages%20Build
 [img size]: https://img.shields.io/github/repo-size/TheFreeman193/NordVPN-Servers?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOS45NzggMjkuOTc4Ij48cGF0aCBkPSJNMjUuNDYyIDE5LjEwNXY2Ljg0OEg0LjUxNXYtNi44NDhILjQ4OXY4Ljg2MWMwIDEuMTExLjkgMi4wMTIgMi4wMTYgMi4wMTJoMjQuOTY3YzEuMTE1IDAgMi4wMTYtLjkgMi4wMTYtMi4wMTJ2LTguODYxaC00LjAyNnpNMTQuNjIgMTguNDI2bC01Ljc2NC02Ljk2NXMtLjg3Ny0uODI4LjA3NC0uODI4aDMuMjQ4VjkuMjE3LjQ5NFMxMi4wNDkgMCAxMi43OTMgMGg0LjU3MmMuNTM2IDAgLjUyNC40MTYuNTI0LjQxNlYxMC40MjRoMi45OThjMS4xNTQgMCAuMjg1Ljg2Ny4yODUuODY3cy00LjkwNCA2LjUxLTUuNTg4IDcuMTkzYy0uNDkyLjQ5NS0uOTY0LS4wNTgtLjk2NC0uMDU4eiIvPjwvc3ZnPg==
 [img ps gallery compat]: https://img.shields.io/powershellgallery/p/NordVPN-Servers?color=blue&label=Supports&logo=powershell&logoColor=lightblue
@@ -89,3 +105,5 @@ The module changelog can be found **[here][changelog]**.
 [ps gallery]: https://www.powershellgallery.com/packages/NordVPN-Servers
 [test result]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/tests/TestResult.xml
 [code coverage]: https://github.com/TheFreeman193/NordVPN-Servers/blob/master/tests/CodeCoverage.xml
+[pester site]: https://pester.dev
+[updatable help]: https://thefreeman193.github.io/NordVPN-Servers/UpdatableHelp/index.html
