@@ -59,6 +59,10 @@ Describe 'Fundamental requirements' -Tag 'Offline', 'Param' {
             "Get-${prefix}ServerList"        = 'First', 'Raw', 'Country', 'Group', 'Technology'
             "Get-${prefix}RecommendedList"   = `
                 'Limit', 'UpdateFallback', 'Offline', 'Raw', 'Country', 'Group', 'Technology'
+            "Find-${prefix}Country"          = 'FriendlyName', 'Id', 'Code', 'Offline'
+            "Find-${prefix}Group"            = 'FriendlyName', 'Id', 'Code', 'TypeCode', 'Offline'
+            "Find-${prefix}Technology"       = 'FriendlyName', 'Id', 'Code', 'Offline'
+            "Find-${prefix}City"             = 'FriendlyName', 'Id', 'Code', 'CountryCode', 'HubScore', 'Offline'
         }
         $actualFuncs = ((Get-Command -Module NordVPN-Servers) `
             | Where-Object CommandType -eq Function).Name
@@ -68,7 +72,7 @@ Describe 'Fundamental requirements' -Tag 'Offline', 'Param' {
         }
 
         foreach ($name in $neededFuncs.Keys) {
-            It "Function $name has correct parameters" {
+            It "Function $name exposes correct parameters" {
                 $func = Get-Command $name
                 foreach ($param in $neededFuncs.$name.Value) {
                     $func | Should -HaveParameter $param
@@ -1255,6 +1259,59 @@ InModuleScope $ModuleName {
                 | Should -BeNullOrEmpty
             }
 
+            It 'Can retrieve all countries in wildcard search' {
+                Find-Country -FriendlyName * | Export-Clixml $countryTestFile
+                Compare-Object (Import-Clixml $countryTestFile) ($CountryListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can retrieve all countries in search using fallback data' {
+                Compare-Object (Find-Country -FriendlyName * -Offline) ($CountryListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Id in country search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "$(1..9 | Get-Random)*"
+                    $CountrySearch = Find-Country -Id $searchString
+                }
+                until ($CountrySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CountrySearch | Export-Clixml $countryTestFile
+                Compare-Object (Import-Clixml $countryTestFile) ($CountryListProc | Where-Object {$_.Id -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Code in country search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "?$([char](63..90 | Get-Random))"
+                    $CountrySearch = Find-Country -Code $searchString
+                }
+                until ($CountrySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CountrySearch | Export-Clixml $countryTestFile
+                Compare-Object (Import-Clixml $countryTestFile) ($CountryListProc | Where-Object {$_.Code -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by FriendlyName in country search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "$([char](63..90 | Get-Random))*"
+                    $CountrySearch = Find-Country -FriendlyName $searchString
+                }
+                until ($CountrySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CountrySearch | Export-Clixml $countryTestFile
+                Compare-Object (Import-Clixml $countryTestFile) ($CountryListProc | Where-Object {$_.FriendlyName -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
             It 'Produces city list data' {
                 Get-CityList | Export-Clixml $cityTestFile
                 Compare-Object (Import-Clixml $cityTestFile) ($CityListProc) `
@@ -1274,6 +1331,79 @@ InModuleScope $ModuleName {
                 | Should -BeNullOrEmpty
             }
 
+            It 'Can retrieve all cities in wildcard search' {
+                Find-City -FriendlyName * | Export-Clixml $cityTestFile
+                Compare-Object (Import-Clixml $cityTestFile) ($CityListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can retrieve all cities in search using fallback data' {
+                Compare-Object (Find-City -FriendlyName * -Offline) ($CityListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Id in city search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "$(1..9 | Get-Random)??????"
+                    $CitySearch = Find-City -Id $searchString
+                }
+                until ($CitySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CitySearch | Export-Clixml $cityTestFile
+                Compare-Object (Import-Clixml $cityTestFile) ($CityListProc | Where-Object {$_.Id -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Code in city search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "*$([char](65..90 | Get-Random))"
+                    $CitySearch = Find-City -Code $searchString
+                }
+                until ($CitySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CitySearch | Export-Clixml $cityTestFile
+                Compare-Object (Import-Clixml $cityTestFile) ($CityListProc | Where-Object {$_.Code -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by FriendlyName in city search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "*$([char](65..90 | Get-Random))"
+                    $CitySearch = Find-City -FriendlyName $searchString
+                }
+                until ($CitySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CitySearch | Export-Clixml $cityTestFile
+                Compare-Object (Import-Clixml $cityTestFile) ($CityListProc | Where-Object {$_.FriendlyName -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by CountryCode in city search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "$([char](65..90 | Get-Random))*"
+                    $CitySearch = Find-City -CountryCode $searchString
+                }
+                until ($CitySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $CitySearch | Export-Clixml $cityTestFile
+                Compare-Object (Import-Clixml $cityTestFile) ($CityListProc | Where-Object {$_.CountryCode -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by HubScore in city search' {
+                Find-City -HubScore 0 | Export-Clixml $cityTestFile
+                Compare-Object (Import-Clixml $cityTestFile) ($CityListProc | Where-Object {$_.HubScore -like '0'}) `
+                | Should -BeNullOrEmpty
+            }
+
             $grpList = Get-GroupList
             It 'Produces group list data' {
                 $grpList | Export-Clixml $groupTestFile
@@ -1281,11 +1411,130 @@ InModuleScope $ModuleName {
                 | Should -BeNullOrEmpty
             }
 
+            It 'Can retrieve all groups in wildcard search' {
+                Find-Group -FriendlyName * | Export-Clixml $groupTestFile
+                Compare-Object (Import-Clixml $groupTestFile) ($GroupListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can retrieve all groups in search using fallback data' {
+                Compare-Object (Find-Group -FriendlyName * -Offline) ($GroupListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Id in group search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "$(1..25 | Get-Random)"
+                    $GroupSearch = Find-Group -Id $searchString
+                }
+                until ($GroupSearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $GroupSearch | Export-Clixml $groupTestFile
+                Compare-Object (Import-Clixml $groupTestFile) ($GroupListProc | Where-Object {$_.Id -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Code in group search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "*_$([char](65..90 | Get-Random))*"
+                    $GroupSearch = Find-Group -Code $searchString
+                }
+                until ($GroupSearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $GroupSearch | Export-Clixml $groupTestFile
+                Compare-Object (Import-Clixml $groupTestFile) ($GroupListProc | Where-Object {$_.Code -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by FriendlyName in group search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "*$([char](65..90 | Get-Random))"
+                    $GroupSearch = Find-Group -FriendlyName $searchString
+                }
+                until ($GroupSearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $GroupSearch | Export-Clixml $groupTestFile
+                Compare-Object (Import-Clixml $groupTestFile) ($GroupListProc | Where-Object {$_.FriendlyName -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by TypeCode in group search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = 'legacy*','regions' | Get-Random
+                    $GroupSearch = Find-Group -TypeCode $searchString
+                }
+                until ($GroupSearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $GroupSearch | Export-Clixml $groupTestFile
+                Compare-Object (Import-Clixml $groupTestFile) ($GroupListProc | Where-Object {$_.Type.Code -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
 
             $techList = Get-TechnologyList
             It 'Produces technology list data' {
                 $techList | Export-Clixml $technologyTestFile
                 Compare-Object (Import-Clixml $technologyTestFile) ($TechnologyListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can retrieve all technologies in wildcard search' {
+                Find-Technology -FriendlyName * | Export-Clixml $technologyTestFile
+                Compare-Object (Import-Clixml $technologyTestFile) ($TechnologyListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can retrieve all technologies in search using fallback data' {
+                Compare-Object (Find-Technology -FriendlyName * -Offline) ($TechnologyListProc) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Id in technology search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "$(1..48 | Get-Random)"
+                    $TechnologySearch = Find-Technology -Id $searchString
+                }
+                until ($TechnologySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $TechnologySearch | Export-Clixml $technologyTestFile
+                Compare-Object (Import-Clixml $technologyTestFile) ($TechnologyListProc | Where-Object {$_.Id -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by Code in technology search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "*_$([char](65..90 | Get-Random))*"
+                    $TechnologySearch = Find-Technology -Code $searchString
+                }
+                until ($TechnologySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $TechnologySearch | Export-Clixml $technologyTestFile
+                Compare-Object (Import-Clixml $technologyTestFile) ($TechnologyListProc | Where-Object {$_.Code -like $searchString}) `
+                | Should -BeNullOrEmpty
+            }
+
+            It 'Can filter by FriendlyName in technology search' {
+                $searchTries = 0
+                do {
+                    $searchTries++
+                    $searchString = "*$([char](65..90 | Get-Random))"
+                    $TechnologySearch = Find-Technology -FriendlyName $searchString
+                }
+                until ($TechnologySearch.Count -ne 0 -or $searchTries -gt 99)
+                $searchTries | Should -BeLessOrEqual 99
+                $TechnologySearch | Export-Clixml $technologyTestFile
+                Compare-Object (Import-Clixml $technologyTestFile) ($TechnologyListProc | Where-Object {$_.FriendlyName -like $searchString}) `
                 | Should -BeNullOrEmpty
             }
 

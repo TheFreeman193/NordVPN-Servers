@@ -1,5 +1,7 @@
+#Requires -Assembly System.Xml.XmlDocument
+
 $ModulePath = Resolve-Path (Split-Path $PSScriptRoot)
-Set-Location $ModulePath
+Push-Location $ModulePath
 
 if (!(Test-Path .\tests\CodeCoverage.xml -PathType Leaf)) {
     throw "Cannot find CodeCoverage.xml!"
@@ -88,7 +90,7 @@ $CoverageBadge = $CodeCoverageTemplate -f $TotalCoveragePretty, $CovTxtSize, $Co
 
 Set-Content -Path .\tests\CodeCoverage.svg -Value $CoverageBadge -Encoding utf8 -Force
 
-Write-Output "Generated code coverage badge"
+Write-Output "Generated code coverage badge ($TotalCoveragePretty)"
 
 [System.Xml.XmlDocument]$TestResult = Get-Content .\tests\TestResult.xml
 $total = [Int64]$TestResult.'test-results'.total
@@ -113,4 +115,6 @@ $TestBadge = $TestResultTemplate -f $TotalSucceeded, $total, $TestCol
 
 Set-Content -Path .\tests\TestResult.svg -Value $TestBadge -Encoding utf8 -Force
 
-Write-Output "Generated test result badge"
+Write-Output "Generated test result badge ($TotalSucceeded/$total)"
+
+Pop-Location
